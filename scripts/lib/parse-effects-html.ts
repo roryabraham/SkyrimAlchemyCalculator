@@ -14,9 +14,13 @@ export type EffectRow = {
 };
 
 function effectKeyFromHref(href: string | undefined): string | null {
-  if (!href) return null;
+  if (!href) {
+    return null;
+  }
   const m = href.match(/\/wiki\/Skyrim:([^#?]+)/);
-  if (!m) return null;
+  if (!m) {
+    return null;
+  }
   try {
     return decodeURIComponent(m[1]);
   } catch {
@@ -33,13 +37,17 @@ function parseNum(s: string): number {
 export function parseAlchemyEffectsHtml(html: string): EffectRow[] {
   const $ = cheerio.load(html);
   const $table = $("#Effect_List").closest("h2").nextAll("table.wikitable").first();
-  if (!$table.length) throw new Error("Effect list table not found");
+  if (!$table.length) {
+    throw new Error("Effect list table not found");
+  }
 
   const out: EffectRow[] = [];
   for (const tr of $table.find("tbody > tr").toArray()) {
     const $tr = $(tr);
     const $th = $tr.find("> th").first();
-    if (!$th.length) continue;
+    if (!$th.length) {
+      continue;
+    }
 
     const $links = $th.find('a[href^="/wiki/Skyrim:"]');
     let $chosen = $links.last();
@@ -50,15 +58,21 @@ export function parseAlchemyEffectsHtml(html: string): EffectRow[] {
         break;
       }
     }
-    if (!$chosen.length) continue;
+    if (!$chosen.length) {
+      continue;
+    }
 
     const href = $chosen.attr("href");
     const key = effectKeyFromHref(href);
-    if (!key) continue;
+    if (!key) {
+      continue;
+    }
 
     const displayName = $chosen.text().trim();
     const tds = $tr.find("> td").toArray();
-    if (tds.length < 6) continue;
+    if (tds.length < 6) {
+      continue;
+    }
 
     const baseCost = parseNum($(tds[2]).text());
     const $magTd = $(tds[3]);

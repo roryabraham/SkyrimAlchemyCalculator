@@ -11,6 +11,7 @@
     }
   },
   "rules": {
+    "curly": ["error", "all"],
     "react/react-in-jsx-scope": "off"
   },
   "overrides": [

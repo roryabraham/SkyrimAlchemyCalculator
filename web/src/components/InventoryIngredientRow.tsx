@@ -48,7 +48,9 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
         <Popover.Root
           open={popoverOpen}
           onOpenChange={(next) => {
-            if (!next) setDismissed(true);
+            if (!next) {
+              setDismissed(true);
+            }
           }}
           modal={false}
         >

@@ -20,13 +20,19 @@ function iconBaseUrl(): string {
 }
 
 export function loadIconManifest(): Map<string, IconManifestEntry> {
-  if (_byNameNormalized) return _byNameNormalized;
+  if (_byNameNormalized) {
+    return _byNameNormalized;
+  }
   _byNameNormalized = new Map();
   const p = manifestPath();
-  if (!existsSync(p)) return _byNameNormalized;
+  if (!existsSync(p)) {
+    return _byNameNormalized;
+  }
 
   const raw: unknown = JSON.parse(readFileSync(p, "utf8"));
-  if (raw === null || typeof raw !== "object" || Array.isArray(raw)) return _byNameNormalized;
+  if (raw === null || typeof raw !== "object" || Array.isArray(raw)) {
+    return _byNameNormalized;
+  }
 
   for (const [key, val] of Object.entries(raw as Record<string, unknown>)) {
     if (typeof val === "string") {
@@ -49,7 +55,9 @@ export function loadIconManifest(): Map<string, IconManifestEntry> {
 
 export function iconUrlForNameNormalized(nameNormalized: string): string | null {
   const entry = loadIconManifest().get(nameNormalized);
-  if (!entry?.publicPath) return null;
+  if (!entry?.publicPath) {
+    return null;
+  }
   const rel = entry.publicPath.startsWith("/") ? entry.publicPath : `/${entry.publicPath}`;
   const base = iconBaseUrl();
   return base === "" ? rel : `${base}${rel}`;

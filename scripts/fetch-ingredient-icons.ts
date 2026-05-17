@@ -43,7 +43,9 @@ type ManifestEntry = { publicPath: string; wikiFile: string };
 type ManifestJson = Record<string, ManifestEntry | { publicPath: string; wikiFile?: string }>;
 
 function loadManifestFromDisk(): Record<string, ManifestEntry> {
-  if (!existsSync(MANIFEST_PATH)) return {};
+  if (!existsSync(MANIFEST_PATH)) {
+    return {};
+  }
   try {
     const raw = JSON.parse(readFileSync(MANIFEST_PATH, "utf8")) as ManifestJson;
     const out: Record<string, ManifestEntry> = {};
@@ -110,11 +112,15 @@ function fileSlug(nameNormalized: string): string {
 
 function pickIngredientIconFilename(images: string[]): string | null {
   const icon = images.filter((f) => /^SR-icon-ingredient-/i.test(f));
-  if (icon.length === 0) return null;
+  if (icon.length === 0) {
+    return null;
+  }
   icon.sort((a, b) => {
     const ap = a.toLowerCase().endsWith(".png") ? 0 : 1;
     const bp = b.toLowerCase().endsWith(".png") ? 0 : 1;
-    if (ap !== bp) return ap - bp;
+    if (ap !== bp) {
+      return ap - bp;
+    }
     return a.localeCompare(b);
   });
   return icon[0] ?? null;
@@ -133,12 +139,16 @@ async function mwParseImages(pageTitle: string): Promise<string[] | null> {
     u.searchParams.set("prop", "images");
     u.searchParams.set("format", "json");
     const res = await fetchWithTimeout(u, { headers: UA }, API_TIMEOUT_MS);
-    if (!res.ok) throw new Error(`UESP parse HTTP ${res.status} ${pageTitle}`);
+    if (!res.ok) {
+      throw new Error(`UESP parse HTTP ${res.status} ${pageTitle}`);
+    }
     const j = (await res.json()) as {
       parse?: { images?: string[] };
       error?: { info?: string };
     };
-    if (j.error) throw new Error(j.error.info ?? "UESP parse error");
+    if (j.error) {
+      throw new Error(j.error.info ?? "UESP parse error");
+    }
     return j.parse?.images ?? null;
   });
 }
@@ -152,16 +162,22 @@ async function mwImageUrl(wikiFilename: string): Promise<string | null> {
     u.searchParams.set("iiprop", "url|size");
     u.searchParams.set("format", "json");
     const res = await fetchWithTimeout(u, { headers: UA }, API_TIMEOUT_MS);
-    if (!res.ok) throw new Error(`UESP query HTTP ${res.status} ${wikiFilename}`);
+    if (!res.ok) {
+      throw new Error(`UESP query HTTP ${res.status} ${wikiFilename}`);
+    }
     const j = (await res.json()) as {
       query?: {
         pages?: Record<string, { missing?: string; imageinfo?: { url: string; size?: number }[] }>;
       };
     };
     const pages = j.query?.pages;
-    if (!pages) return null;
+    if (!pages) {
+      return null;
+    }
     const page = Object.values(pages)[0];
-    if (!page || page.missing !== undefined) return null;
+    if (!page || page.missing !== undefined) {
+      return null;
+    }
     const info = page.imageinfo?.[0];
     return info?.url ?? null;
   });
@@ -170,7 +186,9 @@ async function mwImageUrl(wikiFilename: string): Promise<string | null> {
 async function downloadToFile(url: string, dest: string): Promise<void> {
   return withBackoff(`download ${path.basename(dest)}`, async () => {
     const res = await fetchWithTimeout(url, { headers: UA }, DOWNLOAD_TIMEOUT_MS);
-    if (!res.ok) throw new Error(`Download HTTP ${res.status} ${url}`);
+    if (!res.ok) {
+      throw new Error(`Download HTTP ${res.status} ${url}`);
+    }
     const buf = new Uint8Array(await res.arrayBuffer());
     await Bun.write(dest, buf);
   });
@@ -290,7 +308,9 @@ const taskResults = await runPool(ingredients, CONCURRENCY, (ing, i) =>
 await manifestWriteChain;
 const missing: string[] = [];
 for (const r of taskResults) {
-  for (const line of r.missing) missing.push(line);
+  for (const line of r.missing) {
+    missing.push(line);
+  }
 }
 
 await Bun.write(MANIFEST_PATH, JSON.stringify(manifestState, null, 2) + "\n");

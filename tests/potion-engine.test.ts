@@ -19,7 +19,9 @@ describe("expandInventory", () => {
       ],
       nameIndex,
     );
-    if ("error" in r) throw new Error(r.error);
+    if ("error" in r) {
+      throw new Error(r.error);
+    }
     expect(r.ids.length).toBe(3);
     expect([...r.ids].sort((a, b) => a - b)).toEqual(r.ids);
     expect(r.idToName.size).toBeGreaterThanOrEqual(2);
@@ -27,7 +29,9 @@ describe("expandInventory", () => {
 
   it("normalizes ingredient keys (spacing and case)", () => {
     const r = expandInventory([{ name: "  BLUE   mountain  FLOWER ", count: 1 }], nameIndex);
-    if ("error" in r) throw new Error(r.error);
+    if ("error" in r) {
+      throw new Error(r.error);
+    }
     expect(r.ids.length).toBe(1);
   });
 

@@ -19,9 +19,15 @@ function setNumParam(
   opts?: { min?: number; max?: number },
 ) {
   let n = Math.floor(Number(value));
-  if (!Number.isFinite(n)) n = fallback;
-  if (opts?.min !== undefined) n = Math.max(opts.min, n);
-  if (opts?.max !== undefined) n = Math.min(opts.max, n);
+  if (!Number.isFinite(n)) {
+    n = fallback;
+  }
+  if (opts?.min !== undefined) {
+    n = Math.max(opts.min, n);
+  }
+  if (opts?.max !== undefined) {
+    n = Math.min(opts.max, n);
+  }
   startSettingsTransition(() => {
     setParams((p) => ({ ...p, [key]: n }));
   });

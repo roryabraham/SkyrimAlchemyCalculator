@@ -21,9 +21,13 @@ const EFFECT_KEY_ALIASES: Record<string, string> = {
 
 /** Extract Skyrim wiki title from /wiki/Skyrim:Foo_bar */
 function effectKeyFromHref(href: string | undefined): string | null {
-  if (!href) return null;
+  if (!href) {
+    return null;
+  }
   const m = href.match(/\/wiki\/Skyrim:([^#?]+)/);
-  if (!m) return null;
+  if (!m) {
+    return null;
+  }
   try {
     return decodeURIComponent(m[1].replace(/_/g, "_"));
   } catch {
@@ -41,10 +45,14 @@ function parseEffectCell($cell: Cheerio<Element>): ParsedEffect | null {
       break;
     }
   }
-  if (!$chosen.length) return null;
+  if (!$chosen.length) {
+    return null;
+  }
   const href = $chosen.attr("href");
   const key = effectKeyFromHref(href);
-  if (!key) return null;
+  if (!key) {
+    return null;
+  }
   const canon = EFFECT_KEY_ALIASES[key] ?? key;
   const displayName = $chosen.text().trim();
   const cellText = $cell.text().replace(/\s+/g, " ").trim();
@@ -57,7 +65,9 @@ function parseEffectCell($cell: Cheerio<Element>): ParsedEffect | null {
   } else if (nums.length >= 2) {
     magMult = nums[0];
     durMult = nums[1];
-    if (nums.length >= 3) goldMult = nums[2];
+    if (nums.length >= 3) {
+      goldMult = nums[2];
+    }
   }
   return {
     effectKey: canon,
@@ -71,7 +81,9 @@ function parseEffectCell($cell: Cheerio<Element>): ParsedEffect | null {
 
 function parseNumberLoose(s: string): number | null {
   const t = s.replace(/[^\d.+-]/g, "").trim();
-  if (!t) return null;
+  if (!t) {
+    return null;
+  }
   const n = Number(t);
   return Number.isFinite(n) ? n : null;
 }
@@ -91,31 +103,49 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
     const trs = $table.find("tbody > tr").toArray();
     for (let i = 0; i < trs.length; i++) {
       const $tr = $(trs[i]);
-      if ($tr.find("th").length) continue;
+      if ($tr.find("th").length) {
+        continue;
+      }
       const rowId = $tr.attr("id");
-      if (!rowId) continue;
-      if (UNUSED_ROW_IDS.has(rowId)) continue;
+      if (!rowId) {
+        continue;
+      }
+      if (UNUSED_ROW_IDS.has(rowId)) {
+        continue;
+      }
 
       const tds0 = $tr.find("> td");
-      if (tds0.length < 3) continue;
+      if (tds0.length < 3) {
+        continue;
+      }
       const $nameTd = $(tds0[1]);
       const $nameLink = $nameTd.find('a[href^="/wiki/Skyrim:"]').first();
       const name = $nameLink.text().trim();
-      if (!name) continue;
+      if (!name) {
+        continue;
+      }
 
       const descriptionText = $(tds0[2]).text().replace(/\s+/g, " ").trim();
       i++;
-      if (i >= trs.length) break;
+      if (i >= trs.length) {
+        break;
+      }
       const $tr2 = $(trs[i]);
       const tds = $tr2.find("> td").toArray();
-      if (tds.length < 8) continue;
+      if (tds.length < 8) {
+        continue;
+      }
 
       const effects: ParsedEffect[] = [];
       for (let c = 0; c < 4; c++) {
         const pe = parseEffectCell($(tds[c]));
-        if (pe) effects.push(pe);
+        if (pe) {
+          effects.push(pe);
+        }
       }
-      if (effects.length !== 4) continue;
+      if (effects.length !== 4) {
+        continue;
+      }
 
       const value = parseNumberLoose($(tds[4]).text());
       const weight = parseNumberLoose($(tds[5]).text());
@@ -139,10 +169,14 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
   }
 
   const $std = $("#Standard_Ingredients").closest("h2").nextAll("table.striped2_1").first();
-  if ($std.length) harvestTable($std, "standard");
+  if ($std.length) {
+    harvestTable($std, "standard");
+  }
 
   const $cc = $("#Creation_Club_Ingredients").closest("h2").nextAll("table.striped2_1").first();
-  if ($cc.length) harvestTable($cc, "creation_club");
+  if ($cc.length) {
+    harvestTable($cc, "creation_club");
+  }
 
   return out;
 }

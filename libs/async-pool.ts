@@ -14,7 +14,9 @@ export async function runPool<T, R>(
   async function worker(): Promise<void> {
     while (true) {
       const i = nextIndex++;
-      if (i >= n) return;
+      if (i >= n) {
+        return;
+      }
       results[i] = await fn(items[i]!, i);
     }
   }

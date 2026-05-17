@@ -63,7 +63,9 @@ function pickDamageHealthWinner(
     return { c, priority, dom };
   });
   scored.sort((a, b) => {
-    if (b.priority !== a.priority) return b.priority - a.priority;
+    if (b.priority !== a.priority) {
+      return b.priority - a.priority;
+    }
     return b.dom - a.dom;
   });
   const w = scored[0].c;
@@ -99,11 +101,17 @@ function buildGoldHints(
   idToName: Map<number, string>,
   w: { mag: number; dur: number; gold: number },
 ): EffectGoldHints | undefined {
-  if (effect.effect_key !== "Damage_Health") return undefined;
+  if (effect.effect_key !== "Damage_Health") {
+    return undefined;
+  }
   const name = idToName.get(winnerIngredientId);
-  if (!name) return undefined;
+  if (!name) {
+    return undefined;
+  }
   const row = getDamageHealthRow(name);
-  if (!row) return undefined;
+  if (!row) {
+    return undefined;
+  }
   const intrinsicDurForGold = row.useTenSecondGoldDuration
     ? 10
     : Math.max(1, Math.round(row.baseDurCk * w.dur));
@@ -137,9 +145,13 @@ function evaluateRecipe(
 
   const shared: number[] = [];
   for (const [eid, n] of effCount) {
-    if (n >= 2) shared.push(eid);
+    if (n >= 2) {
+      shared.push(eid);
+    }
   }
-  if (shared.length === 0) return null;
+  if (shared.length === 0) {
+    return null;
+  }
 
   let dominantEid = shared[0];
   let dominantGold = -1;
@@ -147,7 +159,9 @@ function evaluateRecipe(
 
   for (const eid of shared) {
     const eff = effectById.get(eid);
-    if (!eff) continue;
+    if (!eff) {
+      continue;
+    }
     const c = contrib.get(eid) ?? [];
     const w = pickWinner(eff, c, idToName);
     const hints = buildGoldHints(eff, w.ingredientId, idToName, w);
@@ -159,14 +173,18 @@ function evaluateRecipe(
   }
 
   const domEff = effectById.get(dominantEid);
-  if (!domEff) return null;
+  if (!domEff) {
+    return null;
+  }
   const isPoison = !domEff.is_beneficial;
 
   const effectsOut: RecipeResult["effects"] = [];
   let total = 0;
   for (const eid of shared) {
     const eff = effectById.get(eid);
-    if (!eff) continue;
+    if (!eff) {
+      continue;
+    }
     const c = contrib.get(eid) ?? [];
     const w = pickWinner(eff, c, idToName);
     const hints = buildGoldHints(eff, w.ingredientId, idToName, w);
@@ -178,7 +196,9 @@ function evaluateRecipe(
       w.dur,
       hints,
     );
-    if (!hints?.damageHealth && w.gold !== 1) g = Math.floor(g * w.gold);
+    if (!hints?.damageHealth && w.gold !== 1) {
+      g = Math.floor(g * w.gold);
+    }
     effectsOut.push({
       displayName: eff.display_name,
       effectKey: eff.effect_key,
@@ -215,8 +235,12 @@ export function expandInventory(
       return { error: `Unknown ingredient: ${line.name}` };
     }
     const n = Math.floor(line.count);
-    if (n < 0) return { error: `Invalid count for ${line.name}` };
-    for (let k = 0; k < n; k++) bag.push(row.id);
+    if (n < 0) {
+      return { error: `Invalid count for ${line.name}` };
+    }
+    for (let k = 0; k < n; k++) {
+      bag.push(row.id);
+    }
     idToName.set(row.id, row.canonical);
   }
   bag.sort((a, b) => a - b);
@@ -255,7 +279,9 @@ export function rankPotions(
   params: AlchemyParams = defaultAlchemyParams,
 ): { recipes: RecipeResult[]; truncated: boolean; error?: string } {
   const exp = expandInventory(lines, nameToId);
-  if ("error" in exp) return { recipes: [], truncated: false, error: exp.error };
+  if ("error" in exp) {
+    return { recipes: [], truncated: false, error: exp.error };
+  }
 
   const { ids, idToName } = exp;
   if (ids.length < 2) {
@@ -266,7 +292,9 @@ export function rankPotions(
   const ieMap = loadIngredientEffects(uniq);
   const allEffectIds = new Set<number>();
   for (const iid of uniq) {
-    for (const ie of ieMap.get(iid) ?? []) allEffectIds.add(ie.effect_id);
+    for (const ie of ieMap.get(iid) ?? []) {
+      allEffectIds.add(ie.effect_id);
+    }
   }
   const effectById = loadEffectsByIds([...allEffectIds]);
 
@@ -278,7 +306,9 @@ export function rankPotions(
   const recipes: RecipeResult[] = [];
   for (const combo of slice) {
     const r = evaluateRecipe(combo, idToName, ieMap, effectById, params);
-    if (r) recipes.push(r);
+    if (r) {
+      recipes.push(r);
+    }
   }
 
   recipes.sort((a, b) => b.totalGold - a.totalGold);

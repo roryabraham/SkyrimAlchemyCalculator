@@ -64,7 +64,9 @@ function scaledMagnitude(
 ): number {
   const pf = powerFactor(effect, params, opts);
   let mag = effect.base_mag * ingredientMagMult;
-  if (effect.power_affects_magnitude) mag *= pf;
+  if (effect.power_affects_magnitude) {
+    mag *= pf;
+  }
   return Math.round(mag);
 }
 
@@ -76,7 +78,9 @@ function scaledDuration(
 ): number {
   const pf = powerFactor(effect, params, opts);
   let dur = effect.base_dur * ingredientDurMult;
-  if (effect.power_affects_duration) dur *= pf;
+  if (effect.power_affects_duration) {
+    dur *= pf;
+  }
   return Math.round(dur);
 }
 

@@ -1,5 +1,7 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  // Oxfmt mirrors Prettier-style printing and cannot require braces on `if` bodies.
+  // Use Oxlint `curly` in `.oxlintrc.json` for that; run `bun run lint:fix` after enabling.
   "ignorePatterns": [
     "**/node_modules/**",
     "**/dist/**",

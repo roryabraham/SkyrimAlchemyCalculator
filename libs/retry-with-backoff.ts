@@ -29,7 +29,9 @@ export async function retryWithBackoff<T>(
     try {
       return await fn();
     } catch (e) {
-      if (attempt === opts.maxAttempts || !opts.shouldRetry(e)) throw e;
+      if (attempt === opts.maxAttempts || !opts.shouldRetry(e)) {
+        throw e;
+      }
       opts.onRetry?.({
         attempt,
         maxAttempts: opts.maxAttempts,

@@ -6,7 +6,9 @@ import { normalizeIngredientKey } from "../../libs/ingredient-key.ts";
 let _db: Database | null = null;
 
 export function getDb(): Database {
-  if (_db) return _db;
+  if (_db) {
+    return _db;
+  }
   const root = path.join(import.meta.dir, "..", "..");
   const file = path.join(root, "data", "alchemy.sqlite");
   _db = new Database(file, { readonly: true });
@@ -45,7 +47,9 @@ export type IngredientEffectRow = {
 let _ingredientSearchRows: IngredientRow[] | null = null;
 
 function getIngredientSearchRows(): IngredientRow[] {
-  if (_ingredientSearchRows) return _ingredientSearchRows;
+  if (_ingredientSearchRows) {
+    return _ingredientSearchRows;
+  }
   const db = getDb();
   _ingredientSearchRows = db
     .query("SELECT id, name, name_normalized FROM ingredients")
@@ -61,14 +65,20 @@ export function loadAllIngredientRows(): IngredientRow[] {
 export { normalizeIngredientKey };
 
 function maxTyposForKey(keyLen: number): number {
-  if (keyLen <= 1) return 0;
-  if (keyLen <= 3) return 1;
+  if (keyLen <= 1) {
+    return 0;
+  }
+  if (keyLen <= 3) {
+    return 1;
+  }
   return Math.min(12, Math.ceil(keyLen * 0.45));
 }
 
 export function searchIngredients(q: string, limit = 30): IngredientRow[] {
   const key = normalizeIngredientKey(q);
-  if (!key) return [];
+  if (!key) {
+    return [];
+  }
 
   const rows = getIngredientSearchRows();
   const maxD = maxTyposForKey(key.length);
@@ -82,12 +92,16 @@ export function searchIngredients(q: string, limit = 30): IngredientRow[] {
       continue;
     }
     const dist = levenshtein(key, r.name_normalized);
-    if (dist <= maxD) typoHits.push({ row: r, dist });
+    if (dist <= maxD) {
+      typoHits.push({ row: r, dist });
+    }
   }
 
   substring.sort((a, b) => a.name.localeCompare(b.name));
   typoHits.sort((a, b) => {
-    if (a.dist !== b.dist) return a.dist - b.dist;
+    if (a.dist !== b.dist) {
+      return a.dist - b.dist;
+    }
     return a.row.name.localeCompare(b.row.name);
   });
 
@@ -95,16 +109,24 @@ export function searchIngredients(q: string, limit = 30): IngredientRow[] {
   const out: IngredientRow[] = [];
 
   for (const r of substring) {
-    if (seen.has(r.id)) continue;
+    if (seen.has(r.id)) {
+      continue;
+    }
     seen.add(r.id);
     out.push(r);
-    if (out.length >= limit) return out;
+    if (out.length >= limit) {
+      return out;
+    }
   }
   for (const { row: r } of typoHits) {
-    if (seen.has(r.id)) continue;
+    if (seen.has(r.id)) {
+      continue;
+    }
     seen.add(r.id);
     out.push(r);
-    if (out.length >= limit) return out;
+    if (out.length >= limit) {
+      return out;
+    }
   }
 
   return out;
@@ -113,7 +135,9 @@ export function searchIngredients(q: string, limit = 30): IngredientRow[] {
 export function loadIngredientEffects(ingredientIds: number[]): Map<number, IngredientEffectRow[]> {
   const db = getDb();
   const map = new Map<number, IngredientEffectRow[]>();
-  if (ingredientIds.length === 0) return map;
+  if (ingredientIds.length === 0) {
+    return map;
+  }
   const placeholders = ingredientIds.map(() => "?").join(",");
   const rows = db
     .query(
@@ -133,12 +157,16 @@ export function loadIngredientEffects(ingredientIds: number[]): Map<number, Ingr
 export function loadEffectsByIds(ids: number[]): Map<number, EffectRow> {
   const db = getDb();
   const m = new Map<number, EffectRow>();
-  if (ids.length === 0) return m;
+  if (ids.length === 0) {
+    return m;
+  }
   const placeholders = ids.map(() => "?").join(",");
   const rows = db
     .query(`SELECT * FROM effects WHERE id IN (${placeholders})`)
     .all(...ids) as EffectRow[];
-  for (const r of rows) m.set(r.id, r);
+  for (const r of rows) {
+    m.set(r.id, r);
+  }
   return m;
 }
 
@@ -149,7 +177,9 @@ export function resolveIngredientIds(names: string[]): { id: number; name: strin
   for (const raw of names) {
     const key = normalizeIngredientKey(raw);
     const row = sel.get(key) as { id: number; name: string } | null;
-    if (row) out.push(row);
+    if (row) {
+      out.push(row);
+    }
   }
   return out;
 }
