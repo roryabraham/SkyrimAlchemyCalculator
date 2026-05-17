@@ -1,4 +1,6 @@
 import * as cheerio from "cheerio";
+import type { Cheerio } from "cheerio";
+import type { Element } from "domhandler";
 import type { ParsedEffect, ParsedIngredient } from "./ingredient-types.ts";
 
 const UNUSED_ROW_IDS = new Set([
@@ -37,7 +39,7 @@ function effectKeyFromHref(href: string | undefined): string | null {
   }
 }
 
-function parseEffectCell($cell: cheerio.Cheerio): ParsedEffect | null {
+function parseEffectCell($cell: Cheerio<Element>): ParsedEffect | null {
   const $links = $cell.find('a[href^="/wiki/Skyrim:"]');
   let $chosen = $links.last();
   for (let i = 0; i < $links.length; i++) {
@@ -82,7 +84,7 @@ function parseNumberLoose(s: string): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
-function formIdFromNameCell($cell: cheerio.Cheerio): string {
+function formIdFromNameCell($cell: Cheerio<Element>): string {
   return $cell.find(".idall").text().replace(/\s+/g, " ").trim();
 }
 
@@ -93,7 +95,7 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
   const $ = cheerio.load(html);
   const out: ParsedIngredient[] = [];
 
-  function harvestTable($table: cheerio.Cheerio, section: "standard" | "creation_club") {
+  function harvestTable($table: Cheerio<Element>, section: "standard" | "creation_club") {
     const trs = $table.find("tbody > tr").toArray();
     for (let i = 0; i < trs.length; i++) {
       const $tr = $(trs[i]);

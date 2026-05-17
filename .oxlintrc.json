@@ -2,6 +2,9 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "ignorePatterns": ["**/node_modules/**", "**/dist/**"],
   "plugins": ["eslint", "oxc", "typescript", "react", "import", "unicorn"],
+  "options": {
+    "typeAware": true
+  },
   "settings": {
     "react": {
       "version": "19.0"

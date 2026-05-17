@@ -55,7 +55,7 @@ export function InventoryPanel({
           type="button"
           size="2"
           disabled={!canSubmit || loading}
-          onClick={() => void onSubmit()}
+          onClick={onSubmit}
         >
           {loading ? (
             <Flex align="center" gap="2">

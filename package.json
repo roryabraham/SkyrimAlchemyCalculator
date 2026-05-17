@@ -19,16 +19,21 @@
     "dev": "concurrently -k \"bun run dev:server\" \"bun run dev:web\"",
     "test": "bun test",
     "build": "bun run --cwd web build",
-    "lint": "oxlint web/src web/scripts server/src scripts tests",
-    "lint:fix": "oxlint --fix web/src web/scripts server/src scripts tests",
-    "fmt": "oxfmt web/src web/scripts web/vite.config.ts server/src scripts tests package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.node.json server/tsconfig.json",
-    "fmt:check": "oxfmt --check web/src web/scripts web/vite.config.ts server/src scripts tests package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.node.json server/tsconfig.json"
+    "typecheck": "tsgo --noEmit -p web/tsconfig.json && tsgo --noEmit -p web/tsconfig.scripts.json && tsgo --noEmit -p web/tsconfig.node.json && tsgo --noEmit -p server/tsconfig.json && tsgo --noEmit -p scripts/tsconfig.json && tsgo --noEmit -p tests/tsconfig.json",
+    "lint": "oxlint --type-aware web/src web/scripts server/src scripts tests",
+    "lint:fix": "oxlint --type-aware --fix web/src web/scripts server/src scripts tests",
+    "fmt": "oxfmt web/src web/scripts web/vite.config.ts server/src scripts tests package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.scripts.json web/tsconfig.node.json server/tsconfig.json scripts/tsconfig.json tests/tsconfig.json",
+    "fmt:check": "oxfmt --check web/src web/scripts web/vite.config.ts server/src scripts tests package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.scripts.json web/tsconfig.node.json server/tsconfig.json scripts/tsconfig.json tests/tsconfig.json"
   },
   "devDependencies": {
+    "@typescript/native-preview": "7.0.0-dev.20260517.1",
+    "bun-types": "1.3.14",
     "cheerio": "^1.0.0",
     "concurrently": "^9.1.2",
+    "domhandler": "5.0.3",
     "oxfmt": "0.50.0",
     "oxlint": "1.65.0",
+    "oxlint-tsgolint": "0.22.1",
     "typescript": "^5.7.3"
   }
 }

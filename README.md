@@ -6,12 +6,12 @@ Data is scraped from UESP ([Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredi
 
 The **web** UI is **React 19** + **Vite 8** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes). HTTP data uses [**TanStack Query**](https://tanstack.com/query/latest) (**`@tanstack/react-query`**): debounced ingredient autocomplete is a **`useQuery`** keyed by the trimmed search string, and “Find potions” is a **`useMutation`** over `POST /api/potions`. A shared **`QueryClient`** is defined in [`web/src/query-client.ts`](web/src/query-client.ts) and wired in [`web/src/main.tsx`](web/src/main.tsx) via **`QueryClientProvider`**. **Vite 8** ships **[Rolldown](https://rolldown.rs/)** and **[Oxc](https://oxc.rs/)** as the unified bundler and transform pipeline (see the [Vite migration guide](https://vite.dev/guide/migration) for Rolldown-related behavior). [**React Compiler**](https://react.dev/learn/react-compiler) runs via **`@rolldown/plugin-babel`** and **`reactCompilerPreset()`** from **`@vitejs/plugin-react` v6** (no manual `useMemo` / `useCallback` required for typical UI code).
 
-The repo uses **[Oxlint](https://oxc.rs/docs/guide/usage/linter)** and **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** at the workspace root (pinned in the root `package.json`), with config in [`.oxlintrc.json`](.oxlintrc.json) and [`.oxfmtrc.json`](.oxfmtrc.json).
+The repo uses **[Oxlint](https://oxc.rs/docs/guide/usage/linter)** with **[tsgolint](https://github.com/oxc-project/tsgolint)** (via [`oxlint-tsgolint`](https://www.npmjs.com/package/oxlint-tsgolint) and `oxlint --type-aware`) for type-aware rules on **typescript-go**, and **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** at the workspace root (pinned in the root `package.json`), with config in [`.oxlintrc.json`](.oxlintrc.json) and [`.oxfmtrc.json`](.oxfmtrc.json). Type-only checking uses **`tsgo`** from [`@typescript/native-preview`](https://www.npmjs.com/package/@typescript/native-preview) instead of `tsc`. The web app sets **`jsx: "preserve"`** in [`web/tsconfig.json`](web/tsconfig.json) so `tsgo` matches Vite’s JSX pipeline (the native checker can otherwise fail to resolve `react/jsx-runtime` under `jsx: "react-jsx"`).
 
 ## Requirements
 
 - **[Bun](https://bun.sh/)** — runs scrape/seed scripts, tests, and the API.
-- **Node.js** matching [`.nvmrc`](.nvmrc) — use `nvm use` (or equivalent) for editor tooling and any commands you run with `node`/`npm` directly. Day-to-day scripts (`bun run build`, `lint`, `fmt`, tests) run through **Bun** from the repo root.
+- **Node.js** matching [`.nvmrc`](.nvmrc) — use `nvm use` (or equivalent) for editor tooling and any commands you run with `node`/`npm` directly. Day-to-day scripts (`bun run build`, `typecheck`, `lint`, `fmt`, tests) run through **Bun** from the repo root.
 
 ## Setup
 
@@ -61,10 +61,11 @@ PORT=4000 bun run --cwd server start
 
 ## Linting and formatting
 
-From the repo root (first-party paths under `web/`, `server/`, `scripts/`, and `tests/`, plus selected `package.json` / `tsconfig` files—see root `package.json` scripts):
+From the repo root (first-party paths under `web/`, `server/`, `scripts/`, and `tests/`, plus selected `package.json` / `tsconfig` files—see root `package.json` scripts). Run `bun run typecheck` before pushing when you change TypeScript.
 
 ```bash
-bun run lint        # Oxlint
+bun run typecheck   # tsgo --noEmit (all TS projects)
+bun run lint        # Oxlint + type-aware (tsgolint)
 bun run lint:fix    # Oxlint with safe fixes
 bun run fmt         # Oxfmt (write)
 bun run fmt:check   # Oxfmt check only (e.g. CI)
@@ -77,8 +78,9 @@ bun run fmt:check   # Oxfmt check only (e.g. CI)
 | `bun run dev` | API + Vite in watch mode |
 | `bun run build` | Production build of the web app (Vite 8 + React Compiler via `@rolldown/plugin-babel`) |
 | `bun run test` | Bun unit tests (`tests/`) |
-| `bun run lint` | [Oxlint](https://oxc.rs/docs/guide/usage/linter) on shared TypeScript/React sources |
-| `bun run lint:fix` | Oxlint with `--fix` |
+| `bun run typecheck` | [tsgo](https://github.com/microsoft/typescript-go) `--noEmit` over `web/`, `server/`, `scripts/`, and `tests/` tsconfigs |
+| `bun run lint` | [Oxlint](https://oxc.rs/docs/guide/usage/linter) with `--type-aware` ([tsgolint](https://github.com/oxc-project/tsgolint)) on shared TypeScript/React sources |
+| `bun run lint:fix` | Oxlint with `--type-aware` and `--fix` |
 | `bun run fmt` | [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) (format in place) |
 | `bun run fmt:check` | Oxfmt `--check` (no writes) |
 | `bun run scrape` | Fetch & parse ingredient tables from UESP |
@@ -125,5 +127,8 @@ On validation or inventory errors, the handler returns **HTTP 400** with `{ "err
 | [`server/`](server/) | Bun HTTP server, SQLite access, potion enumeration and gold math (including [`server/src/damage-health-parity.ts`](server/src/damage-health-parity.ts) for Damage Health) |
 | [`web/`](web/) | Vite 8 + React UI (TanStack Query, Radix Themes; `web/src/App.tsx` composes `web/src/components/`) |
 | [`tests/`](tests/) | Bun tests for parsers, math, and potion engine |
-| [`.oxlintrc.json`](.oxlintrc.json) | Oxlint config (plugins, React 19, env overrides for web/server/scripts/tests) |
+| [`scripts/tsconfig.json`](scripts/tsconfig.json) | TypeScript project for root scrape/seed scripts (`tsgo` / editor) |
+| [`tests/tsconfig.json`](tests/tsconfig.json) | TypeScript project for `tests/` (`tsgo` / editor) |
+| [`web/tsconfig.scripts.json`](web/tsconfig.scripts.json) | TypeScript project for `web/scripts/` (e.g. React Compiler smoke check) |
+| [`.oxlintrc.json`](.oxlintrc.json) | Oxlint config (plugins, React 19, `typeAware`, env overrides for web/server/scripts/tests) |
 | [`.oxfmtrc.json`](.oxfmtrc.json) | Oxfmt config and ignore patterns |
