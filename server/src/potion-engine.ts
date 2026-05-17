@@ -9,7 +9,9 @@ import {
   effectGold,
   effectGoldForDominance,
   type AlchemyParams,
+  type EffectGoldHints,
 } from "./alchemy-math.ts";
+import { getDamageHealthRow } from "./damage-health-parity.ts";
 
 export const MAX_RECIPES = 8000;
 
@@ -43,20 +45,77 @@ function dominanceScore(
   return effect.base_cost * mag * dur * gold;
 }
 
+type WinnerMults = {
+  mag: number;
+  dur: number;
+  gold: number;
+  ingredientId: number;
+};
+
+function pickDamageHealthWinner(
+  effect: EffectRow,
+  contributors: { ingredientId: number; ie: IngredientEffectRow }[],
+  idToName: Map<number, string>,
+): WinnerMults {
+  const scored = contributors.map((c) => {
+    const name = idToName.get(c.ingredientId) ?? "";
+    const row = getDamageHealthRow(name);
+    const priority = row?.priority ?? 0;
+    const dom = dominanceScore(effect, c.ie);
+    return { c, priority, dom };
+  });
+  scored.sort((a, b) => {
+    if (b.priority !== a.priority) return b.priority - a.priority;
+    return b.dom - a.dom;
+  });
+  const w = scored[0].c;
+  const m = magDurGold(w.ie);
+  return { ...m, ingredientId: w.ingredientId };
+}
+
 function pickWinner(
   effect: EffectRow,
   contributors: { ingredientId: number; ie: IngredientEffectRow }[],
-): { mag: number; dur: number; gold: number } {
-  let best = magDurGold(contributors[0].ie);
+  idToName: Map<number, string>,
+): WinnerMults {
+  if (effect.effect_key === "Damage_Health") {
+    return pickDamageHealthWinner(effect, contributors, idToName);
+  }
+  let bestIdx = 0;
   let bestScore = dominanceScore(effect, contributors[0].ie);
   for (let i = 1; i < contributors.length; i++) {
     const s = dominanceScore(effect, contributors[i].ie);
     if (s > bestScore) {
       bestScore = s;
-      best = magDurGold(contributors[i].ie);
+      bestIdx = i;
     }
   }
-  return best;
+  const w = contributors[bestIdx];
+  const m = magDurGold(w.ie);
+  return { ...m, ingredientId: w.ingredientId };
+}
+
+function buildGoldHints(
+  effect: EffectRow,
+  winnerIngredientId: number,
+  idToName: Map<number, string>,
+  w: { mag: number; dur: number; gold: number },
+): EffectGoldHints | undefined {
+  if (effect.effect_key !== "Damage_Health") return undefined;
+  const name = idToName.get(winnerIngredientId);
+  if (!name) return undefined;
+  const row = getDamageHealthRow(name);
+  if (!row) return undefined;
+  const intrinsicDurForGold = row.useTenSecondGoldDuration
+    ? 10
+    : Math.max(1, Math.round(row.baseDurCk * w.dur));
+  return {
+    damageHealth: {
+      prePowerMag: row.prePowerMag,
+      intrinsicDurForGold,
+      tableGoldMult: row.goldMult,
+    },
+  };
 }
 
 function evaluateRecipe(
@@ -95,13 +154,15 @@ function evaluateRecipe(
     const eff = effectById.get(eid);
     if (!eff) continue;
     const c = contrib.get(eid) ?? [];
-    const w = pickWinner(eff, c);
+    const w = pickWinner(eff, c, idToName);
+    const hints = buildGoldHints(eff, w.ingredientId, idToName, w);
     const g = effectGoldForDominance(
       eff,
       params,
       prelimPoison,
       w.mag,
       w.dur,
+      hints,
     );
     if (g > dominantGold) {
       dominantGold = g;
@@ -119,15 +180,17 @@ function evaluateRecipe(
     const eff = effectById.get(eid);
     if (!eff) continue;
     const c = contrib.get(eid) ?? [];
-    const w = pickWinner(eff, c);
+    const w = pickWinner(eff, c, idToName);
+    const hints = buildGoldHints(eff, w.ingredientId, idToName, w);
     let g = effectGold(
       eff,
       params,
       { isPoison, includeBenefactorPoisoner: true },
       w.mag,
       w.dur,
+      hints,
     );
-    if (w.gold !== 1) g = Math.floor(g * w.gold);
+    if (!hints?.damageHealth && w.gold !== 1) g = Math.floor(g * w.gold);
     effectsOut.push({
       displayName: eff.display_name,
       effectKey: eff.effect_key,

@@ -23,6 +23,17 @@ export const defaultAlchemyParams: AlchemyParams = {
   seekerOfShadowsPercent: 0,
 };
 
+/** UESP Damage Health controlling-ingredient path (see damage-health-parity.ts). */
+export type DamageHealthGoldHints = {
+  prePowerMag: number;
+  intrinsicDurForGold: number;
+  tableGoldMult: number;
+};
+
+export type EffectGoldHints = {
+  damageHealth?: DamageHealthGoldHints;
+};
+
 function physicianBonus(effect: EffectRow): number {
   const k = effect.effect_key;
   if (
@@ -89,29 +100,55 @@ function scaledDuration(
   return Math.round(dur);
 }
 
-/** Single-effect gold (UESP floor formula). */
+/**
+ * Single-effect gold (UESP floor formula).
+ * When `hints.damageHealth` is set, uses UESP per-ingredient Damage Health
+ * magnitude/duration/gold-mult (closer to game than generic effect bases).
+ */
 export function effectGold(
   effect: EffectRow,
   params: AlchemyParams,
   opts: { isPoison: boolean; includeBenefactorPoisoner: boolean },
   ingredientMagMult: number,
   ingredientDurMult: number,
+  hints?: EffectGoldHints,
 ): number {
-  const mag = scaledMagnitude(
-    effect,
-    params,
-    opts,
-    ingredientMagMult,
-  );
-  const dur = scaledDuration(
-    effect,
-    params,
-    opts,
-    ingredientDurMult,
-  );
+  const dh = effect.effect_key === "Damage_Health" && hints?.damageHealth;
+
+  let mag: number;
+  let durForGold: number;
+
+  if (dh) {
+    const pf = powerFactor(effect, params, opts);
+    const h = hints.damageHealth!;
+    mag = Math.round(
+      h.prePowerMag * (effect.power_affects_magnitude ? pf : 1),
+    );
+    durForGold = h.intrinsicDurForGold;
+  } else {
+    mag = scaledMagnitude(
+      effect,
+      params,
+      opts,
+      ingredientMagMult,
+    );
+    durForGold = scaledDuration(
+      effect,
+      params,
+      opts,
+      ingredientDurMult,
+    );
+  }
+
   const magTerm = mag > 0 ? mag ** 1.1 : 1;
-  const durTerm = dur > 0 ? (dur / 10) ** 1.1 : 1;
-  return Math.floor(effect.base_cost * Math.max(magTerm, 1) * durTerm);
+  const durTerm = durForGold > 0 ? (durForGold / 10) ** 1.1 : 1;
+  let gold = Math.floor(
+    effect.base_cost * Math.max(magTerm, 1) * durTerm,
+  );
+  if (dh) {
+    gold = Math.floor(gold * hints.damageHealth!.tableGoldMult);
+  }
+  return gold;
 }
 
 /** Gold for dominance / potion-vs-poison label (no Benefactor/Poisoner in PowerFactor). */
@@ -121,6 +158,7 @@ export function effectGoldForDominance(
   isPoison: boolean,
   ingredientMagMult: number,
   ingredientDurMult: number,
+  hints?: EffectGoldHints,
 ): number {
   return effectGold(
     effect,
@@ -128,5 +166,6 @@ export function effectGoldForDominance(
     { isPoison, includeBenefactorPoisoner: false },
     ingredientMagMult,
     ingredientDurMult,
+    hints,
   );
 }
