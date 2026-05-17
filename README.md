@@ -1,143 +1,86 @@
 # Skyrim Alchemy Calculator
 
-Web app and API for **The Elder Scrolls V: Skyrim Anniversary Edition** alchemy: enter ingredients and quantities, then see valid two- and three-ingredient brews ranked by estimated **gold value** (a practical proxy for alchemy XP, as described on [UESP: Alchemy](https://en.uesp.net/wiki/Skyrim:Alchemy)).
+Figure out what to brew from the ingredients you have—or what to buy—without tabbing out of a spreadsheet.
 
-Data is scraped from UESP (see [Data sources and attribution](#data-sources-and-attribution) below) into JSON, then loaded into a local **SQLite** database.
+This project is a **Skyrim alchemy helper** aimed at **Anniversary Edition–style** ingredient lists (base game + DLC + Creation Club entries that appear on UESP). You enter **which ingredients you have and how many**, and it lists every **valid 2- and 3-ingredient** combination from that pool that shares at least one effect. Results are **sorted by total estimated gold**, which tracks [UESP’s alchemy write-up](https://en.uesp.net/wiki/Skyrim:Alchemy) as a practical stand-in for “how good is this for leveling / selling,” not a live read of your save or the exact in-game septim every time.
 
-The **web** UI is **React 19** + **Vite 8** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes). HTTP data uses [**TanStack Query**](https://tanstack.com/query/latest) (**`@tanstack/react-query`**): debounced ingredient autocomplete is a **`useQuery`** keyed by the trimmed search string, and “Find potions” is a **`useMutation`** over `POST /api/potions`. A shared **`QueryClient`** is defined in [`web/src/query-client.ts`](web/src/query-client.ts) and wired in [`web/src/main.tsx`](web/src/main.tsx) via **`QueryClientProvider`**. **Vite 8** ships **[Rolldown](https://rolldown.rs/)** and **[Oxc](https://oxc.rs/)** as the unified bundler and transform pipeline (see the [Vite migration guide](https://vite.dev/guide/migration) for Rolldown-related behavior). [**React Compiler**](https://react.dev/learn/react-compiler) runs via **`@rolldown/plugin-babel`** and **`reactCompilerPreset()`** from **`@vitejs/plugin-react` v6** (no manual `useMemo` / `useCallback` required for typical UI code).
+**It does not** connect to the game, predict discovery order, or model every Creation Kit edge case. Treat numbers as **guides**, especially if you use unusual mods or perks.
 
-The repo uses **[Oxlint](https://oxc.rs/docs/guide/usage/linter)** with **[tsgolint](https://github.com/oxc-project/tsgolint)** (via [`oxlint-tsgolint`](https://www.npmjs.com/package/oxlint-tsgolint) and `oxlint --type-aware`) for type-aware rules on **typescript-go**, and **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** at the workspace root (pinned in the root `package.json`), with config in [`.oxlintrc.json`](.oxlintrc.json) and [`.oxfmtrc.json`](.oxfmtrc.json). Type-only checking uses **`tsgo`** from [`@typescript/native-preview`](https://www.npmjs.com/package/@typescript/native-preview) instead of `tsc`. The web app sets **`jsx: "preserve"`** in [`web/tsconfig.json`](web/tsconfig.json) so `tsgo` matches Vite’s JSX pipeline (the native checker can otherwise fail to resolve `react/jsx-runtime` under `jsx: "react-jsx"`).
+---
+
+## How to use it
+
+1. **Run the app** (see [Quick start](#quick-start)) and open the local URL in your browser (Vite prints the port; **5173** is default if it’s free).
+2. **Build your bag:** Each row is one ingredient. Type in the search box, pick a name from the list, then set **Qty** to how many of that ingredient you want counted. Use **Add ingredient** for more rows. You need **at least two ingredients** in the bag (by total count) before **Find potions** turns on.
+3. **Optional — Alchemy settings:** Skill, Fortify Alchemy, Alchemist, Physician, Benefactor / Poisoner, Seeker of Shadows, etc. change how **gold** is estimated so you can match your character.
+4. **Find potions:** The **Best brews** section lists recipes that work, highest **total gold** first. Each card shows **potion** vs **poison**, the ingredient mix, per-effect gold, and a **dominant** effect used for the mixture label. If you throw in a huge inventory, you may see a **truncated** warning when the tool stops after an internal cap.
+
+---
+
+## Quick start
+
+```bash
+bun install          # installs deps and seeds data/alchemy.sqlite from JSON
+bun run dev        # Bun API + Vite UI; open the URL Vite shows (proxies /api → API)
+```
+
+- API listens on **3001** by default; the web app talks to **`/api`** on the same origin in dev.
+- Only the API: `bun run dev:server`. Only the UI (API must still be reachable): `bun run dev:web`.
+- Custom API port: `PORT=4000 bun run --cwd server start` — point the Vite [`web/vite.config.ts`](web/vite.config.ts) proxy at the same host/port if the UI should call a non-default API in dev.
+- Rebuild the DB from checked-in JSON: `bun run db:seed`. After changing UESP parsers or pages: `bun run scrape` and/or `bun run scrape:effects`, then `bun run db:seed`.
+
+---
 
 ## Data sources and attribution
 
-Ingredient names, effect keys, magnitudes, durations, and related alchemy statistics are taken from **The Unofficial Elder Scrolls Pages** (UESP):
+Names, effects, magnitudes, durations, and related stats are scraped from **The Unofficial Elder Scrolls Pages** (UESP):
 
 - [Skyrim:Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredients)
 - [Skyrim:Alchemy_Effects](https://en.uesp.net/wiki/Skyrim:Alchemy_Effects)
 
-UESP wiki text is licensed under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). See [UESPWiki:Copyright and Ownership](https://en.uesp.net/wiki/UESPWiki:Copyright_and_Ownership) for full terms, including trademark notices for *The Elder Scrolls* and related properties (ZeniMax Media Inc.). This project is an independent fan work.
+Wiki content is under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/); see [UESPWiki:Copyright and Ownership](https://en.uesp.net/wiki/UESPWiki:Copyright_and_Ownership). *The Elder Scrolls* and related marks belong to ZeniMax Media Inc. This is an independent fan project.
 
-## Requirements
+---
 
-- **[Bun](https://bun.sh/)** — runs scrape/seed scripts, tests, and the API.
-- **Node.js** matching [`.nvmrc`](.nvmrc) — use `nvm use` (or equivalent) for editor tooling and any commands you run with `node`/`npm` directly. Day-to-day scripts (`bun run build`, `typecheck`, `lint`, `fmt`, tests) run through **Bun** from the repo root.
+## For developers
 
-## Setup
+**Requirements:** [Bun](https://bun.sh/) for scripts, API, and tests. **Node.js** per [`.nvmrc`](.nvmrc) if your editor or tooling expects it.
 
-```bash
-bun install
-```
+**Quality checks** (from repo root): `bun run typecheck`, `bun run lint`, `bun run fmt` (see root [`package.json`](package.json) for `fmt:check` and `lint:fix`).
 
-`postinstall` runs `bun run db:seed`, which creates [`data/alchemy.sqlite`](data/alchemy.sqlite) from [`data/ingredients.json`](data/ingredients.json) and [`data/effects.json`](data/effects.json). That file is gitignored; regenerate it anytime with `bun run db:seed`.
+**Tests:** `bun test` (expects `data/alchemy.sqlite` after `bun install` or `bun run db:seed`).
 
-If you change UESP data or fix parsers, refresh artifacts and the database:
+**Production UI build:** `bun run build`.
 
-```bash
-bun run scrape            # ingredients → data/ingredients.json + .raw.txt
-bun run scrape:effects    # effects → data/effects.json
-bun run db:seed           # rebuild data/alchemy.sqlite
-```
-
-## Development
-
-Run API and Vite together (API on **3001**, web on **5173**; Vite proxies `/api` to the server):
-
-```bash
-bun run dev
-```
-
-Then open `http://localhost:5173`.
-
-Run only the API:
-
-```bash
-bun run dev:server
-```
-
-Run only the frontend (expects the API on port 3001 for `/api`):
-
-```bash
-bun run dev:web
-```
-
-Override API port:
-
-```bash
-PORT=4000 bun run --cwd server start
-```
-
-(Adjust the Vite proxy in [`web/vite.config.ts`](web/vite.config.ts) if you use a non-default port without the proxy.)
-
-## Linting and formatting
-
-From the repo root (first-party paths under `web/`, `server/`, `scripts/`, and `tests/`, plus selected `package.json` / `tsconfig` files—see root `package.json` scripts). Run `bun run typecheck` before pushing when you change TypeScript.
-
-```bash
-bun run typecheck   # tsgo --noEmit (all TS projects)
-bun run lint        # Oxlint + type-aware (tsgolint)
-bun run lint:fix    # Oxlint with safe fixes
-bun run fmt         # Oxfmt (write)
-bun run fmt:check   # Oxfmt check only (e.g. CI)
-```
-
-## Scripts
+### Common scripts
 
 | Script | Purpose |
 |--------|---------|
-| `bun run dev` | API + Vite in watch mode |
-| `bun run build` | Production build of the web app (Vite 8 + React Compiler via `@rolldown/plugin-babel`) |
-| `bun run test` | Bun unit tests (`tests/`) |
-| `bun run typecheck` | [tsgo](https://github.com/microsoft/typescript-go) `--noEmit` over `web/`, `server/`, `scripts/`, and `tests/` tsconfigs |
-| `bun run lint` | [Oxlint](https://oxc.rs/docs/guide/usage/linter) with `--type-aware` ([tsgolint](https://github.com/oxc-project/tsgolint)) on shared TypeScript/React sources |
-| `bun run lint:fix` | Oxlint with `--type-aware` and `--fix` |
-| `bun run fmt` | [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) (format in place) |
-| `bun run fmt:check` | Oxfmt `--check` (no writes) |
-| `bun run scrape` | Fetch & parse ingredient tables from UESP |
-| `bun run scrape:effects` | Fetch & parse alchemy effect stats from UESP |
-| `bun run db:seed` | Recreate SQLite from JSON in `data/` |
+| `bun run dev` | API + Vite (watch) |
+| `bun run build` | Production build of the web app |
+| `bun run test` | Bun unit tests |
+| `bun run typecheck` | Typecheck all TS projects (`tsgo`) |
+| `bun run lint` / `lint:fix` | Oxlint (+ type-aware rules) |
+| `bun run fmt` / `fmt:check` | Oxfmt |
+| `bun run scrape` / `scrape:effects` | Refresh UESP JSON artifacts |
+| `bun run db:seed` | Rebuild `data/alchemy.sqlite` from JSON |
 
-## Testing
+### HTTP API (for tools or custom frontends)
 
-```bash
-bun test
-```
+- `GET /api/ingredients?q=` — substring search for autocomplete.
+- `POST /api/potions` — body: `{ "inventory": [{ "name": "…", "count": n }], "params": { …optional alchemy fields } }`. Success: `{ "recipes", "truncated" }`. Validation / bad inventory: **400** with `{ "error", "recipes": [], "truncated": false }`.
+- `GET /health` — `{ "ok": true }`.
 
-Coverage includes UESP HTML parsers, **alchemy math** (`effectGold`, `powerFactor`, perk flags), **potion ranking** (`expandInventory`, `rankPotions` against the seeded DB, sorting, truncation, potion vs poison labels), and **Damage Health** gold parity (UESP controlling ingredient priority and table values). Tests expect `data/alchemy.sqlite` to exist (run `bun install` or `bun run db:seed` first).
+### Accuracy note
 
-## API
+Gold uses UESP-style formulas (including skill and perk knobs you send in `params`). **Damage Health** is modeled a bit more tightly to [UESP: Damage Health](https://en.uesp.net/wiki/Skyrim:Damage_Health) (which ingredient “wins” and how duration is counted for gold); other effects rely on the shared effect table plus ingredient multipliers. Purity, every CC quirk, and full CK parity are out of scope.
 
-- `GET /api/ingredients?q=` — substring search on normalized ingredient names (for autocomplete).
-- `POST /api/potions` — JSON body:
-  - `inventory`: `[{ "name": "Wheat", "count": 3 }, ...]` (names should match canonical ingredient names from search).
-  - `params` (optional): `alchemySkill`, `fortifyAlchemy`, `alchemistPercent`, `hasPhysician`, `hasBenefactor`, `hasPoisoner`, `seekerOfShadowsPercent`.
-
-Successful response: `{ "recipes": [...], "truncated": boolean }`. Each recipe includes `totalGold`, `mixtureKind` (`potion` \| `poison`), `dominantEffectKey`, `effects` with per-effect gold, and `ingredients` used.
-
-On validation or inventory errors, the handler returns **HTTP 400** with `{ "error": string, "recipes": [], "truncated": false }`.
-
-`GET /health` returns `{ "ok": true }`.
-
-## Gold model and limitations
-
-- **Most effects** use UESP-style `base_cost`, `base_mag`, `base_dur`, ingredient magnitude/duration multipliers, and the usual floor formula, with **PowerFactor** from skill, Fortify Alchemy, Alchemist, Physician, Benefactor / Poisoner (when mixing potions vs poisons), and Seeker of Shadows where applicable.
-
-- **Damage Health** follows [UESP: Damage Health](https://en.uesp.net/wiki/Skyrim:Damage_Health) more closely: the controlling ingredient is chosen by **UESP priority** (then dominance as a tiebreaker), and gold uses that row’s pre-power magnitude, intrinsic duration for gold (including the 10s rule where the wiki notes it), and **gold mult**. Ingredients not in that table fall back to the generic path plus the row’s `gold_mult` from the database.
-
-- Targets **Anniversary Edition** (base + DLC + Creation Club content reflected on the linked UESP pages). Values remain **approximate** versus the game engine (Purity, other special cases, and non–Damage Health effects without per-ingredient CK tables).
-
-- Very large inventories may hit an internal combination cap (`MAX_RECIPES` in [`server/src/potion-engine.ts`](server/src/potion-engine.ts)); the API sets `truncated: true` when that happens.
-
-## Project layout
+### Repository layout
 
 | Path | Role |
 |------|------|
-| [`scripts/`](scripts/) | UESP scrapers and `seed-db.ts` |
-| [`data/`](data/) | JSON sources; generated `alchemy.sqlite` |
-| [`server/`](server/) | Bun HTTP server, SQLite access, potion enumeration and gold math (including [`server/src/damage-health-parity.ts`](server/src/damage-health-parity.ts) for Damage Health) |
-| [`web/`](web/) | Vite 8 + React UI (TanStack Query, Radix Themes; `web/src/App.tsx` composes `web/src/components/`) |
-| [`tests/`](tests/) | Bun tests for parsers, math, and potion engine |
-| [`scripts/tsconfig.json`](scripts/tsconfig.json) | TypeScript project for root scrape/seed scripts (`tsgo` / editor) |
-| [`tests/tsconfig.json`](tests/tsconfig.json) | TypeScript project for `tests/` (`tsgo` / editor) |
-| [`web/tsconfig.scripts.json`](web/tsconfig.scripts.json) | TypeScript project for `web/scripts/` (e.g. React Compiler smoke check) |
-| [`.oxlintrc.json`](.oxlintrc.json) | Oxlint config (plugins, React 19, `typeAware`, env overrides for web/server/scripts/tests) |
-| [`.oxfmtrc.json`](.oxfmtrc.json) | Oxfmt config and ignore patterns |
+| [`web/`](web/) | React UI (Vite) |
+| [`server/`](server/) | Bun HTTP API + potion / gold logic |
+| [`data/`](data/) | JSON sources; generated `alchemy.sqlite` (gitignored) |
+| [`scripts/`](scripts/) | Scrapers and DB seed |
+| [`tests/`](tests/) | Automated tests |
