@@ -1,5 +1,6 @@
 import { IconButton, Table } from "@radix-ui/themes";
 import { motion } from "framer-motion";
+import type { Ref } from "react";
 import { useRef } from "react";
 import type { InventoryRow, InventoryRowPatch } from "../types.ts";
 import { FinalizedIngredientCell } from "./FinalizedIngredientCell.tsx";
@@ -9,6 +10,7 @@ import { IngredientQuantityField } from "./IngredientQuantityField.tsx";
 const MotionRow = motion(Table.Row);
 
 type Props = {
+  ref?: Ref<HTMLTableRowElement>;
   row: InventoryRow;
   brewFlash: boolean;
   onUpdate: (rowId: string, patch: InventoryRowPatch) => void;
@@ -16,7 +18,14 @@ type Props = {
   onAddRow: () => void;
 };
 
-export function InventoryIngredientRow({ row, brewFlash, onUpdate, onRemove, onAddRow }: Props) {
+export function InventoryIngredientRow({
+  ref,
+  row,
+  brewFlash,
+  onUpdate,
+  onRemove,
+  onAddRow,
+}: Props) {
   const quantityInputRef = useRef<HTMLInputElement>(null);
   const isFinalized = typeof row.ingredientId === "number";
   const updateRowFields = (patch: InventoryRowPatch) => {
@@ -43,8 +52,10 @@ export function InventoryIngredientRow({ row, brewFlash, onUpdate, onRemove, onA
 
   return (
     <MotionRow
+      ref={ref}
       align="start"
       className={brewFlash ? "alchemy-brew-flash" : undefined}
+      layout
       exit={{ opacity: 0, scaleY: 0 }}
       style={{ originY: 0 }}
       transition={{ duration: 0.2, ease: "easeIn" }}

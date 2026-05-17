@@ -69,7 +69,7 @@ export function RecipeResultsPanel({
         </Text>
       ) : null}
       <Flex direction="column" gap="3">
-        <AnimatePresence initial={false}>
+        <AnimatePresence mode="popLayout" initial={false}>
           {brewableDisplayedRecipes.map((rec) => (
             <motion.div
               key={recipeKey(rec)}

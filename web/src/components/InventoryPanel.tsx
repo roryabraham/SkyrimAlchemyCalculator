@@ -44,7 +44,7 @@ export function InventoryPanel({
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          <AnimatePresence initial={false}>
+          <AnimatePresence mode="popLayout" initial={false}>
             {rows.map((row) => (
               <InventoryIngredientRow
                 key={row.id}
