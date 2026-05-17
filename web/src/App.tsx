@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useDeferredValue, useState, useTransition } from "react";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
+import { DataAttribution } from "./components/DataAttribution.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
 import { requestPotionsRank } from "./potions-api.ts";
@@ -98,6 +99,7 @@ export function App() {
           truncated={truncated}
           loading={loading}
         />
+        <DataAttribution />
       </Flex>
     </Container>
   );

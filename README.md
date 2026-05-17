@@ -2,11 +2,20 @@
 
 Web app and API for **The Elder Scrolls V: Skyrim Anniversary Edition** alchemy: enter ingredients and quantities, then see valid two- and three-ingredient brews ranked by estimated **gold value** (a practical proxy for alchemy XP, as described on [UESP: Alchemy](https://en.uesp.net/wiki/Skyrim:Alchemy)).
 
-Data is scraped from UESP ([Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredients), [Alchemy Effects](https://en.uesp.net/wiki/Skyrim:Alchemy_Effects)) into JSON, then loaded into a local **SQLite** database.
+Data is scraped from UESP (see [Data sources and attribution](#data-sources-and-attribution) below) into JSON, then loaded into a local **SQLite** database.
 
 The **web** UI is **React 19** + **Vite 8** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes). HTTP data uses [**TanStack Query**](https://tanstack.com/query/latest) (**`@tanstack/react-query`**): debounced ingredient autocomplete is a **`useQuery`** keyed by the trimmed search string, and “Find potions” is a **`useMutation`** over `POST /api/potions`. A shared **`QueryClient`** is defined in [`web/src/query-client.ts`](web/src/query-client.ts) and wired in [`web/src/main.tsx`](web/src/main.tsx) via **`QueryClientProvider`**. **Vite 8** ships **[Rolldown](https://rolldown.rs/)** and **[Oxc](https://oxc.rs/)** as the unified bundler and transform pipeline (see the [Vite migration guide](https://vite.dev/guide/migration) for Rolldown-related behavior). [**React Compiler**](https://react.dev/learn/react-compiler) runs via **`@rolldown/plugin-babel`** and **`reactCompilerPreset()`** from **`@vitejs/plugin-react` v6** (no manual `useMemo` / `useCallback` required for typical UI code).
 
 The repo uses **[Oxlint](https://oxc.rs/docs/guide/usage/linter)** with **[tsgolint](https://github.com/oxc-project/tsgolint)** (via [`oxlint-tsgolint`](https://www.npmjs.com/package/oxlint-tsgolint) and `oxlint --type-aware`) for type-aware rules on **typescript-go**, and **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** at the workspace root (pinned in the root `package.json`), with config in [`.oxlintrc.json`](.oxlintrc.json) and [`.oxfmtrc.json`](.oxfmtrc.json). Type-only checking uses **`tsgo`** from [`@typescript/native-preview`](https://www.npmjs.com/package/@typescript/native-preview) instead of `tsc`. The web app sets **`jsx: "preserve"`** in [`web/tsconfig.json`](web/tsconfig.json) so `tsgo` matches Vite’s JSX pipeline (the native checker can otherwise fail to resolve `react/jsx-runtime` under `jsx: "react-jsx"`).
+
+## Data sources and attribution
+
+Ingredient names, effect keys, magnitudes, durations, and related alchemy statistics are taken from **The Unofficial Elder Scrolls Pages** (UESP):
+
+- [Skyrim:Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredients)
+- [Skyrim:Alchemy_Effects](https://en.uesp.net/wiki/Skyrim:Alchemy_Effects)
+
+UESP wiki text is licensed under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). See [UESPWiki:Copyright and Ownership](https://en.uesp.net/wiki/UESPWiki:Copyright_and_Ownership) for full terms, including trademark notices for *The Elder Scrolls* and related properties (ZeniMax Media Inc.). This project is an independent fan work.
 
 ## Requirements
 
