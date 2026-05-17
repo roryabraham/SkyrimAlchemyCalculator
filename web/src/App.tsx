@@ -6,8 +6,9 @@ import { AppHeader } from "./components/AppHeader.tsx";
 import { DataAttribution } from "./components/DataAttribution.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
+import { applyRecipeBrew } from "./brew-recipe.ts";
 import { requestPotionsRank } from "./potions-api.ts";
-import type { AlchemyFormParams, InventoryRow, InventoryRowPatch } from "./types.ts";
+import type { AlchemyFormParams, InventoryRow, InventoryRowPatch, Recipe } from "./types.ts";
 import { defaultAlchemyFormParams } from "./types.ts";
 import { uid } from "./uid.ts";
 
@@ -57,6 +58,10 @@ export function App() {
     potionsMutation.mutate();
   };
 
+  const brewRecipe = useCallback((recipe: Recipe) => {
+    setRows((prev) => applyRecipeBrew(prev, recipe) ?? prev);
+  }, []);
+
   const isLoading = potionsMutation.isPending;
   const outcome = potionsMutation.data;
   const recipes = isLoading ? [] : outcome?.type === "success" ? outcome.recipes : [];
@@ -92,6 +97,8 @@ export function App() {
           startSettingsTransition={startSettingsTransition}
         />
         <RecipeResultsPanel
+          inventoryRows={rows}
+          onBrewRecipe={brewRecipe}
           recipes={recipes}
           displayedRecipes={deferredRecipes}
           isListUpdating={isListUpdating}

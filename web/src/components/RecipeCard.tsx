@@ -1,25 +1,39 @@
-import { Badge, Card, Flex, Separator, Text } from "@radix-ui/themes";
+import { Badge, Button, Card, Flex, Separator, Text } from "@radix-ui/themes";
 import type { Recipe } from "../types.ts";
 
 type Props = {
   recipe: Recipe;
+  canBrew: boolean;
+  onBrew: () => void;
 };
 
-export function RecipeCard({ recipe: rec }: Props) {
+export function RecipeCard({ recipe: rec, canBrew, onBrew }: Props) {
   return (
     <Card size="2" variant="classic">
       <Flex align="center" justify="between" gap="3" wrap="wrap" mb="2">
         <Text size="4" weight="bold" style={{ fontVariantNumeric: "tabular-nums" }}>
           {rec.totalGold.toLocaleString()} gold
         </Text>
-        <Badge
-          size="1"
-          color={rec.mixtureKind === "potion" ? "amber" : "ruby"}
-          variant="soft"
-          highContrast
-        >
-          {rec.mixtureKind}
-        </Badge>
+        <Flex align="center" gap="2" wrap="wrap">
+          <Button
+            type="button"
+            size="2"
+            variant="soft"
+            disabled={!canBrew}
+            onClick={onBrew}
+            aria-label="Brew once: remove one of each listed ingredient from your inventory"
+          >
+            Brew
+          </Button>
+          <Badge
+            size="1"
+            color={rec.mixtureKind === "potion" ? "amber" : "ruby"}
+            variant="soft"
+            highContrast
+          >
+            {rec.mixtureKind}
+          </Badge>
+        </Flex>
       </Flex>
       <Flex align="center" gap="2" wrap="wrap" mb="2">
         {rec.ingredients.map((ing, idx) => (

@@ -1,8 +1,11 @@
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
-import type { Recipe } from "../types.ts";
+import { canBrewRecipe } from "../brew-recipe.ts";
+import type { InventoryRow, Recipe } from "../types.ts";
 import { RecipeCard } from "./RecipeCard.tsx";
 
 type Props = {
+  inventoryRows: InventoryRow[];
+  onBrewRecipe: (recipe: Recipe) => void;
   /** Authoritative list for empty-state and loading-related copy. */
   recipes: Recipe[];
   /** List rendered in the scroll area (may lag via `useDeferredValue`). */
@@ -18,6 +21,8 @@ function recipeKey(rec: Recipe): string {
 }
 
 export function RecipeResultsPanel({
+  inventoryRows,
+  onBrewRecipe,
   recipes,
   displayedRecipes,
   isListUpdating,
@@ -53,7 +58,12 @@ export function RecipeResultsPanel({
       ) : null}
       <Flex direction="column" gap="3">
         {displayedRecipes.map((rec) => (
-          <RecipeCard key={recipeKey(rec)} recipe={rec} />
+          <RecipeCard
+            key={recipeKey(rec)}
+            recipe={rec}
+            canBrew={canBrewRecipe(inventoryRows, rec)}
+            onBrew={() => onBrewRecipe(rec)}
+          />
         ))}
       </Flex>
     </Card>
