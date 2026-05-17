@@ -12,10 +12,11 @@ createRoot(document.getElementById("root")!).render(
     <QueryClientProvider client={queryClient}>
       <Theme
         appearance="dark"
-        accentColor="jade"
-        grayColor="slate"
-        radius="medium"
+        accentColor="amber"
+        grayColor="mauve"
+        radius="large"
         panelBackground="translucent"
+        scaling="100%"
       >
         <App />
       </Theme>

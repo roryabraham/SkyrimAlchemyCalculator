@@ -1,4 +1,4 @@
-import { Button, Callout, Card, Flex, Heading, Spinner, Table } from "@radix-ui/themes";
+import { Button, Callout, Card, Flex, Heading, Spinner, Table, Text } from "@radix-ui/themes";
 import type { InventoryRow } from "../types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
@@ -24,10 +24,13 @@ export function InventoryPanel({
   onSubmit,
 }: Props) {
   return (
-    <Card size="3" variant="surface">
-      <Heading as="h2" size="5" weight="bold" mb="4">
-        Your ingredients
+    <Card size="3" variant="surface" className="alchemy-panel-glow">
+      <Heading as="h2" size="5" weight="bold" mb="1" className="alchemy-display">
+        Ingredient hoard
       </Heading>
+      <Text size="2" color="gray" mb="4" as="p">
+        Name what you have on hand — we will pair the priciest brews.
+      </Text>
       <Table.Root variant="surface" size="2">
         <Table.Header>
           <Table.Row>
@@ -49,16 +52,16 @@ export function InventoryPanel({
       </Table.Root>
       <Flex wrap="wrap" gap="3" mt="4" align="center">
         <Button type="button" size="2" variant="soft" onClick={onAddRow}>
-          Add ingredient
+          + Another reagent
         </Button>
         <Button type="button" size="2" disabled={!canSubmit || loading} onClick={onSubmit}>
           {loading ? (
             <Flex align="center" gap="2">
               <Spinner size="1" />
-              Working…
+              Distilling…
             </Flex>
           ) : (
-            "Find potions"
+            "Brew best value"
           )}
         </Button>
       </Flex>

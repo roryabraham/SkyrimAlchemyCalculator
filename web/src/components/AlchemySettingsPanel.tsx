@@ -34,12 +34,13 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
   const poisonerId = `${id}-poisoner`;
 
   return (
-    <Card size="3" variant="surface">
-      <Heading as="h2" size="5" weight="bold" mb="2">
-        Alchemy settings
+    <Card size="3" variant="surface" className="alchemy-panel-glow">
+      <Heading as="h2" size="5" weight="bold" mb="2" className="alchemy-display">
+        Arcane modifiers
       </Heading>
       <Text as="p" size="2" color="gray" mb="4">
-        Used for gold estimates (UESP PowerFactor). Matches API defaults until you change them.
+        Skill, gear, and perks tune the UESP PowerFactor so your gold estimates match the build you
+        are actually running.
       </Text>
       <Grid columns={{ initial: "1", sm: "2" }} gap="3" mb="4">
         <Flex direction="column" gap="1">

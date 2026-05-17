@@ -43,7 +43,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
             <Box position="relative" width="100%">
               <TextField.Root
                 size="2"
-                placeholder="Search…"
+                placeholder="Whisper an ingredient…"
                 value={row.name}
                 autoComplete="off"
                 onChange={(e) => {
