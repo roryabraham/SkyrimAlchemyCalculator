@@ -19,6 +19,27 @@ type Row = {
   loading: boolean;
 };
 
+/** Mirrors `POST /api/potions` `params` (see server `parseAlchemyParams`). */
+export type AlchemyFormParams = {
+  alchemySkill: number;
+  fortifyAlchemy: number;
+  alchemistPercent: number;
+  hasPhysician: boolean;
+  hasBenefactor: boolean;
+  hasPoisoner: boolean;
+  seekerOfShadowsPercent: number;
+};
+
+const defaultParams: AlchemyFormParams = {
+  alchemySkill: 15,
+  fortifyAlchemy: 0,
+  alchemistPercent: 0,
+  hasPhysician: false,
+  hasBenefactor: false,
+  hasPoisoner: false,
+  seekerOfShadowsPercent: 0,
+};
+
 function uid() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
@@ -47,7 +68,25 @@ export function App() {
   const [truncated, setTruncated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [params, setParams] = useState<AlchemyFormParams>({ ...defaultParams });
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const setNumParam = (
+    key:
+      | "alchemySkill"
+      | "fortifyAlchemy"
+      | "alchemistPercent"
+      | "seekerOfShadowsPercent",
+    value: string,
+    fallback: number,
+    opts?: { min?: number; max?: number },
+  ) => {
+    let n = Math.floor(Number(value));
+    if (!Number.isFinite(n)) n = fallback;
+    if (opts?.min !== undefined) n = Math.max(opts.min, n);
+    if (opts?.max !== undefined) n = Math.min(opts.max, n);
+    setParams((p) => ({ ...p, [key]: n }));
+  };
 
   const runSearch = useCallback((rowId: string, q: string) => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
@@ -111,7 +150,7 @@ export function App() {
       const res = await fetch("/api/potions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ inventory }),
+        body: JSON.stringify({ inventory, params }),
       });
       const data = (await res.json()) as {
         recipes?: Recipe[];
@@ -260,6 +299,123 @@ export function App() {
           </button>
         </div>
         {error && <p className="err">{error}</p>}
+      </section>
+
+      <section className="panel">
+        <h2>Alchemy settings</h2>
+        <p className="muted small">
+          Used for gold estimates (UESP PowerFactor). Matches API defaults until
+          you change them.
+        </p>
+        <div className="params-grid">
+          <label className="field">
+            <span className="field-label">Alchemy skill</span>
+            <input
+              className="input"
+              type="number"
+              min={0}
+              max={100}
+              value={params.alchemySkill}
+              onChange={(e) =>
+                setNumParam("alchemySkill", e.target.value, defaultParams.alchemySkill, {
+                  min: 0,
+                  max: 100,
+                })
+              }
+            />
+          </label>
+          <label className="field">
+            <span className="field-label">Fortify Alchemy (%)</span>
+            <input
+              className="input"
+              type="number"
+              min={0}
+              max={500}
+              value={params.fortifyAlchemy}
+              onChange={(e) =>
+                setNumParam("fortifyAlchemy", e.target.value, defaultParams.fortifyAlchemy, {
+                  min: 0,
+                  max: 500,
+                })
+              }
+            />
+          </label>
+          <label className="field">
+            <span className="field-label">Alchemist perk (%)</span>
+            <input
+              className="input"
+              type="number"
+              min={0}
+              max={100}
+              value={params.alchemistPercent}
+              onChange={(e) =>
+                setNumParam(
+                  "alchemistPercent",
+                  e.target.value,
+                  defaultParams.alchemistPercent,
+                  { min: 0, max: 100 },
+                )
+              }
+            />
+          </label>
+          <label className="field">
+            <span className="field-label">Seeker of Shadows (%)</span>
+            <input
+              className="input"
+              type="number"
+              min={0}
+              max={20}
+              value={params.seekerOfShadowsPercent}
+              onChange={(e) =>
+                setNumParam(
+                  "seekerOfShadowsPercent",
+                  e.target.value,
+                  defaultParams.seekerOfShadowsPercent,
+                  { min: 0, max: 20 },
+                )
+              }
+            />
+          </label>
+        </div>
+        <div className="params-checks">
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={params.hasPhysician}
+              onChange={(e) =>
+                setParams((p) => ({ ...p, hasPhysician: e.target.checked }))
+              }
+            />
+            <span>Physician</span>
+          </label>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={params.hasBenefactor}
+              onChange={(e) =>
+                setParams((p) => ({ ...p, hasBenefactor: e.target.checked }))
+              }
+            />
+            <span>Benefactor</span>
+          </label>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={params.hasPoisoner}
+              onChange={(e) =>
+                setParams((p) => ({ ...p, hasPoisoner: e.target.checked }))
+              }
+            />
+            <span>Poisoner</span>
+          </label>
+        </div>
+        <button
+          type="button"
+          className="btn btn-small"
+          onClick={() => setParams({ ...defaultParams })}
+        >
+          Reset to defaults
+        </button>
       </section>
 
       <section className="panel">
