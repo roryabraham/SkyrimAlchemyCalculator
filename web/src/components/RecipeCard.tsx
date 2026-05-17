@@ -11,20 +11,10 @@ export function RecipeCard({ recipe: rec, canBrew, onBrew }: Props) {
   return (
     <Card size="2" variant="classic">
       <Flex align="center" justify="between" gap="3" wrap="wrap" mb="2">
-        <Text size="4" weight="bold" style={{ fontVariantNumeric: "tabular-nums" }}>
-          {rec.totalGold.toLocaleString()} gold
-        </Text>
         <Flex align="center" gap="2" wrap="wrap">
-          <Button
-            type="button"
-            size="2"
-            variant="soft"
-            disabled={!canBrew}
-            onClick={onBrew}
-            aria-label="Brew once: remove one of each listed ingredient from your inventory"
-          >
-            Brew
-          </Button>
+          <Text size="4" weight="bold" style={{ fontVariantNumeric: "tabular-nums" }}>
+            {rec.totalGold.toLocaleString()} gold
+          </Text>
           <Badge
             size="1"
             color={rec.mixtureKind === "potion" ? "amber" : "ruby"}
@@ -34,6 +24,16 @@ export function RecipeCard({ recipe: rec, canBrew, onBrew }: Props) {
             {rec.mixtureKind}
           </Badge>
         </Flex>
+        <Button
+          type="button"
+          size="2"
+          variant="soft"
+          disabled={!canBrew}
+          onClick={onBrew}
+          aria-label="Brew once: remove one of each listed ingredient from your inventory"
+        >
+          Brew
+        </Button>
       </Flex>
       <Flex align="center" gap="2" wrap="wrap" mb="2">
         {rec.ingredients.map((ing, idx) => (
