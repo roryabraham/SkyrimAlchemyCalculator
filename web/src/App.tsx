@@ -1,6 +1,6 @@
 import { Container, Flex } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
-import { useDeferredValue, useState, useTransition } from "react";
+import { useCallback, useDeferredValue, useEffect, useState, useTransition } from "react";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { DataAttribution } from "./components/DataAttribution.tsx";
@@ -35,16 +35,31 @@ export function App() {
     },
   });
 
-  const addRow = () => {
-    setRows((prevRows) => [
-      ...prevRows,
-      {
-        id: uid(),
-        name: "",
-        count: 1,
-      },
-    ]);
-  };
+  const addRow = useCallback(() => {
+    const newId = uid();
+    setRows((prevRows) => [...prevRows, { id: newId, name: "", count: 1 }]);
+    requestAnimationFrame(() => {
+      document.getElementById(`ingredient-name-${newId}`)?.focus();
+    });
+  }, []);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.repeat) {
+        return;
+      }
+      if (!event.altKey || !event.shiftKey || event.ctrlKey || event.metaKey) {
+        return;
+      }
+      if (event.code !== "KeyN") {
+        return;
+      }
+      event.preventDefault();
+      addRow();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [addRow]);
 
   const removeRow = (rowId: string) => {
     setRows((prevRows) =>

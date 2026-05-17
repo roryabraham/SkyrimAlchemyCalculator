@@ -86,6 +86,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
         >
           <Popover.Anchor asChild>
             <TextField.Root
+              id={`ingredient-name-${row.id}`}
               size="2"
               placeholder="Whisper an ingredient…"
               value={row.name}

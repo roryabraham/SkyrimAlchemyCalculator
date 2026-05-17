@@ -51,7 +51,13 @@ export function InventoryPanel({
         </Table.Body>
       </Table.Root>
       <Flex wrap="wrap" gap="3" mt="4" align="center">
-        <Button type="button" size="2" variant="soft" onClick={onAddRow}>
+        <Button
+          type="button"
+          size="2"
+          variant="soft"
+          onClick={onAddRow}
+          title="Add a row (Alt+Shift+N)"
+        >
           + Another reagent
         </Button>
         <Button type="button" size="2" disabled={!canSubmit || loading} onClick={onSubmit}>
