@@ -36,11 +36,7 @@ export type EffectGoldHints = {
 
 function physicianBonus(effect: EffectRow): number {
   const k = effect.effect_key;
-  if (
-    k === "Restore_Health" ||
-    k === "Restore_Magicka" ||
-    k === "Restore_Stamina"
-  ) {
+  if (k === "Restore_Health" || k === "Restore_Magicka" || k === "Restore_Stamina") {
     return 25;
   }
   return 0;
@@ -121,30 +117,16 @@ export function effectGold(
   if (dh) {
     const pf = powerFactor(effect, params, opts);
     const h = hints.damageHealth!;
-    mag = Math.round(
-      h.prePowerMag * (effect.power_affects_magnitude ? pf : 1),
-    );
+    mag = Math.round(h.prePowerMag * (effect.power_affects_magnitude ? pf : 1));
     durForGold = h.intrinsicDurForGold;
   } else {
-    mag = scaledMagnitude(
-      effect,
-      params,
-      opts,
-      ingredientMagMult,
-    );
-    durForGold = scaledDuration(
-      effect,
-      params,
-      opts,
-      ingredientDurMult,
-    );
+    mag = scaledMagnitude(effect, params, opts, ingredientMagMult);
+    durForGold = scaledDuration(effect, params, opts, ingredientDurMult);
   }
 
   const magTerm = mag > 0 ? mag ** 1.1 : 1;
   const durTerm = durForGold > 0 ? (durForGold / 10) ** 1.1 : 1;
-  let gold = Math.floor(
-    effect.base_cost * Math.max(magTerm, 1) * durTerm,
-  );
+  let gold = Math.floor(effect.base_cost * Math.max(magTerm, 1) * durTerm);
   if (dh) {
     gold = Math.floor(gold * hints.damageHealth!.tableGoldMult);
   }

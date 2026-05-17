@@ -26,19 +26,13 @@ describe("expandInventory", () => {
   });
 
   it("normalizes ingredient keys (spacing and case)", () => {
-    const r = expandInventory(
-      [{ name: "  BLUE   mountain  FLOWER ", count: 1 }],
-      nameIndex,
-    );
+    const r = expandInventory([{ name: "  BLUE   mountain  FLOWER ", count: 1 }], nameIndex);
     if ("error" in r) throw new Error(r.error);
     expect(r.ids.length).toBe(1);
   });
 
   it("returns error for unknown ingredients", () => {
-    const r = expandInventory(
-      [{ name: "Not A Real Skyrim Ingredient Xyz", count: 1 }],
-      nameIndex,
-    );
+    const r = expandInventory([{ name: "Not A Real Skyrim Ingredient Xyz", count: 1 }], nameIndex);
     expect("error" in r).toBe(true);
     if ("error" in r) {
       expect(r.error).toContain("Unknown ingredient");
@@ -90,9 +84,7 @@ describe("rankPotions", () => {
     expect(top.mixtureKind).toBe("potion");
     expect(top.dominantEffectKey).toBeTruthy();
     expect(top.totalGold).toBeGreaterThan(0);
-    expect(
-      top.effects.some((e) => e.effectKey === "Restore_Health"),
-    ).toBe(true);
+    expect(top.effects.some((e) => e.effectKey === "Restore_Health")).toBe(true);
   });
 
   it("labels a poison-dominant mixture as poison", () => {
@@ -122,17 +114,15 @@ describe("rankPotions", () => {
     expect(r.error).toBeUndefined();
     expect(r.recipes.length).toBeGreaterThan(1);
     for (let i = 1; i < r.recipes.length; i++) {
-      expect(r.recipes[i - 1].totalGold).toBeGreaterThanOrEqual(
-        r.recipes[i].totalGold,
-      );
+      expect(r.recipes[i - 1].totalGold).toBeGreaterThanOrEqual(r.recipes[i].totalGold);
     }
   });
 
   it("sets truncated when combo enumeration hits MAX_RECIPES", () => {
     const db = getDb();
-    const rows = db
-      .query("SELECT name FROM ingredients ORDER BY id LIMIT 37")
-      .all() as { name: string }[];
+    const rows = db.query("SELECT name FROM ingredients ORDER BY id LIMIT 37").all() as {
+      name: string;
+    }[];
     expect(rows.length).toBe(37);
     const inv: InventoryLine[] = rows.map((row) => ({
       name: row.name,
@@ -163,15 +153,9 @@ describe("rankPotions", () => {
     );
     expect(base.error).toBeUndefined();
     expect(boosted.error).toBeUndefined();
-    const rhBase = base.recipes[0]?.effects.find(
-      (e) => e.effectKey === "Restore_Health",
-    );
-    const rhBoost = boosted.recipes[0]?.effects.find(
-      (e) => e.effectKey === "Restore_Health",
-    );
+    const rhBase = base.recipes[0]?.effects.find((e) => e.effectKey === "Restore_Health");
+    const rhBoost = boosted.recipes[0]?.effects.find((e) => e.effectKey === "Restore_Health");
     expect(rhBase && rhBoost).toBeTruthy();
-    expect((rhBoost as { gold: number }).gold).toBeGreaterThan(
-      (rhBase as { gold: number }).gold,
-    );
+    expect((rhBoost as { gold: number }).gold).toBeGreaterThan((rhBase as { gold: number }).gold);
   });
 });

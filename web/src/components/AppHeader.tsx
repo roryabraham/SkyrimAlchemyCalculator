@@ -7,8 +7,8 @@ export function AppHeader() {
         Skyrim Alchemy Calculator
       </Heading>
       <Text size="3" color="gray">
-        Anniversary Edition data from UESP. Recipes sorted by estimated gold
-        value (alchemy XP proxy).
+        Anniversary Edition data from UESP. Recipes sorted by estimated gold value (alchemy XP
+        proxy).
       </Text>
     </header>
   );

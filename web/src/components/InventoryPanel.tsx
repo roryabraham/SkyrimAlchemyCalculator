@@ -1,12 +1,4 @@
-import {
-  Button,
-  Callout,
-  Card,
-  Flex,
-  Heading,
-  Spinner,
-  Table,
-} from "@radix-ui/themes";
+import { Button, Callout, Card, Flex, Heading, Spinner, Table } from "@radix-ui/themes";
 import type { InventoryRow } from "../types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
@@ -42,9 +34,7 @@ export function InventoryPanel({
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>Ingredient</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell style={{ width: "5.5rem" }}>
-              Qty
-            </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell style={{ width: "5.5rem" }}>Qty</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell style={{ width: "3rem" }} />
           </Table.Row>
         </Table.Header>

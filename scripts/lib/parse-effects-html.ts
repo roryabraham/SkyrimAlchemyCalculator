@@ -32,10 +32,7 @@ function parseNum(s: string): number {
 
 export function parseAlchemyEffectsHtml(html: string): EffectRow[] {
   const $ = cheerio.load(html);
-  const $table = $("#Effect_List")
-    .closest("h2")
-    .nextAll("table.wikitable")
-    .first();
+  const $table = $("#Effect_List").closest("h2").nextAll("table.wikitable").first();
   if (!$table.length) throw new Error("Effect list table not found");
 
   const out: EffectRow[] = [];

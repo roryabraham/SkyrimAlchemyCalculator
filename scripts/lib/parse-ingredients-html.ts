@@ -54,9 +54,7 @@ function parseEffectCell($cell: cheerio.Cheerio): ParsedEffect | null {
   const canon = EFFECT_KEY_ALIASES[key] ?? key;
   const displayName = $chosen.text().trim();
   const cellText = $cell.text().replace(/\s+/g, " ").trim();
-  const nums = [...cellText.matchAll(/(\d+(?:\.\d+)?)\s*×/g)].map((x) =>
-    Number(x[1]),
-  );
+  const nums = [...cellText.matchAll(/(\d+(?:\.\d+)?)\s*×/g)].map((x) => Number(x[1]));
   let magMult: number | null = null;
   let durMult: number | null = null;
   let goldMult: number | null = null;
@@ -95,10 +93,7 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
   const $ = cheerio.load(html);
   const out: ParsedIngredient[] = [];
 
-  function harvestTable(
-    $table: cheerio.Cheerio,
-    section: "standard" | "creation_club",
-  ) {
+  function harvestTable($table: cheerio.Cheerio, section: "standard" | "creation_club") {
     const trs = $table.find("tbody > tr").toArray();
     for (let i = 0; i < trs.length; i++) {
       const $tr = $(trs[i]);
@@ -149,16 +144,10 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
     }
   }
 
-  const $std = $("#Standard_Ingredients")
-    .closest("h2")
-    .nextAll("table.striped2_1")
-    .first();
+  const $std = $("#Standard_Ingredients").closest("h2").nextAll("table.striped2_1").first();
   if ($std.length) harvestTable($std, "standard");
 
-  const $cc = $("#Creation_Club_Ingredients")
-    .closest("h2")
-    .nextAll("table.striped2_1")
-    .first();
+  const $cc = $("#Creation_Club_Ingredients").closest("h2").nextAll("table.striped2_1").first();
   if ($cc.length) harvestTable($cc, "creation_club");
 
   return out;

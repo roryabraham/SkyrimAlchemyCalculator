@@ -6,11 +6,7 @@ import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
 import { fetchIngredientsForAutocomplete } from "./ingredient-api.ts";
 import { requestPotionsRank } from "./potions-api.ts";
-import type {
-  AlchemyFormParams,
-  InventoryRow,
-  Recipe,
-} from "./types.ts";
+import type { AlchemyFormParams, InventoryRow, Recipe } from "./types.ts";
 import { defaultAlchemyFormParams } from "./types.ts";
 import { uid } from "./uid.ts";
 
@@ -39,15 +35,11 @@ export function App() {
   const runSearch = (rowId: string, q: string) => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
-      setRows((prev) =>
-        prev.map((r) => (r.id === rowId ? { ...r, loading: true } : r)),
-      );
+      setRows((prev) => prev.map((r) => (r.id === rowId ? { ...r, loading: true } : r)));
       void fetchIngredientsForAutocomplete(q).then((hits) => {
         setRows((prev) =>
           prev.map((r) =>
-            r.id === rowId
-              ? { ...r, suggestions: hits, loading: false, open: true }
-              : r,
+            r.id === rowId ? { ...r, suggestions: hits, loading: false, open: true } : r,
           ),
         );
       });
@@ -73,9 +65,7 @@ export function App() {
   };
 
   const updateRow = (rowId: string, patch: Partial<InventoryRow>) => {
-    setRows((prev) =>
-      prev.map((r) => (r.id === rowId ? { ...r, ...patch } : r)),
-    );
+    setRows((prev) => prev.map((r) => (r.id === rowId ? { ...r, ...patch } : r)));
   };
 
   const submit = () => {
@@ -104,9 +94,8 @@ export function App() {
 
   const canSubmit =
     rows.some((r) => r.name.trim()) &&
-    rows
-      .filter((r) => r.name.trim())
-      .reduce((s, r) => s + Math.max(0, Math.floor(r.count)), 0) >= 2;
+    rows.filter((r) => r.name.trim()).reduce((s, r) => s + Math.max(0, Math.floor(r.count)), 0) >=
+      2;
 
   return (
     <Container size="2" px={{ initial: "4", sm: "5" }} py="6">
@@ -124,11 +113,7 @@ export function App() {
           onSubmit={submit}
         />
         <AlchemySettingsPanel params={params} setParams={setParams} />
-        <RecipeResultsPanel
-          recipes={recipes}
-          truncated={truncated}
-          loading={loading}
-        />
+        <RecipeResultsPanel recipes={recipes} truncated={truncated} loading={loading} />
       </Flex>
     </Container>
   );

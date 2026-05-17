@@ -1,11 +1,4 @@
-import {
-  Badge,
-  Card,
-  Flex,
-  Heading,
-  Separator,
-  Text,
-} from "@radix-ui/themes";
+import { Badge, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import type { Recipe } from "../types.ts";
 
 type Props = {
@@ -22,8 +15,7 @@ export function RecipeResultsPanel({ recipes, truncated, loading }: Props) {
       </Heading>
       {truncated ? (
         <Text as="p" size="2" color="amber" mb="3" highContrast>
-          Showing the first batch of combinations only — narrow your list for a
-          full search.
+          Showing the first batch of combinations only — narrow your list for a full search.
         </Text>
       ) : null}
       {recipes.length === 0 && !loading ? (

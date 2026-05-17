@@ -1,9 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import {
-  defaultAlchemyParams,
-  effectGold,
-  powerFactor,
-} from "../server/src/alchemy-math.ts";
+import { defaultAlchemyParams, effectGold, powerFactor } from "../server/src/alchemy-math.ts";
 import type { EffectRow } from "../server/src/db.ts";
 
 const restoreHealth: EffectRow = {
@@ -34,28 +30,44 @@ const damageStamina: EffectRow = {
 
 describe("powerFactor", () => {
   it("increases with alchemy skill (UESP F_ALCH formula)", () => {
-    const low = powerFactor(restoreHealth, { ...defaultAlchemyParams, alchemySkill: 15 }, {
-      isPoison: false,
-      includeBenefactorPoisoner: false,
-    });
-    const high = powerFactor(restoreHealth, { ...defaultAlchemyParams, alchemySkill: 100 }, {
-      isPoison: false,
-      includeBenefactorPoisoner: false,
-    });
+    const low = powerFactor(
+      restoreHealth,
+      { ...defaultAlchemyParams, alchemySkill: 15 },
+      {
+        isPoison: false,
+        includeBenefactorPoisoner: false,
+      },
+    );
+    const high = powerFactor(
+      restoreHealth,
+      { ...defaultAlchemyParams, alchemySkill: 100 },
+      {
+        isPoison: false,
+        includeBenefactorPoisoner: false,
+      },
+    );
     expect(high).toBeGreaterThan(low);
     expect(low).toBeCloseTo(4.3, 5);
     expect(high).toBeCloseTo(6, 5);
   });
 
   it("applies Physician bonus only to restore-type effects", () => {
-    const withPhys = powerFactor(restoreHealth, {
-      ...defaultAlchemyParams,
-      hasPhysician: true,
-    }, { isPoison: false, includeBenefactorPoisoner: false });
-    const staminaPhys = powerFactor(damageStamina, {
-      ...defaultAlchemyParams,
-      hasPhysician: true,
-    }, { isPoison: false, includeBenefactorPoisoner: false });
+    const withPhys = powerFactor(
+      restoreHealth,
+      {
+        ...defaultAlchemyParams,
+        hasPhysician: true,
+      },
+      { isPoison: false, includeBenefactorPoisoner: false },
+    );
+    const staminaPhys = powerFactor(
+      damageStamina,
+      {
+        ...defaultAlchemyParams,
+        hasPhysician: true,
+      },
+      { isPoison: false, includeBenefactorPoisoner: false },
+    );
     expect(withPhys).toBeGreaterThan(
       powerFactor(restoreHealth, defaultAlchemyParams, {
         isPoison: false,

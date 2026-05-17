@@ -37,10 +37,7 @@ function magDurGold(ie: IngredientEffectRow): {
   };
 }
 
-function dominanceScore(
-  effect: EffectRow,
-  ie: IngredientEffectRow,
-): number {
+function dominanceScore(effect: EffectRow, ie: IngredientEffectRow): number {
   const { mag, dur, gold } = magDurGold(ie);
   return effect.base_cost * mag * dur * gold;
 }
@@ -126,10 +123,7 @@ function evaluateRecipe(
   params: AlchemyParams,
 ): RecipeResult | null {
   const effCount = new Map<number, number>();
-  const contrib = new Map<
-    number,
-    { ingredientId: number; ie: IngredientEffectRow }[]
-  >();
+  const contrib = new Map<number, { ingredientId: number; ie: IngredientEffectRow }[]>();
 
   for (const iid of ingredientIds) {
     for (const ie of ieMap.get(iid) ?? []) {
@@ -156,14 +150,7 @@ function evaluateRecipe(
     const c = contrib.get(eid) ?? [];
     const w = pickWinner(eff, c, idToName);
     const hints = buildGoldHints(eff, w.ingredientId, idToName, w);
-    const g = effectGoldForDominance(
-      eff,
-      params,
-      prelimPoison,
-      w.mag,
-      w.dur,
-      hints,
-    );
+    const g = effectGoldForDominance(eff, params, prelimPoison, w.mag, w.dur, hints);
     if (g > dominantGold) {
       dominantGold = g;
       dominantEid = eid;
@@ -294,7 +281,7 @@ export function rankPotions(
   const combos: number[][] = [...combinations2(ids), ...combinations3(ids)];
   let truncated = false;
   const cap = MAX_RECIPES;
-  const slice = combos.length > cap ? (truncated = true, combos.slice(0, cap)) : combos;
+  const slice = combos.length > cap ? ((truncated = true), combos.slice(0, cap)) : combos;
 
   const recipes: RecipeResult[] = [];
   for (const combo of slice) {

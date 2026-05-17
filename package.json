@@ -1,7 +1,10 @@
 {
   "name": "skyrim-alchemy-calculator",
   "private": true,
-  "workspaces": ["server", "web"],
+  "workspaces": [
+    "server",
+    "web"
+  ],
   "scripts": {
     "scrape": "bun run scripts/scrape-ingredients.ts",
     "scrape:effects": "bun run scripts/scrape-effects.ts",

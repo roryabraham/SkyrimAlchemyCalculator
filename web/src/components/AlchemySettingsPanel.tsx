@@ -1,13 +1,4 @@
-import {
-  Button,
-  Card,
-  Checkbox,
-  Flex,
-  Grid,
-  Heading,
-  Text,
-  TextField,
-} from "@radix-ui/themes";
+import { Button, Card, Checkbox, Flex, Grid, Heading, Text, TextField } from "@radix-ui/themes";
 import type { Dispatch, SetStateAction } from "react";
 import { useId } from "react";
 import type { AlchemyFormParams } from "../types.ts";
@@ -20,11 +11,7 @@ type Props = {
 
 function setNumParam(
   setParams: Props["setParams"],
-  key:
-    | "alchemySkill"
-    | "fortifyAlchemy"
-    | "alchemistPercent"
-    | "seekerOfShadowsPercent",
+  key: "alchemySkill" | "fortifyAlchemy" | "alchemistPercent" | "seekerOfShadowsPercent",
   value: string,
   fallback: number,
   opts?: { min?: number; max?: number },
@@ -48,8 +35,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
         Alchemy settings
       </Heading>
       <Text as="p" size="2" color="gray" mb="4">
-        Used for gold estimates (UESP PowerFactor). Matches API defaults until
-        you change them.
+        Used for gold estimates (UESP PowerFactor). Matches API defaults until you change them.
       </Text>
       <Grid columns={{ initial: "1", sm: "2" }} gap="3" mb="4">
         <Flex direction="column" gap="1">
@@ -119,12 +105,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
           />
         </Flex>
         <Flex direction="column" gap="1">
-          <Text
-            as="label"
-            size="2"
-            weight="medium"
-            htmlFor={`${id}-seeker`}
-          >
+          <Text as="label" size="2" weight="medium" htmlFor={`${id}-seeker`}>
             Seeker of Shadows (%)
           </Text>
           <TextField.Root
@@ -151,9 +132,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
           <Checkbox
             id={physicianId}
             checked={params.hasPhysician}
-            onCheckedChange={(v) =>
-              setParams((p) => ({ ...p, hasPhysician: v === true }))
-            }
+            onCheckedChange={(v) => setParams((p) => ({ ...p, hasPhysician: v === true }))}
           />
           <Text as="label" htmlFor={physicianId} size="2" style={{ cursor: "pointer" }}>
             Physician
@@ -163,9 +142,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
           <Checkbox
             id={benefactorId}
             checked={params.hasBenefactor}
-            onCheckedChange={(v) =>
-              setParams((p) => ({ ...p, hasBenefactor: v === true }))
-            }
+            onCheckedChange={(v) => setParams((p) => ({ ...p, hasBenefactor: v === true }))}
           />
           <Text as="label" htmlFor={benefactorId} size="2" style={{ cursor: "pointer" }}>
             Benefactor
@@ -175,9 +152,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
           <Checkbox
             id={poisonerId}
             checked={params.hasPoisoner}
-            onCheckedChange={(v) =>
-              setParams((p) => ({ ...p, hasPoisoner: v === true }))
-            }
+            onCheckedChange={(v) => setParams((p) => ({ ...p, hasPoisoner: v === true }))}
           />
           <Text as="label" htmlFor={poisonerId} size="2" style={{ cursor: "pointer" }}>
             Poisoner

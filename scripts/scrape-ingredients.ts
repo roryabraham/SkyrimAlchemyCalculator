@@ -52,22 +52,9 @@ function toJsonRecord(row: ParsedIngredient) {
 }
 
 function rawTsv(rows: ParsedIngredient[]): string {
-  const header = [
-    "name",
-    "section",
-    "formIdRaw",
-    "e1",
-    "e2",
-    "e3",
-    "e4",
-  ].join("\t");
+  const header = ["name", "section", "formIdRaw", "e1", "e2", "e3", "e4"].join("\t");
   const lines = rows.map((r) =>
-    [
-      r.name,
-      r.section,
-      r.formIdRaw,
-      ...r.effects.map((e) => e.displayName),
-    ].join("\t"),
+    [r.name, r.section, r.formIdRaw, ...r.effects.map((e) => e.displayName)].join("\t"),
   );
   return [header, ...lines].join("\n");
 }

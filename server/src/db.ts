@@ -52,9 +52,7 @@ export function searchIngredients(q: string, limit = 30): IngredientRow[] {
     .all(needle, limit) as IngredientRow[];
 }
 
-export function loadIngredientEffects(
-  ingredientIds: number[],
-): Map<number, IngredientEffectRow[]> {
+export function loadIngredientEffects(ingredientIds: number[]): Map<number, IngredientEffectRow[]> {
   const db = getDb();
   const map = new Map<number, IngredientEffectRow[]>();
   if (ingredientIds.length === 0) return map;
@@ -86,13 +84,9 @@ export function loadEffectsByIds(ids: number[]): Map<number, EffectRow> {
   return m;
 }
 
-export function resolveIngredientIds(
-  names: string[],
-): { id: number; name: string }[] {
+export function resolveIngredientIds(names: string[]): { id: number; name: string }[] {
   const db = getDb();
-  const sel = db.prepare(
-    `SELECT id, name FROM ingredients WHERE name_normalized = ?`,
-  );
+  const sel = db.prepare(`SELECT id, name FROM ingredients WHERE name_normalized = ?`);
   const out: { id: number; name: string }[] = [];
   for (const raw of names) {
     const key = raw
@@ -107,14 +101,13 @@ export function resolveIngredientIds(
   return out;
 }
 
-export function loadNameIndex(): Map<
-  string,
-  { id: number; canonical: string }
-> {
+export function loadNameIndex(): Map<string, { id: number; canonical: string }> {
   const db = getDb();
-  const rows = db
-    .query("SELECT id, name, name_normalized FROM ingredients")
-    .all() as { id: number; name: string; name_normalized: string }[];
+  const rows = db.query("SELECT id, name, name_normalized FROM ingredients").all() as {
+    id: number;
+    name: string;
+    name_normalized: string;
+  }[];
   const m = new Map<string, { id: number; canonical: string }>();
   for (const r of rows) {
     m.set(r.name_normalized, { id: r.id, canonical: r.name });

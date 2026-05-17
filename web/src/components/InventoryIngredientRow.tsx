@@ -18,12 +18,7 @@ type Props = {
   onSearch: (rowId: string, q: string) => void;
 };
 
-export function InventoryIngredientRow({
-  row,
-  onUpdate,
-  onRemove,
-  onSearch,
-}: Props) {
+export function InventoryIngredientRow({ row, onUpdate, onRemove, onSearch }: Props) {
   const suggestOpen = row.open && row.suggestions.length > 0;
 
   return (

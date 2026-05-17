@@ -1,12 +1,5 @@
-import {
-  getDb,
-  loadNameIndex,
-  searchIngredients,
-} from "./db.ts";
-import {
-  defaultAlchemyParams,
-  type AlchemyParams,
-} from "./alchemy-math.ts";
+import { getDb, loadNameIndex, searchIngredients } from "./db.ts";
+import { defaultAlchemyParams, type AlchemyParams } from "./alchemy-math.ts";
 import { rankPotions, type InventoryLine } from "./potion-engine.ts";
 
 const PORT = Number(process.env.PORT) || 3001;
@@ -29,9 +22,7 @@ function parseAlchemyParams(body: Record<string, unknown>): AlchemyParams {
   return {
     alchemySkill: Number(p.alchemySkill ?? defaultAlchemyParams.alchemySkill),
     fortifyAlchemy: Number(p.fortifyAlchemy ?? defaultAlchemyParams.fortifyAlchemy),
-    alchemistPercent: Number(
-      p.alchemistPercent ?? defaultAlchemyParams.alchemistPercent,
-    ),
+    alchemistPercent: Number(p.alchemistPercent ?? defaultAlchemyParams.alchemistPercent),
     hasPhysician: Boolean(p.hasPhysician),
     hasBenefactor: Boolean(p.hasBenefactor),
     hasPoisoner: Boolean(p.hasPoisoner),

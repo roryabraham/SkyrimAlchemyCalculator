@@ -125,9 +125,10 @@ VALUES (?, ?, ?, ?, ?, ?)
 `);
 
 const effectIdByKey = new Map<string, number>();
-for (const row of db
-  .query("SELECT id, effect_key FROM effects")
-  .all() as { id: number; effect_key: string }[]) {
+for (const row of db.query("SELECT id, effect_key FROM effects").all() as {
+  id: number;
+  effect_key: string;
+}[]) {
   effectIdByKey.set(row.effect_key, row.id);
 }
 
@@ -149,14 +150,7 @@ for (const ing of ingredients) {
     if (eid === undefined) {
       throw new Error(`Missing effect ${slot.effectKey} for ${ing.name}`);
     }
-    insIE.run(
-      ingredientId,
-      slot.slot,
-      eid,
-      slot.magMult,
-      slot.durMult,
-      slot.goldMult,
-    );
+    insIE.run(ingredientId, slot.slot, eid, slot.magMult, slot.durMult, slot.goldMult);
   }
 }
 
