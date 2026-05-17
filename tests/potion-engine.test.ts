@@ -73,7 +73,7 @@ describe("rankPotions", () => {
       nameIndex,
     );
     expect(result.error).toBeUndefined();
-    expect(result.truncated).toBe(false);
+    expect(result.isTruncated).toBe(false);
     expect(result.recipes).toEqual([]);
   });
 
@@ -127,7 +127,7 @@ describe("rankPotions", () => {
     }
   });
 
-  it("sets truncated when combo enumeration hits MAX_RECIPES", () => {
+  it("sets isTruncated when combo enumeration hits MAX_RECIPES", () => {
     const db = getDb();
     const rows = db.query("SELECT name FROM ingredients ORDER BY id LIMIT 37").all() as {
       name: string;
@@ -139,7 +139,7 @@ describe("rankPotions", () => {
     }));
     const result = rankPotions(inv, nameIndex);
     expect(result.error).toBeUndefined();
-    expect(result.truncated).toBe(true);
+    expect(result.isTruncated).toBe(true);
     expect(result.recipes.length).toBeLessThanOrEqual(MAX_RECIPES);
   });
 

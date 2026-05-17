@@ -116,10 +116,10 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
             key={field.key}
             id={`${id}-${field.idSuffix}`}
             label={field.label}
-            checked={params[field.key]}
-            onCheckedChange={(next) =>
+            isChecked={params[field.key]}
+            onCheckedChange={(isChecked) =>
               startSettingsTransition(() => {
-                setParams((prevParams) => ({ ...prevParams, [field.key]: next }));
+                setParams((prevParams) => ({ ...prevParams, [field.key]: isChecked }));
               })
             }
           />

@@ -57,15 +57,16 @@ export function App() {
     potionsMutation.mutate();
   };
 
-  const loading = potionsMutation.isPending;
+  const isLoading = potionsMutation.isPending;
   const outcome = potionsMutation.data;
-  const recipes = loading ? [] : outcome?.type === "success" ? outcome.recipes : [];
+  const recipes = isLoading ? [] : outcome?.type === "success" ? outcome.recipes : [];
   const deferredRecipes = useDeferredValue(recipes);
-  const listUpdating = !loading && recipes.length > 0 && recipes !== deferredRecipes;
-  const truncated = !loading && outcome?.type === "success" ? Boolean(outcome.truncated) : false;
+  const isListUpdating = !isLoading && recipes.length > 0 && recipes !== deferredRecipes;
+  const isTruncated =
+    !isLoading && outcome?.type === "success" ? Boolean(outcome.isTruncated) : false;
   const error = outcome?.type === "error" ? outcome.error : null;
 
-  const canSubmit =
+  const isSubmitEnabled =
     rows.some((row) => row.name.trim()) &&
     rows
       .filter((row) => row.name.trim())
@@ -77,8 +78,8 @@ export function App() {
         <AppHeader />
         <InventoryPanel
           rows={rows}
-          canSubmit={canSubmit}
-          loading={loading}
+          isSubmitEnabled={isSubmitEnabled}
+          isLoading={isLoading}
           error={error}
           onUpdateRow={updateRow}
           onRemoveRow={removeRow}
@@ -93,9 +94,9 @@ export function App() {
         <RecipeResultsPanel
           recipes={recipes}
           displayedRecipes={deferredRecipes}
-          listUpdating={listUpdating}
-          truncated={truncated}
-          loading={loading}
+          isListUpdating={isListUpdating}
+          isTruncated={isTruncated}
+          isLoading={isLoading}
         />
         <DataAttribution />
       </Flex>

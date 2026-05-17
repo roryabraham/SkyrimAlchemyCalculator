@@ -112,7 +112,7 @@ function buildGoldHints(
   if (!row) {
     return undefined;
   }
-  const intrinsicDurForGold = row.useTenSecondGoldDuration
+  const intrinsicDurForGold = row.isTenSecondGoldDuration
     ? 10
     : Math.max(1, Math.round(row.baseDurCk * winnerMults.dur));
   return {
@@ -198,7 +198,7 @@ function evaluateRecipe(
     let effectGoldValue = effectGold(
       effect,
       params,
-      { isPoison, includeBenefactorPoisoner: true },
+      { isPoison, shouldIncludeBenefactorPoisoner: true },
       winner.mag,
       winner.dur,
       hints,
@@ -286,15 +286,15 @@ export function rankPotions(
   lines: InventoryLine[],
   nameToId: Map<string, { id: number; canonical: string }>,
   params: AlchemyParams = defaultAlchemyParams,
-): { recipes: RecipeResult[]; truncated: boolean; error?: string } {
+): { recipes: RecipeResult[]; isTruncated: boolean; error?: string } {
   const exp = expandInventory(lines, nameToId);
   if ("error" in exp) {
-    return { recipes: [], truncated: false, error: exp.error };
+    return { recipes: [], isTruncated: false, error: exp.error };
   }
 
   const { ids, idToName } = exp;
   if (ids.length < 2) {
-    return { recipes: [], truncated: false, error: "Need at least 2 ingredients total." };
+    return { recipes: [], isTruncated: false, error: "Need at least 2 ingredients total." };
   }
 
   const uniq = [...new Set(ids)];
@@ -308,9 +308,9 @@ export function rankPotions(
   const effectById = loadEffectsByIds([...allEffectIds]);
 
   const combos: number[][] = [...combinations2(ids), ...combinations3(ids)];
-  let truncated = false;
+  let isTruncated = false;
   const cap = MAX_RECIPES;
-  const slice = combos.length > cap ? ((truncated = true), combos.slice(0, cap)) : combos;
+  const slice = combos.length > cap ? ((isTruncated = true), combos.slice(0, cap)) : combos;
 
   const recipes: RecipeResult[] = [];
   for (const combo of slice) {
@@ -321,5 +321,5 @@ export function rankPotions(
   }
 
   recipes.sort((left, right) => right.totalGold - left.totalGold);
-  return { recipes, truncated };
+  return { recipes, isTruncated };
 }

@@ -4,8 +4,8 @@ import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
 type Props = {
   rows: InventoryRow[];
-  canSubmit: boolean;
-  loading: boolean;
+  isSubmitEnabled: boolean;
+  isLoading: boolean;
   error: string | null;
   onUpdateRow: (rowId: string, patch: InventoryRowPatch) => void;
   onRemoveRow: (rowId: string) => void;
@@ -15,8 +15,8 @@ type Props = {
 
 export function InventoryPanel({
   rows,
-  canSubmit,
-  loading,
+  isSubmitEnabled,
+  isLoading,
   error,
   onUpdateRow,
   onRemoveRow,
@@ -55,8 +55,8 @@ export function InventoryPanel({
         <Button type="button" size="2" variant="soft" onClick={onAddRow}>
           + Another reagent
         </Button>
-        <Button type="button" size="2" disabled={!canSubmit || loading} onClick={onSubmit}>
-          {loading ? (
+        <Button type="button" size="2" disabled={!isSubmitEnabled || isLoading} onClick={onSubmit}>
+          {isLoading ? (
             <Flex align="center" gap="2">
               <Spinner size="1" />
               Distilling…

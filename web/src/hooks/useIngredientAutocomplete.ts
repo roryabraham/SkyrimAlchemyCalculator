@@ -12,7 +12,7 @@ type Args = {
 };
 
 export function useIngredientAutocomplete({ name, onUpdate, quantityInputRef }: Args) {
-  const [dismissed, setDismissed] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const listboxId = useId();
   const suggestionRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -28,14 +28,14 @@ export function useIngredientAutocomplete({ name, onUpdate, quantityInputRef }: 
     staleTime: 5 * 60 * 1000,
   });
 
-  const popoverOpen =
-    !dismissed &&
+  const isPopoverOpen =
+    !isDismissed &&
     trimmedName.length > 0 &&
     isEnabled &&
     (isPending || isFetching || isSuccess || isError);
   const suggestions = isSuccess && Array.isArray(data) ? data : NO_INGREDIENT_SUGGESTIONS;
 
-  const canKeyboardNavigate = popoverOpen && suggestions.length > 0;
+  const isKeyboardNavEnabled = isPopoverOpen && suggestions.length > 0;
 
   if (prevSuggestionsRef.current !== suggestions) {
     prevSuggestionsRef.current = suggestions;
@@ -51,7 +51,7 @@ export function useIngredientAutocomplete({ name, onUpdate, quantityInputRef }: 
   }, [highlightedIndex]);
 
   const pickSuggestion = (hit: IngredientHit) => {
-    setDismissed(true);
+    setIsDismissed(true);
     setHighlightedIndex(-1);
     onUpdate({
       name: hit.name,
@@ -69,24 +69,24 @@ export function useIngredientAutocomplete({ name, onUpdate, quantityInputRef }: 
     });
   };
 
-  const onPopoverOpenChange = (next: boolean) => {
-    if (!next) {
-      setDismissed(true);
+  const onPopoverOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      setIsDismissed(true);
     }
   };
 
   const onComboboxChange = (value: string) => {
-    setDismissed(false);
+    setIsDismissed(false);
     setHighlightedIndex(-1);
     onUpdate({ name: value });
   };
 
   const onComboboxFocus = () => {
-    setDismissed(false);
+    setIsDismissed(false);
   };
 
   const onComboboxKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (!canKeyboardNavigate) {
+    if (!isKeyboardNavEnabled) {
       return;
     }
     if (event.key === "ArrowDown") {
@@ -123,14 +123,14 @@ export function useIngredientAutocomplete({ name, onUpdate, quantityInputRef }: 
   return {
     listboxId,
     suggestionRefs,
-    popoverOpen,
+    isPopoverOpen,
     onPopoverOpenChange,
     suggestions,
     isFetching,
     isError,
     isSuccess,
     error,
-    canKeyboardNavigate,
+    isKeyboardNavEnabled,
     highlightedIndex,
     setHighlightedIndex,
     pickSuggestion,

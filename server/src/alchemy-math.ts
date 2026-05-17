@@ -34,13 +34,13 @@ function physicianBonus(effect: EffectRow): number {
 export function powerFactor(
   effect: EffectRow,
   params: AlchemyParams,
-  opts: { isPoison: boolean; includeBenefactorPoisoner: boolean },
+  opts: { isPoison: boolean; shouldIncludeBenefactorPoisoner: boolean },
 ): number {
   const alchemist = params.alchemistPercent;
   const physician = params.hasPhysician ? physicianBonus(effect) : 0;
   let benefactor = 0;
   let poisoner = 0;
-  if (opts.includeBenefactorPoisoner) {
+  if (opts.shouldIncludeBenefactorPoisoner) {
     if (!opts.isPoison && params.hasBenefactor && effect.is_beneficial) {
       benefactor = 25;
     }
@@ -63,7 +63,7 @@ export function powerFactor(
 function scaledMagnitude(
   effect: EffectRow,
   params: AlchemyParams,
-  opts: { isPoison: boolean; includeBenefactorPoisoner: boolean },
+  opts: { isPoison: boolean; shouldIncludeBenefactorPoisoner: boolean },
   ingredientMagMult: number,
 ): number {
   const pf = powerFactor(effect, params, opts);
@@ -77,7 +77,7 @@ function scaledMagnitude(
 function scaledDuration(
   effect: EffectRow,
   params: AlchemyParams,
-  opts: { isPoison: boolean; includeBenefactorPoisoner: boolean },
+  opts: { isPoison: boolean; shouldIncludeBenefactorPoisoner: boolean },
   ingredientDurMult: number,
 ): number {
   const pf = powerFactor(effect, params, opts);
@@ -96,17 +96,17 @@ function scaledDuration(
 export function effectGold(
   effect: EffectRow,
   params: AlchemyParams,
-  opts: { isPoison: boolean; includeBenefactorPoisoner: boolean },
+  opts: { isPoison: boolean; shouldIncludeBenefactorPoisoner: boolean },
   ingredientMagMult: number,
   ingredientDurMult: number,
   hints?: EffectGoldHints,
 ): number {
-  const useDamageHealthHints = effect.effect_key === "Damage_Health" && hints?.damageHealth;
+  const hasDamageHealthHints = effect.effect_key === "Damage_Health" && hints?.damageHealth;
 
   let mag: number;
   let durForGold: number;
 
-  if (useDamageHealthHints) {
+  if (hasDamageHealthHints) {
     const pf = powerFactor(effect, params, opts);
     const damageHints = hints.damageHealth!;
     mag = Math.round(damageHints.prePowerMag * (effect.power_affects_magnitude ? pf : 1));
@@ -119,7 +119,7 @@ export function effectGold(
   const magTerm = mag > 0 ? mag ** 1.1 : 1;
   const durTerm = durForGold > 0 ? (durForGold / 10) ** 1.1 : 1;
   let gold = Math.floor(effect.base_cost * Math.max(magTerm, 1) * durTerm);
-  if (useDamageHealthHints) {
+  if (hasDamageHealthHints) {
     gold = Math.floor(gold * hints.damageHealth!.tableGoldMult);
   }
   return gold;
@@ -137,7 +137,7 @@ export function effectGoldForDominance(
   return effectGold(
     effect,
     params,
-    { isPoison, includeBenefactorPoisoner: false },
+    { isPoison, shouldIncludeBenefactorPoisoner: false },
     ingredientMagMult,
     ingredientDurMult,
     hints,

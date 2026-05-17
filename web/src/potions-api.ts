@@ -1,7 +1,7 @@
 import type { AlchemyFormParams, PotionsInventoryLine, Recipe } from "./types.ts";
 
 export type PotionsRankOutcome =
-  | { type: "success"; recipes: Recipe[]; truncated: boolean }
+  | { type: "success"; recipes: Recipe[]; isTruncated: boolean }
   | { type: "error"; error: string };
 
 /**
@@ -41,8 +41,8 @@ export async function requestPotionsRank(
       return { type: "error", error: "Invalid response" };
     }
     const recipes = (body as { recipes: Recipe[] }).recipes;
-    const truncated = Boolean((body as { truncated?: unknown }).truncated);
-    return { type: "success", recipes, truncated };
+    const isTruncated = Boolean((body as { truncated?: unknown }).truncated);
+    return { type: "success", recipes, isTruncated };
   } catch {
     return {
       type: "error",

@@ -35,7 +35,7 @@ describe("powerFactor", () => {
       { ...defaultAlchemyParams, alchemySkill: 15 },
       {
         isPoison: false,
-        includeBenefactorPoisoner: false,
+        shouldIncludeBenefactorPoisoner: false,
       },
     );
     const high = powerFactor(
@@ -43,7 +43,7 @@ describe("powerFactor", () => {
       { ...defaultAlchemyParams, alchemySkill: 100 },
       {
         isPoison: false,
-        includeBenefactorPoisoner: false,
+        shouldIncludeBenefactorPoisoner: false,
       },
     );
     expect(high).toBeGreaterThan(low);
@@ -58,7 +58,7 @@ describe("powerFactor", () => {
         ...defaultAlchemyParams,
         hasPhysician: true,
       },
-      { isPoison: false, includeBenefactorPoisoner: false },
+      { isPoison: false, shouldIncludeBenefactorPoisoner: false },
     );
     const staminaPhys = powerFactor(
       damageStamina,
@@ -66,18 +66,18 @@ describe("powerFactor", () => {
         ...defaultAlchemyParams,
         hasPhysician: true,
       },
-      { isPoison: false, includeBenefactorPoisoner: false },
+      { isPoison: false, shouldIncludeBenefactorPoisoner: false },
     );
     expect(withPhys).toBeGreaterThan(
       powerFactor(restoreHealth, defaultAlchemyParams, {
         isPoison: false,
-        includeBenefactorPoisoner: false,
+        shouldIncludeBenefactorPoisoner: false,
       }),
     );
     expect(staminaPhys).toBe(
       powerFactor(damageStamina, defaultAlchemyParams, {
         isPoison: false,
-        includeBenefactorPoisoner: false,
+        shouldIncludeBenefactorPoisoner: false,
       }),
     );
   });
@@ -88,7 +88,7 @@ describe("effectGold", () => {
     const goldValue = effectGold(
       restoreHealth,
       defaultAlchemyParams,
-      { isPoison: false, includeBenefactorPoisoner: false },
+      { isPoison: false, shouldIncludeBenefactorPoisoner: false },
       1,
       1,
     );
@@ -100,14 +100,14 @@ describe("effectGold", () => {
     const plain = effectGold(
       restoreHealth,
       { ...defaultAlchemyParams, hasBenefactor: true },
-      { isPoison: false, includeBenefactorPoisoner: false },
+      { isPoison: false, shouldIncludeBenefactorPoisoner: false },
       1,
       1,
     );
     const benefactor = effectGold(
       restoreHealth,
       { ...defaultAlchemyParams, hasBenefactor: true },
-      { isPoison: false, includeBenefactorPoisoner: true },
+      { isPoison: false, shouldIncludeBenefactorPoisoner: true },
       1,
       1,
     );
@@ -118,14 +118,14 @@ describe("effectGold", () => {
     const plain = effectGold(
       damageStamina,
       { ...defaultAlchemyParams, hasPoisoner: true },
-      { isPoison: true, includeBenefactorPoisoner: false },
+      { isPoison: true, shouldIncludeBenefactorPoisoner: false },
       1,
       1,
     );
     const poisoner = effectGold(
       damageStamina,
       { ...defaultAlchemyParams, hasPoisoner: true },
-      { isPoison: true, includeBenefactorPoisoner: true },
+      { isPoison: true, shouldIncludeBenefactorPoisoner: true },
       1,
       1,
     );
@@ -148,7 +148,7 @@ describe("effectGold", () => {
     const goldValue = effectGold(
       damageHealth,
       defaultAlchemyParams,
-      { isPoison: true, includeBenefactorPoisoner: true },
+      { isPoison: true, shouldIncludeBenefactorPoisoner: true },
       1,
       1,
       {

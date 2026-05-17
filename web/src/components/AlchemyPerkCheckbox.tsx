@@ -3,16 +3,16 @@ import { Checkbox, Flex, Text } from "@radix-ui/themes";
 type Props = {
   id: string;
   label: string;
-  checked: boolean;
-  onCheckedChange: (next: boolean) => void;
+  isChecked: boolean;
+  onCheckedChange: (isChecked: boolean) => void;
 };
 
-export function AlchemyPerkCheckbox({ id, label, checked, onCheckedChange }: Props) {
+export function AlchemyPerkCheckbox({ id, label, isChecked, onCheckedChange }: Props) {
   return (
     <Flex align="center" gap="2">
       <Checkbox
         id={id}
-        checked={checked}
+        checked={isChecked}
         onCheckedChange={(value) => onCheckedChange(value === true)}
       />
       <Text as="label" htmlFor={id} size="2" style={{ cursor: "pointer" }}>

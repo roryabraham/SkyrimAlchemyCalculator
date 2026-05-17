@@ -90,11 +90,11 @@ Bun.serve({
         return json({ error: "Expected { inventory: [{ name, quantity }] }" }, 400);
       }
       const params = parseAlchemyParams(body);
-      const { recipes, truncated, error } = rankPotions(inv, nameIndex, params);
+      const { recipes, isTruncated, error } = rankPotions(inv, nameIndex, params);
       if (error) {
         return json({ error, recipes: [], truncated: false }, 400);
       }
-      return json({ recipes: withIngredientIcons(recipes), truncated });
+      return json({ recipes: withIngredientIcons(recipes), truncated: isTruncated });
     }
 
     if (req.method === "GET" && url.pathname === "/health") {

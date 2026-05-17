@@ -17,17 +17,17 @@ type Props = {
 export function IngredientQuantityField({ rowId, quantity, inputRef, onUpdate, onAddRow }: Props) {
   const [quantityDraft, setQuantityDraft] = useState(() => String(quantity));
   const [prevQuantity, setPrevQuantity] = useState(quantity);
-  const quantityFieldFocusedRef = useRef(false);
+  const isQuantityFieldFocusedRef = useRef(false);
 
   if (quantity !== prevQuantity) {
     setPrevQuantity(quantity);
-    if (!quantityFieldFocusedRef.current) {
+    if (!isQuantityFieldFocusedRef.current) {
       setQuantityDraft(String(quantity));
     }
   }
 
   const commitQuantityDraft = () => {
-    quantityFieldFocusedRef.current = false;
+    isQuantityFieldFocusedRef.current = false;
     const parsed = parseInt(quantityDraft, 10);
     const next = clampQuantity(parsed);
     setQuantityDraft(String(next));
@@ -60,7 +60,7 @@ export function IngredientQuantityField({ rowId, quantity, inputRef, onUpdate, o
         }
       }}
       onFocus={() => {
-        quantityFieldFocusedRef.current = true;
+        isQuantityFieldFocusedRef.current = true;
       }}
       onKeyDown={(event) => {
         if (event.nativeEvent.isComposing || event.key !== "Enter") {

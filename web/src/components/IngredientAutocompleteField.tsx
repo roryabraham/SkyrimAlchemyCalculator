@@ -16,14 +16,14 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate, quantityInp
   const {
     listboxId,
     suggestionRefs,
-    popoverOpen,
+    isPopoverOpen,
     onPopoverOpenChange,
     suggestions,
     isFetching,
     isError,
     isSuccess,
     error,
-    canKeyboardNavigate,
+    isKeyboardNavEnabled,
     highlightedIndex,
     setHighlightedIndex,
     pickSuggestion,
@@ -40,7 +40,7 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate, quantityInp
         createContextScope mismatch — they each create independent React contexts, so the
         Anchor's position was never communicated to Root and the panel rendered off-screen.
       */}
-      <Popover.Root open={popoverOpen} onOpenChange={onPopoverOpenChange} modal={false}>
+      <Popover.Root open={isPopoverOpen} onOpenChange={onPopoverOpenChange} modal={false}>
         <Popover.Anchor asChild>
           <TextField.Root
             id={`ingredient-name-${rowId}`}
@@ -49,11 +49,11 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate, quantityInp
             value={name}
             autoComplete="off"
             role="combobox"
-            aria-expanded={canKeyboardNavigate}
-            aria-controls={canKeyboardNavigate ? listboxId : undefined}
+            aria-expanded={isKeyboardNavEnabled}
+            aria-controls={isKeyboardNavEnabled ? listboxId : undefined}
             aria-autocomplete="list"
             aria-activedescendant={
-              canKeyboardNavigate && highlightedIndex >= 0
+              isKeyboardNavEnabled && highlightedIndex >= 0
                 ? `${listboxId}-opt-${suggestions[highlightedIndex]!.id}`
                 : undefined
             }

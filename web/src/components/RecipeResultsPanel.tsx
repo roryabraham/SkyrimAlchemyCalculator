@@ -7,9 +7,9 @@ type Props = {
   recipes: Recipe[];
   /** List rendered in the scroll area (may lag via `useDeferredValue`). */
   displayedRecipes: Recipe[];
-  listUpdating: boolean;
-  truncated: boolean;
-  loading: boolean;
+  isListUpdating: boolean;
+  isTruncated: boolean;
+  isLoading: boolean;
 };
 
 function recipeKey(rec: Recipe): string {
@@ -20,9 +20,9 @@ function recipeKey(rec: Recipe): string {
 export function RecipeResultsPanel({
   recipes,
   displayedRecipes,
-  listUpdating,
-  truncated,
-  loading,
+  isListUpdating,
+  isTruncated,
+  isLoading,
 }: Props) {
   return (
     <Card size="3" variant="surface" className="alchemy-panel-glow">
@@ -32,17 +32,17 @@ export function RecipeResultsPanel({
       <Text size="2" color="gray" mb="3" as="p">
         Highest gold first — chase the shiny septims, not the fumes.
       </Text>
-      {truncated ? (
+      {isTruncated ? (
         <Text as="p" size="2" color="amber" mb="3" highContrast>
           Showing the first batch of combinations only — narrow your list for a full search.
         </Text>
       ) : null}
-      {listUpdating ? (
+      {isListUpdating ? (
         <Text as="p" size="2" color="gray" mb="3">
           Updating list…
         </Text>
       ) : null}
-      {recipes.length === 0 && !loading ? (
+      {recipes.length === 0 && !isLoading ? (
         <Text as="p" size="2" color="gray" mb="3">
           The cauldron is quiet — add ingredients and hit{" "}
           <Text as="span" weight="bold">
