@@ -6,6 +6,7 @@
     "scrape": "bun run scripts/scrape-ingredients.ts",
     "scrape:effects": "bun run scripts/scrape-effects.ts",
     "db:seed": "bun run scripts/seed-db.ts",
+    "postinstall": "bun run scripts/seed-db.ts",
     "dev:server": "bun run --cwd server dev",
     "dev:web": "bun run --cwd web dev",
     "dev": "concurrently -k \"bun run dev:server\" \"bun run dev:web\"",
