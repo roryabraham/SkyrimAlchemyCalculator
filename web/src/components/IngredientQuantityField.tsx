@@ -1,36 +1,38 @@
 import { TextField } from "@radix-ui/themes";
-import { useEffect, useRef, useState, type RefObject } from "react";
-import type { InventoryRow } from "../types.ts";
+import { useRef, useState, type RefObject } from "react";
+import type { InventoryRowPatch } from "../types.ts";
 
-function clampCount(n: number): number {
+function clampQuantity(n: number): number {
   return Number.isFinite(n) && n >= 1 ? Math.floor(n) : 1;
 }
 
 type Props = {
   rowId: string;
-  count: number;
+  quantity: number;
   inputRef: RefObject<HTMLInputElement | null>;
-  onPatch: (patch: Partial<InventoryRow>) => void;
+  onUpdate: (patch: InventoryRowPatch) => void;
   onAddRow: () => void;
 };
 
-export function IngredientQuantityField({ rowId, count, inputRef, onPatch, onAddRow }: Props) {
-  const [countDraft, setCountDraft] = useState(() => String(count));
-  const countFieldFocusedRef = useRef(false);
+export function IngredientQuantityField({ rowId, quantity, inputRef, onUpdate, onAddRow }: Props) {
+  const [quantityDraft, setQuantityDraft] = useState(() => String(quantity));
+  const [prevQuantity, setPrevQuantity] = useState(quantity);
+  const quantityFieldFocusedRef = useRef(false);
 
-  useEffect(() => {
-    if (!countFieldFocusedRef.current) {
-      setCountDraft(String(count));
+  if (quantity !== prevQuantity) {
+    setPrevQuantity(quantity);
+    if (!quantityFieldFocusedRef.current) {
+      setQuantityDraft(String(quantity));
     }
-  }, [count]);
+  }
 
-  const commitCountDraft = () => {
-    countFieldFocusedRef.current = false;
-    const parsed = parseInt(countDraft, 10);
-    const next = clampCount(parsed);
-    setCountDraft(String(next));
-    if (next !== count) {
-      onPatch({ count: next });
+  const commitQuantityDraft = () => {
+    quantityFieldFocusedRef.current = false;
+    const parsed = parseInt(quantityDraft, 10);
+    const next = clampQuantity(parsed);
+    setQuantityDraft(String(next));
+    if (next !== quantity) {
+      onUpdate({ quantity: next });
     }
   };
 
@@ -43,32 +45,32 @@ export function IngredientQuantityField({ rowId, count, inputRef, onPatch, onAdd
       inputMode="numeric"
       autoComplete="off"
       style={{ maxWidth: "5rem" }}
-      value={countDraft}
+      value={quantityDraft}
       onChange={(event) => {
         const v = event.target.value;
         if (v !== "" && !/^\d+$/.test(v)) {
           return;
         }
-        setCountDraft(v);
+        setQuantityDraft(v);
         if (v !== "") {
           const n = parseInt(v, 10);
           if (Number.isFinite(n) && n >= 1) {
-            onPatch({ count: n });
+            onUpdate({ quantity: n });
           }
         }
       }}
       onFocus={() => {
-        countFieldFocusedRef.current = true;
+        quantityFieldFocusedRef.current = true;
       }}
       onKeyDown={(event) => {
         if (event.nativeEvent.isComposing || event.key !== "Enter") {
           return;
         }
         event.preventDefault();
-        commitCountDraft();
+        commitQuantityDraft();
         onAddRow();
       }}
-      onBlur={commitCountDraft}
+      onBlur={commitQuantityDraft}
     />
   );
 }

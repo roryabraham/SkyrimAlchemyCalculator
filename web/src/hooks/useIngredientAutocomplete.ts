@@ -1,21 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useId, useRef, useState, type KeyboardEvent, type RefObject } from "react";
 import { fetchIngredients } from "../ingredient-api.ts";
-import type { IngredientHit, InventoryRow } from "../types.ts";
+import type { IngredientHit, InventoryRowPatch } from "../types.ts";
 
 const NO_INGREDIENT_SUGGESTIONS: IngredientHit[] = [];
 
 type Args = {
   name: string;
-  onPatch: (patch: Partial<InventoryRow>) => void;
+  onUpdate: (patch: InventoryRowPatch) => void;
   quantityInputRef: RefObject<HTMLInputElement | null>;
 };
 
-export function useIngredientAutocomplete({ name, onPatch, quantityInputRef }: Args) {
+export function useIngredientAutocomplete({ name, onUpdate, quantityInputRef }: Args) {
   const [dismissed, setDismissed] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const listboxId = useId();
   const suggestionRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const prevSuggestionsRef = useRef<IngredientHit[] | null>(null);
   const highlightedIndexRef = useRef(highlightedIndex);
   highlightedIndexRef.current = highlightedIndex;
 
@@ -36,10 +37,11 @@ export function useIngredientAutocomplete({ name, onPatch, quantityInputRef }: A
 
   const canKeyboardNavigate = popoverOpen && suggestions.length > 0;
 
-  useEffect(() => {
+  if (prevSuggestionsRef.current !== suggestions) {
+    prevSuggestionsRef.current = suggestions;
     setHighlightedIndex(-1);
     suggestionRefs.current = [];
-  }, [suggestions]);
+  }
 
   useEffect(() => {
     if (highlightedIndex < 0) {
@@ -51,7 +53,7 @@ export function useIngredientAutocomplete({ name, onPatch, quantityInputRef }: A
   const pickSuggestion = (hit: IngredientHit) => {
     setDismissed(true);
     setHighlightedIndex(-1);
-    onPatch({
+    onUpdate({
       name: hit.name,
       ingredientId: hit.id,
       ingredientIconUrl: hit.iconUrl,
@@ -76,7 +78,7 @@ export function useIngredientAutocomplete({ name, onPatch, quantityInputRef }: A
   const onComboboxChange = (value: string) => {
     setDismissed(false);
     setHighlightedIndex(-1);
-    onPatch({ name: value });
+    onUpdate({ name: value });
   };
 
   const onComboboxFocus = () => {

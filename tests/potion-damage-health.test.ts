@@ -9,8 +9,8 @@ describe("Damage Health gold parity (UESP controlling ingredient)", () => {
   it("River Betty outranks Nirnroot and uses Betty magnitude/duration/gold mult", () => {
     const { recipes, error } = rankPotions(
       [
-        { name: "River Betty", count: 1 },
-        { name: "Nirnroot", count: 1 },
+        { name: "River Betty", quantity: 1 },
+        { name: "Nirnroot", quantity: 1 },
       ],
       nameIndex,
       defaultAlchemyParams,
@@ -25,8 +25,8 @@ describe("Damage Health gold parity (UESP controlling ingredient)", () => {
   it("Nirnroot outranks Deathbell on priority (not dominance score)", () => {
     const { recipes, error } = rankPotions(
       [
-        { name: "Nirnroot", count: 1 },
-        { name: "Deathbell", count: 1 },
+        { name: "Nirnroot", quantity: 1 },
+        { name: "Deathbell", quantity: 1 },
       ],
       nameIndex,
       defaultAlchemyParams,

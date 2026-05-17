@@ -7,7 +7,7 @@ import { DataAttribution } from "./components/DataAttribution.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
 import { requestPotionsRank } from "./potions-api.ts";
-import type { AlchemyFormParams, InventoryRow } from "./types.ts";
+import type { AlchemyFormParams, InventoryRow, InventoryRowPatch } from "./types.ts";
 import { defaultAlchemyFormParams } from "./types.ts";
 import { uid } from "./uid.ts";
 
@@ -18,7 +18,7 @@ export function App() {
     {
       id: uid(),
       name: "",
-      count: 1,
+      quantity: 1,
     },
   ]);
   const [params, setParams] = useState<AlchemyFormParams>({
@@ -30,14 +30,14 @@ export function App() {
     mutationFn: () => {
       const inventory = rows
         .filter((row) => row.name.trim())
-        .map((row) => ({ name: row.name.trim(), count: row.count }));
+        .map((row) => ({ name: row.name.trim(), quantity: row.quantity }));
       return requestPotionsRank(inventory, params);
     },
   });
 
   const addRow = useCallback(() => {
     const newId = uid();
-    setRows((prevRows) => [...prevRows, { id: newId, name: "", count: 1 }]);
+    setRows((prevRows) => [...prevRows, { id: newId, name: "", quantity: 1 }]);
     requestAnimationFrame(() => {
       document.getElementById(`ingredient-name-${newId}`)?.focus();
     });
@@ -49,7 +49,7 @@ export function App() {
     );
   };
 
-  const updateRow = (rowId: string, patch: Partial<InventoryRow>) => {
+  const updateRow = (rowId: string, patch: InventoryRowPatch) => {
     setRows((prev) => prev.map((row) => (row.id === rowId ? { ...row, ...patch } : row)));
   };
 
@@ -69,7 +69,7 @@ export function App() {
     rows.some((row) => row.name.trim()) &&
     rows
       .filter((row) => row.name.trim())
-      .reduce((totalUnits, row) => totalUnits + Math.max(0, Math.floor(row.count)), 0) >= 2;
+      .reduce((totalUnits, row) => totalUnits + Math.max(0, Math.floor(row.quantity)), 0) >= 2;
 
   return (
     <Container size="2" px={{ initial: "4", sm: "5" }} py="6">

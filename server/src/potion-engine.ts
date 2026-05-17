@@ -16,7 +16,7 @@ import { getDamageHealthRow } from "./damage-health-parity.ts";
 
 export const MAX_RECIPES = 8000;
 
-export type InventoryLine = { name: string; count: number };
+export type InventoryLine = { name: string; quantity: number };
 
 export type RecipeResult = {
   ingredients: { name: string; id: number }[];
@@ -241,9 +241,9 @@ export function expandInventory(
     if (!row) {
       return { error: `Unknown ingredient: ${line.name}` };
     }
-    const unitCount = Math.floor(line.count);
+    const unitCount = Math.floor(line.quantity);
     if (unitCount < 0) {
-      return { error: `Invalid count for ${line.name}` };
+      return { error: `Invalid quantity for ${line.name}` };
     }
     for (let repeatIdx = 0; repeatIdx < unitCount; repeatIdx++) {
       bag.push(row.id);

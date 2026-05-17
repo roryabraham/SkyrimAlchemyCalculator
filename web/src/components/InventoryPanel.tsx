@@ -1,5 +1,5 @@
 import { Button, Callout, Card, Flex, Heading, Spinner, Table, Text } from "@radix-ui/themes";
-import type { InventoryRow } from "../types.ts";
+import type { InventoryRow, InventoryRowPatch } from "../types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   canSubmit: boolean;
   loading: boolean;
   error: string | null;
-  onUpdateRow: (rowId: string, patch: Partial<InventoryRow>) => void;
+  onUpdateRow: (rowId: string, patch: InventoryRowPatch) => void;
   onRemoveRow: (rowId: string) => void;
   onAddRow: () => void;
   onSubmit: () => void;

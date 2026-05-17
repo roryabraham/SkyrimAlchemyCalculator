@@ -1,13 +1,13 @@
 import { IconButton, Table } from "@radix-ui/themes";
 import { useRef } from "react";
-import type { InventoryRow } from "../types.ts";
+import type { InventoryRow, InventoryRowPatch } from "../types.ts";
 import { FinalizedIngredientCell } from "./FinalizedIngredientCell.tsx";
 import { IngredientAutocompleteField } from "./IngredientAutocompleteField.tsx";
 import { IngredientQuantityField } from "./IngredientQuantityField.tsx";
 
 type Props = {
   row: InventoryRow;
-  onUpdate: (rowId: string, patch: Partial<InventoryRow>) => void;
+  onUpdate: (rowId: string, patch: InventoryRowPatch) => void;
   onRemove: (rowId: string) => void;
   onAddRow: () => void;
 };
@@ -15,10 +15,10 @@ type Props = {
 export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Props) {
   const quantityInputRef = useRef<HTMLInputElement>(null);
   const isFinalized = typeof row.ingredientId === "number";
-  const onPatch = (patch: Partial<InventoryRow>) => onUpdate(row.id, patch);
+  const updateRowFields = (patch: InventoryRowPatch) => onUpdate(row.id, patch);
 
   const beginEditIngredient = () => {
-    onPatch({ ingredientId: undefined, ingredientIconUrl: undefined });
+    updateRowFields({ ingredientId: undefined, ingredientIconUrl: undefined });
     requestAnimationFrame(() => {
       document.getElementById(`ingredient-name-${row.id}`)?.focus();
     });
@@ -37,7 +37,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Pr
           <IngredientAutocompleteField
             rowId={row.id}
             name={row.name}
-            onPatch={onPatch}
+            onUpdate={updateRowFields}
             quantityInputRef={quantityInputRef}
           />
         )}
@@ -46,9 +46,9 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Pr
       <Table.Cell style={{ width: "5.5rem", verticalAlign: "middle" }}>
         <IngredientQuantityField
           rowId={row.id}
-          count={row.count}
+          quantity={row.quantity}
           inputRef={quantityInputRef}
-          onPatch={onPatch}
+          onUpdate={updateRowFields}
           onAddRow={onAddRow}
         />
       </Table.Cell>

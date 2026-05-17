@@ -87,7 +87,7 @@ Bun.serve({
       }
       const inv = body.inventory as InventoryLine[] | undefined;
       if (!Array.isArray(inv)) {
-        return json({ error: "Expected { inventory: [{ name, count }] }" }, 400);
+        return json({ error: "Expected { inventory: [{ name, quantity }] }" }, 400);
       }
       const params = parseAlchemyParams(body);
       const { recipes, truncated, error } = rankPotions(inv, nameIndex, params);

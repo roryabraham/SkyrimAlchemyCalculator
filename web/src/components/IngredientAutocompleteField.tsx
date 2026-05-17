@@ -1,18 +1,18 @@
 import * as Popover from "@radix-ui/react-popover";
-import { Flex, ScrollArea, Spinner, TextField, Theme } from "@radix-ui/themes";
+import { ScrollArea, Spinner, TextField, Theme } from "@radix-ui/themes";
 import type { RefObject } from "react";
 import { useIngredientAutocomplete } from "../hooks/useIngredientAutocomplete.ts";
-import type { InventoryRow } from "../types.ts";
+import type { InventoryRowPatch } from "../types.ts";
 import { IngredientSuggestionList } from "./IngredientSuggestionList.tsx";
 
 type Props = {
   rowId: string;
   name: string;
-  onPatch: (patch: Partial<InventoryRow>) => void;
+  onUpdate: (patch: InventoryRowPatch) => void;
   quantityInputRef: RefObject<HTMLInputElement | null>;
 };
 
-export function IngredientAutocompleteField({ rowId, name, onPatch, quantityInputRef }: Props) {
+export function IngredientAutocompleteField({ rowId, name, onUpdate, quantityInputRef }: Props) {
   const {
     listboxId,
     suggestionRefs,
@@ -30,7 +30,7 @@ export function IngredientAutocompleteField({ rowId, name, onPatch, quantityInpu
     onComboboxChange,
     onComboboxFocus,
     onComboboxKeyDown,
-  } = useIngredientAutocomplete({ name, onPatch, quantityInputRef });
+  } = useIngredientAutocomplete({ name, onUpdate, quantityInputRef });
 
   return (
     <>

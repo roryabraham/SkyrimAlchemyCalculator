@@ -14,8 +14,8 @@ describe("expandInventory", () => {
   it("maps lines to sorted ids and canonical names", () => {
     const result = expandInventory(
       [
-        { name: "Wheat", count: 2 },
-        { name: "Blue Mountain Flower", count: 1 },
+        { name: "Wheat", quantity: 2 },
+        { name: "Blue Mountain Flower", quantity: 1 },
       ],
       nameIndex,
     );
@@ -28,7 +28,7 @@ describe("expandInventory", () => {
   });
 
   it("normalizes ingredient keys (spacing and case)", () => {
-    const result = expandInventory([{ name: "  BLUE   mountain  FLOWER ", count: 1 }], nameIndex);
+    const result = expandInventory([{ name: "  BLUE   mountain  FLOWER ", quantity: 1 }], nameIndex);
     if ("error" in result) {
       throw new Error(result.error);
     }
@@ -37,7 +37,7 @@ describe("expandInventory", () => {
 
   it("returns error for unknown ingredients", () => {
     const result = expandInventory(
-      [{ name: "Not A Real Skyrim Ingredient Xyz", count: 1 }],
+      [{ name: "Not A Real Skyrim Ingredient Xyz", quantity: 1 }],
       nameIndex,
     );
     expect("error" in result).toBe(true);
@@ -46,11 +46,11 @@ describe("expandInventory", () => {
     }
   });
 
-  it("returns error for negative counts", () => {
-    const result = expandInventory([{ name: "Wheat", count: -1 }], nameIndex);
+  it("returns error for negative quantities", () => {
+    const result = expandInventory([{ name: "Wheat", quantity: -1 }], nameIndex);
     expect("error" in result).toBe(true);
     if ("error" in result) {
-      expect(result.error).toContain("Invalid count");
+      expect(result.error).toContain("Invalid quantity");
     }
   });
 });
@@ -59,7 +59,7 @@ describe("rankPotions", () => {
   const nameIndex = loadNameIndex();
 
   it("returns error when fewer than two ingredients total", () => {
-    const result = rankPotions([{ name: "Wheat", count: 1 }], nameIndex);
+    const result = rankPotions([{ name: "Wheat", quantity: 1 }], nameIndex);
     expect(result.error).toBe("Need at least 2 ingredients total.");
     expect(result.recipes).toEqual([]);
   });
@@ -67,8 +67,8 @@ describe("rankPotions", () => {
   it("returns empty recipes when no pair shares an effect", () => {
     const result = rankPotions(
       [
-        { name: "Abecean Longfin", count: 1 },
-        { name: "Aloe Vera Leaves", count: 1 },
+        { name: "Abecean Longfin", quantity: 1 },
+        { name: "Aloe Vera Leaves", quantity: 1 },
       ],
       nameIndex,
     );
@@ -80,8 +80,8 @@ describe("rankPotions", () => {
   it("labels a beneficial dominant mixture as potion", () => {
     const result = rankPotions(
       [
-        { name: "Wheat", count: 1 },
-        { name: "Blue Mountain Flower", count: 1 },
+        { name: "Wheat", quantity: 1 },
+        { name: "Blue Mountain Flower", quantity: 1 },
       ],
       nameIndex,
     );
@@ -97,8 +97,8 @@ describe("rankPotions", () => {
   it("labels a poison-dominant mixture as poison", () => {
     const result = rankPotions(
       [
-        { name: "River Betty", count: 1 },
-        { name: "Nirnroot", count: 1 },
+        { name: "River Betty", quantity: 1 },
+        { name: "Nirnroot", quantity: 1 },
       ],
       nameIndex,
     );
@@ -111,10 +111,10 @@ describe("rankPotions", () => {
   it("sorts results by totalGold descending", () => {
     const result = rankPotions(
       [
-        { name: "Wheat", count: 1 },
-        { name: "Blue Mountain Flower", count: 1 },
-        { name: "River Betty", count: 1 },
-        { name: "Nirnroot", count: 1 },
+        { name: "Wheat", quantity: 1 },
+        { name: "Blue Mountain Flower", quantity: 1 },
+        { name: "River Betty", quantity: 1 },
+        { name: "Nirnroot", quantity: 1 },
       ],
       nameIndex,
     );
@@ -135,7 +135,7 @@ describe("rankPotions", () => {
     expect(rows.length).toBe(37);
     const inv: InventoryLine[] = rows.map((row) => ({
       name: row.name,
-      count: 1,
+      quantity: 1,
     }));
     const result = rankPotions(inv, nameIndex);
     expect(result.error).toBeUndefined();
@@ -146,16 +146,16 @@ describe("rankPotions", () => {
   it("applies alchemy params to gold (Benefactor boosts beneficial effects)", () => {
     const base = rankPotions(
       [
-        { name: "Wheat", count: 1 },
-        { name: "Blue Mountain Flower", count: 1 },
+        { name: "Wheat", quantity: 1 },
+        { name: "Blue Mountain Flower", quantity: 1 },
       ],
       nameIndex,
       { ...defaultAlchemyParams, hasBenefactor: false },
     );
     const boosted = rankPotions(
       [
-        { name: "Wheat", count: 1 },
-        { name: "Blue Mountain Flower", count: 1 },
+        { name: "Wheat", quantity: 1 },
+        { name: "Blue Mountain Flower", quantity: 1 },
       ],
       nameIndex,
       { ...defaultAlchemyParams, hasBenefactor: true },

@@ -18,8 +18,22 @@ export type Recipe = {
 export type InventoryRow = {
   id: string;
   name: string;
-  count: number;
+  quantity: number;
   /** Set when the user chose an autocomplete hit; ingredient cell shows icon + label. */
+  ingredientId?: number;
+  ingredientIconUrl?: string | null;
+};
+
+/** Subset of `InventoryRow` sent to POST /api/potions `inventory`. */
+export type PotionsInventoryLine = { name: string; quantity: number };
+
+/**
+ * Editable fields merged into a row (e.g. `{ quantity: 3 }`). Spelled out so
+ * patch literals stay well-typed at call sites.
+ */
+export type InventoryRowPatch = {
+  name?: string;
+  quantity?: number;
   ingredientId?: number;
   ingredientIconUrl?: string | null;
 };

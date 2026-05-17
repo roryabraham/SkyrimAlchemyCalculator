@@ -1,4 +1,4 @@
-import type { AlchemyFormParams, Recipe } from "./types.ts";
+import type { AlchemyFormParams, PotionsInventoryLine, Recipe } from "./types.ts";
 
 export type PotionsRankOutcome =
   | { type: "success"; recipes: Recipe[]; truncated: boolean }
@@ -9,7 +9,7 @@ export type PotionsRankOutcome =
  * React Compiler–friendly (no try/catch in the component tree).
  */
 export async function requestPotionsRank(
-  inventory: { name: string; count: number }[],
+  inventory: PotionsInventoryLine[],
   params: AlchemyFormParams,
 ): Promise<PotionsRankOutcome> {
   try {
