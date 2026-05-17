@@ -1,5 +1,5 @@
 import { TextField } from "@radix-ui/themes";
-import { useRef, useState, type RefObject } from "react";
+import { useState, type RefObject } from "react";
 import type { InventoryRowPatch } from "../types.ts";
 
 function clampQuantity(n: number): number {
@@ -16,18 +16,8 @@ type Props = {
 
 export function IngredientQuantityField({ rowId, quantity, inputRef, onUpdate, onAddRow }: Props) {
   const [quantityDraft, setQuantityDraft] = useState(() => String(quantity));
-  const [prevQuantity, setPrevQuantity] = useState(quantity);
-  const isQuantityFieldFocusedRef = useRef(false);
-
-  if (quantity !== prevQuantity) {
-    setPrevQuantity(quantity);
-    if (!isQuantityFieldFocusedRef.current) {
-      setQuantityDraft(String(quantity));
-    }
-  }
 
   const commitQuantityDraft = () => {
-    isQuantityFieldFocusedRef.current = false;
     const parsed = parseInt(quantityDraft, 10);
     const next = clampQuantity(parsed);
     setQuantityDraft(String(next));
@@ -58,9 +48,6 @@ export function IngredientQuantityField({ rowId, quantity, inputRef, onUpdate, o
             onUpdate({ quantity: n });
           }
         }
-      }}
-      onFocus={() => {
-        isQuantityFieldFocusedRef.current = true;
       }}
       onKeyDown={(event) => {
         if (event.nativeEvent.isComposing || event.key !== "Enter") {
