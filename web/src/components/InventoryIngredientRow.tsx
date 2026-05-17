@@ -9,17 +9,34 @@ import {
   Table,
   TextField,
 } from "@radix-ui/themes";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { fetchIngredientsForAutocomplete } from "../ingredient-api.ts";
 import type { InventoryRow } from "../types.ts";
 
 type Props = {
   row: InventoryRow;
   onUpdate: (rowId: string, patch: Partial<InventoryRow>) => void;
   onRemove: (rowId: string) => void;
-  onSearch: (rowId: string, q: string) => void;
 };
 
-export function InventoryIngredientRow({ row, onUpdate, onRemove, onSearch }: Props) {
-  const suggestOpen = row.open && row.suggestions.length > 0;
+export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
+  const [debouncedName, setDebouncedName] = useState(row.name);
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedName(row.name), 220);
+    return () => clearTimeout(t);
+  }, [row.name]);
+
+  const q = debouncedName.trim();
+  const { data, isFetching } = useQuery({
+    queryKey: ["ingredients", "autocomplete", q],
+    queryFn: () => fetchIngredientsForAutocomplete(q),
+    enabled: q.length > 0,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const suggestions = q.length > 0 ? (data ?? []) : [];
+  const suggestOpen = row.open && suggestions.length > 0;
 
   return (
     <Table.Row align="start">
@@ -35,17 +52,15 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove, onSearch }: Pr
                 onChange={(e) => {
                   const v = e.target.value;
                   onUpdate(row.id, { name: v, open: true });
-                  onSearch(row.id, v);
                 }}
                 onFocus={() => {
                   onUpdate(row.id, { open: true });
-                  if (row.name.trim()) onSearch(row.id, row.name);
                 }}
                 onBlur={() => {
                   setTimeout(() => onUpdate(row.id, { open: false }), 150);
                 }}
               >
-                {row.loading ? (
+                {isFetching ? (
                   <TextField.Slot side="right">
                     <Spinner size="1" />
                   </TextField.Slot>
@@ -75,7 +90,6 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove, onSearch }: Pr
                       onUpdate(row.id, {
                         name: h.name,
                         open: false,
-                        suggestions: [],
                       });
                     }}
                   >

@@ -1,12 +1,12 @@
 import { Container, Flex } from "@radix-ui/themes";
-import { useEffect, useRef, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
-import { fetchIngredientsForAutocomplete } from "./ingredient-api.ts";
 import { requestPotionsRank } from "./potions-api.ts";
-import type { AlchemyFormParams, InventoryRow, Recipe } from "./types.ts";
+import type { AlchemyFormParams, InventoryRow } from "./types.ts";
 import { defaultAlchemyFormParams } from "./types.ts";
 import { uid } from "./uid.ts";
 
@@ -18,33 +18,21 @@ export function App() {
       id: uid(),
       name: "",
       count: 1,
-      suggestions: [],
       open: false,
-      loading: false,
     },
   ]);
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [truncated, setTruncated] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [params, setParams] = useState<AlchemyFormParams>({
     ...defaultAlchemyFormParams,
   });
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const runSearch = (rowId: string, q: string) => {
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
-      setRows((prev) => prev.map((r) => (r.id === rowId ? { ...r, loading: true } : r)));
-      void fetchIngredientsForAutocomplete(q).then((hits) => {
-        setRows((prev) =>
-          prev.map((r) =>
-            r.id === rowId ? { ...r, suggestions: hits, loading: false, open: true } : r,
-          ),
-        );
-      });
-    }, 220);
-  };
+  const potionsMutation = useMutation({
+    mutationFn: () => {
+      const inventory = rows
+        .filter((r) => r.name.trim())
+        .map((r) => ({ name: r.name.trim(), count: r.count }));
+      return requestPotionsRank(inventory, params);
+    },
+  });
 
   const addRow = () => {
     setRows((r) => [
@@ -53,9 +41,7 @@ export function App() {
         id: uid(),
         name: "",
         count: 1,
-        suggestions: [],
         open: false,
-        loading: false,
       },
     ]);
   };
@@ -69,28 +55,15 @@ export function App() {
   };
 
   const submit = () => {
-    setError(null);
-    setLoading(true);
-    setRecipes([]);
-    const inventory = rows
-      .filter((r) => r.name.trim())
-      .map((r) => ({ name: r.name.trim(), count: r.count }));
-    void requestPotionsRank(inventory, params).then((outcome) => {
-      if (outcome.type === "success") {
-        setRecipes(outcome.recipes);
-        setTruncated(outcome.truncated);
-      } else {
-        setError(outcome.error);
-      }
-      setLoading(false);
-    });
+    potionsMutation.mutate();
   };
 
-  useEffect(() => {
-    return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current);
-    };
-  }, []);
+  const loading = potionsMutation.isPending;
+  const outcome = potionsMutation.data;
+  const recipes = loading ? [] : outcome?.type === "success" ? outcome.recipes : [];
+  const truncated =
+    !loading && outcome?.type === "success" ? Boolean(outcome.truncated) : false;
+  const error = outcome?.type === "error" ? outcome.error : null;
 
   const canSubmit =
     rows.some((r) => r.name.trim()) &&
@@ -108,7 +81,6 @@ export function App() {
           error={error}
           onUpdateRow={updateRow}
           onRemoveRow={removeRow}
-          onSearch={runSearch}
           onAddRow={addRow}
           onSubmit={submit}
         />

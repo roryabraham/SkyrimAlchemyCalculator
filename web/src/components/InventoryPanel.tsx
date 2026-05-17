@@ -9,7 +9,6 @@ type Props = {
   error: string | null;
   onUpdateRow: (rowId: string, patch: Partial<InventoryRow>) => void;
   onRemoveRow: (rowId: string) => void;
-  onSearch: (rowId: string, q: string) => void;
   onAddRow: () => void;
   onSubmit: () => void;
 };
@@ -21,7 +20,6 @@ export function InventoryPanel({
   error,
   onUpdateRow,
   onRemoveRow,
-  onSearch,
   onAddRow,
   onSubmit,
 }: Props) {
@@ -45,7 +43,6 @@ export function InventoryPanel({
               row={row}
               onUpdate={onUpdateRow}
               onRemove={onRemoveRow}
-              onSearch={onSearch}
             />
           ))}
         </Table.Body>
