@@ -1,4 +1,5 @@
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { AnimatePresence, motion } from "framer-motion";
 import { canBrewRecipe } from "../brew-recipe.ts";
 import { recipeKey } from "../recipe-key.ts";
 import type { InventoryRow, Recipe } from "../types.ts";
@@ -68,15 +69,23 @@ export function RecipeResultsPanel({
         </Text>
       ) : null}
       <Flex direction="column" gap="3">
-        {brewableDisplayedRecipes.map((rec) => (
-          <RecipeCard
-            key={recipeKey(rec)}
-            recipe={rec}
-            canBrew
-            brewFlash={brewFlashRecipeKey !== null && brewFlashRecipeKey === recipeKey(rec)}
-            onBrew={() => onBrewRecipe(rec)}
-          />
-        ))}
+        <AnimatePresence initial={false}>
+          {brewableDisplayedRecipes.map((rec) => (
+            <motion.div
+              key={recipeKey(rec)}
+              layout
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: "easeIn" }}
+            >
+              <RecipeCard
+                recipe={rec}
+                canBrew
+                brewFlash={brewFlashRecipeKey !== null && brewFlashRecipeKey === recipeKey(rec)}
+                onBrew={() => onBrewRecipe(rec)}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </Flex>
     </Card>
   );

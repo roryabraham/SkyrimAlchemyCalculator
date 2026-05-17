@@ -1,4 +1,5 @@
 import { Button, Callout, Card, Flex, Heading, Spinner, Table, Text } from "@radix-ui/themes";
+import { AnimatePresence } from "framer-motion";
 import type { InventoryRow, InventoryRowPatch } from "../types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
@@ -43,16 +44,18 @@ export function InventoryPanel({
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {rows.map((row) => (
-            <InventoryIngredientRow
-              key={row.id}
-              row={row}
-              brewFlash={brewFlashRowIds.includes(row.id)}
-              onUpdate={onUpdateRow}
-              onRemove={onRemoveRow}
-              onAddRow={onAddRow}
-            />
-          ))}
+          <AnimatePresence initial={false}>
+            {rows.map((row) => (
+              <InventoryIngredientRow
+                key={row.id}
+                row={row}
+                brewFlash={brewFlashRowIds.includes(row.id)}
+                onUpdate={onUpdateRow}
+                onRemove={onRemoveRow}
+                onAddRow={onAddRow}
+              />
+            ))}
+          </AnimatePresence>
         </Table.Body>
       </Table.Root>
       <Flex wrap="wrap" gap="3" mt="4" align="center">

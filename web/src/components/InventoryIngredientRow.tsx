@@ -1,9 +1,12 @@
 import { IconButton, Table } from "@radix-ui/themes";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import type { InventoryRow, InventoryRowPatch } from "../types.ts";
 import { FinalizedIngredientCell } from "./FinalizedIngredientCell.tsx";
 import { IngredientAutocompleteField } from "./IngredientAutocompleteField.tsx";
 import { IngredientQuantityField } from "./IngredientQuantityField.tsx";
+
+const MotionRow = motion(Table.Row);
 
 type Props = {
   row: InventoryRow;
@@ -39,7 +42,13 @@ export function InventoryIngredientRow({ row, brewFlash, onUpdate, onRemove, onA
   };
 
   return (
-    <Table.Row align="start" className={brewFlash ? "alchemy-brew-flash" : undefined}>
+    <MotionRow
+      align="start"
+      className={brewFlash ? "alchemy-brew-flash" : undefined}
+      exit={{ opacity: 0, scaleY: 0 }}
+      style={{ originY: 0 }}
+      transition={{ duration: 0.2, ease: "easeIn" }}
+    >
       <Table.Cell style={{ minWidth: "12rem" }}>
         {isFinalized ? (
           <FinalizedIngredientCell
@@ -73,6 +82,6 @@ export function InventoryIngredientRow({ row, brewFlash, onUpdate, onRemove, onA
           ✕
         </IconButton>
       </Table.Cell>
-    </Table.Row>
+    </MotionRow>
   );
 }
