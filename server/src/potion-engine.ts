@@ -153,9 +153,15 @@ function evaluateRecipe(
     return null;
   }
 
-  let dominantEid = shared[0];
-  let dominantGold = -1;
   const prelimPoison = false;
+  type SharedRow = {
+    effect: EffectRow;
+    winner: WinnerMults;
+    hints: EffectGoldHints | undefined;
+  };
+  const sharedRows: SharedRow[] = [];
+  let dominantEid = shared[0]!;
+  let dominantGold = -1;
 
   for (const effectId of shared) {
     const effect = effectById.get(effectId);
@@ -177,6 +183,7 @@ function evaluateRecipe(
       dominantGold = dominanceGold;
       dominantEid = effectId;
     }
+    sharedRows.push({ effect, winner, hints });
   }
 
   const domEff = effectById.get(dominantEid);
@@ -187,14 +194,8 @@ function evaluateRecipe(
 
   const effectsOut: RecipeResult["effects"] = [];
   let total = 0;
-  for (const effectId of shared) {
-    const effect = effectById.get(effectId);
-    if (!effect) {
-      continue;
-    }
-    const contributorsForEffect = contrib.get(effectId) ?? [];
-    const winner = pickWinner(effect, contributorsForEffect, idToName);
-    const hints = buildGoldHints(effect, winner.ingredientId, idToName, winner);
+  for (const row of sharedRows) {
+    const { effect, winner, hints } = row;
     let effectGoldValue = effectGold(
       effect,
       params,
@@ -254,37 +255,46 @@ export function expandInventory(
   return { ids: bag, idToName };
 }
 
-function combinations2(ids: number[]): number[][] {
-  const keys = new Map<string, [number, number]>();
-  for (let leftIndex = 0; leftIndex < ids.length; leftIndex++) {
-    for (let rightIndex = leftIndex + 1; rightIndex < ids.length; rightIndex++) {
-      const firstId = ids[leftIndex];
-      const secondId = ids[rightIndex];
-      const pairKey = firstId <= secondId ? `${firstId},${secondId}` : `${secondId},${firstId}`;
-      keys.set(pairKey, [firstId, secondId]);
+/**
+ * 2- and 3-ingredient mixtures over distinct sorted ids (same order as legacy
+ * combinations2 then combinations3 on a distinct multiset, without Map dedup).
+ * Collects at most `cap` mixtures (pairs first, then triples).
+ */
+function enumerateMixturesUpToCap(
+  sortedDistinctIds: number[],
+  cap: number,
+): {
+  combos: number[][];
+  isTruncated: boolean;
+} {
+  const n = sortedDistinctIds.length;
+  if (n < 2) {
+    return { combos: [], isTruncated: false };
+  }
+  const pairCount = (n * (n - 1)) / 2;
+  const tripleCount = n >= 3 ? (n * (n - 1) * (n - 2)) / 6 : 0;
+  const totalMixtures = pairCount + tripleCount;
+  const isTruncated = totalMixtures > cap;
+  const limit = Math.min(totalMixtures, cap);
+  const combos: number[][] = [];
+
+  for (let leftIndex = 0; leftIndex < n && combos.length < limit; leftIndex++) {
+    for (let rightIndex = leftIndex + 1; rightIndex < n && combos.length < limit; rightIndex++) {
+      combos.push([sortedDistinctIds[leftIndex]!, sortedDistinctIds[rightIndex]!]);
     }
   }
-  return [...keys.values()];
-}
-
-function combinations3(ids: number[]): number[][] {
-  const keys = new Map<string, [number, number, number]>();
-  for (let leftIndex = 0; leftIndex < ids.length; leftIndex++) {
-    for (let midIndex = leftIndex + 1; midIndex < ids.length; midIndex++) {
-      for (let rightIndex = midIndex + 1; rightIndex < ids.length; rightIndex++) {
-        const arr = [ids[leftIndex], ids[midIndex], ids[rightIndex]].sort(
-          (leftId, rightId) => leftId - rightId,
-        );
-        keys.set(arr.join(","), arr as [number, number, number]);
+  for (let leftIndex = 0; leftIndex < n && combos.length < limit; leftIndex++) {
+    for (let midIndex = leftIndex + 1; midIndex < n && combos.length < limit; midIndex++) {
+      for (let rightIndex = midIndex + 1; rightIndex < n && combos.length < limit; rightIndex++) {
+        combos.push([
+          sortedDistinctIds[leftIndex]!,
+          sortedDistinctIds[midIndex]!,
+          sortedDistinctIds[rightIndex]!,
+        ]);
       }
     }
   }
-  return [...keys.values()];
-}
-
-/** Skyrim's alchemy UI does not allow the same ingredient twice in one mixture. */
-function isDistinctIngredientMixture(combo: number[]): boolean {
-  return new Set(combo).size === combo.length;
+  return { combos, isTruncated };
 }
 
 export function rankPotions(
@@ -312,12 +322,7 @@ export function rankPotions(
   }
   const effectById = loadEffectsByIds([...allEffectIds]);
 
-  const combos: number[][] = [...combinations2(ids), ...combinations3(ids)].filter(
-    isDistinctIngredientMixture,
-  );
-  let isTruncated = false;
-  const cap = MAX_RECIPES;
-  const slice = combos.length > cap ? ((isTruncated = true), combos.slice(0, cap)) : combos;
+  const { combos: slice, isTruncated } = enumerateMixturesUpToCap(uniq, MAX_RECIPES);
 
   const recipes: RecipeResult[] = [];
   for (const combo of slice) {

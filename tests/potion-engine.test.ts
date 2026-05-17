@@ -165,6 +165,23 @@ describe("rankPotions", () => {
     expect(result.recipes.length).toBeLessThanOrEqual(MAX_RECIPES);
   });
 
+  it("matches qty-1 ranking when few types have large stack quantities (no multiset blow-up)", () => {
+    const db = getDb();
+    const rows = db.query("SELECT name FROM ingredients ORDER BY id LIMIT 5").all() as {
+      name: string;
+    }[];
+    expect(rows.length).toBe(5);
+    const names = rows.map((row) => row.name);
+    const lowQty: InventoryLine[] = names.map((name) => ({ name, quantity: 1 }));
+    const highQty: InventoryLine[] = names.map((name) => ({ name, quantity: 30 }));
+    const a = rankPotions(lowQty, nameIndex);
+    const b = rankPotions(highQty, nameIndex);
+    expect(a.error).toBeUndefined();
+    expect(b.error).toBeUndefined();
+    expect(a.isTruncated).toBe(b.isTruncated);
+    expect(a.recipes).toEqual(b.recipes);
+  });
+
   it("applies alchemy params to gold (Benefactor boosts beneficial effects)", () => {
     const base = rankPotions(
       [
