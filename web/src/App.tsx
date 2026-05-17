@@ -19,7 +19,6 @@ export function App() {
       id: uid(),
       name: "",
       count: 1,
-      open: false,
     },
   ]);
   const [params, setParams] = useState<AlchemyFormParams>({
@@ -43,7 +42,6 @@ export function App() {
         id: uid(),
         name: "",
         count: 1,
-        open: false,
       },
     ]);
   };
