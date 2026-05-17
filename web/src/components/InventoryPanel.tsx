@@ -1,4 +1,4 @@
-import { Button, Callout, Card, Flex, Heading, Separator, Spinner, Table, Text } from "@radix-ui/themes";
+import { Button, Callout, Card, Flex, Heading, Spinner, Table, Text } from "@radix-ui/themes";
 import type { InventoryRow } from "../types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
@@ -46,18 +46,13 @@ export function InventoryPanel({
               row={row}
               onUpdate={onUpdateRow}
               onRemove={onRemoveRow}
+              onAddRow={onAddRow}
             />
           ))}
         </Table.Body>
       </Table.Root>
       <Flex wrap="wrap" gap="3" mt="4" align="center">
-        <Button
-          type="button"
-          size="2"
-          variant="soft"
-          onClick={onAddRow}
-          title="Add a row (Alt+Shift+N)"
-        >
+        <Button type="button" size="2" variant="soft" onClick={onAddRow}>
           + Another reagent
         </Button>
         <Button type="button" size="2" disabled={!canSubmit || loading} onClick={onSubmit}>
@@ -70,19 +65,6 @@ export function InventoryPanel({
             "Brew best value"
           )}
         </Button>
-      </Flex>
-      <Separator size="4" my="4" />
-      <Flex direction="column" gap="1" aria-label="Keyboard shortcuts">
-        <Text size="1" weight="bold" color="gray">
-          Shortcuts
-        </Text>
-        <Text size="1" color="gray">
-          Option or Alt+Shift+N — add another reagent
-        </Text>
-        <Text size="1" color="gray">
-          While ingredient suggestions are open: Arrow up or down — move highlight; Enter — apply
-          the highlighted suggestion, or the top match if none is highlighted yet
-        </Text>
       </Flex>
       {error ? (
         <Callout.Root color="red" variant="soft" mt="4" role="alert">

@@ -19,4 +19,7 @@ export type InventoryRow = {
   id: string;
   name: string;
   count: number;
+  /** Set when the user chose an autocomplete hit; ingredient cell shows icon + label. */
+  ingredientId?: number;
+  ingredientIconUrl?: string | null;
 };
