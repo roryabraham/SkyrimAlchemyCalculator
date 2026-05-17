@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check:react-compiler": "bun run scripts/check-react-compiler.ts"
+    "check:react-compiler": "bun run scripts/check-react-compiler.ts",
+    "check:no-manual-memo": "bun run scripts/check-no-manual-memo.ts"
   },
   "dependencies": {
     "@radix-ui/react-popover": "1.1.15",

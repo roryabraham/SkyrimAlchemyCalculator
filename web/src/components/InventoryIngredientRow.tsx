@@ -47,11 +47,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Pr
             onChangeClick={beginEditIngredient}
           />
         ) : (
-          <IngredientAutocompleteField
-            rowId={row.id}
-            name={row.name}
-            onUpdate={updateRowFields}
-          />
+          <IngredientAutocompleteField rowId={row.id} name={row.name} onUpdate={updateRowFields} />
         )}
       </Table.Cell>
 

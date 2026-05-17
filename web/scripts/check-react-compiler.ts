@@ -1,32 +1,48 @@
 /**
- * Smoke-test babel-plugin-react-compiler on App.tsx without a full Vite build.
+ * Run babel-plugin-react-compiler on every web/src module (smoke test without a full Vite build).
  * Run from repo root: `bun run --cwd web check:react-compiler`
  */
 import { transformSync } from "@babel/core";
 import reactCompiler from "babel-plugin-react-compiler";
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readFile, readdir } from "node:fs/promises";
+import { dirname, extname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const dir = dirname(fileURLToPath(import.meta.url));
-const appPath = join(dir, "..", "src", "App.tsx");
-const code = readFileSync(appPath, "utf8");
+const srcRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "src");
 
-const out = transformSync(code, {
-  filename: appPath,
-  plugins: [[reactCompiler, {}]],
-  ast: false,
-  code: true,
-  configFile: false,
-  babelrc: false,
-  parserOpts: {
-    sourceType: "module",
-    plugins: ["typescript", "jsx"],
-  },
-});
-
-if (!out || typeof out.code !== "string" || out.code.length === 0) {
-  throw new Error("Babel produced no output");
+async function* walkTsFiles(dir: string): AsyncGenerator<string> {
+  for (const ent of await readdir(dir, { withFileTypes: true })) {
+    const p = join(dir, ent.name);
+    if (ent.isDirectory()) {
+      yield* walkTsFiles(p);
+    } else {
+      const ext = extname(ent.name);
+      if (ext === ".ts" || ext === ".tsx") {
+        yield p;
+      }
+    }
+  }
 }
 
-console.log("React Compiler OK:", appPath);
+for await (const filePath of walkTsFiles(srcRoot)) {
+  const code = await readFile(filePath, "utf8");
+  const isTsx = filePath.endsWith(".tsx");
+  const out = transformSync(code, {
+    filename: filePath,
+    plugins: [[reactCompiler, {}]],
+    ast: false,
+    code: true,
+    configFile: false,
+    babelrc: false,
+    parserOpts: {
+      sourceType: "module",
+      plugins: isTsx ? (["typescript", "jsx"] as const) : (["typescript"] as const),
+    },
+  });
+
+  if (!out || typeof out.code !== "string" || out.code.length === 0) {
+    throw new Error(`Babel produced no output for ${relative(srcRoot, filePath)}`);
+  }
+}
+
+console.log("React Compiler OK:", relative(join(srcRoot, ".."), srcRoot), "(all modules)");

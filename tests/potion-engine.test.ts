@@ -28,7 +28,10 @@ describe("expandInventory", () => {
   });
 
   it("normalizes ingredient keys (spacing and case)", () => {
-    const result = expandInventory([{ name: "  BLUE   mountain  FLOWER ", quantity: 1 }], nameIndex);
+    const result = expandInventory(
+      [{ name: "  BLUE   mountain  FLOWER ", quantity: 1 }],
+      nameIndex,
+    );
     if ("error" in result) {
       throw new Error(result.error);
     }

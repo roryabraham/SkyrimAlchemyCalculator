@@ -98,14 +98,10 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
             max={field.max}
             value={params[field.key]}
             onValueChange={(raw) =>
-              setNumParam(
-                setParams,
-                startSettingsTransition,
-                field.key,
-                raw,
-                field.fallback,
-                { min: field.min, max: field.max },
-              )
+              setNumParam(setParams, startSettingsTransition, field.key, raw, field.fallback, {
+                min: field.min,
+                max: field.max,
+              })
             }
           />
         ))}

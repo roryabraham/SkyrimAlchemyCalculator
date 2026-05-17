@@ -1,13 +1,7 @@
 import * as Popover from "@radix-ui/react-popover";
 import { useQuery } from "@tanstack/react-query";
 import { ScrollArea, Spinner, TextField, Theme } from "@radix-ui/themes";
-import {
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  type KeyboardEvent,
-} from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { fetchIngredients } from "../ingredient-api.ts";
 import type { IngredientHit, InventoryRowPatch } from "../types.ts";
 import { IngredientSuggestionList } from "./IngredientSuggestionList.tsx";

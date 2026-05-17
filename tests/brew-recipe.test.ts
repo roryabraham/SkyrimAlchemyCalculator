@@ -4,7 +4,9 @@ import type { InventoryRow, Recipe } from "../web/src/types.ts";
 
 function makeRecipe(
   ingredients: { id: number; name: string }[],
-  overrides: Partial<Pick<Recipe, "effects" | "totalGold" | "mixtureKind" | "dominantEffectKey">> = {},
+  overrides: Partial<
+    Pick<Recipe, "effects" | "totalGold" | "mixtureKind" | "dominantEffectKey">
+  > = {},
 ): Recipe {
   return {
     ingredients: ingredients.map((ing) => ({ ...ing, iconUrl: null })),

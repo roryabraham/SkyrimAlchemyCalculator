@@ -29,14 +29,7 @@ export function IngredientSuggestionList({
   error,
 }: Props) {
   return (
-    <Flex
-      direction="column"
-      gap="1"
-      p="1"
-      id={listboxId}
-      role="listbox"
-      aria-label="Ingredients"
-    >
+    <Flex direction="column" gap="1" p="1" id={listboxId} role="listbox" aria-label="Ingredients">
       {isFetching && suggestions.length === 0 && !isError ? (
         <Text size="2" color="gray" style={{ padding: "0.25rem 0.5rem" }}>
           Searching…

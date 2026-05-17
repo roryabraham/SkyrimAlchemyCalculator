@@ -33,8 +33,7 @@ export function RecipeResultsPanel({
     canBrewRecipe(inventoryRows, rec),
   );
   const brewableRankedCount = recipes.filter((rec) => canBrewRecipe(inventoryRows, rec)).length;
-  const showDepletedRanked =
-    recipes.length > 0 && brewableRankedCount === 0 && !isLoading;
+  const showDepletedRanked = recipes.length > 0 && brewableRankedCount === 0 && !isLoading;
 
   return (
     <Card size="3" variant="surface" className="alchemy-panel-glow">
@@ -74,12 +73,7 @@ export function RecipeResultsPanel({
       ) : null}
       <Flex direction="column" gap="3">
         {brewableDisplayedRecipes.map((rec) => (
-          <RecipeCard
-            key={recipeKey(rec)}
-            recipe={rec}
-            canBrew
-            onBrew={() => onBrewRecipe(rec)}
-          />
+          <RecipeCard key={recipeKey(rec)} recipe={rec} canBrew onBrew={() => onBrewRecipe(rec)} />
         ))}
       </Flex>
     </Card>
