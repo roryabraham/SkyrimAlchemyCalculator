@@ -4,6 +4,8 @@ Web app and API for **The Elder Scrolls V: Skyrim Anniversary Edition** alchemy:
 
 Data is scraped from UESP ([Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredients), [Alchemy Effects](https://en.uesp.net/wiki/Skyrim:Alchemy_Effects)) into JSON, then loaded into a local **SQLite** database.
 
+The **web** UI is **React 19** + **Vite 6** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes), with [**React Compiler**](https://react.dev/learn/react-compiler) enabled via `babel-plugin-react-compiler` in the Vite React Babel pipeline (no manual `useMemo` / `useCallback` required for typical UI code).
+
 ## Requirements
 
 - **[Bun](https://bun.sh/)** — runs scrape/seed scripts, tests, and the API.
@@ -60,11 +62,19 @@ PORT=4000 bun run --cwd server start
 | Script | Purpose |
 |--------|---------|
 | `bun run dev` | API + Vite in watch mode |
-| `bun run build` | Production build of the web app |
-| `bun run test` | Bun unit tests |
+| `bun run build` | Production build of the web app (Vite + React Compiler) |
+| `bun run test` | Bun unit tests (`tests/`) |
 | `bun run scrape` | Fetch & parse ingredient tables from UESP |
 | `bun run scrape:effects` | Fetch & parse alchemy effect stats from UESP |
 | `bun run db:seed` | Recreate SQLite from JSON in `data/` |
+
+## Testing
+
+```bash
+bun test
+```
+
+Coverage includes UESP HTML parsers, **alchemy math** (`effectGold`, `powerFactor`, perk flags), **potion ranking** (`expandInventory`, `rankPotions` against the seeded DB, sorting, truncation, potion vs poison labels), and **Damage Health** gold parity (UESP controlling ingredient priority and table values). Tests expect `data/alchemy.sqlite` to exist (run `bun install` or `bun run db:seed` first).
 
 ## API
 
@@ -73,15 +83,21 @@ PORT=4000 bun run --cwd server start
   - `inventory`: `[{ "name": "Wheat", "count": 3 }, ...]` (names should match canonical ingredient names from search).
   - `params` (optional): `alchemySkill`, `fortifyAlchemy`, `alchemistPercent`, `hasPhysician`, `hasBenefactor`, `hasPoisoner`, `seekerOfShadowsPercent`.
 
-Response: `{ "recipes": [...], "truncated": boolean }`. Each recipe includes `totalGold`, `mixtureKind` (`potion` \| `poison`), `effects` with per-effect gold, and `ingredients` used.
+Successful response: `{ "recipes": [...], "truncated": boolean }`. Each recipe includes `totalGold`, `mixtureKind` (`potion` \| `poison`), `dominantEffectKey`, `effects` with per-effect gold, and `ingredients` used.
+
+On validation or inventory errors, the handler returns **HTTP 400** with `{ "error": string, "recipes": [], "truncated": false }`.
 
 `GET /health` returns `{ "ok": true }`.
 
-## Scope and limitations
+## Gold model and limitations
 
-- Targets **Anniversary Edition** (base + DLC + Creation Club content reflected on the linked UESP pages). Gold and effect ordering are **approximate** versus the game engine (perks, Purity, some Creation Kit edge cases). Defaults skew to early-game alchemy unless you pass `params` on `/api/potions`.
+- **Most effects** use UESP-style `base_cost`, `base_mag`, `base_dur`, ingredient magnitude/duration multipliers, and the usual floor formula, with **PowerFactor** from skill, Fortify Alchemy, Alchemist, Physician, Benefactor / Poisoner (when mixing potions vs poisons), and Seeker of Shadows where applicable.
 
-- Very large inventories may hit an internal combination cap; the API sets `truncated: true` when that happens.
+- **Damage Health** follows [UESP: Damage Health](https://en.uesp.net/wiki/Skyrim:Damage_Health) more closely: the controlling ingredient is chosen by **UESP priority** (then dominance as a tiebreaker), and gold uses that row’s pre-power magnitude, intrinsic duration for gold (including the 10s rule where the wiki notes it), and **gold mult**. Ingredients not in that table fall back to the generic path plus the row’s `gold_mult` from the database.
+
+- Targets **Anniversary Edition** (base + DLC + Creation Club content reflected on the linked UESP pages). Values remain **approximate** versus the game engine (Purity, other special cases, and non–Damage Health effects without per-ingredient CK tables).
+
+- Very large inventories may hit an internal combination cap (`MAX_RECIPES` in [`server/src/potion-engine.ts`](server/src/potion-engine.ts)); the API sets `truncated: true` when that happens.
 
 ## Project layout
 
@@ -89,5 +105,6 @@ Response: `{ "recipes": [...], "truncated": boolean }`. Each recipe includes `to
 |------|------|
 | [`scripts/`](scripts/) | UESP scrapers and `seed-db.ts` |
 | [`data/`](data/) | JSON sources; generated `alchemy.sqlite` |
-| [`server/`](server/) | Bun HTTP server, DB access, potion math |
-| [`web/`](web/) | Vite + React + TypeScript UI |
+| [`server/`](server/) | Bun HTTP server, SQLite access, potion enumeration and gold math (including [`server/src/damage-health-parity.ts`](server/src/damage-health-parity.ts) for Damage Health) |
+| [`web/`](web/) | Vite + React UI (`web/src/App.tsx` composes `web/src/components/`) |
+| [`tests/`](tests/) | Bun tests for parsers, math, and potion engine |

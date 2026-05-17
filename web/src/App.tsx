@@ -4,7 +4,8 @@ import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
-import { fetchIngredients } from "./ingredient-api.ts";
+import { fetchIngredientsForAutocomplete } from "./ingredient-api.ts";
+import { requestPotionsRank } from "./potions-api.ts";
 import type {
   AlchemyFormParams,
   InventoryRow,
@@ -37,12 +38,11 @@ export function App() {
 
   const runSearch = (rowId: string, q: string) => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(async () => {
+    debounceRef.current = setTimeout(() => {
       setRows((prev) =>
         prev.map((r) => (r.id === rowId ? { ...r, loading: true } : r)),
       );
-      try {
-        const hits = await fetchIngredients(q);
+      void fetchIngredientsForAutocomplete(q).then((hits) => {
         setRows((prev) =>
           prev.map((r) =>
             r.id === rowId
@@ -50,13 +50,7 @@ export function App() {
               : r,
           ),
         );
-      } catch {
-        setRows((prev) =>
-          prev.map((r) =>
-            r.id === rowId ? { ...r, loading: false, suggestions: [] } : r,
-          ),
-        );
-      }
+      });
     }, 220);
   };
 
@@ -84,35 +78,22 @@ export function App() {
     );
   };
 
-  const submit = async () => {
+  const submit = () => {
     setError(null);
     setLoading(true);
     setRecipes([]);
-    try {
-      const inventory = rows
-        .filter((r) => r.name.trim())
-        .map((r) => ({ name: r.name.trim(), count: r.count }));
-      const res = await fetch("/api/potions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ inventory, params }),
-      });
-      const data = (await res.json()) as {
-        recipes?: Recipe[];
-        truncated?: boolean;
-        error?: string;
-      };
-      if (!res.ok) {
-        setError(data.error ?? "Request failed");
-        return;
+    const inventory = rows
+      .filter((r) => r.name.trim())
+      .map((r) => ({ name: r.name.trim(), count: r.count }));
+    void requestPotionsRank(inventory, params).then((outcome) => {
+      if (outcome.type === "success") {
+        setRecipes(outcome.recipes);
+        setTruncated(outcome.truncated);
+      } else {
+        setError(outcome.error);
       }
-      setRecipes(data.recipes ?? []);
-      setTruncated(Boolean(data.truncated));
-    } catch {
-      setError("Could not reach server. Is the API running?");
-    } finally {
       setLoading(false);
-    }
+    });
   };
 
   useEffect(() => {

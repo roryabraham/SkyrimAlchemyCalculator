@@ -8,3 +8,14 @@ export async function fetchIngredients(q: string): Promise<IngredientHit[]> {
   if (!r.ok) throw new Error("Search failed");
   return (await r.json()) as IngredientHit[];
 }
+
+/** Like `fetchIngredients` but never throws (for autocomplete outside try/catch). */
+export async function fetchIngredientsForAutocomplete(
+  q: string,
+): Promise<IngredientHit[]> {
+  try {
+    return await fetchIngredients(q);
+  } catch {
+    return [];
+  }
+}
