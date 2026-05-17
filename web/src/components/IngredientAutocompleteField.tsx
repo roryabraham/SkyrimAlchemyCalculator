@@ -25,17 +25,15 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate }: Props) {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const listboxId = useId();
   const suggestionRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const prevSuggestionsRef = useRef<IngredientHit[] | null>(null);
-  const highlightedIndexRef = useRef(highlightedIndex);
-  highlightedIndexRef.current = highlightedIndex;
 
   const trimmedName = name.trim();
-  const { data, isError, error, isFetching, isSuccess, isPending, isEnabled } = useQuery({
-    queryKey: ["ingredients", "autocomplete", trimmedName],
-    queryFn: () => fetchIngredients(trimmedName),
-    enabled: trimmedName.length > 0,
-    staleTime: 5 * 60 * 1000,
-  });
+  const { data, dataUpdatedAt, isError, error, isFetching, isSuccess, isPending, isEnabled } =
+    useQuery({
+      queryKey: ["ingredients", "autocomplete", trimmedName],
+      queryFn: () => fetchIngredients(trimmedName),
+      enabled: trimmedName.length > 0,
+      staleTime: 5 * 60 * 1000,
+    });
 
   const isPopoverOpen =
     !isDismissed &&
@@ -46,18 +44,17 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate }: Props) {
 
   const isKeyboardNavEnabled = isPopoverOpen && suggestions.length > 0;
 
-  if (prevSuggestionsRef.current !== suggestions) {
-    prevSuggestionsRef.current = suggestions;
+  useEffect(() => {
     setHighlightedIndex(-1);
     suggestionRefs.current = [];
-  }
+  }, [suggestions]);
 
   useEffect(() => {
-    if (highlightedIndex < 0) {
+    if (highlightedIndex < 0 || highlightedIndex >= suggestions.length) {
       return;
     }
     suggestionRefs.current[highlightedIndex]?.scrollIntoView({ block: "nearest" });
-  }, [highlightedIndex]);
+  }, [highlightedIndex, suggestions]);
 
   const pickSuggestion = (hit: IngredientHit) => {
     setIsDismissed(true);
@@ -100,7 +97,7 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate }: Props) {
       return;
     }
     if (event.key === "ArrowUp") {
-      const i = highlightedIndexRef.current;
+      const i = highlightedIndex;
       if (i <= 0) {
         setHighlightedIndex(-1);
         return;
@@ -110,7 +107,7 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate }: Props) {
       return;
     }
     if (event.key === "Enter") {
-      const i = highlightedIndexRef.current;
+      const i = highlightedIndex;
       const pickIndex = i >= 0 ? i : 0;
       const hit = suggestions[pickIndex];
       if (hit) {
@@ -178,7 +175,13 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate }: Props) {
               }}
             >
               <ScrollArea type="hover" scrollbars="vertical" style={{ maxHeight: 240 }}>
+                {/*
+                  Remount when this query’s materialized result updates (TanStack bumps
+                  dataUpdatedAt). React keys must be string | number, not the suggestions array
+                  reference.
+                */}
                 <IngredientSuggestionList
+                  key={`${rowId}-${dataUpdatedAt}`}
                   listboxId={listboxId}
                   suggestionRefs={suggestionRefs}
                   suggestions={suggestions}
