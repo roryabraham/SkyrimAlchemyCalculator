@@ -71,3 +71,33 @@ export function applyRecipeBrew(rows: InventoryRow[], recipe: Recipe): Inventory
   }
   return finalizeAfterBrew(draft);
 }
+
+/**
+ * Row ids that lose at least one unit when brewing `recipe` (same matching rules
+ * as {@link applyRecipeBrew}). `null` if the brew cannot run.
+ */
+export function getBrewAffectedRowIds(rows: InventoryRow[], recipe: Recipe): string[] | null {
+  if (!canBrewRecipe(rows, recipe)) {
+    return null;
+  }
+  const draft = rows.map((row) => ({ ...row, quantity: floorQty(row.quantity) }));
+  const touched: string[] = [];
+  const seen = new Set<string>();
+  for (const ing of recipe.ingredients) {
+    let need = 1;
+    for (let i = 0; i < draft.length && need > 0; i++) {
+      const row = draft[i];
+      if (!rowMatchesRecipeIngredient(row, ing) || row.quantity <= 0) {
+        continue;
+      }
+      const take = Math.min(row.quantity, need);
+      if (take > 0 && !seen.has(row.id)) {
+        seen.add(row.id);
+        touched.push(row.id);
+      }
+      draft[i] = { ...row, quantity: row.quantity - take };
+      need -= take;
+    }
+  }
+  return touched;
+}

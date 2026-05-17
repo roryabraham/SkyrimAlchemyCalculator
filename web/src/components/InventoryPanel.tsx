@@ -4,6 +4,8 @@ import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
 type Props = {
   rows: InventoryRow[];
+  /** Row ids that should briefly highlight after a Brew consumes stock. */
+  brewFlashRowIds: readonly string[];
   isSubmitEnabled: boolean;
   isLoading: boolean;
   error: string | null;
@@ -15,6 +17,7 @@ type Props = {
 
 export function InventoryPanel({
   rows,
+  brewFlashRowIds,
   isSubmitEnabled,
   isLoading,
   error,
@@ -44,6 +47,7 @@ export function InventoryPanel({
             <InventoryIngredientRow
               key={row.id}
               row={row}
+              brewFlash={brewFlashRowIds.includes(row.id)}
               onUpdate={onUpdateRow}
               onRemove={onRemoveRow}
               onAddRow={onAddRow}

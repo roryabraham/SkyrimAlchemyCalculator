@@ -7,12 +7,13 @@ import { IngredientQuantityField } from "./IngredientQuantityField.tsx";
 
 type Props = {
   row: InventoryRow;
+  brewFlash: boolean;
   onUpdate: (rowId: string, patch: InventoryRowPatch) => void;
   onRemove: (rowId: string) => void;
   onAddRow: () => void;
 };
 
-export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Props) {
+export function InventoryIngredientRow({ row, brewFlash, onUpdate, onRemove, onAddRow }: Props) {
   const quantityInputRef = useRef<HTMLInputElement>(null);
   const isFinalized = typeof row.ingredientId === "number";
   const updateRowFields = (patch: InventoryRowPatch) => {
@@ -38,7 +39,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Pr
   };
 
   return (
-    <Table.Row align="start">
+    <Table.Row align="start" className={brewFlash ? "alchemy-brew-flash" : undefined}>
       <Table.Cell style={{ minWidth: "12rem" }}>
         {isFinalized ? (
           <FinalizedIngredientCell

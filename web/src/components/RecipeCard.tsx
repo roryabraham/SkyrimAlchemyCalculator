@@ -4,12 +4,14 @@ import type { Recipe } from "../types.ts";
 type Props = {
   recipe: Recipe;
   canBrew: boolean;
+  /** Brief highlight after Brew (driven by parent flash token). */
+  brewFlash: boolean;
   onBrew: () => void;
 };
 
-export function RecipeCard({ recipe: rec, canBrew, onBrew }: Props) {
+export function RecipeCard({ recipe: rec, canBrew, brewFlash, onBrew }: Props) {
   return (
-    <Card size="2" variant="classic">
+    <Card size="2" variant="classic" className={brewFlash ? "alchemy-brew-flash" : undefined}>
       <Flex align="center" justify="between" gap="3" wrap="wrap" mb="2">
         <Flex align="center" gap="2" wrap="wrap">
           <Text size="4" weight="bold" style={{ fontVariantNumeric: "tabular-nums" }}>

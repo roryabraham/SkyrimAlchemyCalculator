@@ -1,5 +1,6 @@
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { canBrewRecipe } from "../brew-recipe.ts";
+import { recipeKey } from "../recipe-key.ts";
 import type { InventoryRow, Recipe } from "../types.ts";
 import { LoadingIndicator } from "./LoadingIndicator.tsx";
 import { RecipeCard } from "./RecipeCard.tsx";
@@ -7,6 +8,8 @@ import { RecipeCard } from "./RecipeCard.tsx";
 type Props = {
   inventoryRows: InventoryRow[];
   onBrewRecipe: (recipe: Recipe) => void;
+  /** When set, the matching recipe card plays a short brew highlight. */
+  brewFlashRecipeKey: string | null;
   /** Authoritative list for empty-state and loading-related copy. */
   recipes: Recipe[];
   /** List rendered in the scroll area (may lag via `useDeferredValue`). */
@@ -16,14 +19,10 @@ type Props = {
   isLoading: boolean;
 };
 
-function recipeKey(rec: Recipe): string {
-  const ids = rec.ingredients.map((ing) => ing.id).join("-");
-  return `${rec.mixtureKind}-${rec.dominantEffectKey}-${ids}-${rec.totalGold}`;
-}
-
 export function RecipeResultsPanel({
   inventoryRows,
   onBrewRecipe,
+  brewFlashRecipeKey,
   recipes,
   displayedRecipes,
   isListUpdating,
@@ -70,7 +69,13 @@ export function RecipeResultsPanel({
       ) : null}
       <Flex direction="column" gap="3">
         {brewableDisplayedRecipes.map((rec) => (
-          <RecipeCard key={recipeKey(rec)} recipe={rec} canBrew onBrew={() => onBrewRecipe(rec)} />
+          <RecipeCard
+            key={recipeKey(rec)}
+            recipe={rec}
+            canBrew
+            brewFlash={brewFlashRecipeKey !== null && brewFlashRecipeKey === recipeKey(rec)}
+            onBrew={() => onBrewRecipe(rec)}
+          />
         ))}
       </Flex>
     </Card>

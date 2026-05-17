@@ -126,6 +126,27 @@ body::after {
   z-index: 1;
 }
 
+/* Brief amber wash when Brew updates a recipe card or inventory rows */
+@keyframes alchemy-brew-highlight {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  45% {
+    background-color: color-mix(in oklab, var(--amber-a5) 42%, transparent);
+  }
+}
+
+.alchemy-brew-flash {
+  animation: alchemy-brew-highlight 0.48s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alchemy-brew-flash {
+    animation: none;
+  }
+}
+
 /*
  * Cards between Radix translucent (`--color-panel`) and solid (`--color-panel-solid`).
  * Nudge the first % down for more translucency, up for more opacity.

@@ -29,7 +29,15 @@ for await (const filePath of walkTsFiles(srcRoot)) {
   const isTsx = filePath.endsWith(".tsx");
   const out = transformSync(code, {
     filename: filePath,
-    plugins: [[reactCompiler, {}]],
+    plugins: [
+      [
+        reactCompiler,
+        {
+          // Default is "none" — errors are logged only; CI must fail on violations.
+          panicThreshold: "all_errors",
+        },
+      ],
+    ],
     ast: false,
     code: true,
     configFile: false,

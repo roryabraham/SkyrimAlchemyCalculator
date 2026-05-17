@@ -3,7 +3,12 @@ import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
+  plugins: [
+    react(),
+    babel({
+      presets: [reactCompilerPreset({ panicThreshold: "all_errors" })],
+    }),
+  ],
   server: {
     port: 5173,
     proxy: {

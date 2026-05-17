@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { applyRecipeBrew, canBrewRecipe } from "../web/src/brew-recipe.ts";
+import { applyRecipeBrew, canBrewRecipe, getBrewAffectedRowIds } from "../web/src/brew-recipe.ts";
 import type { InventoryRow, Recipe } from "../web/src/types.ts";
 
 function makeRecipe(
@@ -144,5 +144,29 @@ describe("applyRecipeBrew", () => {
     expect(next!.length).toBe(1);
     expect(next![0].name).toBe("");
     expect(next![0].quantity).toBe(1);
+  });
+});
+
+describe("getBrewAffectedRowIds", () => {
+  it("lists each inventory row id that contributes at least one unit", () => {
+    const recipe = makeRecipe([
+      { id: 1, name: "Wheat" },
+      { id: 2, name: "Blue Mountain Flower" },
+    ]);
+    const rows: InventoryRow[] = [
+      row({ id: "row-a", name: "Wheat", quantity: 2, ingredientId: 1 }),
+      row({ id: "row-b", name: "Blue Mountain Flower", quantity: 1, ingredientId: 2 }),
+    ];
+    expect(getBrewAffectedRowIds(rows, recipe)).toEqual(["row-a", "row-b"]);
+  });
+
+  it("returns null when the brew cannot run", () => {
+    const recipe = makeRecipe([
+      { id: 1, name: "Wheat" },
+      { id: 2, name: "Blue Mountain Flower" },
+    ]);
+    expect(
+      getBrewAffectedRowIds([row({ name: "Wheat", quantity: 1, ingredientId: 1 })], recipe),
+    ).toBe(null);
   });
 });

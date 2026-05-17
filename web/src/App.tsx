@@ -1,19 +1,34 @@
 import { Container, Flex } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
-import { useDeferredValue, useEffect, useRef, useState, useTransition } from "react";
+import {
+  useDeferredValue,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 import { readPersistedState, writePersistedState } from "./app-persistence.ts";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { DataAttribution } from "./components/DataAttribution.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
-import { applyRecipeBrew } from "./brew-recipe.ts";
+import { applyRecipeBrew, getBrewAffectedRowIds } from "./brew-recipe.ts";
+import { recipeKey } from "./recipe-key.ts";
 import { requestPotionsRank } from "./potions-api.ts";
 import type { AlchemyFormParams, InventoryRow, InventoryRowPatch, Recipe } from "./types.ts";
 import { defaultAlchemyFormParams } from "./types.ts";
 import { uid } from "./uid.ts";
 
 export type { AlchemyFormParams } from "./types.ts";
+
+type BrewFlashState = {
+  recipeKey: string;
+  rowIds: readonly string[];
+};
+
+const NO_BREW_FLASH_ROWS: readonly string[] = [];
 
 export function App() {
   const [rows, setRows] = useState<InventoryRow[]>(() => {
@@ -26,8 +41,16 @@ export function App() {
   });
   const [, startSettingsTransition] = useTransition();
 
+  const [brewFlash, setBrewFlash] = useState<BrewFlashState | null>(null);
+  const brewFlashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const persistSnapshotRef = useRef({ rows, params });
-  persistSnapshotRef.current = { rows, params };
+  const rowsRef = useRef(rows);
+
+  useLayoutEffect(() => {
+    persistSnapshotRef.current = { rows, params };
+    rowsRef.current = rows;
+  }, [rows, params]);
 
   useEffect(() => {
     const debounceMs = 350;
@@ -56,6 +79,15 @@ export function App() {
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, [rows, params]);
+
+  useEffect(() => {
+    return () => {
+      if (brewFlashTimerRef.current != null) {
+        clearTimeout(brewFlashTimerRef.current);
+        brewFlashTimerRef.current = null;
+      }
+    };
+  }, []);
 
   const potionsMutation = useMutation({
     mutationFn: () => {
@@ -89,7 +121,20 @@ export function App() {
   };
 
   const brewRecipe = (recipe: Recipe) => {
+    if (brewFlashTimerRef.current != null) {
+      clearTimeout(brewFlashTimerRef.current);
+      brewFlashTimerRef.current = null;
+    }
+    const touched = getBrewAffectedRowIds(rowsRef.current, recipe);
+    if (touched == null) {
+      return;
+    }
+    setBrewFlash({ recipeKey: recipeKey(recipe), rowIds: touched });
     setRows((prev) => applyRecipeBrew(prev, recipe) ?? prev);
+    brewFlashTimerRef.current = setTimeout(() => {
+      setBrewFlash(null);
+      brewFlashTimerRef.current = null;
+    }, 520);
   };
 
   const isLoading = potionsMutation.isPending;
@@ -113,6 +158,7 @@ export function App() {
         <AppHeader />
         <InventoryPanel
           rows={rows}
+          brewFlashRowIds={brewFlash?.rowIds ?? NO_BREW_FLASH_ROWS}
           isSubmitEnabled={isSubmitEnabled}
           isLoading={isLoading}
           error={error}
@@ -129,6 +175,7 @@ export function App() {
         <RecipeResultsPanel
           inventoryRows={rows}
           onBrewRecipe={brewRecipe}
+          brewFlashRecipeKey={brewFlash?.recipeKey ?? null}
           recipes={recipes}
           displayedRecipes={deferredRecipes}
           isListUpdating={isListUpdating}
