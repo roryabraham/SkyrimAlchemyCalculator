@@ -1,0 +1,8237 @@
+[
+  {
+    "name": "Abecean Longfin",
+    "nameNormalized": "abecean longfin",
+    "rowId": "Abecean_Longfin",
+    "formIdRaw": "00106e1b",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.5,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Aloe Vera Leaves",
+    "nameNormalized": "aloe vera leaves",
+    "rowId": "Aloe_Vera_Leaves",
+    "formIdRaw": "FExxx0D0",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "Khajiit Traders",
+    "garden": "2",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": 1.67,
+        "durMult": 1.71,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ancestor Moth Wing",
+    "nameNormalized": "ancestor moth wing",
+    "rowId": "Ancestor_Moth_Wing",
+    "formIdRaw": "xx0059ba",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ash Creep Cluster",
+    "nameNormalized": "ash creep cluster",
+    "rowId": "Ash_Creep_Cluster",
+    "formIdRaw": "xx01cd74",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.25,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ash Hopper Jelly",
+    "nameNormalized": "ash hopper jelly",
+    "rowId": "Ash_Hopper_Jelly",
+    "formIdRaw": "xx01cd71",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ashen Grass Pod",
+    "nameNormalized": "ashen grass pod",
+    "rowId": "Ashen_Grass_Pod",
+    "formIdRaw": "xx016e26",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Lockpicking",
+        "displayName": "Fortify Lockpicking",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bear Claws",
+    "nameNormalized": "bear claws",
+    "rowId": "Bear_Claws",
+    "formIdRaw": "0006bc02",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": 0.8,
+        "durMult": 0.78,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bee",
+    "nameNormalized": "bee",
+    "rowId": "Bee",
+    "formIdRaw": "000a9195",
+    "section": "standard",
+    "value": 3,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Beehive Husk",
+    "nameNormalized": "beehive husk",
+    "rowId": "Beehive_Husk",
+    "formIdRaw": "000a9191",
+    "section": "standard",
+    "value": 5,
+    "weight": 1,
+    "merchantAvail": "None (Common)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.5
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bleeding Crown",
+    "nameNormalized": "bleeding crown",
+    "rowId": "Bleeding_Crown",
+    "formIdRaw": "0004da20",
+    "section": "standard",
+    "value": 10,
+    "weight": 0.3,
+    "merchantAvail": "Uncommon",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Blisterwort",
+    "nameNormalized": "blisterwort",
+    "rowId": "Blisterwort",
+    "formIdRaw": "0004da25",
+    "section": "standard",
+    "value": 12,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 0.6,
+        "durMult": 0.57,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Smithing",
+        "displayName": "Fortify Smithing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Blue Butterfly Wing",
+    "nameNormalized": "blue butterfly wing",
+    "rowId": "Blue_Butterfly_Wing",
+    "formIdRaw": "000727de",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Blue Dartwing",
+    "nameNormalized": "blue dartwing",
+    "rowId": "Blue_Dartwing",
+    "formIdRaw": "000e4f0c",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Pickpocket",
+        "displayName": "Fortify Pickpocket",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Blue Mountain Flower",
+    "nameNormalized": "blue mountain flower",
+    "rowId": "Blue_Mountain_Flower",
+    "formIdRaw": "00077e1c",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Boar Tusk",
+    "nameNormalized": "boar tusk",
+    "rowId": "Boar_Tusk",
+    "formIdRaw": "xx01cd6f",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": 1.25,
+        "durMult": 5,
+        "goldMult": 7.5
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 5,
+        "durMult": 5.9,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bone Meal",
+    "nameNormalized": "bone meal",
+    "rowId": "Bone_Meal",
+    "formIdRaw": "00034cdd",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.5,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Briar Heart",
+    "nameNormalized": "briar heart",
+    "rowId": "Briar_Heart",
+    "formIdRaw": "0003ad61",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.5,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.5
+      },
+      {
+        "slot": 3,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Burnt Spriggan Wood",
+    "nameNormalized": "burnt spriggan wood",
+    "rowId": "Burnt_Spriggan_Wood",
+    "formIdRaw": "xx01cd6e",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Butterfly Wing",
+    "nameNormalized": "butterfly wing",
+    "rowId": "Butterfly_Wing",
+    "formIdRaw": "000727e0",
+    "section": "standard",
+    "value": 3,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Barter",
+        "displayName": "Fortify Barter",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Canis Root",
+    "nameNormalized": "canis root",
+    "rowId": "Canis_Root",
+    "formIdRaw": "0006abcb",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Marksman",
+        "displayName": "Fortify Marksman",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Charred Skeever Hide",
+    "nameNormalized": "charred skeever hide",
+    "rowId": "Charred_Skeever_Hide",
+    "formIdRaw": "00052695",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.5,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.36
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Chaurus Eggs",
+    "nameNormalized": "chaurus eggs",
+    "rowId": "Chaurus_Eggs",
+    "formIdRaw": "0003ad56",
+    "section": "standard",
+    "value": 10,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Chaurus Hunter Antennae",
+    "nameNormalized": "chaurus hunter antennae",
+    "rowId": "Chaurus_Hunter_Antennae",
+    "formIdRaw": "xx0183b7",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Chicken's Egg",
+    "nameNormalized": "chicken s egg",
+    "rowId": "Chicken.27s_Egg",
+    "formIdRaw": "00023d77",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.5,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Creep Cluster",
+    "nameNormalized": "creep cluster",
+    "rowId": "Creep_Cluster",
+    "formIdRaw": "000b2183",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "5",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Crimson Nirnroot",
+    "nameNormalized": "crimson nirnroot",
+    "rowId": "Crimson_Nirnroot",
+    "formIdRaw": "000b701a",
+    "section": "standard",
+    "value": 10,
+    "weight": 0.2,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 3
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 3
+      },
+      {
+        "slot": 3,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Cyrodilic Spadetail",
+    "nameNormalized": "cyrodilic spadetail",
+    "rowId": "Cyrodilic_Spadetail",
+    "formIdRaw": "00106e19",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.25,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Daedra Heart",
+    "nameNormalized": "daedra heart",
+    "rowId": "Daedra_Heart",
+    "formIdRaw": "0003ad5b",
+    "section": "standard",
+    "value": 250,
+    "weight": 0.5,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Deathbell",
+    "nameNormalized": "deathbell",
+    "rowId": "Deathbell",
+    "formIdRaw": "000516c8",
+    "section": "standard",
+    "value": 4,
+    "weight": 0.1,
+    "merchantAvail": "Rare",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 1.5
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 2.1
+      },
+      {
+        "slot": 3,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Dragon's Tongue",
+    "nameNormalized": "dragon s tongue",
+    "rowId": "Dragon.27s_Tongue",
+    "formIdRaw": "000889a2",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Barter",
+        "displayName": "Fortify Barter",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Two-handed",
+        "displayName": "Fortify Two-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Dwarven Oil",
+    "nameNormalized": "dwarven oil",
+    "rowId": "Dwarven_Oil",
+    "formIdRaw": "000f11c0",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ectoplasm",
+    "nameNormalized": "ectoplasm",
+    "rowId": "Ectoplasm",
+    "formIdRaw": "0003ad63",
+    "section": "standard",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.8
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Elves Ear",
+    "nameNormalized": "elves ear",
+    "rowId": "Elves_Ear",
+    "formIdRaw": "00034d31",
+    "section": "standard",
+    "value": 10,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Marksman",
+        "displayName": "Fortify Marksman",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Emperor Parasol Moss",
+    "nameNormalized": "emperor parasol moss",
+    "rowId": "Emperor_Parasol_Moss",
+    "formIdRaw": "xx01ff75",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 1.5
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Two-handed",
+        "displayName": "Fortify Two-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Eye of Sabre Cat",
+    "nameNormalized": "eye of sabre cat",
+    "rowId": "Eye_of_Sabre_Cat",
+    "formIdRaw": "0006bc07",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Falmer Ear",
+    "nameNormalized": "falmer ear",
+    "rowId": "Falmer_Ear",
+    "formIdRaw": "0003ad5d",
+    "section": "standard",
+    "value": 10,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Lockpicking",
+        "displayName": "Fortify Lockpicking",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Felsaad Tern Feathers",
+    "nameNormalized": "felsaad tern feathers",
+    "rowId": "Felsaad_Tern_Feathers",
+    "formIdRaw": "xx03cd8e",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Fire Salts",
+    "nameNormalized": "fire salts",
+    "rowId": "Fire_Salts",
+    "formIdRaw": "0003ad5e",
+    "section": "standard",
+    "value": 50,
+    "weight": 0.25,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Fly Amanita",
+    "nameNormalized": "fly amanita",
+    "rowId": "Fly_Amanita",
+    "formIdRaw": "0004da00",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Two-handed",
+        "displayName": "Fortify Two-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Frost Mirriam",
+    "nameNormalized": "frost mirriam",
+    "rowId": "Frost_Mirriam",
+    "formIdRaw": "00034d32",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Frost Salts",
+    "nameNormalized": "frost salts",
+    "rowId": "Frost_Salts",
+    "formIdRaw": "0003ad5f",
+    "section": "standard",
+    "value": 100,
+    "weight": 0.25,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Garlic",
+    "nameNormalized": "garlic",
+    "rowId": "Garlic",
+    "formIdRaw": "00034d22",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.25,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Giant Lichen",
+    "nameNormalized": "giant lichen",
+    "rowId": "Giant_Lichen",
+    "formIdRaw": "0007e8c1",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Giant's Toe",
+    "nameNormalized": "giant s toe",
+    "rowId": "Giant.27s_Toe",
+    "formIdRaw": "0003ad64",
+    "section": "standard",
+    "value": 20,
+    "weight": 1,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 5,
+        "durMult": 5.9,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Gleamblossom",
+    "nameNormalized": "gleamblossom",
+    "rowId": "Gleamblossom",
+    "formIdRaw": "xx00b097",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.1,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Glow Dust",
+    "nameNormalized": "glow dust",
+    "rowId": "Glow_Dust",
+    "formIdRaw": "0003ad73",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.5,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Glowing Mushroom",
+    "nameNormalized": "glowing mushroom",
+    "rowId": "Glowing_Mushroom",
+    "formIdRaw": "0007ee01",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.2,
+    "merchantAvail": "None",
+    "garden": "5",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Smithing",
+        "displayName": "Fortify Smithing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Grass Pod",
+    "nameNormalized": "grass pod",
+    "rowId": "Grass_Pod",
+    "formIdRaw": "00083e64",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hagraven Claw",
+    "nameNormalized": "hagraven claw",
+    "rowId": "Hagraven_Claw",
+    "formIdRaw": "0006b689",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.25,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Barter",
+        "displayName": "Fortify Barter",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hagraven Feathers",
+    "nameNormalized": "hagraven feathers",
+    "rowId": "Hagraven_Feathers",
+    "formIdRaw": "0003ad66",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hanging Moss",
+    "nameNormalized": "hanging moss",
+    "rowId": "Hanging_Moss",
+    "formIdRaw": "00057f91",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hawk Beak",
+    "nameNormalized": "hawk beak",
+    "rowId": "Hawk_Beak",
+    "formIdRaw": "000e7ebc",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hawk Feathers",
+    "nameNormalized": "hawk feathers",
+    "rowId": "Hawk_Feathers",
+    "formIdRaw": "000e7ed0",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.36
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hawk's Egg",
+    "nameNormalized": "hawk s egg",
+    "rowId": "Hawk.27s_Egg",
+    "formIdRaw": "xx00f1cc",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.5,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Histcarp",
+    "nameNormalized": "histcarp",
+    "rowId": "Histcarp",
+    "formIdRaw": "00106e18",
+    "section": "standard",
+    "value": 6,
+    "weight": 0.25,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Honeycomb",
+    "nameNormalized": "honeycomb",
+    "rowId": "Honeycomb",
+    "formIdRaw": "000b08c5",
+    "section": "standard",
+    "value": 5,
+    "weight": 1,
+    "merchantAvail": "None (Common)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.5
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Human Flesh",
+    "nameNormalized": "human flesh",
+    "rowId": "Human_Flesh",
+    "formIdRaw": "001016b3",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.25,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Human Heart",
+    "nameNormalized": "human heart",
+    "rowId": "Human_Heart",
+    "formIdRaw": "000b18cd",
+    "section": "standard",
+    "value": 0,
+    "weight": 1,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ice Wraith Teeth",
+    "nameNormalized": "ice wraith teeth",
+    "rowId": "Ice_Wraith_Teeth",
+    "formIdRaw": "0003ad6a",
+    "section": "standard",
+    "value": 30,
+    "weight": 0.25,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Imp Stool",
+    "nameNormalized": "imp stool",
+    "rowId": "Imp_Stool",
+    "formIdRaw": "0004da23",
+    "section": "standard",
+    "value": 0,
+    "weight": 0.3,
+    "merchantAvail": "Rare",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 0.6,
+        "durMult": 0.57,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Jazbay Grapes",
+    "nameNormalized": "jazbay grapes",
+    "rowId": "Jazbay_Grapes",
+    "formIdRaw": "0006ac4a",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.2,
+    "merchantAvail": "Rare",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Juniper Berries",
+    "nameNormalized": "juniper berries",
+    "rowId": "Juniper_Berries",
+    "formIdRaw": "0005076e",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Archery",
+        "displayName": "Fortify Marksman",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Large Antlers",
+    "nameNormalized": "large antlers",
+    "rowId": "Large_Antlers",
+    "formIdRaw": "0006bc0a",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 6,
+        "durMult": 1.75,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Lavender",
+    "nameNormalized": "lavender",
+    "rowId": "Lavender",
+    "formIdRaw": "00045c28",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Luna Moth Wing",
+    "nameNormalized": "luna moth wing",
+    "rowId": "Luna_Moth_Wing",
+    "formIdRaw": "000727df",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Moon Sugar",
+    "nameNormalized": "moon sugar",
+    "rowId": "Moon_Sugar",
+    "formIdRaw": "000d8e3f",
+    "section": "standard",
+    "value": 50,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Mora Tapinella",
+    "nameNormalized": "mora tapinella",
+    "rowId": "Mora_Tapinella",
+    "formIdRaw": "000ec870",
+    "section": "standard",
+    "value": 4,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Mudcrab Chitin",
+    "nameNormalized": "mudcrab chitin",
+    "rowId": "Mudcrab_Chitin",
+    "formIdRaw": "0006bc00",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.25,
+    "merchantAvail": "None (Common)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Namira's Rot",
+    "nameNormalized": "namira s rot",
+    "rowId": "Namira.27s_Rot",
+    "formIdRaw": "0004da24",
+    "section": "standard",
+    "value": 0,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Lockpicking",
+        "displayName": "Fortify Lockpicking",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Netch Jelly",
+    "nameNormalized": "netch jelly",
+    "rowId": "Netch_Jelly",
+    "formIdRaw": "xx01cd72",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 2
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Nightshade",
+    "nameNormalized": "nightshade",
+    "rowId": "Nightshade",
+    "formIdRaw": "xx042A61",
+    "section": "creation_club",
+    "value": 8,
+    "weight": 0.1,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.8
+      }
+    ]
+  },
+  {
+    "name": "Nirnroot",
+    "nameNormalized": "nirnroot",
+    "rowId": "Nirnroot",
+    "formIdRaw": "00059b86",
+    "section": "standard",
+    "value": 10,
+    "weight": 0.2,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 12.6
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Nordic Barnacle",
+    "nameNormalized": "nordic barnacle",
+    "rowId": "Nordic_Barnacle",
+    "formIdRaw": "0007edf5",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Pickpocket",
+        "displayName": "Fortify Pickpocket",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Orange Dartwing",
+    "nameNormalized": "orange dartwing",
+    "rowId": "Orange_Dartwing",
+    "formIdRaw": "000bb956",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Pickpocket",
+        "displayName": "Fortify Pickpocket",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Pearl",
+    "nameNormalized": "pearl",
+    "rowId": "Pearl",
+    "formIdRaw": "000854fe",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Rare)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Pine Thrush Egg",
+    "nameNormalized": "pine thrush egg",
+    "rowId": "Pine_Thrush_Egg",
+    "formIdRaw": "00023d6f",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.5,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Lockpicking",
+        "displayName": "Fortify Lockpicking",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Poison Bloom",
+    "nameNormalized": "poison bloom",
+    "rowId": "Poison_Bloom",
+    "formIdRaw": "xx0185fb",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.25,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 1.5
+      },
+      {
+        "slot": 2,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Powdered Mammoth Tusk",
+    "nameNormalized": "powdered mammoth tusk",
+    "rowId": "Powdered_Mammoth_Tusk",
+    "formIdRaw": "0006bc10",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Purple Mountain Flower",
+    "nameNormalized": "purple mountain flower",
+    "rowId": "Purple_Mountain_Flower",
+    "formIdRaw": "00077e1e",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Red Mountain Flower",
+    "nameNormalized": "red mountain flower",
+    "rowId": "Red_Mountain_Flower",
+    "formIdRaw": "00077e1d",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "River Betty",
+    "nameNormalized": "river betty",
+    "rowId": "River_Betty",
+    "formIdRaw": "00106e1a",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.25,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 2.5
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Rock Warbler Egg",
+    "nameNormalized": "rock warbler egg",
+    "rowId": "Rock_Warbler_Egg",
+    "formIdRaw": "0007e8c8",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.5,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Sabre Cat Tooth",
+    "nameNormalized": "sabre cat tooth",
+    "rowId": "Sabre_Cat_Tooth",
+    "formIdRaw": "0006bc04",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Smithing",
+        "displayName": "Fortify Smithing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Salmon Roe",
+    "nameNormalized": "salmon roe",
+    "rowId": "Salmon_Roe",
+    "formIdRaw": "xx003545",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.2,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": 0.4,
+        "durMult": 0.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": 12,
+        "durMult": 15.4,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 12.5,
+        "durMult": 0.08,
+        "goldMult": 1.05
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Salt Pile",
+    "nameNormalized": "salt pile",
+    "rowId": "Salt_Pile",
+    "formIdRaw": "00034cdf",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.2,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Scaly Pholiota",
+    "nameNormalized": "scaly pholiota",
+    "rowId": "Scaly_Pholiota",
+    "formIdRaw": "0006f950",
+    "section": "standard",
+    "value": 4,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "5",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Scathecraw",
+    "nameNormalized": "scathecraw",
+    "rowId": "Scathecraw",
+    "formIdRaw": "xx017e97",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Silverside Perch",
+    "nameNormalized": "silverside perch",
+    "rowId": "Silverside_Perch",
+    "formIdRaw": "00106e1c",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.25,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Skeever Tail",
+    "nameNormalized": "skeever tail",
+    "rowId": "Skeever_Tail",
+    "formIdRaw": "0003ad6f",
+    "section": "standard",
+    "value": 3,
+    "weight": 0.2,
+    "merchantAvail": "Common",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Slaughterfish Egg",
+    "nameNormalized": "slaughterfish egg",
+    "rowId": "Slaughterfish_Egg",
+    "formIdRaw": "0007e8c5",
+    "section": "standard",
+    "value": 3,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Pickpocket",
+        "displayName": "Fortify Pickpocket",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Slaughterfish Scales",
+    "nameNormalized": "slaughterfish scales",
+    "rowId": "Slaughterfish_Scales",
+    "formIdRaw": "0003ad70",
+    "section": "standard",
+    "value": 3,
+    "weight": 0.1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Small Antlers",
+    "nameNormalized": "small antlers",
+    "rowId": "Small_Antlers",
+    "formIdRaw": "0006bc0b",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Common)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Small Pearl",
+    "nameNormalized": "small pearl",
+    "rowId": "Small_Pearl",
+    "formIdRaw": "00085500",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Snowberries",
+    "nameNormalized": "snowberries",
+    "rowId": "Snowberries",
+    "formIdRaw": "0001b3bd",
+    "section": "standard",
+    "value": 4,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Spawn Ash",
+    "nameNormalized": "spawn ash",
+    "rowId": "Spawn_Ash",
+    "formIdRaw": "xx01cd6d",
+    "section": "standard",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Spider Egg",
+    "nameNormalized": "spider egg",
+    "rowId": "Spider_Egg",
+    "formIdRaw": "0009151b",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Lockpicking",
+        "displayName": "Fortify Lockpicking",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Marksman",
+        "displayName": "Fortify Marksman",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Spriggan Sap",
+    "nameNormalized": "spriggan sap",
+    "rowId": "Spriggan_Sap",
+    "formIdRaw": "00063b5f",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.2,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Smithing",
+        "displayName": "Fortify Smithing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Swamp Fungal Pod",
+    "nameNormalized": "swamp fungal pod",
+    "rowId": "Swamp_Fungal_Pod",
+    "formIdRaw": "0007e8b7",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.25,
+    "merchantAvail": "Uncommon",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Taproot",
+    "nameNormalized": "taproot",
+    "rowId": "Taproot",
+    "formIdRaw": "0003ad71",
+    "section": "standard",
+    "value": 15,
+    "weight": 0.5,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Thistle Branch",
+    "nameNormalized": "thistle branch",
+    "rowId": "Thistle_Branch",
+    "formIdRaw": "000134aa",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": 0.75,
+        "durMult": 0,
+        "goldMult": 0.1
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Torchbug Thorax",
+    "nameNormalized": "torchbug thorax",
+    "rowId": "Torchbug_Thorax",
+    "formIdRaw": "0004da73",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Trama Root",
+    "nameNormalized": "trama root",
+    "rowId": "Trama_Root",
+    "formIdRaw": "xx017008",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Troll Fat",
+    "nameNormalized": "troll fat",
+    "rowId": "Troll_Fat",
+    "formIdRaw": "0003ad72",
+    "section": "standard",
+    "value": 15,
+    "weight": 1,
+    "merchantAvail": "Uncommon",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Two-handed",
+        "displayName": "Fortify Two-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Tundra Cotton",
+    "nameNormalized": "tundra cotton",
+    "rowId": "Tundra_Cotton",
+    "formIdRaw": "0003f7f8",
+    "section": "standard",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Barter",
+        "displayName": "Fortify Barter",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Vampire Dust",
+    "nameNormalized": "vampire dust",
+    "rowId": "Vampire_Dust",
+    "formIdRaw": "0003ad76",
+    "section": "standard",
+    "value": 25,
+    "weight": 0.2,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Void Salts",
+    "nameNormalized": "void salts",
+    "rowId": "Void_Salts",
+    "formIdRaw": "0003ad60",
+    "section": "standard",
+    "value": 125,
+    "weight": 0.2,
+    "merchantAvail": "Rare",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Wheat",
+    "nameNormalized": "wheat",
+    "rowId": "Wheat",
+    "formIdRaw": "0004b0ba",
+    "section": "standard",
+    "value": 5,
+    "weight": 0.1,
+    "merchantAvail": "Common",
+    "garden": "4",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "White Cap",
+    "nameNormalized": "white cap",
+    "rowId": "White_Cap",
+    "formIdRaw": "0004da22",
+    "section": "standard",
+    "value": 0,
+    "weight": 0.3,
+    "merchantAvail": "Uncommon",
+    "garden": "2",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Wisp Wrappings",
+    "nameNormalized": "wisp wrappings",
+    "rowId": "Wisp_Wrappings",
+    "formIdRaw": "0006bc0e",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None (Uncommon)",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Yellow Mountain Flower",
+    "nameNormalized": "yellow mountain flower",
+    "rowId": "Yellow_Mountain_Flower",
+    "formIdRaw": "xx002a78",
+    "section": "standard",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 1.25
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Alocasia Fruit",
+    "nameNormalized": "alocasia fruit",
+    "rowId": "Alocasia_Fruit",
+    "formIdRaw": "FExxxD62",
+    "section": "creation_club",
+    "value": 22,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Light",
+        "displayName": "Light",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ambrosia",
+    "nameNormalized": "ambrosia",
+    "rowId": "Ambrosia",
+    "formIdRaw": "FExxx836",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Cure_Poison",
+        "displayName": "Cure Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 1.56
+      }
+    ]
+  },
+  {
+    "name": "Angelfish",
+    "nameNormalized": "angelfish",
+    "rowId": "Angelfish",
+    "formIdRaw": "xx0008EB",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Marksman",
+        "displayName": "Fortify Marksman",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Angler Larvae",
+    "nameNormalized": "angler larvae",
+    "rowId": "Angler_Larvae",
+    "formIdRaw": "xx0008F0",
+    "section": "creation_club",
+    "value": 1,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Two-handed",
+        "displayName": "Fortify Two-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Aster Bloom Core",
+    "nameNormalized": "aster bloom core",
+    "rowId": "Aster_Bloom_Core",
+    "formIdRaw": "FExxxD66",
+    "section": "creation_club",
+    "value": 40,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Block",
+        "displayName": "Fortify Block",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bittergreen Petals",
+    "nameNormalized": "bittergreen petals",
+    "rowId": "Bittergreen_Petals",
+    "formIdRaw": "FExxxD68",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Cure_Poison",
+        "displayName": "Cure Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Blind Watcher's Eye",
+    "nameNormalized": "blind watcher s eye",
+    "rowId": "Blind_Watcher.27s_Eye",
+    "formIdRaw": "FExxx822",
+    "section": "creation_club",
+    "value": 9,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Light",
+        "displayName": "Light",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Spell_Absorption",
+        "displayName": "Spell Absorption",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bliss Bug Thorax",
+    "nameNormalized": "bliss bug thorax",
+    "rowId": "Bliss_Bug_Thorax",
+    "formIdRaw": "xx059155",
+    "section": "creation_club",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": 0.25,
+        "durMult": 0.21,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Blister Pod Cap",
+    "nameNormalized": "blister pod cap",
+    "rowId": "Blister_Pod_Cap",
+    "formIdRaw": "FExxxD6A",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Night_Eye_(effect)",
+        "displayName": "Night Eye",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bloodgrass",
+    "nameNormalized": "bloodgrass",
+    "rowId": "Bloodgrass",
+    "formIdRaw": "xx024C13",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 6,
+        "durMult": 0.57,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bog Beacon",
+    "nameNormalized": "bog beacon",
+    "rowId": "Bog_Beacon",
+    "formIdRaw": "FExxxD6C",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Bungler's Bane",
+    "nameNormalized": "bungler s bane",
+    "rowId": "Bungler.27s_Bane",
+    "formIdRaw": "FExxx802",
+    "section": "creation_club",
+    "value": 50,
+    "weight": 0.5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": 1.5,
+        "durMult": 3.34,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Chokeberry",
+    "nameNormalized": "chokeberry",
+    "rowId": "Chokeberry",
+    "formIdRaw": "FExxx838",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": 1.5,
+        "durMult": 3.34,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Chokeweed",
+    "nameNormalized": "chokeweed",
+    "rowId": "Chokeweed",
+    "formIdRaw": "FExxx804",
+    "section": "creation_club",
+    "value": 7,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": 1.33,
+        "durMult": 1.37,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.36
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": 1.33,
+        "durMult": 1.37,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Coda Flower",
+    "nameNormalized": "coda flower",
+    "rowId": "Coda_Flower",
+    "formIdRaw": "FExxx805",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Comberry",
+    "nameNormalized": "comberry",
+    "rowId": "Comberry",
+    "formIdRaw": "FExxx806",
+    "section": "creation_club",
+    "value": 12,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Spell_Absorption",
+        "displayName": "Spell Absorption",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Congealed Putrescence",
+    "nameNormalized": "congealed putrescence",
+    "rowId": "Congealed_Putrescence",
+    "formIdRaw": "FExxx807",
+    "section": "creation_club",
+    "value": 9,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": 1.5,
+        "durMult": 3.34,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Corkbulb Root",
+    "nameNormalized": "corkbulb root",
+    "rowId": "Corkbulb_Root",
+    "formIdRaw": "FExxx809",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Marksman",
+        "displayName": "Fortify Marksman",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Daedra Silk",
+    "nameNormalized": "daedra silk",
+    "rowId": "Daedra_Silk",
+    "formIdRaw": "FExxx80A",
+    "section": "creation_club",
+    "value": 50,
+    "weight": 0.5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Night_Eye_(effect)",
+        "displayName": "Night Eye",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Daedra Venin",
+    "nameNormalized": "daedra venin",
+    "rowId": "Daedra_Venin",
+    "formIdRaw": "FExxx80B",
+    "section": "creation_club",
+    "value": 50,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": 1.5,
+        "durMult": 3.34,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Spell_Absorption",
+        "displayName": "Spell Absorption",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Daedroth Teeth",
+    "nameNormalized": "daedroth teeth",
+    "rowId": "Daedroth_Teeth",
+    "formIdRaw": "FExxx826",
+    "section": "creation_club",
+    "value": 50,
+    "weight": 0.5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Light",
+        "displayName": "Light",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Dreugh Wax",
+    "nameNormalized": "dreugh wax",
+    "rowId": "Dreugh_Wax",
+    "formIdRaw": "FExxx827",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Smithing",
+        "displayName": "Fortify Smithing",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Elytra Ichor",
+    "nameNormalized": "elytra ichor",
+    "rowId": "Elytra_Ichor",
+    "formIdRaw": "FExxx828",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Fire Petal",
+    "nameNormalized": "fire petal",
+    "rowId": "Fire_Petal",
+    "formIdRaw": "FExxx829",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Spell_Absorption",
+        "displayName": "Spell Absorption",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Flame Stalk",
+    "nameNormalized": "flame stalk",
+    "rowId": "Flame_Stalk",
+    "formIdRaw": "xx095E23",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Fungus Stalk",
+    "nameNormalized": "fungus stalk",
+    "rowId": "Fungus_Stalk",
+    "formIdRaw": "FExxx82B",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 1.25,
+        "durMult": 5,
+        "goldMult": 7.5
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": 1.25,
+        "durMult": 5,
+        "goldMult": 7.5
+      },
+      {
+        "slot": 4,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": 1.6,
+        "durMult": 1.67,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Glassfish",
+    "nameNormalized": "glassfish",
+    "rowId": "Glassfish",
+    "formIdRaw": "xx0008EE",
+    "section": "creation_club",
+    "value": 1,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": 0.25,
+        "durMult": 0.21,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Persuasion",
+        "displayName": "Fortify Persuasion",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Gnarl Bark",
+    "nameNormalized": "gnarl bark",
+    "rowId": "Gnarl_Bark",
+    "formIdRaw": "FExxx82C",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Gold Kanet",
+    "nameNormalized": "gold kanet",
+    "rowId": "Gold_Kanet",
+    "formIdRaw": "FExxx82D",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Health",
+        "displayName": "Ravage Health",
+        "magMult": 1.5,
+        "durMult": 3.34,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Frost",
+        "displayName": "Weakness to Frost",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Smithing",
+        "displayName": "Fortify Smithing",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Goldfish",
+    "nameNormalized": "goldfish",
+    "rowId": "Goldfish",
+    "formIdRaw": "xx0008EF",
+    "section": "creation_club",
+    "value": 10,
+    "weight": 0.25,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Heavy_Armor",
+        "displayName": "Fortify Heavy Armor",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Green Butterfly Wing",
+    "nameNormalized": "green butterfly wing",
+    "rowId": "Green_Butterfly_Wing",
+    "formIdRaw": "xx059151",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 6,
+        "durMult": 0.57,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hackle-Lo Leaf",
+    "nameNormalized": "hackle lo leaf",
+    "rowId": "Hackle-Lo_Leaf",
+    "formIdRaw": "FExxx82E",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": 1.6,
+        "durMult": 1.67,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Harrada",
+    "nameNormalized": "harrada",
+    "rowId": "Harrada",
+    "formIdRaw": "xx024C11",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Heart of Order",
+    "nameNormalized": "heart of order",
+    "rowId": "Heart_of_Order",
+    "formIdRaw": "FExxx851",
+    "section": "creation_club",
+    "value": 40,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 1.25,
+        "durMult": 5,
+        "goldMult": 7.5
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Two-handed",
+        "displayName": "Fortify Two-handed",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hunger Tongue",
+    "nameNormalized": "hunger tongue",
+    "rowId": "Hunger_Tongue",
+    "formIdRaw": "FExxx80C",
+    "section": "creation_club",
+    "value": 10,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": 1.33,
+        "durMult": 2,
+        "goldMult": 2.93
+      },
+      {
+        "slot": 2,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.36
+      },
+      {
+        "slot": 3,
+        "effectKey": "Cure_Poison",
+        "displayName": "Cure Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hydnum Azure Giant Spore",
+    "nameNormalized": "hydnum azure giant spore",
+    "rowId": "Hydnum_Azure_Giant_Spore",
+    "formIdRaw": "FExxx80D",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 1.25,
+        "durMult": 5,
+        "goldMult": 7.5
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Light",
+        "displayName": "Light",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Hypha Facia",
+    "nameNormalized": "hypha facia",
+    "rowId": "Hypha_Facia",
+    "formIdRaw": "FExxx80E",
+    "section": "creation_club",
+    "value": 23,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Ravage_Stamina",
+        "displayName": "Ravage Stamina",
+        "magMult": 1.5,
+        "durMult": 3.34,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Magic",
+        "displayName": "Resist Magic",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Imp Gall",
+    "nameNormalized": "imp gall",
+    "rowId": "Imp_Gall",
+    "formIdRaw": "FExxx80F",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Barter",
+        "displayName": "Fortify Barter",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Cure_Poison",
+        "displayName": "Cure Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ironwood Fruit",
+    "nameNormalized": "ironwood fruit",
+    "rowId": "Ironwood_Fruit",
+    "formIdRaw": "FExxxF0F",
+    "section": "creation_club",
+    "value": 5,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Juvenile Mudcrab",
+    "nameNormalized": "juvenile mudcrab",
+    "rowId": "Juvenile_Mudcrab",
+    "formIdRaw": "xx0008F2",
+    "section": "creation_club",
+    "value": 10,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Two-handed",
+        "displayName": "Fortify Two-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Kagouti Hide",
+    "nameNormalized": "kagouti hide",
+    "rowId": "Kagouti_Hide",
+    "formIdRaw": "FExxx810",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Night_Eye_(effect)",
+        "displayName": "Night Eye",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Resist_Shock",
+        "displayName": "Resist Shock",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Kresh Fiber",
+    "nameNormalized": "kresh fiber",
+    "rowId": "Kresh_Fiber",
+    "formIdRaw": "FExxx811",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Pickpocket",
+        "displayName": "Fortify Pickpocket",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Lichor",
+    "nameNormalized": "lichor",
+    "rowId": "Lichor",
+    "formIdRaw": "FExxx837",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Spell_Absorption",
+        "displayName": "Spell Absorption",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Luminous Russula",
+    "nameNormalized": "luminous russula",
+    "rowId": "Luminous_Russula",
+    "formIdRaw": "FExxx813",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Lingering_Damage_Stamina",
+        "displayName": "Lingering Damage Stamina",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": 1.6,
+        "durMult": 1.67,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Lyretail Anthias",
+    "nameNormalized": "lyretail anthias",
+    "rowId": "Lyretail_Anthias",
+    "formIdRaw": "xx0008F1",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Marshmerrow",
+    "nameNormalized": "marshmerrow",
+    "rowId": "Marshmerrow",
+    "formIdRaw": "FExxx814",
+    "section": "creation_club",
+    "value": 18,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Stamina",
+        "displayName": "Damage Stamina",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Minotaur Horn",
+    "nameNormalized": "minotaur horn",
+    "rowId": "Minotaur_Horn",
+    "formIdRaw": "FExxx815",
+    "section": "creation_club",
+    "value": 55,
+    "weight": 5,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Mort Flesh",
+    "nameNormalized": "mort flesh",
+    "rowId": "Mort_Flesh",
+    "formIdRaw": "FExxx80C",
+    "section": "creation_club",
+    "value": 2,
+    "weight": 0.5,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Ogre's Teeth",
+    "nameNormalized": "ogre s teeth",
+    "rowId": "Ogre.27s_Teeth",
+    "formIdRaw": "FExxx816",
+    "section": "creation_club",
+    "value": 50,
+    "weight": 3,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": 2,
+        "durMult": 2.12,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Pearlfish",
+    "nameNormalized": "pearlfish",
+    "rowId": "Pearlfish",
+    "formIdRaw": "xx0008EC",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Smithing",
+        "displayName": "Fortify Smithing",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Purple Butterfly Wing",
+    "nameNormalized": "purple butterfly wing",
+    "rowId": "Purple_Butterfly_Wing",
+    "formIdRaw": "xx059153",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Pygmy Sunfish",
+    "nameNormalized": "pygmy sunfish",
+    "rowId": "Pygmy_Sunfish",
+    "formIdRaw": "xx0008ED",
+    "section": "creation_club",
+    "value": 2,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Restoration",
+        "displayName": "Fortify Restoration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Red Kelp Gas Bladder",
+    "nameNormalized": "red kelp gas bladder",
+    "rowId": "Red_Kelp_Gas_Bladder",
+    "formIdRaw": "FExxx817",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": 1.6,
+        "durMult": 1.67,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.36
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Redwort Flower",
+    "nameNormalized": "redwort flower",
+    "rowId": "Redwort_Flower",
+    "formIdRaw": "FExxx818",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Cure_Poison",
+        "displayName": "Cure Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Roobrush",
+    "nameNormalized": "roobrush",
+    "rowId": "Roobrush",
+    "formIdRaw": "FExxx819",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Magic",
+        "displayName": "Weakness to Magic",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Sneak",
+        "displayName": "Fortify Sneak",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Cure_Poison",
+        "displayName": "Cure Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Rot Scale",
+    "nameNormalized": "rot scale",
+    "rowId": "Rot_Scale",
+    "formIdRaw": "0100306D",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 3,
+        "durMult": 0.26,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": 3,
+        "durMult": 3.34,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": 0.16,
+        "durMult": 0.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Saltrice",
+    "nameNormalized": "saltrice",
+    "rowId": "Saltrice",
+    "formIdRaw": "FExxx81A",
+    "section": "creation_club",
+    "value": 6,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Damage_Stamina_Regen",
+        "displayName": "Damage Stamina Regen",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Scalon Fin",
+    "nameNormalized": "scalon fin",
+    "rowId": "Scalon_Fin",
+    "formIdRaw": "FExxx81B",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": 1.6,
+        "durMult": 1.67,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Lingering_Damage_Magicka",
+        "displayName": "Lingering Damage Magicka",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Damage_Magicka_Regen",
+        "displayName": "Damage Magicka Regen",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Screaming Maw",
+    "nameNormalized": "screaming maw",
+    "rowId": "Screaming_Maw",
+    "formIdRaw": "0100306E",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": 4,
+        "durMult": 0.2,
+        "goldMult": 0.78
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Invisibility_(effect)",
+        "displayName": "Invisibility",
+        "magMult": 0.25,
+        "durMult": 0.22,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 4,
+        "durMult": 0.03,
+        "goldMult": 0.11
+      }
+    ]
+  },
+  {
+    "name": "Scrib Jelly",
+    "nameNormalized": "scrib jelly",
+    "rowId": "Scrib_Jelly",
+    "formIdRaw": "FExxx81C",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Cure_Poison",
+        "displayName": "Cure Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.36
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Scrib Jerky",
+    "nameNormalized": "scrib jerky",
+    "rowId": "Scrib_Jerky",
+    "formIdRaw": "FExxx81D",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Waterbreathing_(effect)",
+        "displayName": "Waterbreathing",
+        "magMult": 1.6,
+        "durMult": 1.67,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Sload Soap",
+    "nameNormalized": "sload soap",
+    "rowId": "Sload_Soap",
+    "formIdRaw": "FExxx81E",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Fire",
+        "displayName": "Resist Fire",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fear_(effect)",
+        "displayName": "Fear",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Conjuration",
+        "displayName": "Fortify Conjuration",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Spadefish",
+    "nameNormalized": "spadefish",
+    "rowId": "Spadefish",
+    "formIdRaw": "xx0008F3",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.25,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Lockpicking",
+        "displayName": "Fortify Lockpicking",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Pickpocket",
+        "displayName": "Fortify Pickpocket",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Spiddal Stick",
+    "nameNormalized": "spiddal stick",
+    "rowId": "Spiddal_Stick",
+    "formIdRaw": "xx024C15",
+    "section": "creation_club",
+    "value": 25,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Damage_Magicka",
+        "displayName": "Damage Magicka",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Weakness_to_Fire",
+        "displayName": "Weakness to Fire",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Stamina",
+        "displayName": "Restore Stamina",
+        "magMult": 0.4,
+        "durMult": 0.36,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Steel-Blue Entoloma",
+    "nameNormalized": "steel blue entoloma",
+    "rowId": "Steel-Blue_Entoloma",
+    "formIdRaw": "FExxx832",
+    "section": "creation_club",
+    "value": 2,
+    "weight": 0.1,
+    "merchantAvail": "Khajiit Traders",
+    "garden": "3",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Destruction",
+        "displayName": "Fortify Destruction",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Resist_Frost",
+        "displayName": "Resist Frost",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Stoneflower Petals",
+    "nameNormalized": "stoneflower petals",
+    "rowId": "Stoneflower_Petals",
+    "formIdRaw": "FExxx81F",
+    "section": "creation_club",
+    "value": 15,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Weakness_to_Shock",
+        "displayName": "Weakness to Shock",
+        "magMult": 1.33,
+        "durMult": 1.36,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_One-handed",
+        "displayName": "Fortify One-handed",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Fortify_Enchanting",
+        "displayName": "Fortify Enchanting",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Thorn Hook",
+    "nameNormalized": "thorn hook",
+    "rowId": "Thorn_Hook",
+    "formIdRaw": "0100306F",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Lingering_Damage_Health",
+        "displayName": "Lingering Damage Health",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Paralysis",
+        "displayName": "Paralysis",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Regenerate_Magicka",
+        "displayName": "Regenerate Magicka",
+        "magMult": 0.6,
+        "durMult": 0.6,
+        "goldMult": 0.32
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 0.6,
+        "durMult": 0.6,
+        "goldMult": 0.32
+      }
+    ]
+  },
+  {
+    "name": "Void Essence",
+    "nameNormalized": "void essence",
+    "rowId": "Void_Essence",
+    "formIdRaw": "FExxx820",
+    "section": "creation_club",
+    "value": 60,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Health",
+        "displayName": "Restore Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Health",
+        "displayName": "Fortify Health",
+        "magMult": 1.25,
+        "durMult": 5,
+        "goldMult": 7.5
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Stamina",
+        "displayName": "Fortify Stamina",
+        "magMult": 1.25,
+        "durMult": 5,
+        "goldMult": 7.5
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Health",
+        "displayName": "Regenerate Health",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Watcher's Eye",
+    "nameNormalized": "watcher s eye",
+    "rowId": "Watcher.27s_Eye",
+    "formIdRaw": "FExxx821",
+    "section": "creation_club",
+    "value": 9,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Night_Eye_(effect)",
+        "displayName": "Night Eye",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Fortify_Magicka",
+        "displayName": "Fortify Magicka",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Illusion",
+        "displayName": "Fortify Illusion",
+        "magMult": 5,
+        "durMult": 5.87,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Spell_Absorption",
+        "displayName": "Spell Absorption",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Wild Grass Pod",
+    "nameNormalized": "wild grass pod",
+    "rowId": "Wild_Grass_Pod",
+    "formIdRaw": "xx019D3A",
+    "section": "creation_club",
+    "value": 1,
+    "weight": 0.1,
+    "merchantAvail": "None",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Resist_Poison",
+        "displayName": "Resist Poison",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Ravage_Magicka",
+        "displayName": "Ravage Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Alteration",
+        "displayName": "Fortify Alteration",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Wisp Stalk Caps",
+    "nameNormalized": "wisp stalk caps",
+    "rowId": "Wisp_Stalk_Caps",
+    "formIdRaw": "FExxx823",
+    "section": "creation_club",
+    "value": 20,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Damage_Health",
+        "displayName": "Damage Health",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Weakness_to_Poison",
+        "displayName": "Weakness to Poison",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Frenzy_(effect)",
+        "displayName": "Frenzy",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Regenerate_Stamina",
+        "displayName": "Regenerate Stamina",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      }
+    ]
+  },
+  {
+    "name": "Withering Moon",
+    "nameNormalized": "withering moon",
+    "rowId": "Withering_Moon",
+    "formIdRaw": "FExxx824",
+    "section": "creation_club",
+    "value": 5,
+    "weight": 0.1,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Restore_Magicka",
+        "displayName": "Restore Magicka",
+        "magMult": 1.2,
+        "durMult": 1.22,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Spell_Absorption",
+        "displayName": "Spell Absorption",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Light_Armor",
+        "displayName": "Fortify Light Armor",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Cure_Disease",
+        "displayName": "Cure Disease",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": 0.36
+      }
+    ]
+  },
+  {
+    "name": "Worm's Head Cap",
+    "nameNormalized": "worm s head cap",
+    "rowId": "Worm.27s_Head_Cap",
+    "formIdRaw": "FExxx825",
+    "section": "creation_club",
+    "value": 30,
+    "weight": 0.2,
+    "merchantAvail": "",
+    "garden": "",
+    "effects": [
+      {
+        "slot": 1,
+        "effectKey": "Fortify_Lockpicking",
+        "displayName": "Fortify Lockpicking",
+        "magMult": 1.5,
+        "durMult": 1.56,
+        "goldMult": null
+      },
+      {
+        "slot": 2,
+        "effectKey": "Night_Eye_(effect)",
+        "displayName": "Night Eye",
+        "magMult": null,
+        "durMult": null,
+        "goldMult": null
+      },
+      {
+        "slot": 3,
+        "effectKey": "Fortify_Carry_Weight",
+        "displayName": "Fortify Carry Weight",
+        "magMult": 1.25,
+        "durMult": 1.27,
+        "goldMult": null
+      },
+      {
+        "slot": 4,
+        "effectKey": "Slow",
+        "displayName": "Slow",
+        "magMult": 2,
+        "durMult": 2.14,
+        "goldMult": null
+      }
+    ]
+  }
+]

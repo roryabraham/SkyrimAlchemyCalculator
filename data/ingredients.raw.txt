@@ -1,0 +1,184 @@
+name	section	formIdRaw	e1	e2	e3	e4
+Abecean Longfin	standard	00106e1b	Weakness to Frost	Fortify Sneak	Weakness to Poison	Fortify Restoration
+Aloe Vera Leaves	standard	FExxx0D0	Restore Health	Restore Stamina	Damage Magicka	Invisibility
+Ancestor Moth Wing	standard	xx0059ba	Damage Stamina	Fortify Conjuration	Damage Magicka Regen	Fortify Enchanting
+Ash Creep Cluster	standard	xx01cd74	Damage Stamina	Invisibility	Resist Fire	Fortify Destruction
+Ash Hopper Jelly	standard	xx01cd71	Restore Health	Fortify Light Armor	Resist Shock	Weakness to Frost
+Ashen Grass Pod	standard	xx016e26	Resist Fire	Weakness to Shock	Fortify Lockpicking	Fortify Sneak
+Bear Claws	standard	0006bc02	Restore Stamina	Fortify Health	Fortify One-handed	Damage Magicka Regen
+Bee	standard	000a9195	Restore Stamina	Ravage Stamina	Regenerate Stamina	Weakness to Shock
+Beehive Husk	standard	000a9191	Resist Poison	Fortify Light Armor	Fortify Sneak	Fortify Destruction
+Bleeding Crown	standard	0004da20	Weakness to Fire	Fortify Block	Weakness to Poison	Resist Magic
+Blisterwort	standard	0004da25	Damage Stamina	Frenzy	Restore Health	Fortify Smithing
+Blue Butterfly Wing	standard	000727de	Damage Stamina	Fortify Conjuration	Damage Magicka Regen	Fortify Enchanting
+Blue Dartwing	standard	000e4f0c	Resist Shock	Fortify Pickpocket	Restore Health	Fear
+Blue Mountain Flower	standard	00077e1c	Restore Health	Fortify Conjuration	Fortify Health	Damage Magicka Regen
+Boar Tusk	standard	xx01cd6f	Fortify Stamina	Fortify Health	Fortify Block	Frenzy
+Bone Meal	standard	00034cdd	Damage Stamina	Resist Fire	Fortify Conjuration	Ravage Stamina
+Briar Heart	standard	0003ad61	Restore Magicka	Fortify Block	Paralysis	Fortify Magicka
+Burnt Spriggan Wood	standard	xx01cd6e	Weakness to Fire	Fortify Alteration	Damage Magicka Regen	Slow
+Butterfly Wing	standard	000727e0	Restore Health	Fortify Barter	Lingering Damage Stamina	Damage Magicka
+Canis Root	standard	0006abcb	Damage Stamina	Fortify One-handed	Fortify Marksman	Paralysis
+Charred Skeever Hide	standard	00052695	Restore Stamina	Cure Disease	Resist Poison	Restore Health
+Chaurus Eggs	standard	0003ad56	Weakness to Poison	Fortify Stamina	Damage Magicka	Invisibility
+Chaurus Hunter Antennae	standard	xx0183b7	Damage Stamina	Fortify Conjuration	Damage Magicka Regen	Fortify Enchanting
+Chicken's Egg	standard	00023d77	Resist Magic	Damage Magicka Regen	Waterbreathing	Lingering Damage Stamina
+Creep Cluster	standard	000b2183	Restore Magicka	Damage Stamina Regen	Fortify Carry Weight	Weakness to Magic
+Crimson Nirnroot	standard	000b701a	Damage Health	Damage Stamina	Invisibility	Resist Magic
+Cyrodilic Spadetail	standard	00106e19	Damage Stamina	Fortify Restoration	Fear	Ravage Health
+Daedra Heart	standard	0003ad5b	Restore Health	Damage Stamina Regen	Damage Magicka	Fear
+Deathbell	standard	000516c8	Damage Health	Ravage Stamina	Slow	Weakness to Poison
+Dragon's Tongue	standard	000889a2	Resist Fire	Fortify Barter	Fortify Illusion	Fortify Two-handed
+Dwarven Oil	standard	000f11c0	Weakness to Magic	Fortify Illusion	Regenerate Magicka	Restore Magicka
+Ectoplasm	standard	0003ad63	Restore Magicka	Fortify Destruction	Fortify Magicka	Damage Health
+Elves Ear	standard	00034d31	Restore Magicka	Fortify Marksman	Weakness to Frost	Resist Fire
+Emperor Parasol Moss	standard	xx01ff75	Damage Health	Fortify Magicka	Regenerate Health	Fortify Two-handed
+Eye of Sabre Cat	standard	0006bc07	Restore Stamina	Ravage Health	Damage Magicka	Restore Health
+Falmer Ear	standard	0003ad5d	Damage Health	Frenzy	Resist Poison	Fortify Lockpicking
+Felsaad Tern Feathers	standard	xx03cd8e	Restore Health	Fortify Light Armor	Cure Disease	Resist Magic
+Fire Salts	standard	0003ad5e	Weakness to Frost	Resist Fire	Restore Magicka	Regenerate Magicka
+Fly Amanita	standard	0004da00	Resist Fire	Fortify Two-handed	Frenzy	Regenerate Stamina
+Frost Mirriam	standard	00034d32	Resist Frost	Fortify Sneak	Ravage Magicka	Damage Stamina Regen
+Frost Salts	standard	0003ad5f	Weakness to Fire	Resist Frost	Restore Magicka	Fortify Conjuration
+Garlic	standard	00034d22	Resist Poison	Fortify Stamina	Regenerate Magicka	Regenerate Health
+Giant Lichen	standard	0007e8c1	Weakness to Shock	Ravage Health	Weakness to Poison	Restore Magicka
+Giant's Toe	standard	0003ad64	Damage Stamina	Fortify Health	Fortify Carry Weight	Damage Stamina Regen
+Gleamblossom	standard	xx00b097	Resist Magic	Fear	Regenerate Health	Paralysis
+Glow Dust	standard	0003ad73	Damage Magicka	Damage Magicka Regen	Fortify Destruction	Resist Shock
+Glowing Mushroom	standard	0007ee01	Resist Shock	Fortify Destruction	Fortify Smithing	Fortify Health
+Grass Pod	standard	00083e64	Resist Poison	Ravage Magicka	Fortify Alteration	Restore Magicka
+Hagraven Claw	standard	0006b689	Resist Magic	Lingering Damage Magicka	Fortify Enchanting	Fortify Barter
+Hagraven Feathers	standard	0003ad66	Damage Magicka	Fortify Conjuration	Frenzy	Weakness to Shock
+Hanging Moss	standard	00057f91	Damage Magicka	Fortify Health	Damage Magicka Regen	Fortify One-handed
+Hawk Beak	standard	000e7ebc	Restore Stamina	Resist Frost	Fortify Carry Weight	Resist Shock
+Hawk Feathers	standard	000e7ed0	Cure Disease	Fortify Light Armor	Fortify One-handed	Fortify Sneak
+Hawk's Egg	standard	xx00f1cc	Resist Magic	Damage Magicka Regen	Waterbreathing	Lingering Damage Stamina
+Histcarp	standard	00106e18	Restore Stamina	Fortify Magicka	Damage Stamina Regen	Waterbreathing
+Honeycomb	standard	000b08c5	Restore Stamina	Fortify Block	Fortify Light Armor	Ravage Stamina
+Human Flesh	standard	001016b3	Damage Health	Paralysis	Restore Magicka	Fortify Sneak
+Human Heart	standard	000b18cd	Damage Health	Damage Magicka	Damage Magicka Regen	Frenzy
+Ice Wraith Teeth	standard	0003ad6a	Weakness to Frost	Fortify Heavy Armor	Invisibility	Weakness to Fire
+Imp Stool	standard	0004da23	Damage Health	Lingering Damage Health	Paralysis	Restore Health
+Jazbay Grapes	standard	0006ac4a	Weakness to Magic	Fortify Magicka	Regenerate Magicka	Ravage Health
+Juniper Berries	standard	0005076e	Weakness to Fire	Fortify Marksman	Regenerate Health	Damage Stamina Regen
+Large Antlers	standard	0006bc0a	Restore Stamina	Fortify Stamina	Slow	Damage Stamina Regen
+Lavender	standard	00045c28	Resist Magic	Fortify Stamina	Ravage Magicka	Fortify Conjuration
+Luna Moth Wing	standard	000727df	Damage Magicka	Fortify Light Armor	Regenerate Health	Invisibility
+Moon Sugar	standard	000d8e3f	Weakness to Fire	Resist Frost	Restore Magicka	Regenerate Magicka
+Mora Tapinella	standard	000ec870	Restore Magicka	Lingering Damage Health	Regenerate Stamina	Fortify Illusion
+Mudcrab Chitin	standard	0006bc00	Restore Stamina	Cure Disease	Resist Poison	Resist Fire
+Namira's Rot	standard	0004da24	Damage Magicka	Fortify Lockpicking	Fear	Regenerate Health
+Netch Jelly	standard	xx01cd72	Paralysis	Fortify Carry Weight	Restore Stamina	Fear
+Nightshade	creation_club	xx042A61	Damage Health	Damage Magicka Regen	Lingering Damage Stamina	Fortify Destruction
+Nirnroot	standard	00059b86	Damage Health	Damage Stamina	Invisibility	Resist Magic
+Nordic Barnacle	standard	0007edf5	Damage Magicka	Waterbreathing	Regenerate Health	Fortify Pickpocket
+Orange Dartwing	standard	000bb956	Restore Stamina	Ravage Magicka	Fortify Pickpocket	Lingering Damage Health
+Pearl	standard	000854fe	Restore Stamina	Fortify Block	Restore Magicka	Resist Shock
+Pine Thrush Egg	standard	00023d6f	Restore Stamina	Fortify Lockpicking	Weakness to Poison	Resist Shock
+Poison Bloom	standard	xx0185fb	Damage Health	Slow	Fortify Carry Weight	Fear
+Powdered Mammoth Tusk	standard	0006bc10	Restore Stamina	Fortify Sneak	Weakness to Fire	Fear
+Purple Mountain Flower	standard	00077e1e	Restore Stamina	Fortify Sneak	Lingering Damage Magicka	Resist Frost
+Red Mountain Flower	standard	00077e1d	Restore Magicka	Ravage Magicka	Fortify Magicka	Damage Health
+River Betty	standard	00106e1a	Damage Health	Fortify Alteration	Slow	Fortify Carry Weight
+Rock Warbler Egg	standard	0007e8c8	Restore Health	Fortify One-handed	Damage Stamina	Weakness to Magic
+Sabre Cat Tooth	standard	0006bc04	Restore Stamina	Fortify Heavy Armor	Fortify Smithing	Weakness to Poison
+Salmon Roe	standard	xx003545	Restore Stamina	Waterbreathing	Fortify Magicka	Regenerate Magicka
+Salt Pile	standard	00034cdf	Weakness to Magic	Fortify Restoration	Slow	Regenerate Magicka
+Scaly Pholiota	standard	0006f950	Weakness to Magic	Fortify Illusion	Regenerate Stamina	Fortify Carry Weight
+Scathecraw	standard	xx017e97	Ravage Health	Ravage Stamina	Ravage Magicka	Lingering Damage Health
+Silverside Perch	standard	00106e1c	Restore Stamina	Damage Stamina Regen	Ravage Health	Resist Frost
+Skeever Tail	standard	0003ad6f	Damage Stamina Regen	Ravage Health	Damage Health	Fortify Light Armor
+Slaughterfish Egg	standard	0007e8c5	Resist Poison	Fortify Pickpocket	Lingering Damage Health	Fortify Stamina
+Slaughterfish Scales	standard	0003ad70	Resist Frost	Lingering Damage Health	Fortify Heavy Armor	Fortify Block
+Small Antlers	standard	0006bc0b	Weakness to Poison	Fortify Restoration	Lingering Damage Stamina	Damage Health
+Small Pearl	standard	00085500	Restore Stamina	Fortify One-handed	Fortify Restoration	Resist Frost
+Snowberries	standard	0001b3bd	Resist Fire	Fortify Enchanting	Resist Frost	Resist Shock
+Spawn Ash	standard	xx01cd6d	Ravage Stamina	Resist Fire	Fortify Enchanting	Ravage Magicka
+Spider Egg	standard	0009151b	Damage Stamina	Damage Magicka Regen	Fortify Lockpicking	Fortify Marksman
+Spriggan Sap	standard	00063b5f	Damage Magicka Regen	Fortify Enchanting	Fortify Smithing	Fortify Alteration
+Swamp Fungal Pod	standard	0007e8b7	Resist Shock	Lingering Damage Magicka	Paralysis	Restore Health
+Taproot	standard	0003ad71	Weakness to Magic	Fortify Illusion	Regenerate Magicka	Restore Magicka
+Thistle Branch	standard	000134aa	Resist Frost	Ravage Stamina	Resist Poison	Fortify Heavy Armor
+Torchbug Thorax	standard	0004da73	Restore Stamina	Lingering Damage Magicka	Weakness to Magic	Fortify Stamina
+Trama Root	standard	xx017008	Weakness to Shock	Fortify Carry Weight	Damage Magicka	Slow
+Troll Fat	standard	0003ad72	Resist Poison	Fortify Two-handed	Frenzy	Damage Health
+Tundra Cotton	standard	0003f7f8	Resist Magic	Fortify Magicka	Fortify Block	Fortify Barter
+Vampire Dust	standard	0003ad76	Invisibility	Restore Magicka	Regenerate Health	Cure Disease
+Void Salts	standard	0003ad60	Weakness to Shock	Resist Magic	Damage Health	Fortify Magicka
+Wheat	standard	0004b0ba	Restore Health	Fortify Health	Damage Stamina Regen	Lingering Damage Magicka
+White Cap	standard	0004da22	Weakness to Frost	Fortify Heavy Armor	Restore Magicka	Ravage Magicka
+Wisp Wrappings	standard	0006bc0e	Restore Stamina	Fortify Destruction	Fortify Carry Weight	Resist Magic
+Yellow Mountain Flower	standard	xx002a78	Resist Poison	Fortify Restoration	Fortify Health	Damage Stamina Regen
+Alocasia Fruit	creation_club	FExxxD62	Regenerate Stamina	Light	Ravage Magicka	Regenerate Health
+Ambrosia	creation_club	FExxx836	Restore Health	Regenerate Health	Fortify Health	Cure Poison
+Angelfish	creation_club	xx0008EB	Regenerate Health	Resist Fire	Fortify Marksman	Waterbreathing
+Angler Larvae	creation_club	xx0008F0	Lingering Damage Health	Regenerate Stamina	Waterbreathing	Fortify Two-handed
+Aster Bloom Core	creation_club	FExxxD66	Resist Magic	Fortify Light Armor	Fortify Block	Paralysis
+Bittergreen Petals	creation_club	FExxxD68	Lingering Damage Stamina	Invisibility	Cure Poison	Damage Magicka
+Blind Watcher's Eye	creation_club	FExxx822	Light	Fortify Magicka	Fortify Alteration	Spell Absorption
+Bliss Bug Thorax	creation_club	xx059155	Weakness to Fire	Resist Fire	Fortify Heavy Armor	Fortify Illusion
+Blister Pod Cap	creation_club	FExxxD6A	Restore Magicka	Fortify Magicka	Night Eye	Invisibility
+Bloodgrass	creation_club	xx024C13	Invisibility	Resist Poison	Slow	Fortify Health
+Bog Beacon	creation_club	FExxxD6C	Restore Magicka	Fortify Heavy Armor	Fear	Damage Stamina
+Bungler's Bane	creation_club	FExxx802	Slow	Ravage Stamina	Damage Stamina Regen	Resist Magic
+Chokeberry	creation_club	FExxx838	Damage Health	Ravage Health	Lingering Damage Health	Weakness to Poison
+Chokeweed	creation_club	FExxx804	Weakness to Frost	Restore Stamina	Cure Disease	Damage Magicka
+Coda Flower	creation_club	FExxx805	Damage Health	Lingering Damage Stamina	Ravage Magicka	Fortify Carry Weight
+Comberry	creation_club	FExxx806	Damage Stamina	Spell Absorption	Restore Magicka	Fortify Destruction
+Congealed Putrescence	creation_club	FExxx807	Ravage Health	Restore Magicka	Weakness to Fire	Fortify Conjuration
+Corkbulb Root	creation_club	FExxx809	Paralysis	Restore Health	Resist Shock	Fortify Marksman
+Daedra Silk	creation_club	FExxx80A	Lingering Damage Stamina	Paralysis	Night Eye	Invisibility
+Daedra Venin	creation_club	FExxx80B	Ravage Health	Paralysis	Fortify Destruction	Spell Absorption
+Daedroth Teeth	creation_club	FExxx826	Resist Frost	Light	Damage Magicka Regen	Regenerate Stamina
+Dreugh Wax	creation_club	FExxx827	Weakness to Magic	Frenzy	Fortify Enchanting	Fortify Smithing
+Elytra Ichor	creation_club	FExxx828	Restore Magicka	Invisibility	Slow	Fear
+Fire Petal	creation_club	FExxx829	Damage Health	Resist Fire	Spell Absorption	Paralysis
+Flame Stalk	creation_club	xx095E23	Restore Health	Resist Frost	Weakness to Fire	Invisibility
+Fungus Stalk	creation_club	FExxx82B	Restore Magicka	Fortify Health	Fortify Stamina	Waterbreathing
+Glassfish	creation_club	xx0008EE	Restore Magicka	Invisibility	Fortify Illusion	Fortify Persuasion
+Gnarl Bark	creation_club	FExxx82C	Damage Health	Regenerate Health	Fortify Heavy Armor	Resist Fire
+Gold Kanet	creation_club	FExxx82D	Paralysis	Ravage Health	Weakness to Frost	Fortify Smithing
+Goldfish	creation_club	xx0008EF	Restore Stamina	Fortify Heavy Armor	Waterbreathing	Resist Frost
+Green Butterfly Wing	creation_club	xx059151	Restore Magicka	Fear	Slow	Invisibility
+Hackle-Lo Leaf	creation_club	FExxx82E	Restore Stamina	Paralysis	Waterbreathing	Fortify Restoration
+Harrada	creation_club	xx024C11	Damage Health	Damage Magicka	Paralysis	Damage Magicka Regen
+Heart of Order	creation_club	FExxx851	Restore Health	Fortify Health	Fortify One-handed	Fortify Two-handed
+Hunger Tongue	creation_club	FExxx80C	Weakness to Fire	Cure Disease	Cure Poison	Fortify Magicka
+Hydnum Azure Giant Spore	creation_club	FExxx80D	Resist Frost	Fortify Health	Regenerate Health	Light
+Hypha Facia	creation_club	FExxx80E	Weakness to Poison	Frenzy	Ravage Stamina	Resist Magic
+Imp Gall	creation_club	FExxx80F	Damage Health	Weakness to Fire	Fortify Barter	Cure Poison
+Ironwood Fruit	creation_club	FExxxF0F	Restore Health	Resist Fire	Damage Stamina	Restore Magicka
+Juvenile Mudcrab	creation_club	xx0008F2	Regenerate Stamina	Fortify Carry Weight	Cure Disease	Fortify Two-handed
+Kagouti Hide	creation_club	FExxx810	Lingering Damage Stamina	Night Eye	Fortify Carry Weight	Resist Shock
+Kresh Fiber	creation_club	FExxx811	Weakness to Magic	Slow	Fortify Sneak	Fortify Pickpocket
+Lichor	creation_club	FExxx837	Restore Magicka	Regenerate Magicka	Fortify Magicka	Spell Absorption
+Luminous Russula	creation_club	FExxx813	Lingering Damage Stamina	Lingering Damage Health	Waterbreathing	Fear
+Lyretail Anthias	creation_club	xx0008F1	Restore Magicka	Fortify Alteration	Fortify Conjuration	Fortify Carry Weight
+Marshmerrow	creation_club	FExxx814	Restore Health	Fortify Carry Weight	Weakness to Magic	Damage Stamina
+Minotaur Horn	creation_club	FExxx815	Resist Poison	Damage Magicka Regen	Regenerate Health	Regenerate Magicka
+Mort Flesh	creation_club	FExxx80C	Damage Health	Damage Magicka	Damage Magicka Regen	Frenzy
+Ogre's Teeth	creation_club	FExxx816	Weakness to Shock	Resist Poison	Lingering Damage Magicka	Regenerate Health
+Pearlfish	creation_club	xx0008EC	Restore Stamina	Resist Frost	Fortify Smithing	Fortify One-handed
+Purple Butterfly Wing	creation_club	xx059153	Regenerate Health	Regenerate Magicka	Regenerate Stamina	Paralysis
+Pygmy Sunfish	creation_club	xx0008ED	Restore Stamina	Lingering Damage Magicka	Damage Magicka Regen	Fortify Restoration
+Red Kelp Gas Bladder	creation_club	FExxx817	Regenerate Stamina	Waterbreathing	Cure Disease	Fortify Magicka
+Redwort Flower	creation_club	FExxx818	Resist Frost	Cure Poison	Damage Health	Invisibility
+Roobrush	creation_club	FExxx819	Weakness to Magic	Fortify Sneak	Lingering Damage Health	Cure Poison
+Rot Scale	creation_club	0100306D	Slow	Lingering Damage Health	Fear	Paralysis
+Saltrice	creation_club	FExxx81A	Restore Stamina	Fortify Magicka	Damage Stamina Regen	Restore Health
+Scalon Fin	creation_club	FExxx81B	Waterbreathing	Damage Health	Lingering Damage Magicka	Damage Magicka Regen
+Screaming Maw	creation_club	0100306E	Regenerate Magicka	Fortify Alteration	Invisibility	Regenerate Health
+Scrib Jelly	creation_club	FExxx81C	Regenerate Magicka	Cure Poison	Cure Disease	Regenerate Stamina
+Scrib Jerky	creation_club	FExxx81D	Restore Stamina	Fortify Stamina	Paralysis	Waterbreathing
+Sload Soap	creation_club	FExxx81E	Resist Fire	Fear	Fortify Conjuration	Fortify Alteration
+Spadefish	creation_club	xx0008F3	Restore Health	Fortify Lockpicking	Fortify Pickpocket	Cure Disease
+Spiddal Stick	creation_club	xx024C15	Damage Health	Damage Magicka	Weakness to Fire	Restore Stamina
+Steel-Blue Entoloma	creation_club	FExxx832	Restore Magicka	Fortify Destruction	Resist Frost	Fortify Carry Weight
+Stoneflower Petals	creation_club	FExxx81F	Weakness to Shock	Fortify One-handed	Fortify Magicka	Fortify Enchanting
+Thorn Hook	creation_club	0100306F	Lingering Damage Health	Paralysis	Regenerate Magicka	Regenerate Health
+Void Essence	creation_club	FExxx820	Restore Health	Fortify Health	Fortify Stamina	Regenerate Health
+Watcher's Eye	creation_club	FExxx821	Night Eye	Fortify Magicka	Fortify Illusion	Spell Absorption
+Wild Grass Pod	creation_club	xx019D3A	Resist Poison	Ravage Magicka	Fortify Alteration	Restore Magicka
+Wisp Stalk Caps	creation_club	FExxx823	Damage Health	Weakness to Poison	Frenzy	Regenerate Stamina
+Withering Moon	creation_club	FExxx824	Restore Magicka	Spell Absorption	Fortify Light Armor	Cure Disease
+Worm's Head Cap	creation_club	FExxx825	Fortify Lockpicking	Night Eye	Fortify Carry Weight	Slow
