@@ -1,3 +1,4 @@
+import { Container, Flex } from "@radix-ui/themes";
 import { useEffect, useRef, useState } from "react";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
@@ -127,25 +128,27 @@ export function App() {
       .reduce((s, r) => s + Math.max(0, Math.floor(r.count)), 0) >= 2;
 
   return (
-    <main className="layout">
-      <AppHeader />
-      <InventoryPanel
-        rows={rows}
-        canSubmit={canSubmit}
-        loading={loading}
-        error={error}
-        onUpdateRow={updateRow}
-        onRemoveRow={removeRow}
-        onSearch={runSearch}
-        onAddRow={addRow}
-        onSubmit={submit}
-      />
-      <AlchemySettingsPanel params={params} setParams={setParams} />
-      <RecipeResultsPanel
-        recipes={recipes}
-        truncated={truncated}
-        loading={loading}
-      />
-    </main>
+    <Container size="2" px={{ initial: "4", sm: "5" }} py="6">
+      <Flex direction="column" gap="6">
+        <AppHeader />
+        <InventoryPanel
+          rows={rows}
+          canSubmit={canSubmit}
+          loading={loading}
+          error={error}
+          onUpdateRow={updateRow}
+          onRemoveRow={removeRow}
+          onSearch={runSearch}
+          onAddRow={addRow}
+          onSubmit={submit}
+        />
+        <AlchemySettingsPanel params={params} setParams={setParams} />
+        <RecipeResultsPanel
+          recipes={recipes}
+          truncated={truncated}
+          loading={loading}
+        />
+      </Flex>
+    </Container>
   );
 }

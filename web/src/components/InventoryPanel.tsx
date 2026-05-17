@@ -1,3 +1,12 @@
+import {
+  Button,
+  Callout,
+  Card,
+  Flex,
+  Heading,
+  Spinner,
+  Table,
+} from "@radix-ui/themes";
 import type { InventoryRow } from "../types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
@@ -25,17 +34,21 @@ export function InventoryPanel({
   onSubmit,
 }: Props) {
   return (
-    <section className="panel">
-      <h2>Your ingredients</h2>
-      <table className="inv-table">
-        <thead>
-          <tr>
-            <th>Ingredient</th>
-            <th className="narrow">Qty</th>
-            <th className="narrow" />
-          </tr>
-        </thead>
-        <tbody>
+    <Card size="3" variant="surface">
+      <Heading as="h2" size="5" weight="bold" mb="4">
+        Your ingredients
+      </Heading>
+      <Table.Root variant="surface" size="2">
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell>Ingredient</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell style={{ width: "5.5rem" }}>
+              Qty
+            </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell style={{ width: "3rem" }} />
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
           {rows.map((row) => (
             <InventoryIngredientRow
               key={row.id}
@@ -45,22 +58,33 @@ export function InventoryPanel({
               onSearch={onSearch}
             />
           ))}
-        </tbody>
-      </table>
-      <div className="row-actions">
-        <button type="button" className="btn" onClick={onAddRow}>
+        </Table.Body>
+      </Table.Root>
+      <Flex wrap="wrap" gap="3" mt="4" align="center">
+        <Button type="button" size="2" variant="soft" onClick={onAddRow}>
           Add ingredient
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
-          className="btn primary"
+          size="2"
           disabled={!canSubmit || loading}
           onClick={() => void onSubmit()}
         >
-          {loading ? "Working…" : "Find potions"}
-        </button>
-      </div>
-      {error && <p className="err">{error}</p>}
-    </section>
+          {loading ? (
+            <Flex align="center" gap="2">
+              <Spinner size="1" />
+              Working…
+            </Flex>
+          ) : (
+            "Find potions"
+          )}
+        </Button>
+      </Flex>
+      {error ? (
+        <Callout.Root color="red" variant="soft" mt="4" role="alert">
+          <Callout.Text>{error}</Callout.Text>
+        </Callout.Root>
+      ) : null}
+    </Card>
   );
 }

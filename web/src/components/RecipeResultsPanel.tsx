@@ -1,3 +1,11 @@
+import {
+  Badge,
+  Card,
+  Flex,
+  Heading,
+  Separator,
+  Text,
+} from "@radix-ui/themes";
 import type { Recipe } from "../types.ts";
 
 type Props = {
@@ -8,40 +16,65 @@ type Props = {
 
 export function RecipeResultsPanel({ recipes, truncated, loading }: Props) {
   return (
-    <section className="panel">
-      <h2>Best brews</h2>
-      {truncated && (
-        <p className="warn">
+    <Card size="3" variant="surface">
+      <Heading as="h2" size="5" weight="bold" mb="3">
+        Best brews
+      </Heading>
+      {truncated ? (
+        <Text as="p" size="2" color="amber" mb="3" highContrast>
           Showing the first batch of combinations only — narrow your list for a
           full search.
-        </p>
-      )}
-      {recipes.length === 0 && !loading && (
-        <p className="muted">Results appear here after you search.</p>
-      )}
-      <ol className="recipe-list">
+        </Text>
+      ) : null}
+      {recipes.length === 0 && !loading ? (
+        <Text as="p" size="2" color="gray" mb="3">
+          Results appear here after you search.
+        </Text>
+      ) : null}
+      <Flex direction="column" gap="3">
         {recipes.map((rec, i) => (
-          <li key={i} className="recipe-card">
-            <div className="recipe-top">
-              <span className="gold">
+          <Card key={i} size="2" variant="classic">
+            <Flex align="center" justify="between" gap="3" wrap="wrap" mb="2">
+              <Text size="4" weight="bold" style={{ fontVariantNumeric: "tabular-nums" }}>
                 {rec.totalGold.toLocaleString()} gold
-              </span>
-              <span className={`tag ${rec.mixtureKind}`}>{rec.mixtureKind}</span>
-            </div>
-            <div className="recipe-ing">
+              </Text>
+              <Badge
+                size="1"
+                color={rec.mixtureKind === "potion" ? "jade" : "ruby"}
+                variant="soft"
+                highContrast
+              >
+                {rec.mixtureKind}
+              </Badge>
+            </Flex>
+            <Text size="2" color="gray" mb="2">
               {rec.ingredients.map((ing) => ing.name).join(" + ")}
-            </div>
-            <ul className="fx">
-              {rec.effects.map((e) => (
-                <li key={e.effectKey}>
-                  <span>{e.displayName}</span>
-                  <span className="fx-g">{e.gold.toLocaleString()}</span>
-                </li>
-              ))}
-            </ul>
-          </li>
+            </Text>
+            <Separator size="4" my="2" />
+            <Flex direction="column" gap="1" asChild>
+              <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                {rec.effects.map((e) => (
+                  <li key={e.effectKey}>
+                    <Flex justify="between" align="center" gap="3">
+                      <Text size="2" color="gray">
+                        {e.displayName}
+                      </Text>
+                      <Text
+                        size="2"
+                        weight="medium"
+                        color="jade"
+                        style={{ fontVariantNumeric: "tabular-nums" }}
+                      >
+                        {e.gold.toLocaleString()}
+                      </Text>
+                    </Flex>
+                  </li>
+                ))}
+              </ul>
+            </Flex>
+          </Card>
         ))}
-      </ol>
-    </section>
+      </Flex>
+    </Card>
   );
 }

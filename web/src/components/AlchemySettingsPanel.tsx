@@ -1,4 +1,15 @@
+import {
+  Button,
+  Card,
+  Checkbox,
+  Flex,
+  Grid,
+  Heading,
+  Text,
+  TextField,
+} from "@radix-ui/themes";
 import type { Dispatch, SetStateAction } from "react";
+import { useId } from "react";
 import type { AlchemyFormParams } from "../types.ts";
 import { defaultAlchemyFormParams } from "../types.ts";
 
@@ -26,22 +37,32 @@ function setNumParam(
 }
 
 export function AlchemySettingsPanel({ params, setParams }: Props) {
+  const id = useId();
+  const physicianId = `${id}-physician`;
+  const benefactorId = `${id}-benefactor`;
+  const poisonerId = `${id}-poisoner`;
+
   return (
-    <section className="panel">
-      <h2>Alchemy settings</h2>
-      <p className="muted small">
+    <Card size="3" variant="surface">
+      <Heading as="h2" size="5" weight="bold" mb="2">
+        Alchemy settings
+      </Heading>
+      <Text as="p" size="2" color="gray" mb="4">
         Used for gold estimates (UESP PowerFactor). Matches API defaults until
         you change them.
-      </p>
-      <div className="params-grid">
-        <label className="field">
-          <span className="field-label">Alchemy skill</span>
-          <input
-            className="input"
+      </Text>
+      <Grid columns={{ initial: "1", sm: "2" }} gap="3" mb="4">
+        <Flex direction="column" gap="1">
+          <Text as="label" size="2" weight="medium" htmlFor={`${id}-skill`}>
+            Alchemy skill
+          </Text>
+          <TextField.Root
+            id={`${id}-skill`}
+            size="2"
             type="number"
             min={0}
             max={100}
-            value={params.alchemySkill}
+            value={String(params.alchemySkill)}
             onChange={(e) =>
               setNumParam(
                 setParams,
@@ -52,15 +73,18 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
               )
             }
           />
-        </label>
-        <label className="field">
-          <span className="field-label">Fortify Alchemy (%)</span>
-          <input
-            className="input"
+        </Flex>
+        <Flex direction="column" gap="1">
+          <Text as="label" size="2" weight="medium" htmlFor={`${id}-fortify`}>
+            Fortify Alchemy (%)
+          </Text>
+          <TextField.Root
+            id={`${id}-fortify`}
+            size="2"
             type="number"
             min={0}
             max={500}
-            value={params.fortifyAlchemy}
+            value={String(params.fortifyAlchemy)}
             onChange={(e) =>
               setNumParam(
                 setParams,
@@ -71,15 +95,18 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
               )
             }
           />
-        </label>
-        <label className="field">
-          <span className="field-label">Alchemist perk (%)</span>
-          <input
-            className="input"
+        </Flex>
+        <Flex direction="column" gap="1">
+          <Text as="label" size="2" weight="medium" htmlFor={`${id}-alchemist`}>
+            Alchemist perk (%)
+          </Text>
+          <TextField.Root
+            id={`${id}-alchemist`}
+            size="2"
             type="number"
             min={0}
             max={100}
-            value={params.alchemistPercent}
+            value={String(params.alchemistPercent)}
             onChange={(e) =>
               setNumParam(
                 setParams,
@@ -90,15 +117,23 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
               )
             }
           />
-        </label>
-        <label className="field">
-          <span className="field-label">Seeker of Shadows (%)</span>
-          <input
-            className="input"
+        </Flex>
+        <Flex direction="column" gap="1">
+          <Text
+            as="label"
+            size="2"
+            weight="medium"
+            htmlFor={`${id}-seeker`}
+          >
+            Seeker of Shadows (%)
+          </Text>
+          <TextField.Root
+            id={`${id}-seeker`}
+            size="2"
             type="number"
             min={0}
             max={20}
-            value={params.seekerOfShadowsPercent}
+            value={String(params.seekerOfShadowsPercent)}
             onChange={(e) =>
               setNumParam(
                 setParams,
@@ -109,47 +144,55 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
               )
             }
           />
-        </label>
-      </div>
-      <div className="params-checks">
-        <label className="check">
-          <input
-            type="checkbox"
+        </Flex>
+      </Grid>
+      <Flex wrap="wrap" gap="4" mb="4">
+        <Flex align="center" gap="2">
+          <Checkbox
+            id={physicianId}
             checked={params.hasPhysician}
-            onChange={(e) =>
-              setParams((p) => ({ ...p, hasPhysician: e.target.checked }))
+            onCheckedChange={(v) =>
+              setParams((p) => ({ ...p, hasPhysician: v === true }))
             }
           />
-          <span>Physician</span>
-        </label>
-        <label className="check">
-          <input
-            type="checkbox"
+          <Text as="label" htmlFor={physicianId} size="2" style={{ cursor: "pointer" }}>
+            Physician
+          </Text>
+        </Flex>
+        <Flex align="center" gap="2">
+          <Checkbox
+            id={benefactorId}
             checked={params.hasBenefactor}
-            onChange={(e) =>
-              setParams((p) => ({ ...p, hasBenefactor: e.target.checked }))
+            onCheckedChange={(v) =>
+              setParams((p) => ({ ...p, hasBenefactor: v === true }))
             }
           />
-          <span>Benefactor</span>
-        </label>
-        <label className="check">
-          <input
-            type="checkbox"
+          <Text as="label" htmlFor={benefactorId} size="2" style={{ cursor: "pointer" }}>
+            Benefactor
+          </Text>
+        </Flex>
+        <Flex align="center" gap="2">
+          <Checkbox
+            id={poisonerId}
             checked={params.hasPoisoner}
-            onChange={(e) =>
-              setParams((p) => ({ ...p, hasPoisoner: e.target.checked }))
+            onCheckedChange={(v) =>
+              setParams((p) => ({ ...p, hasPoisoner: v === true }))
             }
           />
-          <span>Poisoner</span>
-        </label>
-      </div>
-      <button
+          <Text as="label" htmlFor={poisonerId} size="2" style={{ cursor: "pointer" }}>
+            Poisoner
+          </Text>
+        </Flex>
+      </Flex>
+      <Button
         type="button"
-        className="btn btn-small"
+        size="2"
+        variant="outline"
+        color="gray"
         onClick={() => setParams({ ...defaultAlchemyFormParams })}
       >
         Reset to defaults
-      </button>
-    </section>
+      </Button>
+    </Card>
   );
 }
