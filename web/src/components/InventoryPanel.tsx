@@ -81,7 +81,7 @@ export function InventoryPanel({
         </Text>
         <Text size="1" color="gray">
           While ingredient suggestions are open: Arrow up or down — move highlight; Enter — apply
-          the highlighted suggestion
+          the highlighted suggestion, or the top match if none is highlighted yet
         </Text>
       </Flex>
       {error ? (

@@ -132,12 +132,11 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                 }
                 if (event.key === "Enter") {
                   const i = highlightedIndexRef.current;
-                  if (i >= 0) {
-                    const hit = suggestions[i];
-                    if (hit) {
-                      event.preventDefault();
-                      pickSuggestion(hit);
-                    }
+                  const pickIndex = i >= 0 ? i : 0;
+                  const hit = suggestions[pickIndex];
+                  if (hit) {
+                    event.preventDefault();
+                    pickSuggestion(hit);
                   }
                 }
               }}
