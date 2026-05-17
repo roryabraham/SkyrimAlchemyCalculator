@@ -11,11 +11,17 @@
     "dev:web": "bun run --cwd web dev",
     "dev": "concurrently -k \"bun run dev:server\" \"bun run dev:web\"",
     "test": "bun test",
-    "build": "bun run --cwd web build"
+    "build": "bun run --cwd web build",
+    "lint": "oxlint web/src web/scripts server/src scripts tests",
+    "lint:fix": "oxlint --fix web/src web/scripts server/src scripts tests",
+    "fmt": "oxfmt web/src web/scripts web/vite.config.ts server/src scripts tests package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.node.json server/tsconfig.json",
+    "fmt:check": "oxfmt --check web/src web/scripts web/vite.config.ts server/src scripts tests package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.node.json server/tsconfig.json"
   },
   "devDependencies": {
     "cheerio": "^1.0.0",
     "concurrently": "^9.1.2",
+    "oxfmt": "0.50.0",
+    "oxlint": "1.65.0",
     "typescript": "^5.7.3"
   }
 }
