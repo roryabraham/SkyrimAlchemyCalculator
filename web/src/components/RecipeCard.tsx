@@ -37,7 +37,7 @@ export function RecipeCard({ recipe: rec, canBrew, onBrew }: Props) {
       </Flex>
       <Flex align="center" gap="2" wrap="wrap" mb="2">
         {rec.ingredients.map((ing, idx) => (
-          <Flex key={ing.id} align="center" gap="2">
+          <Flex key={`${idx}-${ing.id}`} align="center" gap="2">
             {idx > 0 ? (
               <Text size="2" color="gray" style={{ userSelect: "none" }}>
                 +

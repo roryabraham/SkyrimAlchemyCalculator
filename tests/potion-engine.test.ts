@@ -67,6 +67,15 @@ describe("rankPotions", () => {
     expect(result.recipes).toEqual([]);
   });
 
+  it("allows the same ingredient twice when quantity supplies two units", () => {
+    const result = rankPotions([{ name: "Wheat", quantity: 2 }], nameIndex);
+    expect(result.error).toBeUndefined();
+    expect(result.recipes.length).toBeGreaterThan(0);
+    const twoWheat = result.recipes.find((rec) => rec.ingredients.length === 2);
+    expect(twoWheat).toBeTruthy();
+    expect(twoWheat!.ingredients[0]!.id).toBe(twoWheat!.ingredients[1]!.id);
+  });
+
   it("returns empty recipes when no pair shares an effect", () => {
     const result = rankPotions(
       [
