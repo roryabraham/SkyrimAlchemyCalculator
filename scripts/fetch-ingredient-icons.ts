@@ -17,6 +17,7 @@ import { fetchWithTimeout } from "../libs/fetch-with-timeout.ts";
 import { retryWithBackoff } from "../libs/retry-with-backoff.ts";
 import { sleep } from "../libs/sleep.ts";
 import { isAbortError, isLikelyTransientNetworkError } from "../libs/transient-network-error.ts";
+import { wikiTitleFromIngredientRowId } from "./lib/wiki-ingredient-title.ts";
 
 const ROOT = path.join(import.meta.dir, "..");
 const DATA = path.join(ROOT, "data");
@@ -38,6 +39,30 @@ const MAX_RETRIES = 8;
 const INITIAL_BACKOFF_MS = 2_000;
 const MAX_BACKOFF_MS = 90_000;
 const BACKOFF_FACTOR = 2;
+
+const VERBOSE = process.env.VERBOSE_INGREDIENT_ICONS === "1";
+
+function vlog(message: string): void {
+  if (VERBOSE) {
+    console.log(`  [icons] ${message}`);
+  }
+}
+
+async function readUespJsonResponse(res: Response, context: string): Promise<unknown> {
+  const text = await res.text();
+  const trimmed = text.trim();
+  if (!trimmed.startsWith("{") && !trimmed.startsWith("[")) {
+    const preview = trimmed.slice(0, 160).replace(/\s+/g, " ");
+    throw new Error(`UESP ${context}: expected JSON, got: ${preview}`);
+  }
+  try {
+    return JSON.parse(text) as unknown;
+  } catch {
+    throw new Error(
+      `UESP ${context}: JSON.parse failed (first 160 chars): ${trimmed.slice(0, 160)}`,
+    );
+  }
+}
 
 type ManifestEntry = { publicPath: string; wikiFile: string };
 type ManifestJson = Record<string, ManifestEntry | { publicPath: string; wikiFile?: string }>;
@@ -109,10 +134,6 @@ type IngredientJson = {
   rowId: string;
 };
 
-function wikiTitleFromRowId(rowId: string): string {
-  return `Skyrim:${rowId.replace(/_/g, " ")}`;
-}
-
 function fileSlug(nameNormalized: string): string {
   return nameNormalized.trim().replace(/\s+/g, "-");
 }
@@ -149,7 +170,7 @@ async function mwParseImages(pageTitle: string): Promise<string[] | null> {
     if (!res.ok) {
       throw new Error(`UESP parse HTTP ${res.status} ${pageTitle}`);
     }
-    const payload = (await res.json()) as {
+    const payload = (await readUespJsonResponse(res, `parse ${pageTitle}`)) as {
       parse?: { images?: string[] };
       error?: { info?: string };
     };
@@ -172,7 +193,7 @@ async function mwImageUrl(wikiFilename: string): Promise<string | null> {
     if (!res.ok) {
       throw new Error(`UESP query HTTP ${res.status} ${wikiFilename}`);
     }
-    const payload = (await res.json()) as {
+    const payload = (await readUespJsonResponse(res, `imageinfo ${wikiFilename}`)) as {
       query?: {
         pages?: Record<string, { missing?: string; imageinfo?: { url: string; size?: number }[] }>;
       };
@@ -227,12 +248,16 @@ async function processIngredient(
     }
   }
 
-  const title = wikiTitleFromRowId(ingredient.rowId);
-  console.log(`[${index + 1}/${total}] ${ingredient.rowId} (concurrency=${CONCURRENCY})`);
+  const title = wikiTitleFromIngredientRowId(ingredient.rowId);
+  console.log(
+    `[${index + 1}/${total}] ${ingredient.rowId} → wiki "${title}" (concurrency=${CONCURRENCY})`,
+  );
 
   let images: string[] | null;
   try {
+    vlog(`GET parse → ${title}`);
     images = await mwParseImages(title);
+    vlog(`← parse images count=${images?.length ?? "null"}`);
   } catch (caughtError) {
     const msg = caughtError instanceof Error ? caughtError.message : String(caughtError);
     const detail = isAbortError(caughtError) ? "parse timeout" : msg;
@@ -249,7 +274,9 @@ async function processIngredient(
 
   let imageUrl: string | null;
   try {
+    vlog(`GET imageinfo → ${wikiFile}`);
     imageUrl = await mwImageUrl(wikiFile);
+    vlog(`← imageinfo url=${imageUrl ? "yes" : "null"}`);
   } catch (caughtError) {
     const msg = caughtError instanceof Error ? caughtError.message : String(caughtError);
     const detail = isAbortError(caughtError) ? "imageinfo timeout" : msg;
@@ -281,7 +308,9 @@ async function processIngredient(
   }
 
   try {
+    vlog(`GET download → ${path.basename(destPath)}`);
     await downloadToFile(imageUrl, destPath);
+    vlog(`← wrote ${destPath}`);
     manifestState[ingredient.nameNormalized] = entry;
     await flushManifestToDisk();
     return {
@@ -305,7 +334,7 @@ const ingredients: IngredientJson[] = JSON.parse(
 
 const cachedCount = Object.keys(manifestState).length;
 console.log(
-  `Fetching ${ingredients.length} ingredient icons (concurrency=${CONCURRENCY}, gap=${GAP_MS}ms, manifest has ${cachedCount} keys, resume=yes, backoff=yes)`,
+  `Fetching ${ingredients.length} ingredient icons (concurrency=${CONCURRENCY}, gap=${GAP_MS}ms, manifest has ${cachedCount} keys, resume=yes, backoff=yes). Set VERBOSE_INGREDIENT_ICONS=1 for per-request logs.`,
 );
 
 const taskResults = await runPool(ingredients, CONCURRENCY, (ingredient, index) =>

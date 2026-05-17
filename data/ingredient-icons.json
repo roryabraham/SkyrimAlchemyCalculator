@@ -542,5 +542,177 @@
   "harrada": {
     "publicPath": "/ingredient-icons/harrada.png",
     "wikiFile": "SR-icon-ingredient-Harrada.png"
+  },
+  "hypha facia": {
+    "publicPath": "/ingredient-icons/hypha-facia.png",
+    "wikiFile": "SR-icon-ingredient-Hypha_Facia.png"
+  },
+  "imp gall": {
+    "publicPath": "/ingredient-icons/imp-gall.png",
+    "wikiFile": "SR-icon-ingredient-Imp_Gall.png"
+  },
+  "ironwood fruit": {
+    "publicPath": "/ingredient-icons/ironwood-fruit.png",
+    "wikiFile": "SR-icon-ingredient-Ironwood_Fruit.png"
+  },
+  "kagouti hide": {
+    "publicPath": "/ingredient-icons/kagouti-hide.png",
+    "wikiFile": "SR-icon-ingredient-Kagouti_Hide.png"
+  },
+  "kresh fiber": {
+    "publicPath": "/ingredient-icons/kresh-fiber.png",
+    "wikiFile": "SR-icon-ingredient-Kresh_Fiber.png"
+  },
+  "lichor": {
+    "publicPath": "/ingredient-icons/lichor.png",
+    "wikiFile": "SR-icon-ingredient-Lichor.png"
+  },
+  "heart of order": {
+    "publicPath": "/ingredient-icons/heart-of-order.png",
+    "wikiFile": "SR-icon-ingredient-Heart_of_Order.png"
+  },
+  "hunger tongue": {
+    "publicPath": "/ingredient-icons/hunger-tongue.png",
+    "wikiFile": "SR-icon-ingredient-Hunger_Tongue.png"
+  },
+  "hydnum azure giant spore": {
+    "publicPath": "/ingredient-icons/hydnum-azure-giant-spore.png",
+    "wikiFile": "SR-icon-ingredient-Hydnum_Azure_Giant_Spore.png"
+  },
+  "luminous russula": {
+    "publicPath": "/ingredient-icons/luminous-russula.png",
+    "wikiFile": "SR-icon-ingredient-Luminous_Russula.png"
+  },
+  "lyretail anthias": {
+    "publicPath": "/ingredient-icons/lyretail-anthias.png",
+    "wikiFile": "SR-icon-ingredient-Lyretail_Anthias.png"
+  },
+  "marshmerrow": {
+    "publicPath": "/ingredient-icons/marshmerrow.png",
+    "wikiFile": "SR-icon-ingredient-Marshmerrow.png"
+  },
+  "minotaur horn": {
+    "publicPath": "/ingredient-icons/minotaur-horn.png",
+    "wikiFile": "SR-icon-ingredient-Minotaur_Horn.png"
+  },
+  "mort flesh": {
+    "publicPath": "/ingredient-icons/mort-flesh.png",
+    "wikiFile": "SR-icon-ingredient-Mort_Flesh.png"
+  },
+  "pearlfish": {
+    "publicPath": "/ingredient-icons/pearlfish.png",
+    "wikiFile": "SR-icon-ingredient-Pearlfish.png"
+  },
+  "purple butterfly wing": {
+    "publicPath": "/ingredient-icons/purple-butterfly-wing.png",
+    "wikiFile": "SR-icon-ingredient-Purple_Butterfly_Wing.png"
+  },
+  "pygmy sunfish": {
+    "publicPath": "/ingredient-icons/pygmy-sunfish.png",
+    "wikiFile": "SR-icon-ingredient-Pygmy_Sunfish.png"
+  },
+  "chicken s egg": {
+    "publicPath": "/ingredient-icons/chicken-s-egg.png",
+    "wikiFile": "SR-icon-ingredient-Chicken's_Egg.png"
+  },
+  "giant s toe": {
+    "publicPath": "/ingredient-icons/giant-s-toe.png",
+    "wikiFile": "SR-icon-ingredient-Giants_Toe.png"
+  },
+  "dragon s tongue": {
+    "publicPath": "/ingredient-icons/dragon-s-tongue.png",
+    "wikiFile": "SR-icon-ingredient-Dragons_Tongue.png"
+  },
+  "hawk s egg": {
+    "publicPath": "/ingredient-icons/hawk-s-egg.png",
+    "wikiFile": "SR-icon-ingredient-Hawk's_Egg.png"
+  },
+  "namira s rot": {
+    "publicPath": "/ingredient-icons/namira-s-rot.png",
+    "wikiFile": "SR-icon-ingredient-Namira's_Rot.png"
+  },
+  "blind watcher s eye": {
+    "publicPath": "/ingredient-icons/blind-watcher-s-eye.png",
+    "wikiFile": "SR-icon-ingredient-Blind_Watcher's_Eye.png"
+  },
+  "bungler s bane": {
+    "publicPath": "/ingredient-icons/bungler-s-bane.png",
+    "wikiFile": "SR-icon-ingredient-Bungler's_Bane.png"
+  },
+  "ogre s teeth": {
+    "publicPath": "/ingredient-icons/ogre-s-teeth.png",
+    "wikiFile": "SR-icon-ingredient-Ogre's_Teeth.png"
+  },
+  "roobrush": {
+    "publicPath": "/ingredient-icons/roobrush.png",
+    "wikiFile": "SR-icon-ingredient-Roobrush.png"
+  },
+  "rot scale": {
+    "publicPath": "/ingredient-icons/rot-scale.png",
+    "wikiFile": "SR-icon-ingredient-Rot_Scale.png"
+  },
+  "saltrice": {
+    "publicPath": "/ingredient-icons/saltrice.png",
+    "wikiFile": "SR-icon-ingredient-Saltrice.png"
+  },
+  "scalon fin": {
+    "publicPath": "/ingredient-icons/scalon-fin.png",
+    "wikiFile": "SR-icon-ingredient-Scalon_Fin.png"
+  },
+  "screaming maw": {
+    "publicPath": "/ingredient-icons/screaming-maw.png",
+    "wikiFile": "SR-icon-ingredient-Screaming_Maw.png"
+  },
+  "scrib jerky": {
+    "publicPath": "/ingredient-icons/scrib-jerky.png",
+    "wikiFile": "SR-icon-ingredient-Scrib_Jerky.png"
+  },
+  "sload soap": {
+    "publicPath": "/ingredient-icons/sload-soap.png",
+    "wikiFile": "SR-icon-ingredient-Sload_Soap.png"
+  },
+  "red kelp gas bladder": {
+    "publicPath": "/ingredient-icons/red-kelp-gas-bladder.png",
+    "wikiFile": "SR-icon-ingredient-Red_Kelp_Gas_Bladder.png"
+  },
+  "redwort flower": {
+    "publicPath": "/ingredient-icons/redwort-flower.png",
+    "wikiFile": "SR-icon-ingredient-Redwort_Flower.png"
+  },
+  "spadefish": {
+    "publicPath": "/ingredient-icons/spadefish.png",
+    "wikiFile": "SR-icon-ingredient-Spadefish.png"
+  },
+  "scrib jelly": {
+    "publicPath": "/ingredient-icons/scrib-jelly.png",
+    "wikiFile": "SR-icon-ingredient-Scrib_Jelly.png"
+  },
+  "spiddal stick": {
+    "publicPath": "/ingredient-icons/spiddal-stick.png",
+    "wikiFile": "SR-icon-ingredient-Spiddal_Stick.png"
+  },
+  "steel blue entoloma": {
+    "publicPath": "/ingredient-icons/steel-blue-entoloma.png",
+    "wikiFile": "SR-icon-ingredient-Steel-Blue_Entoloma.png"
+  },
+  "stoneflower petals": {
+    "publicPath": "/ingredient-icons/stoneflower-petals.png",
+    "wikiFile": "SR-icon-ingredient-Stoneflower_Petals.png"
+  },
+  "void essence": {
+    "publicPath": "/ingredient-icons/void-essence.png",
+    "wikiFile": "SR-icon-ingredient-Void_Essence.png"
+  },
+  "watcher s eye": {
+    "publicPath": "/ingredient-icons/watcher-s-eye.png",
+    "wikiFile": "SR-icon-ingredient-Watcher's_Eye.png"
+  },
+  "wild grass pod": {
+    "publicPath": "/ingredient-icons/wild-grass-pod.png",
+    "wikiFile": "SR-icon-ingredient-Wild_Grass_Pod.png"
+  },
+  "worm s head cap": {
+    "publicPath": "/ingredient-icons/worm-s-head-cap.png",
+    "wikiFile": "SR-icon-ingredient-Worm's_Head_Cap.png"
   }
 }

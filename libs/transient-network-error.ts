@@ -22,7 +22,11 @@ export function isLikelyTransientNetworkError(maybeError: unknown): boolean {
   if (/rate|throttl|too many|busy/i.test(msg)) {
     return true;
   }
-  if (/fetch failed|ECONNRESET|ETIMEDOUT|EAI_AGAIN|socket/i.test(msg)) {
+  if (
+    /fetch failed|ECONNRESET|ETIMEDOUT|EAI_AGAIN|socket|closed unexpectedly|connection reset|broken pipe/i.test(
+      msg,
+    )
+  ) {
     return true;
   }
   return false;
