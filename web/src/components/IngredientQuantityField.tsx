@@ -1,5 +1,5 @@
 import { TextField } from "@radix-ui/themes";
-import { useState, type RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
 import type { InventoryRowPatch } from "../types.ts";
 
 function clampQuantity(n: number): number {
@@ -16,6 +16,10 @@ type Props = {
 
 export function IngredientQuantityField({ rowId, quantity, inputRef, onUpdate, onAddRow }: Props) {
   const [quantityDraft, setQuantityDraft] = useState(() => String(quantity));
+
+  useEffect(() => {
+    setQuantityDraft(String(quantity));
+  }, [quantity]);
 
   const commitQuantityDraft = () => {
     const parsed = parseInt(quantityDraft, 10);
