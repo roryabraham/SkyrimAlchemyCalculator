@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useDeferredValue } from "react";
 import { fetchIngredientsForAutocomplete } from "../ingredient-api.ts";
 import type { InventoryRow } from "../types.ts";
 
@@ -21,13 +21,8 @@ type Props = {
 };
 
 export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
-  const [debouncedName, setDebouncedName] = useState(row.name);
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedName(row.name), 220);
-    return () => clearTimeout(t);
-  }, [row.name]);
-
-  const q = debouncedName.trim();
+  const deferredQuery = useDeferredValue(row.name.trim());
+  const q = deferredQuery;
   const { data, isFetching } = useQuery({
     queryKey: ["ingredients", "autocomplete", q],
     queryFn: () => fetchIngredientsForAutocomplete(q),
@@ -37,6 +32,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
 
   const suggestions = q.length > 0 ? (data ?? []) : [];
   const suggestOpen = row.open && suggestions.length > 0;
+  const queryStale = row.name.trim() !== deferredQuery;
 
   return (
     <Table.Row align="start">
@@ -60,7 +56,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                   setTimeout(() => onUpdate(row.id, { open: false }), 150);
                 }}
               >
-                {isFetching ? (
+                {queryStale || isFetching ? (
                   <TextField.Slot side="right">
                     <Spinner size="1" />
                   </TextField.Slot>
@@ -78,13 +74,13 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
           >
             <ScrollArea type="hover" scrollbars="vertical" style={{ maxHeight: 220 }}>
               <Flex direction="column" gap="1" p="1">
-                {row.suggestions.map((h) => (
+                {suggestions.map((h) => (
                   <Button
                     key={h.id}
                     type="button"
                     variant="ghost"
                     size="1"
-                    justify="start"
+                    style={{ justifyContent: "flex-start" }}
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={() => {
                       onUpdate(row.id, {

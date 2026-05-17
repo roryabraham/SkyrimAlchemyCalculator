@@ -2,12 +2,27 @@ import { Badge, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import type { Recipe } from "../types.ts";
 
 type Props = {
+  /** Authoritative list for empty-state and loading-related copy. */
   recipes: Recipe[];
+  /** List rendered in the scroll area (may lag via `useDeferredValue`). */
+  displayedRecipes: Recipe[];
+  listUpdating: boolean;
   truncated: boolean;
   loading: boolean;
 };
 
-export function RecipeResultsPanel({ recipes, truncated, loading }: Props) {
+function recipeKey(rec: Recipe): string {
+  const ids = rec.ingredients.map((ing) => ing.id).join("-");
+  return `${rec.mixtureKind}-${rec.dominantEffectKey}-${ids}-${rec.totalGold}`;
+}
+
+export function RecipeResultsPanel({
+  recipes,
+  displayedRecipes,
+  listUpdating,
+  truncated,
+  loading,
+}: Props) {
   return (
     <Card size="3" variant="surface">
       <Heading as="h2" size="5" weight="bold" mb="3">
@@ -18,14 +33,19 @@ export function RecipeResultsPanel({ recipes, truncated, loading }: Props) {
           Showing the first batch of combinations only — narrow your list for a full search.
         </Text>
       ) : null}
+      {listUpdating ? (
+        <Text as="p" size="2" color="gray" mb="3">
+          Updating list…
+        </Text>
+      ) : null}
       {recipes.length === 0 && !loading ? (
         <Text as="p" size="2" color="gray" mb="3">
           Results appear here after you search.
         </Text>
       ) : null}
       <Flex direction="column" gap="3">
-        {recipes.map((rec, i) => (
-          <Card key={i} size="2" variant="classic">
+        {displayedRecipes.map((rec) => (
+          <Card key={recipeKey(rec)} size="2" variant="classic">
             <Flex align="center" justify="between" gap="3" wrap="wrap" mb="2">
               <Text size="4" weight="bold" style={{ fontVariantNumeric: "tabular-nums" }}>
                 {rec.totalGold.toLocaleString()} gold

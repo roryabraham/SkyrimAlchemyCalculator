@@ -1,6 +1,6 @@
 import { Container, Flex } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useDeferredValue, useState, useTransition } from "react";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
@@ -24,6 +24,7 @@ export function App() {
   const [params, setParams] = useState<AlchemyFormParams>({
     ...defaultAlchemyFormParams,
   });
+  const [, startSettingsTransition] = useTransition();
 
   const potionsMutation = useMutation({
     mutationFn: () => {
@@ -61,6 +62,9 @@ export function App() {
   const loading = potionsMutation.isPending;
   const outcome = potionsMutation.data;
   const recipes = loading ? [] : outcome?.type === "success" ? outcome.recipes : [];
+  const deferredRecipes = useDeferredValue(recipes);
+  const listUpdating =
+    !loading && recipes.length > 0 && recipes !== deferredRecipes;
   const truncated =
     !loading && outcome?.type === "success" ? Boolean(outcome.truncated) : false;
   const error = outcome?.type === "error" ? outcome.error : null;
@@ -84,8 +88,18 @@ export function App() {
           onAddRow={addRow}
           onSubmit={submit}
         />
-        <AlchemySettingsPanel params={params} setParams={setParams} />
-        <RecipeResultsPanel recipes={recipes} truncated={truncated} loading={loading} />
+        <AlchemySettingsPanel
+          params={params}
+          setParams={setParams}
+          startSettingsTransition={startSettingsTransition}
+        />
+        <RecipeResultsPanel
+          recipes={recipes}
+          displayedRecipes={deferredRecipes}
+          listUpdating={listUpdating}
+          truncated={truncated}
+          loading={loading}
+        />
       </Flex>
     </Container>
   );

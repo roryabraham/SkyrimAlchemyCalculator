@@ -7,10 +7,12 @@ import { defaultAlchemyFormParams } from "../types.ts";
 type Props = {
   params: AlchemyFormParams;
   setParams: Dispatch<SetStateAction<AlchemyFormParams>>;
+  startSettingsTransition: (fn: () => void) => void;
 };
 
 function setNumParam(
   setParams: Props["setParams"],
+  startSettingsTransition: Props["startSettingsTransition"],
   key: "alchemySkill" | "fortifyAlchemy" | "alchemistPercent" | "seekerOfShadowsPercent",
   value: string,
   fallback: number,
@@ -20,10 +22,16 @@ function setNumParam(
   if (!Number.isFinite(n)) n = fallback;
   if (opts?.min !== undefined) n = Math.max(opts.min, n);
   if (opts?.max !== undefined) n = Math.min(opts.max, n);
-  setParams((p) => ({ ...p, [key]: n }));
+  startSettingsTransition(() => {
+    setParams((p) => ({ ...p, [key]: n }));
+  });
 }
 
-export function AlchemySettingsPanel({ params, setParams }: Props) {
+export function AlchemySettingsPanel({
+  params,
+  setParams,
+  startSettingsTransition,
+}: Props) {
   const id = useId();
   const physicianId = `${id}-physician`;
   const benefactorId = `${id}-benefactor`;
@@ -52,6 +60,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
             onChange={(e) =>
               setNumParam(
                 setParams,
+                startSettingsTransition,
                 "alchemySkill",
                 e.target.value,
                 defaultAlchemyFormParams.alchemySkill,
@@ -74,6 +83,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
             onChange={(e) =>
               setNumParam(
                 setParams,
+                startSettingsTransition,
                 "fortifyAlchemy",
                 e.target.value,
                 defaultAlchemyFormParams.fortifyAlchemy,
@@ -96,6 +106,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
             onChange={(e) =>
               setNumParam(
                 setParams,
+                startSettingsTransition,
                 "alchemistPercent",
                 e.target.value,
                 defaultAlchemyFormParams.alchemistPercent,
@@ -118,6 +129,7 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
             onChange={(e) =>
               setNumParam(
                 setParams,
+                startSettingsTransition,
                 "seekerOfShadowsPercent",
                 e.target.value,
                 defaultAlchemyFormParams.seekerOfShadowsPercent,
@@ -132,7 +144,11 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
           <Checkbox
             id={physicianId}
             checked={params.hasPhysician}
-            onCheckedChange={(v) => setParams((p) => ({ ...p, hasPhysician: v === true }))}
+            onCheckedChange={(v) =>
+              startSettingsTransition(() => {
+                setParams((p) => ({ ...p, hasPhysician: v === true }));
+              })
+            }
           />
           <Text as="label" htmlFor={physicianId} size="2" style={{ cursor: "pointer" }}>
             Physician
@@ -142,7 +158,11 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
           <Checkbox
             id={benefactorId}
             checked={params.hasBenefactor}
-            onCheckedChange={(v) => setParams((p) => ({ ...p, hasBenefactor: v === true }))}
+            onCheckedChange={(v) =>
+              startSettingsTransition(() => {
+                setParams((p) => ({ ...p, hasBenefactor: v === true }));
+              })
+            }
           />
           <Text as="label" htmlFor={benefactorId} size="2" style={{ cursor: "pointer" }}>
             Benefactor
@@ -152,7 +172,11 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
           <Checkbox
             id={poisonerId}
             checked={params.hasPoisoner}
-            onCheckedChange={(v) => setParams((p) => ({ ...p, hasPoisoner: v === true }))}
+            onCheckedChange={(v) =>
+              startSettingsTransition(() => {
+                setParams((p) => ({ ...p, hasPoisoner: v === true }));
+              })
+            }
           />
           <Text as="label" htmlFor={poisonerId} size="2" style={{ cursor: "pointer" }}>
             Poisoner
@@ -164,7 +188,11 @@ export function AlchemySettingsPanel({ params, setParams }: Props) {
         size="2"
         variant="outline"
         color="gray"
-        onClick={() => setParams({ ...defaultAlchemyFormParams })}
+        onClick={() =>
+          startSettingsTransition(() => {
+            setParams({ ...defaultAlchemyFormParams });
+          })
+        }
       >
         Reset to defaults
       </Button>
