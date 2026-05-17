@@ -146,3 +146,17 @@ body::after {
     0 0 0 1px color-mix(in oklab, var(--amber-a6) 35%, transparent),
     0 24px 48px -24px rgba(109, 40, 217, 0.28);
 }
+
+/*
+ * Lottie embeds literal fill colors; Radix `Text color="gray"` sets `color` on the wrapper.
+ * Force vector paints to follow that so the cauldron matches muted body copy.
+ */
+.loading-indicator svg path,
+.loading-indicator svg rect,
+.loading-indicator svg circle,
+.loading-indicator svg ellipse,
+.loading-indicator svg polygon,
+.loading-indicator svg polyline {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}

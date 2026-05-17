@@ -1,6 +1,7 @@
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { canBrewRecipe } from "../brew-recipe.ts";
 import type { InventoryRow, Recipe } from "../types.ts";
+import { LoadingIndicator } from "./LoadingIndicator.tsx";
 import { RecipeCard } from "./RecipeCard.tsx";
 
 type Props = {
@@ -48,11 +49,7 @@ export function RecipeResultsPanel({
           Showing the first batch of combinations only — narrow your list for a full search.
         </Text>
       ) : null}
-      {isListUpdating ? (
-        <Text as="p" size="2" color="gray" mb="3">
-          Updating list…
-        </Text>
-      ) : null}
+      {isListUpdating ? <LoadingIndicator /> : null}
       {recipes.length === 0 && !isLoading ? (
         <Text as="p" size="2" color="gray" mb="3">
           The cauldron is quiet — add ingredients and hit{" "}
