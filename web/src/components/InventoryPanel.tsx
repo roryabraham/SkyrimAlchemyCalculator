@@ -1,4 +1,4 @@
-import { Button, Callout, Card, Flex, Heading, Spinner, Table, Text } from "@radix-ui/themes";
+import { Button, Callout, Card, Flex, Heading, Separator, Spinner, Table, Text } from "@radix-ui/themes";
 import type { InventoryRow } from "../types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
@@ -70,6 +70,19 @@ export function InventoryPanel({
             "Brew best value"
           )}
         </Button>
+      </Flex>
+      <Separator size="4" my="4" />
+      <Flex direction="column" gap="1" aria-label="Keyboard shortcuts">
+        <Text size="1" weight="bold" color="gray">
+          Shortcuts
+        </Text>
+        <Text size="1" color="gray">
+          Option or Alt+Shift+N — add another reagent
+        </Text>
+        <Text size="1" color="gray">
+          While ingredient suggestions are open: Arrow up or down — move highlight; Enter — apply
+          the highlighted suggestion
+        </Text>
       </Flex>
       {error ? (
         <Callout.Root color="red" variant="soft" mt="4" role="alert">
