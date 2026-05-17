@@ -27,11 +27,7 @@ function setNumParam(
   });
 }
 
-export function AlchemySettingsPanel({
-  params,
-  setParams,
-  startSettingsTransition,
-}: Props) {
+export function AlchemySettingsPanel({ params, setParams, startSettingsTransition }: Props) {
   const id = useId();
   const physicianId = `${id}-physician`;
   const benefactorId = `${id}-benefactor`;

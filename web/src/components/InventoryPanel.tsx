@@ -51,12 +51,7 @@ export function InventoryPanel({
         <Button type="button" size="2" variant="soft" onClick={onAddRow}>
           Add ingredient
         </Button>
-        <Button
-          type="button"
-          size="2"
-          disabled={!canSubmit || loading}
-          onClick={onSubmit}
-        >
+        <Button type="button" size="2" disabled={!canSubmit || loading} onClick={onSubmit}>
           {loading ? (
             <Flex align="center" gap="2">
               <Spinner size="1" />

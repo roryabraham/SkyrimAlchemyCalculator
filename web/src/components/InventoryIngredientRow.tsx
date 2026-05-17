@@ -38,7 +38,8 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
     <Table.Row align="start">
       <Table.Cell style={{ minWidth: "12rem" }}>
         <Popover.Root open={suggestOpen} modal={false}>
-          <Popover.Anchor>
+          {/* @radix-ui/themes Popover.Anchor drops children; Trigger asChild keeps the field in the DOM. */}
+          <Popover.Trigger asChild>
             <Box position="relative" width="100%">
               <TextField.Root
                 size="2"
@@ -63,7 +64,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                 ) : null}
               </TextField.Root>
             </Box>
-          </Popover.Anchor>
+          </Popover.Trigger>
           <Popover.Content
             side="bottom"
             align="start"

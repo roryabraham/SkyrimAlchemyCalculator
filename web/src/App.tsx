@@ -63,10 +63,8 @@ export function App() {
   const outcome = potionsMutation.data;
   const recipes = loading ? [] : outcome?.type === "success" ? outcome.recipes : [];
   const deferredRecipes = useDeferredValue(recipes);
-  const listUpdating =
-    !loading && recipes.length > 0 && recipes !== deferredRecipes;
-  const truncated =
-    !loading && outcome?.type === "success" ? Boolean(outcome.truncated) : false;
+  const listUpdating = !loading && recipes.length > 0 && recipes !== deferredRecipes;
+  const truncated = !loading && outcome?.type === "success" ? Boolean(outcome.truncated) : false;
   const error = outcome?.type === "error" ? outcome.error : null;
 
   const canSubmit =
