@@ -1,27 +1,27 @@
 /** Classic Levenshtein distance (insert / delete / substitute), for fuzzy matching. */
-export function levenshtein(a: string, b: string): number {
-  const m = a.length;
-  const n = b.length;
-  if (m === 0) {
-    return n;
+export function levenshtein(source: string, target: string): number {
+  const sourceLen = source.length;
+  const targetLen = target.length;
+  if (sourceLen === 0) {
+    return targetLen;
   }
-  if (n === 0) {
-    return m;
+  if (targetLen === 0) {
+    return sourceLen;
   }
-  const v0 = new Int32Array(n + 1);
-  for (let j = 0; j <= n; j++) {
-    v0[j] = j;
+  const v0 = new Int32Array(targetLen + 1);
+  for (let targetCol = 0; targetCol <= targetLen; targetCol++) {
+    v0[targetCol] = targetCol;
   }
-  const v1 = new Int32Array(n + 1);
-  for (let i = 0; i < m; i++) {
-    v1[0] = i + 1;
-    for (let j = 0; j < n; j++) {
-      const cost = a.charCodeAt(i) === b.charCodeAt(j) ? 0 : 1;
-      v1[j + 1] = Math.min(v1[j] + 1, v0[j + 1] + 1, v0[j] + cost);
+  const v1 = new Int32Array(targetLen + 1);
+  for (let sourceRow = 0; sourceRow < sourceLen; sourceRow++) {
+    v1[0] = sourceRow + 1;
+    for (let targetCol = 0; targetCol < targetLen; targetCol++) {
+      const cost = source.charCodeAt(sourceRow) === target.charCodeAt(targetCol) ? 0 : 1;
+      v1[targetCol + 1] = Math.min(v1[targetCol] + 1, v0[targetCol + 1] + 1, v0[targetCol] + cost);
     }
-    for (let j = 0; j <= n; j++) {
-      v0[j] = v1[j]!;
+    for (let targetCol = 0; targetCol <= targetLen; targetCol++) {
+      v0[targetCol] = v1[targetCol]!;
     }
   }
-  return v0[n]!;
+  return v0[targetLen]!;
 }

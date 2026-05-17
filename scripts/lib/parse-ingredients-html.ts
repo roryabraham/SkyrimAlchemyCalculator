@@ -24,24 +24,24 @@ function effectKeyFromHref(href: string | undefined): string | null {
   if (!href) {
     return null;
   }
-  const m = href.match(/\/wiki\/Skyrim:([^#?]+)/);
-  if (!m) {
+  const wikiPathMatch = href.match(/\/wiki\/Skyrim:([^#?]+)/);
+  if (!wikiPathMatch) {
     return null;
   }
   try {
-    return decodeURIComponent(m[1].replace(/_/g, "_"));
+    return decodeURIComponent(wikiPathMatch[1].replace(/_/g, "_"));
   } catch {
-    return m[1];
+    return wikiPathMatch[1];
   }
 }
 
 function parseEffectCell($cell: Cheerio<Element>): ParsedEffect | null {
   const $links = $cell.find('a[href^="/wiki/Skyrim:"]');
   let $chosen = $links.last();
-  for (let i = 0; i < $links.length; i++) {
-    const $x = $links.eq(i);
-    if ($x.text().trim()) {
-      $chosen = $x;
+  for (let linkIndex = 0; linkIndex < $links.length; linkIndex++) {
+    const $linkCandidate = $links.eq(linkIndex);
+    if ($linkCandidate.text().trim()) {
+      $chosen = $linkCandidate;
       break;
     }
   }
@@ -56,7 +56,7 @@ function parseEffectCell($cell: Cheerio<Element>): ParsedEffect | null {
   const canon = EFFECT_KEY_ALIASES[key] ?? key;
   const displayName = $chosen.text().trim();
   const cellText = $cell.text().replace(/\s+/g, " ").trim();
-  const nums = [...cellText.matchAll(/(\d+(?:\.\d+)?)\s*×/g)].map((x) => Number(x[1]));
+  const nums = [...cellText.matchAll(/(\d+(?:\.\d+)?)\s*×/g)].map((match) => Number(match[1]));
   let magMult: number | null = null;
   let durMult: number | null = null;
   let goldMult: number | null = null;
@@ -80,12 +80,12 @@ function parseEffectCell($cell: Cheerio<Element>): ParsedEffect | null {
 }
 
 function parseNumberLoose(s: string): number | null {
-  const t = s.replace(/[^\d.+-]/g, "").trim();
-  if (!t) {
+  const numericText = s.replace(/[^\d.+-]/g, "").trim();
+  if (!numericText) {
     return null;
   }
-  const n = Number(t);
-  return Number.isFinite(n) ? n : null;
+  const parsed = Number(numericText);
+  return Number.isFinite(parsed) ? parsed : null;
 }
 
 function formIdFromNameCell($cell: Cheerio<Element>): string {
@@ -101,8 +101,8 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
 
   function harvestTable($table: Cheerio<Element>, section: "standard" | "creation_club") {
     const trs = $table.find("tbody > tr").toArray();
-    for (let i = 0; i < trs.length; i++) {
-      const $tr = $(trs[i]);
+    for (let rowIndex = 0; rowIndex < trs.length; rowIndex++) {
+      const $tr = $(trs[rowIndex]);
       if ($tr.find("th").length) {
         continue;
       }
@@ -126,21 +126,21 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
       }
 
       const descriptionText = $(tds0[2]).text().replace(/\s+/g, " ").trim();
-      i++;
-      if (i >= trs.length) {
+      rowIndex++;
+      if (rowIndex >= trs.length) {
         break;
       }
-      const $tr2 = $(trs[i]);
+      const $tr2 = $(trs[rowIndex]);
       const tds = $tr2.find("> td").toArray();
       if (tds.length < 8) {
         continue;
       }
 
       const effects: ParsedEffect[] = [];
-      for (let c = 0; c < 4; c++) {
-        const pe = parseEffectCell($(tds[c]));
-        if (pe) {
-          effects.push(pe);
+      for (let effectSlot = 0; effectSlot < 4; effectSlot++) {
+        const parsedEffect = parseEffectCell($(tds[effectSlot]));
+        if (parsedEffect) {
+          effects.push(parsedEffect);
         }
       }
       if (effects.length !== 4) {

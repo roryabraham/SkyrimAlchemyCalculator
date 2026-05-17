@@ -100,17 +100,17 @@ INSERT INTO effects (effect_key, display_name, base_cost, base_mag, base_dur, va
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
-for (const e of effects) {
+for (const effectJson of effects) {
   insEffect.run(
-    e.effectKey,
-    e.displayName,
-    e.baseCost,
-    e.baseMag,
-    e.baseDur,
-    e.valueAt100,
-    e.powerAffectsMagnitude ? 1 : 0,
-    e.powerAffectsDuration ? 1 : 0,
-    e.isBeneficial ? 1 : 0,
+    effectJson.effectKey,
+    effectJson.displayName,
+    effectJson.baseCost,
+    effectJson.baseMag,
+    effectJson.baseDur,
+    effectJson.valueAt100,
+    effectJson.powerAffectsMagnitude ? 1 : 0,
+    effectJson.powerAffectsDuration ? 1 : 0,
+    effectJson.isBeneficial ? 1 : 0,
   );
 }
 
@@ -145,12 +145,19 @@ for (const ing of ingredients) {
     ing.garden,
   );
   const ingredientId = Number(info.lastInsertRowid);
-  for (const slot of ing.effects) {
-    const eid = effectIdByKey.get(slot.effectKey);
-    if (eid === undefined) {
-      throw new Error(`Missing effect ${slot.effectKey} for ${ing.name}`);
+  for (const effectSlot of ing.effects) {
+    const effectId = effectIdByKey.get(effectSlot.effectKey);
+    if (effectId === undefined) {
+      throw new Error(`Missing effect ${effectSlot.effectKey} for ${ing.name}`);
     }
-    insIE.run(ingredientId, slot.slot, eid, slot.magMult, slot.durMult, slot.goldMult);
+    insIE.run(
+      ingredientId,
+      effectSlot.slot,
+      effectId,
+      effectSlot.magMult,
+      effectSlot.durMult,
+      effectSlot.goldMult,
+    );
   }
 }
 

@@ -29,15 +29,15 @@ export function App() {
   const potionsMutation = useMutation({
     mutationFn: () => {
       const inventory = rows
-        .filter((r) => r.name.trim())
-        .map((r) => ({ name: r.name.trim(), count: r.count }));
+        .filter((row) => row.name.trim())
+        .map((row) => ({ name: row.name.trim(), count: row.count }));
       return requestPotionsRank(inventory, params);
     },
   });
 
   const addRow = () => {
-    setRows((r) => [
-      ...r,
+    setRows((prevRows) => [
+      ...prevRows,
       {
         id: uid(),
         name: "",
@@ -47,11 +47,13 @@ export function App() {
   };
 
   const removeRow = (rowId: string) => {
-    setRows((r) => (r.length <= 1 ? r : r.filter((x) => x.id !== rowId)));
+    setRows((prevRows) =>
+      prevRows.length <= 1 ? prevRows : prevRows.filter((row) => row.id !== rowId),
+    );
   };
 
   const updateRow = (rowId: string, patch: Partial<InventoryRow>) => {
-    setRows((prev) => prev.map((r) => (r.id === rowId ? { ...r, ...patch } : r)));
+    setRows((prev) => prev.map((row) => (row.id === rowId ? { ...row, ...patch } : row)));
   };
 
   const submit = () => {
@@ -67,9 +69,10 @@ export function App() {
   const error = outcome?.type === "error" ? outcome.error : null;
 
   const canSubmit =
-    rows.some((r) => r.name.trim()) &&
-    rows.filter((r) => r.name.trim()).reduce((s, r) => s + Math.max(0, Math.floor(r.count)), 0) >=
-      2;
+    rows.some((row) => row.name.trim()) &&
+    rows
+      .filter((row) => row.name.trim())
+      .reduce((totalUnits, row) => totalUnits + Math.max(0, Math.floor(row.count)), 0) >= 2;
 
   return (
     <Container size="2" px={{ initial: "4", sm: "5" }} py="6">

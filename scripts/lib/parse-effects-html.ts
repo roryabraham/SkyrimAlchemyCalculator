@@ -17,21 +17,21 @@ function effectKeyFromHref(href: string | undefined): string | null {
   if (!href) {
     return null;
   }
-  const m = href.match(/\/wiki\/Skyrim:([^#?]+)/);
-  if (!m) {
+  const wikiPathMatch = href.match(/\/wiki\/Skyrim:([^#?]+)/);
+  if (!wikiPathMatch) {
     return null;
   }
   try {
-    return decodeURIComponent(m[1]);
+    return decodeURIComponent(wikiPathMatch[1]);
   } catch {
-    return m[1];
+    return wikiPathMatch[1];
   }
 }
 
-function parseNum(s: string): number {
-  const t = s.replace(/[^\d.+-]/g, "").trim();
-  const n = Number(t);
-  return Number.isFinite(n) ? n : 0;
+function parseNum(text: string): number {
+  const numericText = text.replace(/[^\d.+-]/g, "").trim();
+  const parsed = Number(numericText);
+  return Number.isFinite(parsed) ? parsed : 0;
 }
 
 export function parseAlchemyEffectsHtml(html: string): EffectRow[] {
@@ -51,10 +51,10 @@ export function parseAlchemyEffectsHtml(html: string): EffectRow[] {
 
     const $links = $th.find('a[href^="/wiki/Skyrim:"]');
     let $chosen = $links.last();
-    for (let i = 0; i < $links.length; i++) {
-      const $x = $links.eq(i);
-      if ($x.text().trim()) {
-        $chosen = $x;
+    for (let linkIndex = 0; linkIndex < $links.length; linkIndex++) {
+      const $linkCandidate = $links.eq(linkIndex);
+      if ($linkCandidate.text().trim()) {
+        $chosen = $linkCandidate;
         break;
       }
     }

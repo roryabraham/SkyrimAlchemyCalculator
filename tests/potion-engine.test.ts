@@ -12,42 +12,45 @@ describe("expandInventory", () => {
   const nameIndex = loadNameIndex();
 
   it("maps lines to sorted ids and canonical names", () => {
-    const r = expandInventory(
+    const result = expandInventory(
       [
         { name: "Wheat", count: 2 },
         { name: "Blue Mountain Flower", count: 1 },
       ],
       nameIndex,
     );
-    if ("error" in r) {
-      throw new Error(r.error);
+    if ("error" in result) {
+      throw new Error(result.error);
     }
-    expect(r.ids.length).toBe(3);
-    expect([...r.ids].sort((a, b) => a - b)).toEqual(r.ids);
-    expect(r.idToName.size).toBeGreaterThanOrEqual(2);
+    expect(result.ids.length).toBe(3);
+    expect([...result.ids].sort((left, right) => left - right)).toEqual(result.ids);
+    expect(result.idToName.size).toBeGreaterThanOrEqual(2);
   });
 
   it("normalizes ingredient keys (spacing and case)", () => {
-    const r = expandInventory([{ name: "  BLUE   mountain  FLOWER ", count: 1 }], nameIndex);
-    if ("error" in r) {
-      throw new Error(r.error);
+    const result = expandInventory([{ name: "  BLUE   mountain  FLOWER ", count: 1 }], nameIndex);
+    if ("error" in result) {
+      throw new Error(result.error);
     }
-    expect(r.ids.length).toBe(1);
+    expect(result.ids.length).toBe(1);
   });
 
   it("returns error for unknown ingredients", () => {
-    const r = expandInventory([{ name: "Not A Real Skyrim Ingredient Xyz", count: 1 }], nameIndex);
-    expect("error" in r).toBe(true);
-    if ("error" in r) {
-      expect(r.error).toContain("Unknown ingredient");
+    const result = expandInventory(
+      [{ name: "Not A Real Skyrim Ingredient Xyz", count: 1 }],
+      nameIndex,
+    );
+    expect("error" in result).toBe(true);
+    if ("error" in result) {
+      expect(result.error).toContain("Unknown ingredient");
     }
   });
 
   it("returns error for negative counts", () => {
-    const r = expandInventory([{ name: "Wheat", count: -1 }], nameIndex);
-    expect("error" in r).toBe(true);
-    if ("error" in r) {
-      expect(r.error).toContain("Invalid count");
+    const result = expandInventory([{ name: "Wheat", count: -1 }], nameIndex);
+    expect("error" in result).toBe(true);
+    if ("error" in result) {
+      expect(result.error).toContain("Invalid count");
     }
   });
 });
@@ -56,57 +59,57 @@ describe("rankPotions", () => {
   const nameIndex = loadNameIndex();
 
   it("returns error when fewer than two ingredients total", () => {
-    const r = rankPotions([{ name: "Wheat", count: 1 }], nameIndex);
-    expect(r.error).toBe("Need at least 2 ingredients total.");
-    expect(r.recipes).toEqual([]);
+    const result = rankPotions([{ name: "Wheat", count: 1 }], nameIndex);
+    expect(result.error).toBe("Need at least 2 ingredients total.");
+    expect(result.recipes).toEqual([]);
   });
 
   it("returns empty recipes when no pair shares an effect", () => {
-    const r = rankPotions(
+    const result = rankPotions(
       [
         { name: "Abecean Longfin", count: 1 },
         { name: "Aloe Vera Leaves", count: 1 },
       ],
       nameIndex,
     );
-    expect(r.error).toBeUndefined();
-    expect(r.truncated).toBe(false);
-    expect(r.recipes).toEqual([]);
+    expect(result.error).toBeUndefined();
+    expect(result.truncated).toBe(false);
+    expect(result.recipes).toEqual([]);
   });
 
   it("labels a beneficial dominant mixture as potion", () => {
-    const r = rankPotions(
+    const result = rankPotions(
       [
         { name: "Wheat", count: 1 },
         { name: "Blue Mountain Flower", count: 1 },
       ],
       nameIndex,
     );
-    expect(r.error).toBeUndefined();
-    expect(r.recipes.length).toBeGreaterThan(0);
-    const top = r.recipes[0];
+    expect(result.error).toBeUndefined();
+    expect(result.recipes.length).toBeGreaterThan(0);
+    const top = result.recipes[0];
     expect(top.mixtureKind).toBe("potion");
     expect(top.dominantEffectKey).toBeTruthy();
     expect(top.totalGold).toBeGreaterThan(0);
-    expect(top.effects.some((e) => e.effectKey === "Restore_Health")).toBe(true);
+    expect(top.effects.some((effect) => effect.effectKey === "Restore_Health")).toBe(true);
   });
 
   it("labels a poison-dominant mixture as poison", () => {
-    const r = rankPotions(
+    const result = rankPotions(
       [
         { name: "River Betty", count: 1 },
         { name: "Nirnroot", count: 1 },
       ],
       nameIndex,
     );
-    expect(r.error).toBeUndefined();
-    expect(r.recipes.length).toBe(1);
-    expect(r.recipes[0].mixtureKind).toBe("poison");
-    expect(r.recipes[0].dominantEffectKey).toBe("Damage_Health");
+    expect(result.error).toBeUndefined();
+    expect(result.recipes.length).toBe(1);
+    expect(result.recipes[0].mixtureKind).toBe("poison");
+    expect(result.recipes[0].dominantEffectKey).toBe("Damage_Health");
   });
 
   it("sorts results by totalGold descending", () => {
-    const r = rankPotions(
+    const result = rankPotions(
       [
         { name: "Wheat", count: 1 },
         { name: "Blue Mountain Flower", count: 1 },
@@ -115,10 +118,12 @@ describe("rankPotions", () => {
       ],
       nameIndex,
     );
-    expect(r.error).toBeUndefined();
-    expect(r.recipes.length).toBeGreaterThan(1);
-    for (let i = 1; i < r.recipes.length; i++) {
-      expect(r.recipes[i - 1].totalGold).toBeGreaterThanOrEqual(r.recipes[i].totalGold);
+    expect(result.error).toBeUndefined();
+    expect(result.recipes.length).toBeGreaterThan(1);
+    for (let recipeIdx = 1; recipeIdx < result.recipes.length; recipeIdx++) {
+      expect(result.recipes[recipeIdx - 1].totalGold).toBeGreaterThanOrEqual(
+        result.recipes[recipeIdx].totalGold,
+      );
     }
   });
 
@@ -132,10 +137,10 @@ describe("rankPotions", () => {
       name: row.name,
       count: 1,
     }));
-    const r = rankPotions(inv, nameIndex);
-    expect(r.error).toBeUndefined();
-    expect(r.truncated).toBe(true);
-    expect(r.recipes.length).toBeLessThanOrEqual(MAX_RECIPES);
+    const result = rankPotions(inv, nameIndex);
+    expect(result.error).toBeUndefined();
+    expect(result.truncated).toBe(true);
+    expect(result.recipes.length).toBeLessThanOrEqual(MAX_RECIPES);
   });
 
   it("applies alchemy params to gold (Benefactor boosts beneficial effects)", () => {
@@ -157,9 +162,15 @@ describe("rankPotions", () => {
     );
     expect(base.error).toBeUndefined();
     expect(boosted.error).toBeUndefined();
-    const rhBase = base.recipes[0]?.effects.find((e) => e.effectKey === "Restore_Health");
-    const rhBoost = boosted.recipes[0]?.effects.find((e) => e.effectKey === "Restore_Health");
-    expect(rhBase && rhBoost).toBeTruthy();
-    expect((rhBoost as { gold: number }).gold).toBeGreaterThan((rhBase as { gold: number }).gold);
+    const restoreHealthGoldBase = base.recipes[0]?.effects.find(
+      (effect) => effect.effectKey === "Restore_Health",
+    );
+    const restoreHealthGoldBoosted = boosted.recipes[0]?.effects.find(
+      (effect) => effect.effectKey === "Restore_Health",
+    );
+    expect(restoreHealthGoldBase && restoreHealthGoldBoosted).toBeTruthy();
+    expect((restoreHealthGoldBoosted as { gold: number }).gold).toBeGreaterThan(
+      (restoreHealthGoldBase as { gold: number }).gold,
+    );
   });
 });

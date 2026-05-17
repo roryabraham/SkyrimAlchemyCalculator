@@ -24,16 +24,19 @@ type Props = {
 export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
   const [dismissed, setDismissed] = useState(false);
 
-  const q = row.name.trim();
+  const trimmedName = row.name.trim();
   const { data, isError, error, isFetching, isSuccess, isPending, isEnabled } = useQuery({
-    queryKey: ["ingredients", "autocomplete", q],
-    queryFn: () => fetchIngredients(q),
-    enabled: q.length > 0,
+    queryKey: ["ingredients", "autocomplete", trimmedName],
+    queryFn: () => fetchIngredients(trimmedName),
+    enabled: trimmedName.length > 0,
     staleTime: 5 * 60 * 1000,
   });
 
   const popoverOpen =
-    !dismissed && q.length > 0 && isEnabled && (isPending || isFetching || isSuccess || isError);
+    !dismissed &&
+    trimmedName.length > 0 &&
+    isEnabled &&
+    (isPending || isFetching || isSuccess || isError);
   const suggestions = isSuccess && Array.isArray(data) ? data : [];
 
   return (
@@ -60,9 +63,9 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
               placeholder="Whisper an ingredient…"
               value={row.name}
               autoComplete="off"
-              onChange={(e) => {
+              onChange={(event) => {
                 setDismissed(false);
-                onUpdate(row.id, { name: e.target.value });
+                onUpdate(row.id, { name: event.target.value });
               }}
               onFocus={() => setDismissed(false)}
             >
@@ -82,7 +85,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                 align="start"
                 sideOffset={4}
                 collisionPadding={8}
-                onOpenAutoFocus={(e) => e.preventDefault()}
+                onOpenAutoFocus={(event) => event.preventDefault()}
                 style={{
                   width: "var(--radix-popper-anchor-width)",
                   minWidth: "10rem",
@@ -117,30 +120,30 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                         No ingredients match.
                       </Text>
                     ) : null}
-                    {suggestions.map((h) => (
-                      <Popover.Close key={h.id} asChild>
+                    {suggestions.map((hit) => (
+                      <Popover.Close key={hit.id} asChild>
                         <Button
                           type="button"
                           variant="ghost"
                           size="1"
                           style={{ justifyContent: "flex-start" }}
-                          onMouseDown={(e) => e.preventDefault()}
+                          onMouseDown={(event) => event.preventDefault()}
                           onClick={() => {
                             setDismissed(true);
-                            onUpdate(row.id, { name: h.name });
+                            onUpdate(row.id, { name: hit.name });
                           }}
                         >
                           <Flex align="center" gap="2">
-                            {h.iconUrl ? (
+                            {hit.iconUrl ? (
                               <img
-                                src={h.iconUrl}
+                                src={hit.iconUrl}
                                 alt=""
                                 width={22}
                                 height={22}
                                 style={{ objectFit: "contain", flexShrink: 0 }}
                               />
                             ) : null}
-                            {h.name}
+                            {hit.name}
                           </Flex>
                         </Button>
                       </Popover.Close>
@@ -160,9 +163,9 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
           min={1}
           style={{ maxWidth: "5rem" }}
           value={String(row.count)}
-          onChange={(e) =>
+          onChange={(event) =>
             onUpdate(row.id, {
-              count: Math.max(1, Number(e.target.value) || 1),
+              count: Math.max(1, Number(event.target.value) || 1),
             })
           }
         />

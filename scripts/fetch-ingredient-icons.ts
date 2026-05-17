@@ -49,11 +49,18 @@ function loadManifestFromDisk(): Record<string, ManifestEntry> {
   try {
     const raw = JSON.parse(readFileSync(MANIFEST_PATH, "utf8")) as ManifestJson;
     const out: Record<string, ManifestEntry> = {};
-    for (const [k, v] of Object.entries(raw)) {
-      if (v && typeof v === "object" && "publicPath" in v && typeof v.publicPath === "string") {
+    for (const [normalizedKey, rawEntry] of Object.entries(raw)) {
+      if (
+        rawEntry &&
+        typeof rawEntry === "object" &&
+        "publicPath" in rawEntry &&
+        typeof rawEntry.publicPath === "string"
+      ) {
         const wikiFile =
-          "wikiFile" in v && typeof v.wikiFile === "string" ? v.wikiFile : "(unknown)";
-        out[k] = { publicPath: v.publicPath, wikiFile };
+          "wikiFile" in rawEntry && typeof rawEntry.wikiFile === "string"
+            ? rawEntry.wikiFile
+            : "(unknown)";
+        out[normalizedKey] = { publicPath: rawEntry.publicPath, wikiFile };
       }
     }
     return out;
@@ -87,10 +94,10 @@ function withBackoff<T>(label: string, attemptFetch: () => Promise<T>): Promise<
     maxBackoffMs: MAX_BACKOFF_MS,
     backoffMultiplier: BACKOFF_FACTOR,
     shouldRetry: isLikelyTransientNetworkError,
-    onRetry: ({ attempt, maxAttempts, backoffMs, label: lb, error }) => {
+    onRetry: ({ attempt, maxAttempts, backoffMs, label: retryLabel, error }) => {
       const msg = error instanceof Error ? error.message : String(error);
       console.warn(
-        `[backoff] ${lb ?? "?"} attempt ${attempt}/${maxAttempts} failed (${msg}) — waiting ${backoffMs}ms`,
+        `[backoff] ${retryLabel ?? "?"} attempt ${attempt}/${maxAttempts} failed (${msg}) — waiting ${backoffMs}ms`,
       );
     },
   });
@@ -111,66 +118,66 @@ function fileSlug(nameNormalized: string): string {
 }
 
 function pickIngredientIconFilename(images: string[]): string | null {
-  const icon = images.filter((f) => /^SR-icon-ingredient-/i.test(f));
+  const icon = images.filter((filename) => /^SR-icon-ingredient-/i.test(filename));
   if (icon.length === 0) {
     return null;
   }
-  icon.sort((a, b) => {
-    const ap = a.toLowerCase().endsWith(".png") ? 0 : 1;
-    const bp = b.toLowerCase().endsWith(".png") ? 0 : 1;
-    if (ap !== bp) {
-      return ap - bp;
+  icon.sort((left, right) => {
+    const leftIsPng = left.toLowerCase().endsWith(".png") ? 0 : 1;
+    const rightIsPng = right.toLowerCase().endsWith(".png") ? 0 : 1;
+    if (leftIsPng !== rightIsPng) {
+      return leftIsPng - rightIsPng;
     }
-    return a.localeCompare(b);
+    return left.localeCompare(right);
   });
   return icon[0] ?? null;
 }
 
 function extFromFilename(filename: string): string {
-  const i = filename.lastIndexOf(".");
-  return i >= 0 ? filename.slice(i).toLowerCase() : ".png";
+  const dotIndex = filename.lastIndexOf(".");
+  return dotIndex >= 0 ? filename.slice(dotIndex).toLowerCase() : ".png";
 }
 
 async function mwParseImages(pageTitle: string): Promise<string[] | null> {
   return withBackoff(`parse ${pageTitle}`, async () => {
-    const u = new URL(API);
-    u.searchParams.set("action", "parse");
-    u.searchParams.set("page", pageTitle);
-    u.searchParams.set("prop", "images");
-    u.searchParams.set("format", "json");
-    const res = await fetchWithTimeout(u, { headers: UA }, API_TIMEOUT_MS);
+    const requestUrl = new URL(API);
+    requestUrl.searchParams.set("action", "parse");
+    requestUrl.searchParams.set("page", pageTitle);
+    requestUrl.searchParams.set("prop", "images");
+    requestUrl.searchParams.set("format", "json");
+    const res = await fetchWithTimeout(requestUrl, { headers: UA }, API_TIMEOUT_MS);
     if (!res.ok) {
       throw new Error(`UESP parse HTTP ${res.status} ${pageTitle}`);
     }
-    const j = (await res.json()) as {
+    const payload = (await res.json()) as {
       parse?: { images?: string[] };
       error?: { info?: string };
     };
-    if (j.error) {
-      throw new Error(j.error.info ?? "UESP parse error");
+    if (payload.error) {
+      throw new Error(payload.error.info ?? "UESP parse error");
     }
-    return j.parse?.images ?? null;
+    return payload.parse?.images ?? null;
   });
 }
 
 async function mwImageUrl(wikiFilename: string): Promise<string | null> {
   return withBackoff(`imageinfo ${wikiFilename}`, async () => {
-    const u = new URL(API);
-    u.searchParams.set("action", "query");
-    u.searchParams.set("titles", `File:${wikiFilename}`);
-    u.searchParams.set("prop", "imageinfo");
-    u.searchParams.set("iiprop", "url|size");
-    u.searchParams.set("format", "json");
-    const res = await fetchWithTimeout(u, { headers: UA }, API_TIMEOUT_MS);
+    const requestUrl = new URL(API);
+    requestUrl.searchParams.set("action", "query");
+    requestUrl.searchParams.set("titles", `File:${wikiFilename}`);
+    requestUrl.searchParams.set("prop", "imageinfo");
+    requestUrl.searchParams.set("iiprop", "url|size");
+    requestUrl.searchParams.set("format", "json");
+    const res = await fetchWithTimeout(requestUrl, { headers: UA }, API_TIMEOUT_MS);
     if (!res.ok) {
       throw new Error(`UESP query HTTP ${res.status} ${wikiFilename}`);
     }
-    const j = (await res.json()) as {
+    const payload = (await res.json()) as {
       query?: {
         pages?: Record<string, { missing?: string; imageinfo?: { url: string; size?: number }[] }>;
       };
     };
-    const pages = j.query?.pages;
+    const pages = payload.query?.pages;
     if (!pages) {
       return null;
     }
@@ -201,73 +208,73 @@ type TaskResult = {
 };
 
 async function processIngredient(
-  ing: IngredientJson,
+  ingredient: IngredientJson,
   index: number,
   total: number,
 ): Promise<TaskResult> {
   const missing: string[] = [];
 
-  const cached = manifestState[ing.nameNormalized];
+  const cached = manifestState[ingredient.nameNormalized];
   if (cached?.publicPath) {
     const abs = absoluteFromPublicPath(cached.publicPath);
     if (existsSync(abs) && statSync(abs).size > 0) {
-      console.log(`[${index + 1}/${total}] ${ing.rowId} SKIP (disk + manifest cache)`);
+      console.log(`[${index + 1}/${total}] ${ingredient.rowId} SKIP (disk + manifest cache)`);
       return {
-        manifestKey: ing.nameNormalized,
+        manifestKey: ingredient.nameNormalized,
         manifestValue: cached,
         missing,
       };
     }
   }
 
-  const title = wikiTitleFromRowId(ing.rowId);
-  console.log(`[${index + 1}/${total}] ${ing.rowId} (concurrency=${CONCURRENCY})`);
+  const title = wikiTitleFromRowId(ingredient.rowId);
+  console.log(`[${index + 1}/${total}] ${ingredient.rowId} (concurrency=${CONCURRENCY})`);
 
   let images: string[] | null;
   try {
     images = await mwParseImages(title);
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    const detail = isAbortError(e) ? "parse timeout" : msg;
-    missing.push(`${ing.rowId}\tparse\t${detail}`);
+  } catch (caughtError) {
+    const msg = caughtError instanceof Error ? caughtError.message : String(caughtError);
+    const detail = isAbortError(caughtError) ? "parse timeout" : msg;
+    missing.push(`${ingredient.rowId}\tparse\t${detail}`);
     images = null;
   }
   await sleep(GAP_MS);
 
   const wikiFile = images ? pickIngredientIconFilename(images) : null;
   if (!wikiFile) {
-    missing.push(`${ing.rowId}\t${ing.name}\tno SR-icon-ingredient-*`);
+    missing.push(`${ingredient.rowId}\t${ingredient.name}\tno SR-icon-ingredient-*`);
     return { manifestKey: null, manifestValue: null, missing };
   }
 
   let imageUrl: string | null;
   try {
     imageUrl = await mwImageUrl(wikiFile);
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    const detail = isAbortError(e) ? "imageinfo timeout" : msg;
-    missing.push(`${ing.rowId}\timageinfo\t${detail}`);
+  } catch (caughtError) {
+    const msg = caughtError instanceof Error ? caughtError.message : String(caughtError);
+    const detail = isAbortError(caughtError) ? "imageinfo timeout" : msg;
+    missing.push(`${ingredient.rowId}\timageinfo\t${detail}`);
     imageUrl = null;
   }
   await sleep(GAP_MS);
 
   if (!imageUrl) {
-    missing.push(`${ing.rowId}\t${ing.name}\tno imageinfo url`);
+    missing.push(`${ingredient.rowId}\t${ingredient.name}\tno imageinfo url`);
     return { manifestKey: null, manifestValue: null, missing };
   }
 
   const ext = extFromFilename(wikiFile);
-  const slug = fileSlug(ing.nameNormalized);
+  const slug = fileSlug(ingredient.nameNormalized);
   const destName = `${slug}${ext}`;
   const destPath = path.join(PUBLIC_ICONS, destName);
   const publicPath = `/ingredient-icons/${destName}`;
   const entry: ManifestEntry = { publicPath, wikiFile };
 
   if (existsSync(destPath) && statSync(destPath).size > 0) {
-    manifestState[ing.nameNormalized] = entry;
+    manifestState[ingredient.nameNormalized] = entry;
     await flushManifestToDisk();
     return {
-      manifestKey: ing.nameNormalized,
+      manifestKey: ingredient.nameNormalized,
       manifestValue: entry,
       missing,
     };
@@ -275,17 +282,17 @@ async function processIngredient(
 
   try {
     await downloadToFile(imageUrl, destPath);
-    manifestState[ing.nameNormalized] = entry;
+    manifestState[ingredient.nameNormalized] = entry;
     await flushManifestToDisk();
     return {
-      manifestKey: ing.nameNormalized,
+      manifestKey: ingredient.nameNormalized,
       manifestValue: entry,
       missing,
     };
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    const detail = isAbortError(e) ? "download timeout" : msg;
-    missing.push(`${ing.rowId}\t${ing.name}\tdownload\t${detail}`);
+  } catch (caughtError) {
+    const msg = caughtError instanceof Error ? caughtError.message : String(caughtError);
+    const detail = isAbortError(caughtError) ? "download timeout" : msg;
+    missing.push(`${ingredient.rowId}\t${ingredient.name}\tdownload\t${detail}`);
     return { manifestKey: null, manifestValue: null, missing };
   }
 }
@@ -301,14 +308,14 @@ console.log(
   `Fetching ${ingredients.length} ingredient icons (concurrency=${CONCURRENCY}, gap=${GAP_MS}ms, manifest has ${cachedCount} keys, resume=yes, backoff=yes)`,
 );
 
-const taskResults = await runPool(ingredients, CONCURRENCY, (ing, i) =>
-  processIngredient(ing, i, ingredients.length),
+const taskResults = await runPool(ingredients, CONCURRENCY, (ingredient, index) =>
+  processIngredient(ingredient, index, ingredients.length),
 );
 
 await manifestWriteChain;
 const missing: string[] = [];
-for (const r of taskResults) {
-  for (const line of r.missing) {
+for (const taskResult of taskResults) {
+  for (const line of taskResult.missing) {
     missing.push(line);
   }
 }

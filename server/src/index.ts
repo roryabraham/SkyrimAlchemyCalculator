@@ -19,16 +19,16 @@ function json(data: unknown, status = 200): Response {
 }
 
 function parseAlchemyParams(body: Record<string, unknown>): AlchemyParams {
-  const p = (body.params ?? {}) as Record<string, unknown>;
+  const rawParams = (body.params ?? {}) as Record<string, unknown>;
   return {
-    alchemySkill: Number(p.alchemySkill ?? defaultAlchemyParams.alchemySkill),
-    fortifyAlchemy: Number(p.fortifyAlchemy ?? defaultAlchemyParams.fortifyAlchemy),
-    alchemistPercent: Number(p.alchemistPercent ?? defaultAlchemyParams.alchemistPercent),
-    hasPhysician: Boolean(p.hasPhysician),
-    hasBenefactor: Boolean(p.hasBenefactor),
-    hasPoisoner: Boolean(p.hasPoisoner),
+    alchemySkill: Number(rawParams.alchemySkill ?? defaultAlchemyParams.alchemySkill),
+    fortifyAlchemy: Number(rawParams.fortifyAlchemy ?? defaultAlchemyParams.fortifyAlchemy),
+    alchemistPercent: Number(rawParams.alchemistPercent ?? defaultAlchemyParams.alchemistPercent),
+    hasPhysician: Boolean(rawParams.hasPhysician),
+    hasBenefactor: Boolean(rawParams.hasBenefactor),
+    hasPoisoner: Boolean(rawParams.hasPoisoner),
     seekerOfShadowsPercent: Number(
-      p.seekerOfShadowsPercent ?? defaultAlchemyParams.seekerOfShadowsPercent,
+      rawParams.seekerOfShadowsPercent ?? defaultAlchemyParams.seekerOfShadowsPercent,
     ),
   };
 }
@@ -38,17 +38,17 @@ getDb();
 const nameIndex = loadNameIndex();
 loadIconManifest();
 const idToNameNormalized = new Map(
-  loadAllIngredientRows().map((r) => [r.id, r.name_normalized] as const),
+  loadAllIngredientRows().map((row) => [row.id, row.name_normalized] as const),
 );
 
 function withIngredientIcons(recipes: RecipeResult[]) {
   return recipes.map((rec) => ({
     ...rec,
-    ingredients: rec.ingredients.map((ing) => {
-      const nn = idToNameNormalized.get(ing.id);
+    ingredients: rec.ingredients.map((ingredient) => {
+      const nameNormalized = idToNameNormalized.get(ingredient.id);
       return {
-        ...ing,
-        iconUrl: nn ? iconUrlForNameNormalized(nn) : null,
+        ...ingredient,
+        iconUrl: nameNormalized ? iconUrlForNameNormalized(nameNormalized) : null,
       };
     }),
   }));
@@ -64,16 +64,16 @@ Bun.serve({
     const url = new URL(req.url);
 
     if (req.method === "GET" && url.pathname === "/api/ingredients") {
-      const q = url.searchParams.get("q")?.trim() ?? "";
-      if (q.length < 1) {
+      const query = url.searchParams.get("q")?.trim() ?? "";
+      if (query.length < 1) {
         return json([]);
       }
-      const rows = searchIngredients(q, 40);
+      const rows = searchIngredients(query, 40);
       return json(
-        rows.map((r) => ({
-          id: r.id,
-          name: r.name,
-          iconUrl: iconUrlForNameNormalized(r.name_normalized),
+        rows.map((row) => ({
+          id: row.id,
+          name: row.name,
+          iconUrl: iconUrlForNameNormalized(row.name_normalized),
         })),
       );
     }

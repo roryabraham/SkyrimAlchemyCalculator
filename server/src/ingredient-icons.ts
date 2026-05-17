@@ -24,12 +24,12 @@ export function loadIconManifest(): Map<string, IconManifestEntry> {
     return _byNameNormalized;
   }
   _byNameNormalized = new Map();
-  const p = manifestPath();
-  if (!existsSync(p)) {
+  const manifestFilePath = manifestPath();
+  if (!existsSync(manifestFilePath)) {
     return _byNameNormalized;
   }
 
-  const raw: unknown = JSON.parse(readFileSync(p, "utf8"));
+  const raw: unknown = JSON.parse(readFileSync(manifestFilePath, "utf8"));
   if (raw === null || typeof raw !== "object" || Array.isArray(raw)) {
     return _byNameNormalized;
   }

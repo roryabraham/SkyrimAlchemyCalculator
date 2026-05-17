@@ -1,12 +1,12 @@
 import type { IngredientHit } from "./types.ts";
 
-export async function fetchIngredients(q: string): Promise<IngredientHit[]> {
-  if (!q.trim()) {
+export async function fetchIngredients(query: string): Promise<IngredientHit[]> {
+  if (!query.trim()) {
     return [];
   }
-  const r = await fetch(`/api/ingredients?q=${encodeURIComponent(q.trim())}`);
-  if (!r.ok) {
-    throw new Error(`Search failed (${r.status})`);
+  const response = await fetch(`/api/ingredients?q=${encodeURIComponent(query.trim())}`);
+  if (!response.ok) {
+    throw new Error(`Search failed (${response.status})`);
   }
-  return (await r.json()) as IngredientHit[];
+  return (await response.json()) as IngredientHit[];
 }

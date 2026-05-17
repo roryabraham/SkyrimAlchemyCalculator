@@ -92,11 +92,11 @@ export function RecipeResultsPanel({
             <Separator size="4" my="2" />
             <Flex direction="column" gap="1" asChild>
               <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
-                {rec.effects.map((e) => (
-                  <li key={e.effectKey}>
+                {rec.effects.map((effect) => (
+                  <li key={effect.effectKey}>
                     <Flex justify="between" align="center" gap="3">
                       <Text size="2" color="gray">
-                        {e.displayName}
+                        {effect.displayName}
                       </Text>
                       <Text
                         size="2"
@@ -104,7 +104,7 @@ export function RecipeResultsPanel({
                         color="amber"
                         style={{ fontVariantNumeric: "tabular-nums" }}
                       >
-                        {e.gold.toLocaleString()}
+                        {effect.gold.toLocaleString()}
                       </Text>
                     </Flex>
                   </li>

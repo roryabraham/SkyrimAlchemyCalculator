@@ -13,13 +13,13 @@ describe("searchIngredients", () => {
 
   it("finds Nightshade by transposed-letter typo (fuzzy)", () => {
     const rows = searchIngredients("nigthshade", 40);
-    const names = rows.map((r) => r.name);
+    const names = rows.map((row) => row.name);
     expect(names).toContain("Nightshade");
   });
 
   it("finds Nightshade by substring", () => {
     const rows = searchIngredients("night", 40);
-    const names = rows.map((r) => r.name);
+    const names = rows.map((row) => row.name);
     expect(names).toContain("Nightshade");
   });
 });

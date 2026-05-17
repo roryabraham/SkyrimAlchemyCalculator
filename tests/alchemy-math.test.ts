@@ -85,15 +85,15 @@ describe("powerFactor", () => {
 
 describe("effectGold", () => {
   it("computes positive gold for restore health at low skill", () => {
-    const g = effectGold(
+    const goldValue = effectGold(
       restoreHealth,
       defaultAlchemyParams,
       { isPoison: false, includeBenefactorPoisoner: false },
       1,
       1,
     );
-    expect(g).toBeGreaterThan(0);
-    expect(g).toBeLessThan(500);
+    expect(goldValue).toBeGreaterThan(0);
+    expect(goldValue).toBeLessThan(500);
   });
 
   it("applies Benefactor when mixing potions with beneficial effects", () => {
@@ -145,7 +145,7 @@ describe("effectGold", () => {
       power_affects_duration: 0,
       is_beneficial: 0,
     };
-    const g = effectGold(
+    const goldValue = effectGold(
       damageHealth,
       defaultAlchemyParams,
       { isPoison: true, includeBenefactorPoisoner: true },
@@ -159,6 +159,6 @@ describe("effectGold", () => {
         },
       },
     );
-    expect(g).toBe(415);
+    expect(goldValue).toBe(415);
   });
 });

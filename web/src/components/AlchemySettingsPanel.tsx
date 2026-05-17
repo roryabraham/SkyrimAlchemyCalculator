@@ -18,18 +18,18 @@ function setNumParam(
   fallback: number,
   opts?: { min?: number; max?: number },
 ) {
-  let n = Math.floor(Number(value));
-  if (!Number.isFinite(n)) {
-    n = fallback;
+  let parsedInt = Math.floor(Number(value));
+  if (!Number.isFinite(parsedInt)) {
+    parsedInt = fallback;
   }
   if (opts?.min !== undefined) {
-    n = Math.max(opts.min, n);
+    parsedInt = Math.max(opts.min, parsedInt);
   }
   if (opts?.max !== undefined) {
-    n = Math.min(opts.max, n);
+    parsedInt = Math.min(opts.max, parsedInt);
   }
   startSettingsTransition(() => {
-    setParams((p) => ({ ...p, [key]: n }));
+    setParams((prevParams) => ({ ...prevParams, [key]: parsedInt }));
   });
 }
 
@@ -60,12 +60,12 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
             min={0}
             max={100}
             value={String(params.alchemySkill)}
-            onChange={(e) =>
+            onChange={(event) =>
               setNumParam(
                 setParams,
                 startSettingsTransition,
                 "alchemySkill",
-                e.target.value,
+                event.target.value,
                 defaultAlchemyFormParams.alchemySkill,
                 { min: 0, max: 100 },
               )
@@ -83,12 +83,12 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
             min={0}
             max={500}
             value={String(params.fortifyAlchemy)}
-            onChange={(e) =>
+            onChange={(event) =>
               setNumParam(
                 setParams,
                 startSettingsTransition,
                 "fortifyAlchemy",
-                e.target.value,
+                event.target.value,
                 defaultAlchemyFormParams.fortifyAlchemy,
                 { min: 0, max: 500 },
               )
@@ -106,12 +106,12 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
             min={0}
             max={100}
             value={String(params.alchemistPercent)}
-            onChange={(e) =>
+            onChange={(event) =>
               setNumParam(
                 setParams,
                 startSettingsTransition,
                 "alchemistPercent",
-                e.target.value,
+                event.target.value,
                 defaultAlchemyFormParams.alchemistPercent,
                 { min: 0, max: 100 },
               )
@@ -129,12 +129,12 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
             min={0}
             max={20}
             value={String(params.seekerOfShadowsPercent)}
-            onChange={(e) =>
+            onChange={(event) =>
               setNumParam(
                 setParams,
                 startSettingsTransition,
                 "seekerOfShadowsPercent",
-                e.target.value,
+                event.target.value,
                 defaultAlchemyFormParams.seekerOfShadowsPercent,
                 { min: 0, max: 20 },
               )
@@ -147,9 +147,9 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
           <Checkbox
             id={physicianId}
             checked={params.hasPhysician}
-            onCheckedChange={(v) =>
+            onCheckedChange={(checked) =>
               startSettingsTransition(() => {
-                setParams((p) => ({ ...p, hasPhysician: v === true }));
+                setParams((prevParams) => ({ ...prevParams, hasPhysician: checked === true }));
               })
             }
           />
@@ -161,9 +161,9 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
           <Checkbox
             id={benefactorId}
             checked={params.hasBenefactor}
-            onCheckedChange={(v) =>
+            onCheckedChange={(checked) =>
               startSettingsTransition(() => {
-                setParams((p) => ({ ...p, hasBenefactor: v === true }));
+                setParams((prevParams) => ({ ...prevParams, hasBenefactor: checked === true }));
               })
             }
           />
@@ -175,9 +175,9 @@ export function AlchemySettingsPanel({ params, setParams, startSettingsTransitio
           <Checkbox
             id={poisonerId}
             checked={params.hasPoisoner}
-            onCheckedChange={(v) =>
+            onCheckedChange={(checked) =>
               startSettingsTransition(() => {
-                setParams((p) => ({ ...p, hasPoisoner: v === true }));
+                setParams((prevParams) => ({ ...prevParams, hasPoisoner: checked === true }));
               })
             }
           />

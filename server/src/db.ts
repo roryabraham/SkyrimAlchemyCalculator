@@ -74,8 +74,8 @@ function maxTyposForKey(keyLen: number): number {
   return Math.min(12, Math.ceil(keyLen * 0.45));
 }
 
-export function searchIngredients(q: string, limit = 30): IngredientRow[] {
-  const key = normalizeIngredientKey(q);
+export function searchIngredients(query: string, limit = 30): IngredientRow[] {
+  const key = normalizeIngredientKey(query);
   if (!key) {
     return [];
   }
@@ -86,44 +86,44 @@ export function searchIngredients(q: string, limit = 30): IngredientRow[] {
   const substring: IngredientRow[] = [];
   const typoHits: { row: IngredientRow; dist: number }[] = [];
 
-  for (const r of rows) {
-    if (r.name_normalized.includes(key)) {
-      substring.push(r);
+  for (const row of rows) {
+    if (row.name_normalized.includes(key)) {
+      substring.push(row);
       continue;
     }
-    const dist = levenshtein(key, r.name_normalized);
+    const dist = levenshtein(key, row.name_normalized);
     if (dist <= maxD) {
-      typoHits.push({ row: r, dist });
+      typoHits.push({ row, dist });
     }
   }
 
-  substring.sort((a, b) => a.name.localeCompare(b.name));
-  typoHits.sort((a, b) => {
-    if (a.dist !== b.dist) {
-      return a.dist - b.dist;
+  substring.sort((left, right) => left.name.localeCompare(right.name));
+  typoHits.sort((left, right) => {
+    if (left.dist !== right.dist) {
+      return left.dist - right.dist;
     }
-    return a.row.name.localeCompare(b.row.name);
+    return left.row.name.localeCompare(right.row.name);
   });
 
   const seen = new Set<number>();
   const out: IngredientRow[] = [];
 
-  for (const r of substring) {
-    if (seen.has(r.id)) {
+  for (const row of substring) {
+    if (seen.has(row.id)) {
       continue;
     }
-    seen.add(r.id);
-    out.push(r);
+    seen.add(row.id);
+    out.push(row);
     if (out.length >= limit) {
       return out;
     }
   }
-  for (const { row: r } of typoHits) {
-    if (seen.has(r.id)) {
+  for (const { row: typoRow } of typoHits) {
+    if (seen.has(typoRow.id)) {
       continue;
     }
-    seen.add(r.id);
-    out.push(r);
+    seen.add(typoRow.id);
+    out.push(typoRow);
     if (out.length >= limit) {
       return out;
     }
@@ -146,28 +146,28 @@ export function loadIngredientEffects(ingredientIds: number[]): Map<number, Ingr
        ORDER BY ingredient_id, slot`,
     )
     .all(...ingredientIds) as IngredientEffectRow[];
-  for (const r of rows) {
-    const arr = map.get(r.ingredient_id) ?? [];
-    arr.push(r);
-    map.set(r.ingredient_id, arr);
+  for (const row of rows) {
+    const arr = map.get(row.ingredient_id) ?? [];
+    arr.push(row);
+    map.set(row.ingredient_id, arr);
   }
   return map;
 }
 
 export function loadEffectsByIds(ids: number[]): Map<number, EffectRow> {
   const db = getDb();
-  const m = new Map<number, EffectRow>();
+  const effectMap = new Map<number, EffectRow>();
   if (ids.length === 0) {
-    return m;
+    return effectMap;
   }
   const placeholders = ids.map(() => "?").join(",");
   const rows = db
     .query(`SELECT * FROM effects WHERE id IN (${placeholders})`)
     .all(...ids) as EffectRow[];
-  for (const r of rows) {
-    m.set(r.id, r);
+  for (const row of rows) {
+    effectMap.set(row.id, row);
   }
-  return m;
+  return effectMap;
 }
 
 export function resolveIngredientIds(names: string[]): { id: number; name: string }[] {
@@ -191,9 +191,9 @@ export function loadNameIndex(): Map<string, { id: number; canonical: string }> 
     name: string;
     name_normalized: string;
   }[];
-  const m = new Map<string, { id: number; canonical: string }>();
-  for (const r of rows) {
-    m.set(r.name_normalized, { id: r.id, canonical: r.name });
+  const nameIndexMap = new Map<string, { id: number; canonical: string }>();
+  for (const row of rows) {
+    nameIndexMap.set(row.name_normalized, { id: row.id, canonical: row.name });
   }
-  return m;
+  return nameIndexMap;
 }

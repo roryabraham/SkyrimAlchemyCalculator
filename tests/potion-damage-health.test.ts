@@ -16,8 +16,10 @@ describe("Damage Health gold parity (UESP controlling ingredient)", () => {
       defaultAlchemyParams,
     );
     expect(error).toBeUndefined();
-    const dh = recipes[0]?.effects.find((e) => e.effectKey === "Damage_Health");
-    expect(dh?.gold).toBe(8314);
+    const damageHealthEffect = recipes[0]?.effects.find(
+      (effect) => effect.effectKey === "Damage_Health",
+    );
+    expect(damageHealthEffect?.gold).toBe(8314);
   });
 
   it("Nirnroot outranks Deathbell on priority (not dominance score)", () => {
@@ -30,8 +32,10 @@ describe("Damage Health gold parity (UESP controlling ingredient)", () => {
       defaultAlchemyParams,
     );
     expect(error).toBeUndefined();
-    const dh = recipes[0]?.effects.find((e) => e.effectKey === "Damage_Health");
-    expect(dh?.gold).toBe(415);
-    expect(dh?.gold).not.toBe(9);
+    const damageHealthEffect = recipes[0]?.effects.find(
+      (effect) => effect.effectKey === "Damage_Health",
+    );
+    expect(damageHealthEffect?.gold).toBe(415);
+    expect(damageHealthEffect?.gold).not.toBe(9);
   });
 });

@@ -26,20 +26,20 @@ export type RecipeResult = {
   dominantEffectKey: string;
 };
 
-function magDurGold(ie: IngredientEffectRow): {
+function magDurGold(ingredientEffect: IngredientEffectRow): {
   mag: number;
   dur: number;
   gold: number;
 } {
   return {
-    mag: ie.mag_mult ?? 1,
-    dur: ie.dur_mult ?? 1,
-    gold: ie.gold_mult ?? 1,
+    mag: ingredientEffect.mag_mult ?? 1,
+    dur: ingredientEffect.dur_mult ?? 1,
+    gold: ingredientEffect.gold_mult ?? 1,
   };
 }
 
-function dominanceScore(effect: EffectRow, ie: IngredientEffectRow): number {
-  const { mag, dur, gold } = magDurGold(ie);
+function dominanceScore(effect: EffectRow, ingredientEffect: IngredientEffectRow): number {
+  const { mag, dur, gold } = magDurGold(ingredientEffect);
   return effect.base_cost * mag * dur * gold;
 }
 
@@ -55,22 +55,22 @@ function pickDamageHealthWinner(
   contributors: { ingredientId: number; ie: IngredientEffectRow }[],
   idToName: Map<number, string>,
 ): WinnerMults {
-  const scored = contributors.map((c) => {
-    const name = idToName.get(c.ingredientId) ?? "";
+  const scored = contributors.map((contributor) => {
+    const name = idToName.get(contributor.ingredientId) ?? "";
     const row = getDamageHealthRow(name);
     const priority = row?.priority ?? 0;
-    const dom = dominanceScore(effect, c.ie);
-    return { c, priority, dom };
+    const dom = dominanceScore(effect, contributor.ie);
+    return { contributor, priority, dom };
   });
-  scored.sort((a, b) => {
-    if (b.priority !== a.priority) {
-      return b.priority - a.priority;
+  scored.sort((left, right) => {
+    if (right.priority !== left.priority) {
+      return right.priority - left.priority;
     }
-    return b.dom - a.dom;
+    return right.dom - left.dom;
   });
-  const w = scored[0].c;
-  const m = magDurGold(w.ie);
-  return { ...m, ingredientId: w.ingredientId };
+  const top = scored[0].contributor;
+  const mults = magDurGold(top.ie);
+  return { ...mults, ingredientId: top.ingredientId };
 }
 
 function pickWinner(
@@ -83,23 +83,23 @@ function pickWinner(
   }
   let bestIdx = 0;
   let bestScore = dominanceScore(effect, contributors[0].ie);
-  for (let i = 1; i < contributors.length; i++) {
-    const s = dominanceScore(effect, contributors[i].ie);
-    if (s > bestScore) {
-      bestScore = s;
-      bestIdx = i;
+  for (let contributorIdx = 1; contributorIdx < contributors.length; contributorIdx++) {
+    const score = dominanceScore(effect, contributors[contributorIdx].ie);
+    if (score > bestScore) {
+      bestScore = score;
+      bestIdx = contributorIdx;
     }
   }
-  const w = contributors[bestIdx];
-  const m = magDurGold(w.ie);
-  return { ...m, ingredientId: w.ingredientId };
+  const winner = contributors[bestIdx];
+  const mults = magDurGold(winner.ie);
+  return { ...mults, ingredientId: winner.ingredientId };
 }
 
 function buildGoldHints(
   effect: EffectRow,
   winnerIngredientId: number,
   idToName: Map<number, string>,
-  w: { mag: number; dur: number; gold: number },
+  winnerMults: { mag: number; dur: number; gold: number },
 ): EffectGoldHints | undefined {
   if (effect.effect_key !== "Damage_Health") {
     return undefined;
@@ -114,7 +114,7 @@ function buildGoldHints(
   }
   const intrinsicDurForGold = row.useTenSecondGoldDuration
     ? 10
-    : Math.max(1, Math.round(row.baseDurCk * w.dur));
+    : Math.max(1, Math.round(row.baseDurCk * winnerMults.dur));
   return {
     damageHealth: {
       prePowerMag: row.prePowerMag,
@@ -134,19 +134,19 @@ function evaluateRecipe(
   const effCount = new Map<number, number>();
   const contrib = new Map<number, { ingredientId: number; ie: IngredientEffectRow }[]>();
 
-  for (const iid of ingredientIds) {
-    for (const ie of ieMap.get(iid) ?? []) {
-      effCount.set(ie.effect_id, (effCount.get(ie.effect_id) ?? 0) + 1);
-      const arr = contrib.get(ie.effect_id) ?? [];
-      arr.push({ ingredientId: iid, ie });
-      contrib.set(ie.effect_id, arr);
+  for (const ingredientId of ingredientIds) {
+    for (const ingredientEffect of ieMap.get(ingredientId) ?? []) {
+      effCount.set(ingredientEffect.effect_id, (effCount.get(ingredientEffect.effect_id) ?? 0) + 1);
+      const arr = contrib.get(ingredientEffect.effect_id) ?? [];
+      arr.push({ ingredientId, ie: ingredientEffect });
+      contrib.set(ingredientEffect.effect_id, arr);
     }
   }
 
   const shared: number[] = [];
-  for (const [eid, n] of effCount) {
-    if (n >= 2) {
-      shared.push(eid);
+  for (const [effectId, useCount] of effCount) {
+    if (useCount >= 2) {
+      shared.push(effectId);
     }
   }
   if (shared.length === 0) {
@@ -157,18 +157,25 @@ function evaluateRecipe(
   let dominantGold = -1;
   const prelimPoison = false;
 
-  for (const eid of shared) {
-    const eff = effectById.get(eid);
-    if (!eff) {
+  for (const effectId of shared) {
+    const effect = effectById.get(effectId);
+    if (!effect) {
       continue;
     }
-    const c = contrib.get(eid) ?? [];
-    const w = pickWinner(eff, c, idToName);
-    const hints = buildGoldHints(eff, w.ingredientId, idToName, w);
-    const g = effectGoldForDominance(eff, params, prelimPoison, w.mag, w.dur, hints);
-    if (g > dominantGold) {
-      dominantGold = g;
-      dominantEid = eid;
+    const contributorsForEffect = contrib.get(effectId) ?? [];
+    const winner = pickWinner(effect, contributorsForEffect, idToName);
+    const hints = buildGoldHints(effect, winner.ingredientId, idToName, winner);
+    const dominanceGold = effectGoldForDominance(
+      effect,
+      params,
+      prelimPoison,
+      winner.mag,
+      winner.dur,
+      hints,
+    );
+    if (dominanceGold > dominantGold) {
+      dominantGold = dominanceGold;
+      dominantEid = effectId;
     }
   }
 
@@ -180,39 +187,39 @@ function evaluateRecipe(
 
   const effectsOut: RecipeResult["effects"] = [];
   let total = 0;
-  for (const eid of shared) {
-    const eff = effectById.get(eid);
-    if (!eff) {
+  for (const effectId of shared) {
+    const effect = effectById.get(effectId);
+    if (!effect) {
       continue;
     }
-    const c = contrib.get(eid) ?? [];
-    const w = pickWinner(eff, c, idToName);
-    const hints = buildGoldHints(eff, w.ingredientId, idToName, w);
-    let g = effectGold(
-      eff,
+    const contributorsForEffect = contrib.get(effectId) ?? [];
+    const winner = pickWinner(effect, contributorsForEffect, idToName);
+    const hints = buildGoldHints(effect, winner.ingredientId, idToName, winner);
+    let effectGoldValue = effectGold(
+      effect,
       params,
       { isPoison, includeBenefactorPoisoner: true },
-      w.mag,
-      w.dur,
+      winner.mag,
+      winner.dur,
       hints,
     );
-    if (!hints?.damageHealth && w.gold !== 1) {
-      g = Math.floor(g * w.gold);
+    if (!hints?.damageHealth && winner.gold !== 1) {
+      effectGoldValue = Math.floor(effectGoldValue * winner.gold);
     }
     effectsOut.push({
-      displayName: eff.display_name,
-      effectKey: eff.effect_key,
-      gold: g,
+      displayName: effect.display_name,
+      effectKey: effect.effect_key,
+      gold: effectGoldValue,
     });
-    total += g;
+    total += effectGoldValue;
   }
 
-  effectsOut.sort((a, b) => b.gold - a.gold);
+  effectsOut.sort((left, right) => right.gold - left.gold);
 
   return {
-    ingredients: ingredientIds.map((id) => ({
-      id,
-      name: idToName.get(id) ?? "?",
+    ingredients: ingredientIds.map((ingredientId) => ({
+      id: ingredientId,
+      name: idToName.get(ingredientId) ?? "?",
     })),
     effects: effectsOut,
     totalGold: total,
@@ -234,27 +241,27 @@ export function expandInventory(
     if (!row) {
       return { error: `Unknown ingredient: ${line.name}` };
     }
-    const n = Math.floor(line.count);
-    if (n < 0) {
+    const unitCount = Math.floor(line.count);
+    if (unitCount < 0) {
       return { error: `Invalid count for ${line.name}` };
     }
-    for (let k = 0; k < n; k++) {
+    for (let repeatIdx = 0; repeatIdx < unitCount; repeatIdx++) {
       bag.push(row.id);
     }
     idToName.set(row.id, row.canonical);
   }
-  bag.sort((a, b) => a - b);
+  bag.sort((leftId, rightId) => leftId - rightId);
   return { ids: bag, idToName };
 }
 
 function combinations2(ids: number[]): number[][] {
   const keys = new Map<string, [number, number]>();
-  for (let i = 0; i < ids.length; i++) {
-    for (let j = i + 1; j < ids.length; j++) {
-      const a = ids[i];
-      const b = ids[j];
-      const k = a <= b ? `${a},${b}` : `${b},${a}`;
-      keys.set(k, [a, b]);
+  for (let leftIndex = 0; leftIndex < ids.length; leftIndex++) {
+    for (let rightIndex = leftIndex + 1; rightIndex < ids.length; rightIndex++) {
+      const firstId = ids[leftIndex];
+      const secondId = ids[rightIndex];
+      const pairKey = firstId <= secondId ? `${firstId},${secondId}` : `${secondId},${firstId}`;
+      keys.set(pairKey, [firstId, secondId]);
     }
   }
   return [...keys.values()];
@@ -262,10 +269,12 @@ function combinations2(ids: number[]): number[][] {
 
 function combinations3(ids: number[]): number[][] {
   const keys = new Map<string, [number, number, number]>();
-  for (let i = 0; i < ids.length; i++) {
-    for (let j = i + 1; j < ids.length; j++) {
-      for (let k = j + 1; k < ids.length; k++) {
-        const arr = [ids[i], ids[j], ids[k]].sort((x, y) => x - y);
+  for (let leftIndex = 0; leftIndex < ids.length; leftIndex++) {
+    for (let midIndex = leftIndex + 1; midIndex < ids.length; midIndex++) {
+      for (let rightIndex = midIndex + 1; rightIndex < ids.length; rightIndex++) {
+        const arr = [ids[leftIndex], ids[midIndex], ids[rightIndex]].sort(
+          (leftId, rightId) => leftId - rightId,
+        );
         keys.set(arr.join(","), arr as [number, number, number]);
       }
     }
@@ -291,9 +300,9 @@ export function rankPotions(
   const uniq = [...new Set(ids)];
   const ieMap = loadIngredientEffects(uniq);
   const allEffectIds = new Set<number>();
-  for (const iid of uniq) {
-    for (const ie of ieMap.get(iid) ?? []) {
-      allEffectIds.add(ie.effect_id);
+  for (const ingredientId of uniq) {
+    for (const ingredientEffect of ieMap.get(ingredientId) ?? []) {
+      allEffectIds.add(ingredientEffect.effect_id);
     }
   }
   const effectById = loadEffectsByIds([...allEffectIds]);
@@ -305,12 +314,12 @@ export function rankPotions(
 
   const recipes: RecipeResult[] = [];
   for (const combo of slice) {
-    const r = evaluateRecipe(combo, idToName, ieMap, effectById, params);
-    if (r) {
-      recipes.push(r);
+    const evaluated = evaluateRecipe(combo, idToName, ieMap, effectById, params);
+    if (evaluated) {
+      recipes.push(evaluated);
     }
   }
 
-  recipes.sort((a, b) => b.totalGold - a.totalGold);
+  recipes.sort((left, right) => right.totalGold - left.totalGold);
   return { recipes, truncated };
 }
