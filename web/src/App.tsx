@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type IngredientHit = { id: number; name: string };
 
@@ -88,7 +88,7 @@ export function App() {
     setParams((p) => ({ ...p, [key]: n }));
   };
 
-  const runSearch = useCallback((rowId: string, q: string) => {
+  const runSearch = (rowId: string, q: string) => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(async () => {
       setRows((prev) =>
@@ -113,7 +113,7 @@ export function App() {
         );
       }
     }, 220);
-  }, []);
+  };
 
   const addRow = () => {
     setRows((r) => [
@@ -176,14 +176,11 @@ export function App() {
     };
   }, []);
 
-  const canSubmit = useMemo(
-    () =>
-      rows.some((r) => r.name.trim()) &&
-      rows
-        .filter((r) => r.name.trim())
-        .reduce((s, r) => s + Math.max(0, Math.floor(r.count)), 0) >= 2,
-    [rows],
-  );
+  const canSubmit =
+    rows.some((r) => r.name.trim()) &&
+    rows
+      .filter((r) => r.name.trim())
+      .reduce((s, r) => s + Math.max(0, Math.floor(r.count)), 0) >= 2;
 
   return (
     <main className="layout">
