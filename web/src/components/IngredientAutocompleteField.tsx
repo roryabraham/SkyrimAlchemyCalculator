@@ -7,7 +7,6 @@ import {
   useRef,
   useState,
   type KeyboardEvent,
-  type RefObject,
 } from "react";
 import { fetchIngredients } from "../ingredient-api.ts";
 import type { IngredientHit, InventoryRowPatch } from "../types.ts";
@@ -19,10 +18,9 @@ type Props = {
   rowId: string;
   name: string;
   onUpdate: (patch: InventoryRowPatch) => void;
-  quantityInputRef: RefObject<HTMLInputElement | null>;
 };
 
-export function IngredientAutocompleteField({ rowId, name, onUpdate, quantityInputRef }: Props) {
+export function IngredientAutocompleteField({ rowId, name, onUpdate }: Props) {
   const [isDismissed, setIsDismissed] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const listboxId = useId();
@@ -68,15 +66,6 @@ export function IngredientAutocompleteField({ rowId, name, onUpdate, quantityInp
       name: hit.name,
       ingredientId: hit.id,
       ingredientIconUrl: hit.iconUrl,
-    });
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const el = quantityInputRef.current;
-        if (el) {
-          el.focus();
-          el.select();
-        }
-      });
     });
   };
 

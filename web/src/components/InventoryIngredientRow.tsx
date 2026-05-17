@@ -15,7 +15,20 @@ type Props = {
 export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Props) {
   const quantityInputRef = useRef<HTMLInputElement>(null);
   const isFinalized = typeof row.ingredientId === "number";
-  const updateRowFields = (patch: InventoryRowPatch) => onUpdate(row.id, patch);
+  const updateRowFields = (patch: InventoryRowPatch) => {
+    onUpdate(row.id, patch);
+    if (typeof patch.ingredientId === "number") {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = quantityInputRef.current;
+          if (el) {
+            el.focus();
+            el.select();
+          }
+        });
+      });
+    }
+  };
 
   const beginEditIngredient = () => {
     updateRowFields({ ingredientId: undefined, ingredientIconUrl: undefined });
@@ -38,7 +51,6 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove, onAddRow }: Pr
             rowId={row.id}
             name={row.name}
             onUpdate={updateRowFields}
-            quantityInputRef={quantityInputRef}
           />
         )}
       </Table.Cell>
