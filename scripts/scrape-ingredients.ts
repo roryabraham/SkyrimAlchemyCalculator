@@ -5,28 +5,18 @@
  */
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+import { fetchMediaWikiParseHtml } from "../libs/mediawiki-parse-text.ts";
 import { parseIngredientTables } from "./lib/parse-ingredients-html.ts";
 import type { ParsedIngredient } from "./lib/ingredient-types.ts";
 
 const ROOT = path.join(import.meta.dir, "..");
 const DATA = path.join(ROOT, "data");
 
-const MW =
-  "https://en.uesp.net/w/api.php?action=parse&page=Skyrim:Ingredients&prop=text&format=json";
-
 async function fetchHtml(): Promise<string> {
-  const res = await fetch(MW, {
-    headers: { "User-Agent": "SkyrimAlchemyCalculator/1.0 (educational; contact: local)" },
+  return fetchMediaWikiParseHtml({
+    page: "Skyrim:Ingredients",
+    userAgent: "SkyrimAlchemyCalculator/1.0 (educational; contact: local)",
   });
-  if (!res.ok) throw new Error(`UESP HTTP ${res.status}`);
-  const j = (await res.json()) as {
-    parse?: { text?: { "*": string } };
-    error?: { info?: string };
-  };
-  if (j.error) throw new Error(j.error.info ?? "UESP API error");
-  const html = j.parse?.text?.["*"];
-  if (!html) throw new Error("Missing parse.text from UESP");
-  return html;
 }
 
 function toJsonRecord(row: ParsedIngredient) {

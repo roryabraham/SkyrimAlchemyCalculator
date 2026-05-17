@@ -12,6 +12,11 @@
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+import { runPool } from "../libs/async-pool.ts";
+import { fetchWithTimeout } from "../libs/fetch-with-timeout.ts";
+import { retryWithBackoff } from "../libs/retry-with-backoff.ts";
+import { sleep } from "../libs/sleep.ts";
+import { isAbortError, isLikelyTransientNetworkError } from "../libs/transient-network-error.ts";
 
 const ROOT = path.join(import.meta.dir, "..");
 const DATA = path.join(ROOT, "data");
@@ -72,57 +77,21 @@ function flushManifestToDisk(): Promise<void> {
   return manifestWriteChain;
 }
 
-function isAbortError(e: unknown): boolean {
-  if (typeof e !== "object" || e === null) return false;
-  const name = "name" in e ? String((e as { name: unknown }).name) : "";
-  if (name === "AbortError") return true;
-  const msg = "message" in e ? String((e as { message: unknown }).message) : "";
-  return /aborted/i.test(msg);
-}
-
-function isRetryableError(e: unknown): boolean {
-  if (isAbortError(e)) return true;
-  const msg = e instanceof Error ? e.message : String(e);
-  if (/HTTP (408|429|500|502|503|504)/.test(msg)) return true;
-  if (/rate|throttl|too many|busy/i.test(msg)) return true;
-  if (/fetch failed|ECONNRESET|ETIMEDOUT|EAI_AGAIN|socket/i.test(msg)) return true;
-  return false;
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((r) => setTimeout(r, ms));
-}
-
-async function fetchWithTimeout(
-  input: string | URL,
-  init: RequestInit | undefined,
-  timeoutMs: number,
-): Promise<Response> {
-  const ctrl = new AbortController();
-  const id = setTimeout(() => ctrl.abort(), timeoutMs);
-  try {
-    return await fetch(input, { ...init, signal: ctrl.signal });
-  } finally {
-    clearTimeout(id);
-  }
-}
-
-async function withBackoff<T>(label: string, attemptFetch: () => Promise<T>): Promise<T> {
-  let backoff = INITIAL_BACKOFF_MS;
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    try {
-      return await attemptFetch();
-    } catch (e) {
-      if (attempt === MAX_RETRIES || !isRetryableError(e)) throw e;
-      const msg = e instanceof Error ? e.message : String(e);
+function withBackoff<T>(label: string, attemptFetch: () => Promise<T>): Promise<T> {
+  return retryWithBackoff(attemptFetch, {
+    label,
+    maxAttempts: MAX_RETRIES,
+    initialBackoffMs: INITIAL_BACKOFF_MS,
+    maxBackoffMs: MAX_BACKOFF_MS,
+    backoffMultiplier: BACKOFF_FACTOR,
+    shouldRetry: isLikelyTransientNetworkError,
+    onRetry: ({ attempt, maxAttempts, backoffMs, label: lb, error }) => {
+      const msg = error instanceof Error ? error.message : String(error);
       console.warn(
-        `[backoff] ${label} attempt ${attempt}/${MAX_RETRIES} failed (${msg}) — waiting ${backoff}ms`,
+        `[backoff] ${lb ?? "?"} attempt ${attempt}/${maxAttempts} failed (${msg}) — waiting ${backoffMs}ms`,
       );
-      await sleep(backoff);
-      backoff = Math.min(MAX_BACKOFF_MS, Math.floor(backoff * BACKOFF_FACTOR));
-    }
-  }
-  throw new Error("withBackoff: unreachable");
+    },
+  });
 }
 
 type IngredientJson = {
@@ -205,28 +174,6 @@ async function downloadToFile(url: string, dest: string): Promise<void> {
     const buf = new Uint8Array(await res.arrayBuffer());
     await Bun.write(dest, buf);
   });
-}
-
-async function runPool<T, R>(
-  items: readonly T[],
-  concurrency: number,
-  fn: (item: T, index: number) => Promise<R>,
-): Promise<R[]> {
-  const n = items.length;
-  const results = Array.from({ length: n }) as R[];
-  let nextIndex = 0;
-
-  async function worker(): Promise<void> {
-    while (true) {
-      const i = nextIndex++;
-      if (i >= n) return;
-      results[i] = await fn(items[i]!, i);
-    }
-  }
-
-  const workers = Math.min(concurrency, Math.max(1, n));
-  await Promise.all(Array.from({ length: workers }, () => worker()));
-  return results;
 }
 
 type TaskResult = {
