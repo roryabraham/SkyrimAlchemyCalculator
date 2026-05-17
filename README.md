@@ -4,7 +4,7 @@ Web app and API for **The Elder Scrolls V: Skyrim Anniversary Edition** alchemy:
 
 Data is scraped from UESP ([Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredients), [Alchemy Effects](https://en.uesp.net/wiki/Skyrim:Alchemy_Effects)) into JSON, then loaded into a local **SQLite** database.
 
-The **web** UI is **React 19** + **Vite 8** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes). **Vite 8** ships **[Rolldown](https://rolldown.rs/)** and **[Oxc](https://oxc.rs/)** as the unified bundler and transform pipeline (see the [Vite migration guide](https://vite.dev/guide/migration) for Rolldown-related behavior). [**React Compiler**](https://react.dev/learn/react-compiler) runs via **`@rolldown/plugin-babel`** and **`reactCompilerPreset()`** from **`@vitejs/plugin-react` v6** (no manual `useMemo` / `useCallback` required for typical UI code).
+The **web** UI is **React 19** + **Vite 8** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes). HTTP data uses [**TanStack Query**](https://tanstack.com/query/latest) (**`@tanstack/react-query`**): debounced ingredient autocomplete is a **`useQuery`** keyed by the trimmed search string, and “Find potions” is a **`useMutation`** over `POST /api/potions`. A shared **`QueryClient`** is defined in [`web/src/query-client.ts`](web/src/query-client.ts) and wired in [`web/src/main.tsx`](web/src/main.tsx) via **`QueryClientProvider`**. **Vite 8** ships **[Rolldown](https://rolldown.rs/)** and **[Oxc](https://oxc.rs/)** as the unified bundler and transform pipeline (see the [Vite migration guide](https://vite.dev/guide/migration) for Rolldown-related behavior). [**React Compiler**](https://react.dev/learn/react-compiler) runs via **`@rolldown/plugin-babel`** and **`reactCompilerPreset()`** from **`@vitejs/plugin-react` v6** (no manual `useMemo` / `useCallback` required for typical UI code).
 
 The repo uses **[Oxlint](https://oxc.rs/docs/guide/usage/linter)** and **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** at the workspace root (pinned in the root `package.json`), with config in [`.oxlintrc.json`](.oxlintrc.json) and [`.oxfmtrc.json`](.oxfmtrc.json).
 
@@ -123,7 +123,7 @@ On validation or inventory errors, the handler returns **HTTP 400** with `{ "err
 | [`scripts/`](scripts/) | UESP scrapers and `seed-db.ts` |
 | [`data/`](data/) | JSON sources; generated `alchemy.sqlite` |
 | [`server/`](server/) | Bun HTTP server, SQLite access, potion enumeration and gold math (including [`server/src/damage-health-parity.ts`](server/src/damage-health-parity.ts) for Damage Health) |
-| [`web/`](web/) | Vite 8 + React UI (`web/src/App.tsx` composes `web/src/components/`) |
+| [`web/`](web/) | Vite 8 + React UI (TanStack Query, Radix Themes; `web/src/App.tsx` composes `web/src/components/`) |
 | [`tests/`](tests/) | Bun tests for parsers, math, and potion engine |
 | [`.oxlintrc.json`](.oxlintrc.json) | Oxlint config (plugins, React 19, env overrides for web/server/scripts/tests) |
 | [`.oxfmtrc.json`](.oxfmtrc.json) | Oxfmt config and ignore patterns |
