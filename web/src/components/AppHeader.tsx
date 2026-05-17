@@ -31,7 +31,7 @@ export function AppHeader() {
           </Heading>
           <Text size="3" color="gray">
             Toss your satchel into the cauldron: Anniversary Edition data from UESP, ranked by
-            estimated gold (a decent stand‑in for alchemy XP when you are hoarding reagents).
+            estimated gold (a decent stand‑in for alchemy XP when you are hoarding ingredients).
           </Text>
         </Flex>
         <Box
