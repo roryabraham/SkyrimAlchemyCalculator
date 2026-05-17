@@ -2,7 +2,7 @@ import { IconButton, Table } from "@radix-ui/themes";
 import { motion } from "framer-motion";
 import type { Ref } from "react";
 import { useRef } from "react";
-import type { InventoryRow, InventoryRowPatch } from "../types.ts";
+import type { InventoryRow, InventoryRowPatch } from "../libs/types.ts";
 import { FinalizedIngredientCell } from "./FinalizedIngredientCell.tsx";
 import { IngredientAutocompleteField } from "./IngredientAutocompleteField.tsx";
 import { IngredientQuantityField } from "./IngredientQuantityField.tsx";

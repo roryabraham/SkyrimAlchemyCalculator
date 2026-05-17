@@ -8,20 +8,20 @@ import {
   useState,
   useTransition,
 } from "react";
-import { readPersistedState, writePersistedState } from "./app-persistence.ts";
+import { readPersistedState, writePersistedState } from "./libs/app-persistence.ts";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { DataAttribution } from "./components/DataAttribution.tsx";
 import { InventoryPanel } from "./components/InventoryPanel.tsx";
 import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
-import { applyRecipeBrew, getBrewAffectedRowIds } from "./brew-recipe.ts";
-import { recipeKey } from "./recipe-key.ts";
-import { requestPotionsRank } from "./potions-api.ts";
-import type { AlchemyFormParams, InventoryRow, InventoryRowPatch, Recipe } from "./types.ts";
-import { defaultAlchemyFormParams } from "./types.ts";
-import { uid } from "./uid.ts";
+import { applyRecipeBrew, getBrewAffectedRowIds } from "./libs/brew-recipe.ts";
+import { recipeKey } from "./libs/recipe-key.ts";
+import { requestPotionsRank } from "./libs/potions-api.ts";
+import type { AlchemyFormParams, InventoryRow, InventoryRowPatch, Recipe } from "./libs/types.ts";
+import { defaultAlchemyFormParams } from "./libs/types.ts";
+import { uid } from "./libs/uid.ts";
 
-export type { AlchemyFormParams } from "./types.ts";
+export type { AlchemyFormParams } from "./libs/types.ts";
 
 type BrewFlashState = {
   recipeKey: string;

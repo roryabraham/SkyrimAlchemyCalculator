@@ -1,7 +1,7 @@
 import * as Popover from "@radix-ui/react-popover";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import type { MutableRefObject } from "react";
-import type { IngredientHit } from "../types.ts";
+import type { IngredientHit } from "../libs/types.ts";
 
 type Props = {
   listboxId: string;

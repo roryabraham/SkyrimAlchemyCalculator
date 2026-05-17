@@ -1,6 +1,6 @@
 import { TextField } from "@radix-ui/themes";
 import { useEffect, useState, type RefObject } from "react";
-import type { InventoryRowPatch } from "../types.ts";
+import type { InventoryRowPatch } from "../libs/types.ts";
 
 function clampQuantity(n: number): number {
   return Number.isFinite(n) && n >= 1 ? Math.floor(n) : 1;

@@ -1,8 +1,8 @@
 import { Button, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import type { Dispatch, SetStateAction } from "react";
 import { useId } from "react";
-import type { AlchemyFormParams } from "../types.ts";
-import { defaultAlchemyFormParams } from "../types.ts";
+import type { AlchemyFormParams } from "../libs/types.ts";
+import { defaultAlchemyFormParams } from "../libs/types.ts";
 import { AlchemyNumericField } from "./AlchemyNumericField.tsx";
 import { AlchemyPerkCheckbox } from "./AlchemyPerkCheckbox.tsx";
 

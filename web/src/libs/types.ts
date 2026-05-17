@@ -1,4 +1,4 @@
-import { defaultAlchemyParams, type AlchemyParams } from "../../libs/alchemy-params.ts";
+import { defaultAlchemyParams, type AlchemyParams } from "../../../libs/alchemy-params.ts";
 
 /** Same fields as `POST /api/potions` `params` (see server `parseAlchemyParams`). */
 export type AlchemyFormParams = AlchemyParams;

@@ -1,6 +1,10 @@
 import { describe, expect, it } from "bun:test";
-import { applyRecipeBrew, canBrewRecipe, getBrewAffectedRowIds } from "../web/src/brew-recipe.ts";
-import type { InventoryRow, Recipe } from "../web/src/types.ts";
+import {
+  applyRecipeBrew,
+  canBrewRecipe,
+  getBrewAffectedRowIds,
+} from "../web/src/libs/brew-recipe.ts";
+import type { InventoryRow, Recipe } from "../web/src/libs/types.ts";
 
 function makeRecipe(
   ingredients: { id: number; name: string }[],

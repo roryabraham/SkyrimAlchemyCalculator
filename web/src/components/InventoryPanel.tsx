@@ -1,6 +1,6 @@
 import { Button, Callout, Card, Flex, Heading, Spinner, Table, Text } from "@radix-ui/themes";
 import { AnimatePresence } from "framer-motion";
-import type { InventoryRow, InventoryRowPatch } from "../types.ts";
+import type { InventoryRow, InventoryRowPatch } from "../libs/types.ts";
 import { InventoryIngredientRow } from "./InventoryIngredientRow.tsx";
 
 type Props = {

@@ -1,8 +1,8 @@
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { AnimatePresence, motion } from "framer-motion";
-import { canBrewRecipe } from "../brew-recipe.ts";
-import { recipeKey } from "../recipe-key.ts";
-import type { InventoryRow, Recipe } from "../types.ts";
+import { canBrewRecipe } from "../libs/brew-recipe.ts";
+import { recipeKey } from "../libs/recipe-key.ts";
+import type { InventoryRow, Recipe } from "../libs/types.ts";
 import { LoadingIndicator } from "./LoadingIndicator.tsx";
 import { RecipeCard } from "./RecipeCard.tsx";
 
@@ -49,7 +49,19 @@ export function RecipeResultsPanel({
           Showing the first batch of combinations only — narrow your list for a full search.
         </Text>
       ) : null}
-      {isListUpdating ? <LoadingIndicator /> : null}
+      <AnimatePresence>
+        {isListUpdating ? (
+          <motion.div
+            key="loading-indicator"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <LoadingIndicator />
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
       {recipes.length === 0 && !isLoading ? (
         <Text as="p" size="2" color="gray" mb="3">
           The cauldron is quiet — add ingredients and hit{" "}

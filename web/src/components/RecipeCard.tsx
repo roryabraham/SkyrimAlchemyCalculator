@@ -1,5 +1,5 @@
 import { Badge, Button, Card, Flex, Separator, Text } from "@radix-ui/themes";
-import type { Recipe } from "../types.ts";
+import type { Recipe } from "../libs/types.ts";
 
 type Props = {
   recipe: Recipe;
