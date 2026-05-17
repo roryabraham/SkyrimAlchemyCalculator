@@ -29,11 +29,13 @@ export function RecipeCard({ recipe: rec, canBrew, brewFlash, onBrew }: Props) {
           </Text>
           <Badge
             size="1"
-            color={rec.mixtureKind === "potion" ? "amber" : "ruby"}
+            color={
+              rec.sharedBlend === "mixed" ? "iris" : rec.mixtureKind === "potion" ? "amber" : "ruby"
+            }
             variant="soft"
             highContrast
           >
-            {rec.mixtureKind}
+            {rec.sharedBlend === "mixed" ? "potion/poison" : rec.mixtureKind}
           </Badge>
         </Flex>
         <Button

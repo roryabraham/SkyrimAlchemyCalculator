@@ -9,14 +9,18 @@ import type { InventoryRow, Recipe } from "../web/src/libs/types.ts";
 function makeRecipe(
   ingredients: { id: number; name: string }[],
   overrides: Partial<
-    Pick<Recipe, "effects" | "totalGold" | "mixtureKind" | "dominantEffectKey">
+    Pick<Recipe, "effects" | "totalGold" | "mixtureKind" | "sharedBlend" | "dominantEffectKey">
   > = {},
 ): Recipe {
+  const mixtureKind = overrides.mixtureKind ?? "potion";
   return {
     ingredients: ingredients.map((ing) => ({ ...ing, iconUrl: null })),
     effects: overrides.effects ?? [],
     totalGold: overrides.totalGold ?? 0,
-    mixtureKind: overrides.mixtureKind ?? "potion",
+    mixtureKind,
+    sharedBlend:
+      overrides.sharedBlend ??
+      (mixtureKind === "poison" ? ("harmful" as const) : ("beneficial" as const)),
     dominantEffectKey: overrides.dominantEffectKey ?? "TestEffect",
   };
 }

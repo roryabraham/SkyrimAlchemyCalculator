@@ -111,6 +111,7 @@ describe("rankPotions", () => {
     expect(result.recipes.length).toBeGreaterThan(0);
     const top = result.recipes[0];
     expect(top.mixtureKind).toBe("potion");
+    expect(top.sharedBlend).toBe("beneficial");
     expect(top.dominantEffectKey).toBeTruthy();
     expect(top.totalGold).toBeGreaterThan(0);
     expect(top.effects.some((effect) => effect.effectKey === "Restore_Health")).toBe(true);
@@ -127,7 +128,25 @@ describe("rankPotions", () => {
     expect(result.error).toBeUndefined();
     expect(result.recipes.length).toBe(1);
     expect(result.recipes[0].mixtureKind).toBe("poison");
+    expect(result.recipes[0].sharedBlend).toBe("harmful");
     expect(result.recipes[0].dominantEffectKey).toBe("Damage_Health");
+  });
+
+  it("labels sharedBlend mixed when shared effects include both beneficial and harmful", () => {
+    const result = rankPotions(
+      [
+        { name: "Blue Butterfly Wing", quantity: 1 },
+        { name: "Blue Mountain Flower", quantity: 1 },
+      ],
+      nameIndex,
+    );
+    expect(result.error).toBeUndefined();
+    expect(result.recipes.length).toBe(1);
+    expect(result.recipes[0].sharedBlend).toBe("mixed");
+    expect(result.recipes[0].effects.some((e) => e.effectKey === "Fortify_Conjuration")).toBe(true);
+    expect(result.recipes[0].effects.some((e) => e.effectKey === "Damage_Magicka_Regen")).toBe(
+      true,
+    );
   });
 
   it("sorts results by totalGold descending", () => {

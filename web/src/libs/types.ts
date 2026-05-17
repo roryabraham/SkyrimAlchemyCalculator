@@ -7,11 +7,22 @@ export const defaultAlchemyFormParams = defaultAlchemyParams;
 
 export type IngredientHit = { id: number; name: string; iconUrl: string | null };
 
+/** Shared-effect blend: pure potion-style, pure poison-style, or both on one brew. */
+export type RecipeSharedBlend = "beneficial" | "harmful" | "mixed";
+
+/** Order for stable multi-select state (Potions → Poisons → Potion/poisons). */
+export const RECIPE_SHARED_BLEND_ORDER: readonly RecipeSharedBlend[] = [
+  "beneficial",
+  "harmful",
+  "mixed",
+];
+
 export type Recipe = {
   ingredients: { id: number; name: string; iconUrl: string | null }[];
   effects: { displayName: string; effectKey: string; gold: number }[];
   totalGold: number;
   mixtureKind: "potion" | "poison";
+  sharedBlend: RecipeSharedBlend;
   dominantEffectKey: string;
 };
 

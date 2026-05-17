@@ -18,11 +18,15 @@ export const MAX_RECIPES = 8000;
 
 export type InventoryLine = { name: string; quantity: number };
 
+/** Whether shared effects are all helpful, all harmful, or both (Skyrim potion/poison brews). */
+export type RecipeSharedBlend = "beneficial" | "harmful" | "mixed";
+
 export type RecipeResult = {
   ingredients: { name: string; id: number }[];
   effects: { displayName: string; effectKey: string; gold: number }[];
   totalGold: number;
   mixtureKind: "potion" | "poison";
+  sharedBlend: RecipeSharedBlend;
   dominantEffectKey: string;
 };
 
@@ -217,6 +221,18 @@ function evaluateRecipe(
 
   effectsOut.sort((left, right) => right.gold - left.gold);
 
+  let beneficialShared = false;
+  let harmfulShared = false;
+  for (const row of sharedRows) {
+    if (row.effect.is_beneficial) {
+      beneficialShared = true;
+    } else {
+      harmfulShared = true;
+    }
+  }
+  const sharedBlend: RecipeSharedBlend =
+    beneficialShared && harmfulShared ? "mixed" : beneficialShared ? "beneficial" : "harmful";
+
   return {
     ingredients: ingredientIds.map((ingredientId) => ({
       id: ingredientId,
@@ -225,6 +241,7 @@ function evaluateRecipe(
     effects: effectsOut,
     totalGold: total,
     mixtureKind: isPoison ? "poison" : "potion",
+    sharedBlend,
     dominantEffectKey: domEff.effect_key,
   };
 }

@@ -17,8 +17,14 @@ import { RecipeResultsPanel } from "./components/RecipeResultsPanel.tsx";
 import { applyRecipeBrew, getBrewAffectedRowIds } from "./libs/brew-recipe.ts";
 import { recipeKey } from "./libs/recipe-key.ts";
 import { requestPotionsRank } from "./libs/potions-api.ts";
-import type { AlchemyFormParams, InventoryRow, InventoryRowPatch, Recipe } from "./libs/types.ts";
-import { defaultAlchemyFormParams } from "./libs/types.ts";
+import type {
+  AlchemyFormParams,
+  InventoryRow,
+  InventoryRowPatch,
+  Recipe,
+  RecipeSharedBlend,
+} from "./libs/types.ts";
+import { defaultAlchemyFormParams, RECIPE_SHARED_BLEND_ORDER } from "./libs/types.ts";
 import { uid } from "./libs/uid.ts";
 
 export type { AlchemyFormParams } from "./libs/types.ts";
@@ -43,6 +49,8 @@ export function App() {
 
   const [brewFlash, setBrewFlash] = useState<BrewFlashState | null>(null);
   const brewFlashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  /** Empty = show all blends; otherwise OR of selected `Recipe.sharedBlend` values. */
+  const [recipeBlendSelection, setRecipeBlendSelection] = useState<RecipeSharedBlend[]>([]);
 
   const persistSnapshotRef = useRef({ rows, params });
   const rowsRef = useRef(rows);
@@ -142,9 +150,33 @@ export function App() {
 
   const isLoading = potionsMutation.isPending;
   const outcome = potionsMutation.data;
-  const recipes = isLoading ? [] : outcome?.type === "success" ? outcome.recipes : [];
-  const deferredRecipes = useDeferredValue(recipes);
-  const isListUpdating = !isLoading && recipes.length > 0 && recipes !== deferredRecipes;
+  const rankedRecipes = isLoading ? [] : outcome?.type === "success" ? outcome.recipes : [];
+  const deferredRankedRecipes = useDeferredValue(rankedRecipes);
+  const matchesRecipeBlend = (recipe: Recipe) =>
+    recipeBlendSelection.length === 0 || recipeBlendSelection.includes(recipe.sharedBlend);
+
+  const toggleRecipeBlend = (blend: RecipeSharedBlend) => {
+    setRecipeBlendSelection((prev) => {
+      const nextSet = new Set(prev);
+      if (nextSet.has(blend)) {
+        nextSet.delete(blend);
+      } else {
+        nextSet.add(blend);
+      }
+      if (nextSet.size === RECIPE_SHARED_BLEND_ORDER.length) {
+        return [];
+      }
+      return RECIPE_SHARED_BLEND_ORDER.filter((b) => nextSet.has(b));
+    });
+  };
+
+  const clearRecipeBlendSelection = () => {
+    setRecipeBlendSelection([]);
+  };
+  const recipesForList = rankedRecipes.filter(matchesRecipeBlend);
+  const displayedRecipesForList = deferredRankedRecipes.filter(matchesRecipeBlend);
+  const isListUpdating =
+    !isLoading && rankedRecipes.length > 0 && rankedRecipes !== deferredRankedRecipes;
   const isTruncated =
     !isLoading && outcome?.type === "success" ? Boolean(outcome.isTruncated) : false;
   const error = outcome?.type === "error" ? outcome.error : null;
@@ -179,8 +211,12 @@ export function App() {
           inventoryRows={rows}
           onBrewRecipe={brewRecipe}
           brewFlashRecipeKey={brewFlash?.recipeKey ?? null}
-          recipes={recipes}
-          displayedRecipes={deferredRecipes}
+          recipes={recipesForList}
+          displayedRecipes={displayedRecipesForList}
+          rankedRecipeCountBeforeBlend={rankedRecipes.length}
+          blendSelection={recipeBlendSelection}
+          onToggleBlendFilter={toggleRecipeBlend}
+          onSelectAllBlendFilters={clearRecipeBlendSelection}
           isListUpdating={isListUpdating}
           isTruncated={isTruncated}
           isLoading={isLoading}
