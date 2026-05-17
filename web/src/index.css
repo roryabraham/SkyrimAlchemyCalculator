@@ -8,4 +8,267 @@ body {
   margin: 0;
   background: #0f1218;
   color: #e8eaef;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  line-height: 1.45;
+}
+
+.layout {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  margin: 0;
+  color: #9aa3b2;
+  font-size: 0.95rem;
+}
+
+.panel {
+  margin-top: 2rem;
+  padding: 1.25rem 1.35rem;
+  background: #161b24;
+  border: 1px solid #242b38;
+  border-radius: 10px;
+}
+
+.panel h2 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.inv-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inv-table th {
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8b95a8;
+  padding: 0.35rem 0.5rem 0.6rem;
+}
+
+.inv-table td {
+  padding: 0.45rem 0.5rem;
+  vertical-align: top;
+}
+
+.narrow {
+  width: 5.5rem;
+}
+
+.cell-autocomplete {
+  position: relative;
+}
+
+.ac-wrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid #2c3545;
+  background: #0f1218;
+  color: #e8eaef;
+  font-size: 0.95rem;
+}
+
+.input:focus {
+  outline: 2px solid #3d6fd9;
+  border-color: #3d6fd9;
+}
+
+.input-narrow {
+  text-align: right;
+}
+
+.suggest {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin: 0.15rem 0 0;
+  padding: 0.2rem 0;
+  list-style: none;
+  background: #1b2230;
+  border: 1px solid #2c3545;
+  border-radius: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.suggest-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.65rem;
+  border: none;
+  background: transparent;
+  color: #e8eaef;
+  font: inherit;
+  cursor: pointer;
+}
+
+.suggest-btn:hover {
+  background: #243044;
+}
+
+.hint {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #6c7689;
+  pointer-events: none;
+}
+
+.row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid #3a455a;
+  background: #1e2633;
+  color: #e8eaef;
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: #2d4a9b;
+  border-color: #3d5fc4;
+}
+
+.btn-ghost {
+  border: none;
+  background: transparent;
+  color: #8b95a8;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.btn-ghost:hover {
+  color: #e8eaef;
+}
+
+.err {
+  color: #f2a4a4;
+  margin: 0.75rem 0 0;
+}
+
+.warn {
+  color: #e8c97a;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: #6c7689;
+  margin: 0;
+}
+
+.recipe-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.recipe-card {
+  padding: 0.85rem 1rem;
+  background: #12161d;
+  border: 1px solid #242b38;
+  border-radius: 8px;
+}
+
+.recipe-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.gold {
+  font-weight: 650;
+  font-size: 1.05rem;
+  color: #c9e082;
+}
+
+.tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid #3a455a;
+  color: #b7c0d0;
+}
+
+.tag.potion {
+  border-color: #2d6a4f;
+  color: #95d5b2;
+}
+
+.tag.poison {
+  border-color: #6a2d3a;
+  color: #e5989b;
+}
+
+.recipe-ing {
+  margin: 0.45rem 0 0.55rem;
+  font-size: 0.95rem;
+  color: #c5cedd;
+}
+
+.fx {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+  color: #9aa3b2;
+}
+
+.fx li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.15rem 0;
+}
+
+.fx-g {
+  color: #8fd14f;
+  font-variant-numeric: tabular-nums;
 }
