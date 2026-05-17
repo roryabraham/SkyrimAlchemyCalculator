@@ -67,13 +67,23 @@ describe("rankPotions", () => {
     expect(result.recipes).toEqual([]);
   });
 
-  it("allows the same ingredient twice when quantity supplies two units", () => {
-    const result = rankPotions([{ name: "Wheat", quantity: 2 }], nameIndex);
-    expect(result.error).toBeUndefined();
-    expect(result.recipes.length).toBeGreaterThan(0);
-    const twoWheat = result.recipes.find((rec) => rec.ingredients.length === 2);
-    expect(twoWheat).toBeTruthy();
-    expect(twoWheat!.ingredients[0]!.id).toBe(twoWheat!.ingredients[1]!.id);
+  it("never ranks a mixture that repeats the same ingredient (Skyrim lab rules)", () => {
+    const onlyWheat = rankPotions([{ name: "Wheat", quantity: 2 }], nameIndex);
+    expect(onlyWheat.error).toBeUndefined();
+    expect(onlyWheat.recipes).toEqual([]);
+
+    const wheatPlusBlue = rankPotions(
+      [
+        { name: "Wheat", quantity: 2 },
+        { name: "Blue Mountain Flower", quantity: 1 },
+      ],
+      nameIndex,
+    );
+    expect(wheatPlusBlue.error).toBeUndefined();
+    for (const rec of wheatPlusBlue.recipes) {
+      const ingIds = rec.ingredients.map((ing) => ing.id);
+      expect(new Set(ingIds).size).toBe(ingIds.length);
+    }
   });
 
   it("returns empty recipes when no pair shares an effect", () => {

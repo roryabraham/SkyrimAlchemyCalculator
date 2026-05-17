@@ -282,6 +282,11 @@ function combinations3(ids: number[]): number[][] {
   return [...keys.values()];
 }
 
+/** Skyrim's alchemy UI does not allow the same ingredient twice in one mixture. */
+function isDistinctIngredientMixture(combo: number[]): boolean {
+  return new Set(combo).size === combo.length;
+}
+
 export function rankPotions(
   lines: InventoryLine[],
   nameToId: Map<string, { id: number; canonical: string }>,
@@ -307,7 +312,9 @@ export function rankPotions(
   }
   const effectById = loadEffectsByIds([...allEffectIds]);
 
-  const combos: number[][] = [...combinations2(ids), ...combinations3(ids)];
+  const combos: number[][] = [...combinations2(ids), ...combinations3(ids)].filter(
+    isDistinctIngredientMixture,
+  );
   let isTruncated = false;
   const cap = MAX_RECIPES;
   const slice = combos.length > cap ? ((isTruncated = true), combos.slice(0, cap)) : combos;
