@@ -1,6 +1,6 @@
 import { Container, Flex } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
-import { useCallback, useDeferredValue, useState, useTransition } from "react";
+import { useDeferredValue, useState, useTransition } from "react";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { DataAttribution } from "./components/DataAttribution.tsx";
@@ -36,13 +36,13 @@ export function App() {
     },
   });
 
-  const addRow = useCallback(() => {
+  const addRow = () => {
     const newId = uid();
     setRows((prevRows) => [...prevRows, { id: newId, name: "", quantity: 1 }]);
     requestAnimationFrame(() => {
       document.getElementById(`ingredient-name-${newId}`)?.focus();
     });
-  }, []);
+  };
 
   const removeRow = (rowId: string) => {
     setRows((prevRows) =>
@@ -58,9 +58,9 @@ export function App() {
     potionsMutation.mutate();
   };
 
-  const brewRecipe = useCallback((recipe: Recipe) => {
+  const brewRecipe = (recipe: Recipe) => {
     setRows((prev) => applyRecipeBrew(prev, recipe) ?? prev);
-  }, []);
+  };
 
   const isLoading = potionsMutation.isPending;
   const outcome = potionsMutation.data;
