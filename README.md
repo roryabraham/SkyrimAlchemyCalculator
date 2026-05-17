@@ -4,12 +4,14 @@ Web app and API for **The Elder Scrolls V: Skyrim Anniversary Edition** alchemy:
 
 Data is scraped from UESP ([Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredients), [Alchemy Effects](https://en.uesp.net/wiki/Skyrim:Alchemy_Effects)) into JSON, then loaded into a local **SQLite** database.
 
-The **web** UI is **React 19** + **Vite 6** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes), with [**React Compiler**](https://react.dev/learn/react-compiler) enabled via `babel-plugin-react-compiler` in the Vite React Babel pipeline (no manual `useMemo` / `useCallback` required for typical UI code).
+The **web** UI is **React 19** + **Vite 8** + **TypeScript**, styled with [**Radix Themes**](https://www.radix-ui.com/themes). **Vite 8** ships **[Rolldown](https://rolldown.rs/)** and **[Oxc](https://oxc.rs/)** as the unified bundler and transform pipeline (see the [Vite migration guide](https://vite.dev/guide/migration) for Rolldown-related behavior). [**React Compiler**](https://react.dev/learn/react-compiler) runs via **`@rolldown/plugin-babel`** and **`reactCompilerPreset()`** from **`@vitejs/plugin-react` v6** (no manual `useMemo` / `useCallback` required for typical UI code).
+
+The repo uses **[Oxlint](https://oxc.rs/docs/guide/usage/linter)** and **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** at the workspace root (pinned in the root `package.json`), with config in [`.oxlintrc.json`](.oxlintrc.json) and [`.oxfmtrc.json`](.oxfmtrc.json).
 
 ## Requirements
 
 - **[Bun](https://bun.sh/)** — runs scrape/seed scripts, tests, and the API.
-- **Node.js** matching [`.nvmrc`](.nvmrc) — used by Vite for the frontend build (e.g. `nvm use` before editor tooling or `npm`/`vite` if you run them directly).
+- **Node.js** matching [`.nvmrc`](.nvmrc) — use `nvm use` (or equivalent) for editor tooling and any commands you run with `node`/`npm` directly. Day-to-day scripts (`bun run build`, `lint`, `fmt`, tests) run through **Bun** from the repo root.
 
 ## Setup
 
@@ -57,13 +59,28 @@ PORT=4000 bun run --cwd server start
 
 (Adjust the Vite proxy in [`web/vite.config.ts`](web/vite.config.ts) if you use a non-default port without the proxy.)
 
+## Linting and formatting
+
+From the repo root (first-party paths under `web/`, `server/`, `scripts/`, and `tests/`, plus selected `package.json` / `tsconfig` files—see root `package.json` scripts):
+
+```bash
+bun run lint        # Oxlint
+bun run lint:fix    # Oxlint with safe fixes
+bun run fmt         # Oxfmt (write)
+bun run fmt:check   # Oxfmt check only (e.g. CI)
+```
+
 ## Scripts
 
 | Script | Purpose |
 |--------|---------|
 | `bun run dev` | API + Vite in watch mode |
-| `bun run build` | Production build of the web app (Vite + React Compiler) |
+| `bun run build` | Production build of the web app (Vite 8 + React Compiler via `@rolldown/plugin-babel`) |
 | `bun run test` | Bun unit tests (`tests/`) |
+| `bun run lint` | [Oxlint](https://oxc.rs/docs/guide/usage/linter) on shared TypeScript/React sources |
+| `bun run lint:fix` | Oxlint with `--fix` |
+| `bun run fmt` | [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) (format in place) |
+| `bun run fmt:check` | Oxfmt `--check` (no writes) |
 | `bun run scrape` | Fetch & parse ingredient tables from UESP |
 | `bun run scrape:effects` | Fetch & parse alchemy effect stats from UESP |
 | `bun run db:seed` | Recreate SQLite from JSON in `data/` |
@@ -106,5 +123,7 @@ On validation or inventory errors, the handler returns **HTTP 400** with `{ "err
 | [`scripts/`](scripts/) | UESP scrapers and `seed-db.ts` |
 | [`data/`](data/) | JSON sources; generated `alchemy.sqlite` |
 | [`server/`](server/) | Bun HTTP server, SQLite access, potion enumeration and gold math (including [`server/src/damage-health-parity.ts`](server/src/damage-health-parity.ts) for Damage Health) |
-| [`web/`](web/) | Vite + React UI (`web/src/App.tsx` composes `web/src/components/`) |
+| [`web/`](web/) | Vite 8 + React UI (`web/src/App.tsx` composes `web/src/components/`) |
 | [`tests/`](tests/) | Bun tests for parsers, math, and potion engine |
+| [`.oxlintrc.json`](.oxlintrc.json) | Oxlint config (plugins, React 19, env overrides for web/server/scripts/tests) |
+| [`.oxfmtrc.json`](.oxfmtrc.json) | Oxfmt config and ignore patterns |
