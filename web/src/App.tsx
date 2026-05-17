@@ -107,9 +107,12 @@ export function App() {
   };
 
   const removeRow = (rowId: string) => {
-    setRows((prevRows) =>
-      prevRows.length <= 1 ? prevRows : prevRows.filter((row) => row.id !== rowId),
-    );
+    setRows((prevRows) => {
+      if (prevRows.length <= 1) {
+        return [{ id: uid(), name: "", quantity: 1 }];
+      }
+      return prevRows.filter((row) => row.id !== rowId);
+    });
   };
 
   const updateRow = (rowId: string, patch: InventoryRowPatch) => {
