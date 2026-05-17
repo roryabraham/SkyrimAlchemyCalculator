@@ -15,6 +15,16 @@ export function RecipeCard({ recipe: rec, canBrew, onBrew }: Props) {
           <Text size="4" weight="bold" style={{ fontVariantNumeric: "tabular-nums" }}>
             {rec.totalGold.toLocaleString()} gold
           </Text>
+          <Text
+            as="span"
+            size="4"
+            weight="bold"
+            color="gray"
+            aria-hidden
+            style={{ userSelect: "none" }}
+          >
+            &bull;
+          </Text>
           <Badge
             size="1"
             color={rec.mixtureKind === "potion" ? "amber" : "ruby"}
