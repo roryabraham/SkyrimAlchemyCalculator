@@ -17,6 +17,7 @@ createRoot(document.getElementById("root")!).render(
         radius="large"
         panelBackground="translucent"
         scaling="100%"
+        hasBackground={false}
       >
         <App />
       </Theme>
