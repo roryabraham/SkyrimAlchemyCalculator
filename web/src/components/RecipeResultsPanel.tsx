@@ -29,6 +29,13 @@ export function RecipeResultsPanel({
   isTruncated,
   isLoading,
 }: Props) {
+  const brewableDisplayedRecipes = displayedRecipes.filter((rec) =>
+    canBrewRecipe(inventoryRows, rec),
+  );
+  const brewableRankedCount = recipes.filter((rec) => canBrewRecipe(inventoryRows, rec)).length;
+  const showDepletedRanked =
+    recipes.length > 0 && brewableRankedCount === 0 && !isLoading;
+
   return (
     <Card size="3" variant="surface" className="alchemy-panel-glow">
       <Heading as="h2" size="5" weight="bold" mb="1" className="alchemy-display">
@@ -56,12 +63,21 @@ export function RecipeResultsPanel({
           .
         </Text>
       ) : null}
+      {showDepletedRanked ? (
+        <Text as="p" size="2" color="gray" mb="3">
+          Nothing left here matches your jars — hit{" "}
+          <Text as="span" weight="bold">
+            Brew best value
+          </Text>{" "}
+          to re-rank with what you still hold.
+        </Text>
+      ) : null}
       <Flex direction="column" gap="3">
-        {displayedRecipes.map((rec) => (
+        {brewableDisplayedRecipes.map((rec) => (
           <RecipeCard
             key={recipeKey(rec)}
             recipe={rec}
-            canBrew={canBrewRecipe(inventoryRows, rec)}
+            canBrew
             onBrew={() => onBrewRecipe(rec)}
           />
         ))}
