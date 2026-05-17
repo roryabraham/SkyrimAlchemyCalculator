@@ -9,6 +9,13 @@ const UNUSED_ROW_IDS = new Set([
   "Poisoned_Void_Salt",
 ]);
 
+/** UESP ingredient links sometimes use alternate page titles vs Alchemy_Effects table keys. */
+const EFFECT_KEY_ALIASES: Record<string, string> = {
+  Paralysis: "Paralyze_(effect)",
+  Fortify_Archery: "Fortify_Marksman",
+  Fortify_Persuasion: "Fortify_Barter",
+};
+
 function normalizeName(s: string): string {
   return s
     .toLowerCase()
@@ -44,6 +51,7 @@ function parseEffectCell($cell: cheerio.Cheerio): ParsedEffect | null {
   const href = $chosen.attr("href");
   const key = effectKeyFromHref(href);
   if (!key) return null;
+  const canon = EFFECT_KEY_ALIASES[key] ?? key;
   const displayName = $chosen.text().trim();
   const cellText = $cell.text().replace(/\s+/g, " ").trim();
   const nums = [...cellText.matchAll(/(\d+(?:\.\d+)?)\s*×/g)].map((x) =>
@@ -60,7 +68,7 @@ function parseEffectCell($cell: cheerio.Cheerio): ParsedEffect | null {
     if (nums.length >= 3) goldMult = nums[2];
   }
   return {
-    effectKey: key,
+    effectKey: canon,
     displayName,
     href,
     magMult,
