@@ -28,6 +28,7 @@ bun run dev        # Bun API + Vite UI; open the URL Vite shows (proxies /api �
 - Only the API: `bun run dev:server`. Only the UI (API must still be reachable): `bun run dev:web`.
 - Custom API port: `PORT=4000 bun run --cwd server start` — point the Vite [`web/vite.config.ts`](web/vite.config.ts) proxy at the same host/port if the UI should call a non-default API in dev.
 - Rebuild the DB from checked-in JSON: `bun run db:seed`. After changing UESP parsers or pages: `bun run scrape` and/or `bun run scrape:effects`, then `bun run db:seed`.
+- **Ingredient icons:** `bun run fetch:ingredient-icons` downloads UESP wiki icons into `web/public/ingredient-icons/` and refreshes `data/ingredient-icons.json` (keys match `ingredients.name_normalized` in the DB). Run after `scrape` when ingredient names change. The script **resumes**: existing manifest entries with a non-empty local file skip UESP; it **persists the manifest after each success** and uses **exponential backoff** on timeouts / 429 / 5xx. One-shot full pipeline: `bun run data:refresh` (scrape → icons → seed). Commit the PNGs if you want a clone-and-build workflow; otherwise gitignore that folder and run the fetch after clone. Optional env: **`INGREDIENT_ICON_FETCH_CONCURRENCY`** (default **`4`**, max **`8`**) on the fetch script; **`INGREDIENT_ICON_BASE_URL`** on the API when icons are hosted on a CDN (no trailing slash).
 
 ---
 
@@ -38,7 +39,7 @@ Names, effects, magnitudes, durations, and related stats are scraped from **The 
 - [Skyrim:Ingredients](https://en.uesp.net/wiki/Skyrim:Ingredients)
 - [Skyrim:Alchemy_Effects](https://en.uesp.net/wiki/Skyrim:Alchemy_Effects)
 
-Wiki content is under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/); see [UESPWiki:Copyright and Ownership](https://en.uesp.net/wiki/UESPWiki:Copyright_and_Ownership). *The Elder Scrolls* and related marks belong to ZeniMax Media Inc. This is an independent fan project.
+Wiki content is under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/); see [UESPWiki:Copyright and Ownership](https://en.uesp.net/wiki/UESPWiki:Copyright_and_Ownership). Ingredient **images** copied from UESP fall under the same license. *The Elder Scrolls* and related marks belong to ZeniMax Media Inc. This is an independent fan project.
 
 ---
 
@@ -63,12 +64,14 @@ Wiki content is under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/
 | `bun run lint` / `lint:fix` | Oxlint (+ type-aware rules) |
 | `bun run fmt` / `fmt:check` | Oxfmt |
 | `bun run scrape` / `scrape:effects` | Refresh UESP JSON artifacts |
+| `bun run fetch:ingredient-icons` | Download ingredient PNGs into `web/public/ingredient-icons/` + manifest |
+| `bun run data:refresh` | `scrape` → `fetch:ingredient-icons` → `db:seed` |
 | `bun run db:seed` | Rebuild `data/alchemy.sqlite` from JSON |
 
 ### HTTP API (for tools or custom frontends)
 
-- `GET /api/ingredients?q=` — substring search for autocomplete.
-- `POST /api/potions` — body: `{ "inventory": [{ "name": "…", "count": n }], "params": { …optional alchemy fields } }`. Success: `{ "recipes", "truncated" }`. Validation / bad inventory: **400** with `{ "error", "recipes": [], "truncated": false }`.
+- `GET /api/ingredients?q=` — substring search for autocomplete. Each hit includes `iconUrl` (`string | null`) when `data/ingredient-icons.json` + static files are present.
+- `POST /api/potions` — body: `{ "inventory": [{ "name": "…", "count": n }], "params": { …optional alchemy fields } }`. Success: `{ "recipes", "truncated" }`. Each recipe `ingredients[]` entry includes `iconUrl` when available. Validation / bad inventory: **400** with `{ "error", "recipes": [], "truncated": false }`.
 - `GET /health` — `{ "ok": true }`.
 
 ### Accuracy note
@@ -79,8 +82,8 @@ Gold uses UESP-style formulas (including skill and perk knobs you send in `param
 
 | Path | Role |
 |------|------|
-| [`web/`](web/) | React UI (Vite) |
+| [`web/`](web/) | React UI (Vite); static assets under `web/public/` (e.g. `ingredient-icons/`) |
 | [`server/`](server/) | Bun HTTP API + potion / gold logic |
-| [`data/`](data/) | JSON sources; generated `alchemy.sqlite` (gitignored) |
+| [`data/`](data/) | JSON sources; `ingredient-icons.json` manifest; generated `alchemy.sqlite` (gitignored) |
 | [`scripts/`](scripts/) | Scrapers and DB seed |
 | [`tests/`](tests/) | Automated tests |

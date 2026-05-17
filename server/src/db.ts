@@ -51,6 +51,11 @@ function getIngredientSearchRows(): IngredientRow[] {
   return _ingredientSearchRows;
 }
 
+/** All ingredients (for icon lookup by id). Uses the same cache as search. */
+export function loadAllIngredientRows(): IngredientRow[] {
+  return getIngredientSearchRows();
+}
+
 /** Same key space as `ingredients.name_normalized` and inventory resolution. */
 export function normalizeIngredientKey(raw: string): string {
   return raw
@@ -155,7 +160,8 @@ export function loadEffectsByIds(ids: number[]): Map<number, EffectRow> {
   const m = new Map<number, EffectRow>();
   if (ids.length === 0) return m;
   const placeholders = ids.map(() => "?").join(",");
-  const rows = db.query(`SELECT * FROM effects WHERE id IN (${placeholders})`)
+  const rows = db
+    .query(`SELECT * FROM effects WHERE id IN (${placeholders})`)
     .all(...ids) as EffectRow[];
   for (const r of rows) m.set(r.id, r);
   return m;

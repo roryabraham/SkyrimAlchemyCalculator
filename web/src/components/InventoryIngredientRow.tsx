@@ -33,10 +33,7 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
   });
 
   const popoverOpen =
-    !dismissed &&
-    q.length > 0 &&
-    isEnabled &&
-    (isPending || isFetching || isSuccess || isError);
+    !dismissed && q.length > 0 && isEnabled && (isPending || isFetching || isSuccess || isError);
   const suggestions = isSuccess && Array.isArray(data) ? data : [];
 
   return (
@@ -131,7 +128,18 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                             onUpdate(row.id, { name: h.name });
                           }}
                         >
-                          {h.name}
+                          <Flex align="center" gap="2">
+                            {h.iconUrl ? (
+                              <img
+                                src={h.iconUrl}
+                                alt=""
+                                width={22}
+                                height={22}
+                                style={{ objectFit: "contain", flexShrink: 0 }}
+                              />
+                            ) : null}
+                            {h.name}
+                          </Flex>
                         </Button>
                       </Popover.Close>
                     ))}

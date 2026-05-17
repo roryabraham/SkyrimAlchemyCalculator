@@ -19,10 +19,10 @@ export const defaultAlchemyFormParams: AlchemyFormParams = {
   seekerOfShadowsPercent: 0,
 };
 
-export type IngredientHit = { id: number; name: string };
+export type IngredientHit = { id: number; name: string; iconUrl: string | null };
 
 export type Recipe = {
-  ingredients: { id: number; name: string }[];
+  ingredients: { id: number; name: string; iconUrl: string | null }[];
   effects: { displayName: string; effectKey: string; gold: number }[];
   totalGold: number;
   mixtureKind: "potion" | "poison";

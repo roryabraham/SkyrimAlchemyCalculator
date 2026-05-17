@@ -12,7 +12,11 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Instrument Sans",
+    system-ui,
+    -apple-system,
+    sans-serif;
   color: var(--gray-12);
   background-color: #030208;
   background-image:
@@ -29,8 +33,7 @@ body {
     radial-gradient(ellipse 95% 60% at 45% 105%, rgba(45, 212, 191, 0.09), transparent 52%),
     /* Warm edge (amber) — ties to UI accent */
     radial-gradient(ellipse 60% 45% at 100% 88%, rgba(251, 191, 36, 0.07), transparent 45%),
-    /* Night base */
-    linear-gradient(168deg, #06040f 0%, #0a0616 32%, #040812 58%, #07050f 100%);
+    /* Night base */ linear-gradient(168deg, #06040f 0%, #0a0616 32%, #040812 58%, #07050f 100%);
   background-attachment: fixed;
 }
 
@@ -93,7 +96,13 @@ body::after {
     radial-gradient(1px 1px at 48% 88%, rgba(255, 255, 255, 0.48), transparent),
     radial-gradient(1px 1px at 19% 91%, rgba(255, 255, 255, 0.22), transparent),
     /* subtle film grain */
-    repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 3px);
+    repeating-radial-gradient(
+        circle at 50% 50%,
+        transparent 0,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 3px
+      );
   background-size:
     100% 100%,
     100% 100%,
@@ -122,11 +131,7 @@ body::after {
  * Nudge the first % down for more translucency, up for more opacity.
  */
 .radix-themes .rt-Card {
-  background-color: color-mix(
-    in oklab,
-    var(--color-panel-solid) 48%,
-    var(--color-panel) 52%
-  );
+  background-color: color-mix(in oklab, var(--color-panel-solid) 48%, var(--color-panel) 52%);
 }
 
 /* Display / “tome” headings — used in AppHeader */

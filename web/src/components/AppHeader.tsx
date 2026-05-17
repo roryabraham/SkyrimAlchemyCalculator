@@ -13,7 +13,11 @@ export function AppHeader() {
         Arcane economics · lab notes
       </Text>
       <Flex align="center" gap={{ initial: "4", sm: "5" }} mb="2" wrap="wrap">
-        <Flex direction="column" gap="2" style={{ flex: "1 1 16rem", minWidth: 0, maxWidth: "42rem" }}>
+        <Flex
+          direction="column"
+          gap="2"
+          style={{ flex: "1 1 16rem", minWidth: 0, maxWidth: "42rem" }}
+        >
           <Heading
             as="h1"
             size="8"

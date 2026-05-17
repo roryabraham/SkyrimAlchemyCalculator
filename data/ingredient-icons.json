@@ -1,0 +1,546 @@
+{
+  "abecean longfin": {
+    "publicPath": "/ingredient-icons/abecean-longfin.png",
+    "wikiFile": "SR-icon-ingredient-Abecean_Longfin.png"
+  },
+  "aloe vera leaves": {
+    "publicPath": "/ingredient-icons/aloe-vera-leaves.png",
+    "wikiFile": "SR-icon-ingredient-Aloe_Vera_Leaves.png"
+  },
+  "ancestor moth wing": {
+    "publicPath": "/ingredient-icons/ancestor-moth-wing.png",
+    "wikiFile": "SR-icon-ingredient-Ancestor_Moth_Wing.png"
+  },
+  "ash creep cluster": {
+    "publicPath": "/ingredient-icons/ash-creep-cluster.png",
+    "wikiFile": "SR-icon-ingredient-Ash_Creep_Cluster.png"
+  },
+  "ash hopper jelly": {
+    "publicPath": "/ingredient-icons/ash-hopper-jelly.png",
+    "wikiFile": "SR-icon-ingredient-Ash_Hopper_Jelly.png"
+  },
+  "ashen grass pod": {
+    "publicPath": "/ingredient-icons/ashen-grass-pod.png",
+    "wikiFile": "SR-icon-ingredient-Ashen_Grass_Pod.png"
+  },
+  "bear claws": {
+    "publicPath": "/ingredient-icons/bear-claws.png",
+    "wikiFile": "SR-icon-ingredient-Bear_Claws.png"
+  },
+  "bee": {
+    "publicPath": "/ingredient-icons/bee.png",
+    "wikiFile": "SR-icon-ingredient-Bee.png"
+  },
+  "beehive husk": {
+    "publicPath": "/ingredient-icons/beehive-husk.png",
+    "wikiFile": "SR-icon-ingredient-Beehive_Husk.png"
+  },
+  "bleeding crown": {
+    "publicPath": "/ingredient-icons/bleeding-crown.png",
+    "wikiFile": "SR-icon-ingredient-Bleeding_Crown.png"
+  },
+  "blisterwort": {
+    "publicPath": "/ingredient-icons/blisterwort.png",
+    "wikiFile": "SR-icon-ingredient-Blisterwort.png"
+  },
+  "blue butterfly wing": {
+    "publicPath": "/ingredient-icons/blue-butterfly-wing.png",
+    "wikiFile": "SR-icon-ingredient-Blue_Butterfly_Wing.png"
+  },
+  "blue dartwing": {
+    "publicPath": "/ingredient-icons/blue-dartwing.png",
+    "wikiFile": "SR-icon-ingredient-Blue_Dartwing.png"
+  },
+  "blue mountain flower": {
+    "publicPath": "/ingredient-icons/blue-mountain-flower.png",
+    "wikiFile": "SR-icon-ingredient-Blue_Mountain_Flower.png"
+  },
+  "boar tusk": {
+    "publicPath": "/ingredient-icons/boar-tusk.png",
+    "wikiFile": "SR-icon-ingredient-Boar_Tusk.png"
+  },
+  "bone meal": {
+    "publicPath": "/ingredient-icons/bone-meal.png",
+    "wikiFile": "SR-icon-ingredient-Bone_Meal.png"
+  },
+  "briar heart": {
+    "publicPath": "/ingredient-icons/briar-heart.png",
+    "wikiFile": "SR-icon-ingredient-Briar_Heart.png"
+  },
+  "burnt spriggan wood": {
+    "publicPath": "/ingredient-icons/burnt-spriggan-wood.png",
+    "wikiFile": "SR-icon-ingredient-Burnt_Spriggan_Wood.png"
+  },
+  "butterfly wing": {
+    "publicPath": "/ingredient-icons/butterfly-wing.png",
+    "wikiFile": "SR-icon-ingredient-Butterfly_Wing.png"
+  },
+  "canis root": {
+    "publicPath": "/ingredient-icons/canis-root.png",
+    "wikiFile": "SR-icon-ingredient-Canis_Root.png"
+  },
+  "charred skeever hide": {
+    "publicPath": "/ingredient-icons/charred-skeever-hide.png",
+    "wikiFile": "SR-icon-ingredient-Charred_Skeever_Hide.png"
+  },
+  "chaurus eggs": {
+    "publicPath": "/ingredient-icons/chaurus-eggs.png",
+    "wikiFile": "SR-icon-ingredient-Chaurus_Eggs.png"
+  },
+  "chaurus hunter antennae": {
+    "publicPath": "/ingredient-icons/chaurus-hunter-antennae.png",
+    "wikiFile": "SR-icon-ingredient-Chaurus_Hunter_Antennae.png"
+  },
+  "creep cluster": {
+    "publicPath": "/ingredient-icons/creep-cluster.png",
+    "wikiFile": "SR-icon-ingredient-Creep_Cluster.png"
+  },
+  "crimson nirnroot": {
+    "publicPath": "/ingredient-icons/crimson-nirnroot.png",
+    "wikiFile": "SR-icon-ingredient-Crimson_Nirnroot.png"
+  },
+  "cyrodilic spadetail": {
+    "publicPath": "/ingredient-icons/cyrodilic-spadetail.png",
+    "wikiFile": "SR-icon-ingredient-Cyrodilic_Spadetail.png"
+  },
+  "daedra heart": {
+    "publicPath": "/ingredient-icons/daedra-heart.png",
+    "wikiFile": "SR-icon-ingredient-Daedra_Heart.png"
+  },
+  "deathbell": {
+    "publicPath": "/ingredient-icons/deathbell.png",
+    "wikiFile": "SR-icon-ingredient-Deathbell.png"
+  },
+  "dwarven oil": {
+    "publicPath": "/ingredient-icons/dwarven-oil.png",
+    "wikiFile": "SR-icon-ingredient-Dwarven_Oil.png"
+  },
+  "ectoplasm": {
+    "publicPath": "/ingredient-icons/ectoplasm.png",
+    "wikiFile": "SR-icon-ingredient-Ectoplasm.png"
+  },
+  "elves ear": {
+    "publicPath": "/ingredient-icons/elves-ear.png",
+    "wikiFile": "SR-icon-ingredient-Elves_Ear.png"
+  },
+  "emperor parasol moss": {
+    "publicPath": "/ingredient-icons/emperor-parasol-moss.png",
+    "wikiFile": "SR-icon-ingredient-Emperor_Parasol_Moss.png"
+  },
+  "eye of sabre cat": {
+    "publicPath": "/ingredient-icons/eye-of-sabre-cat.png",
+    "wikiFile": "SR-icon-ingredient-Eye_of_Sabre_Cat.png"
+  },
+  "falmer ear": {
+    "publicPath": "/ingredient-icons/falmer-ear.png",
+    "wikiFile": "SR-icon-ingredient-Falmer_Ear.png"
+  },
+  "felsaad tern feathers": {
+    "publicPath": "/ingredient-icons/felsaad-tern-feathers.png",
+    "wikiFile": "SR-icon-ingredient-Felsaad_Tern_Feathers.png"
+  },
+  "fire salts": {
+    "publicPath": "/ingredient-icons/fire-salts.png",
+    "wikiFile": "SR-icon-ingredient-Fire_Salts.png"
+  },
+  "fly amanita": {
+    "publicPath": "/ingredient-icons/fly-amanita.png",
+    "wikiFile": "SR-icon-ingredient-Fly_Amanita.png"
+  },
+  "frost mirriam": {
+    "publicPath": "/ingredient-icons/frost-mirriam.png",
+    "wikiFile": "SR-icon-ingredient-Frost_Mirriam.png"
+  },
+  "frost salts": {
+    "publicPath": "/ingredient-icons/frost-salts.png",
+    "wikiFile": "SR-icon-ingredient-Frost_Salts.png"
+  },
+  "garlic": {
+    "publicPath": "/ingredient-icons/garlic.png",
+    "wikiFile": "SR-icon-ingredient-Garlic.png"
+  },
+  "giant lichen": {
+    "publicPath": "/ingredient-icons/giant-lichen.png",
+    "wikiFile": "SR-icon-ingredient-Giant_Lichen.png"
+  },
+  "gleamblossom": {
+    "publicPath": "/ingredient-icons/gleamblossom.png",
+    "wikiFile": "SR-icon-ingredient-Gleamblossom.png"
+  },
+  "glow dust": {
+    "publicPath": "/ingredient-icons/glow-dust.png",
+    "wikiFile": "SR-icon-ingredient-Glow_Dust.png"
+  },
+  "glowing mushroom": {
+    "publicPath": "/ingredient-icons/glowing-mushroom.png",
+    "wikiFile": "SR-icon-ingredient-Glowing_Mushroom.png"
+  },
+  "grass pod": {
+    "publicPath": "/ingredient-icons/grass-pod.png",
+    "wikiFile": "SR-icon-ingredient-Grass_Pod.png"
+  },
+  "hagraven claw": {
+    "publicPath": "/ingredient-icons/hagraven-claw.png",
+    "wikiFile": "SR-icon-ingredient-Hagraven_Claw.png"
+  },
+  "hagraven feathers": {
+    "publicPath": "/ingredient-icons/hagraven-feathers.png",
+    "wikiFile": "SR-icon-ingredient-Hagraven_Feathers.png"
+  },
+  "hanging moss": {
+    "publicPath": "/ingredient-icons/hanging-moss.png",
+    "wikiFile": "SR-icon-ingredient-Hanging_Moss.png"
+  },
+  "hawk beak": {
+    "publicPath": "/ingredient-icons/hawk-beak.png",
+    "wikiFile": "SR-icon-ingredient-Hawk_Beak.png"
+  },
+  "hawk feathers": {
+    "publicPath": "/ingredient-icons/hawk-feathers.png",
+    "wikiFile": "SR-icon-ingredient-Hawk_Feathers.png"
+  },
+  "histcarp": {
+    "publicPath": "/ingredient-icons/histcarp.png",
+    "wikiFile": "SR-icon-ingredient-Histcarp.png"
+  },
+  "honeycomb": {
+    "publicPath": "/ingredient-icons/honeycomb.png",
+    "wikiFile": "SR-icon-ingredient-Honeycomb.png"
+  },
+  "human flesh": {
+    "publicPath": "/ingredient-icons/human-flesh.png",
+    "wikiFile": "SR-icon-ingredient-Human_Flesh.png"
+  },
+  "human heart": {
+    "publicPath": "/ingredient-icons/human-heart.png",
+    "wikiFile": "SR-icon-ingredient-Human_Heart.png"
+  },
+  "ice wraith teeth": {
+    "publicPath": "/ingredient-icons/ice-wraith-teeth.png",
+    "wikiFile": "SR-icon-ingredient-Ice_Wraith_Teeth.png"
+  },
+  "imp stool": {
+    "publicPath": "/ingredient-icons/imp-stool.png",
+    "wikiFile": "SR-icon-ingredient-Imp_Stool.png"
+  },
+  "jazbay grapes": {
+    "publicPath": "/ingredient-icons/jazbay-grapes.png",
+    "wikiFile": "SR-icon-ingredient-Jazbay_Grapes.png"
+  },
+  "juniper berries": {
+    "publicPath": "/ingredient-icons/juniper-berries.png",
+    "wikiFile": "SR-icon-ingredient-Juniper_Berries.png"
+  },
+  "large antlers": {
+    "publicPath": "/ingredient-icons/large-antlers.png",
+    "wikiFile": "SR-icon-ingredient-Large_Antlers.png"
+  },
+  "lavender": {
+    "publicPath": "/ingredient-icons/lavender.png",
+    "wikiFile": "SR-icon-ingredient-Lavender.png"
+  },
+  "luna moth wing": {
+    "publicPath": "/ingredient-icons/luna-moth-wing.png",
+    "wikiFile": "SR-icon-ingredient-Luna_Moth_Wing.png"
+  },
+  "moon sugar": {
+    "publicPath": "/ingredient-icons/moon-sugar.png",
+    "wikiFile": "SR-icon-ingredient-Moon_Sugar.png"
+  },
+  "mora tapinella": {
+    "publicPath": "/ingredient-icons/mora-tapinella.png",
+    "wikiFile": "SR-icon-ingredient-Mora_Tapinella.png"
+  },
+  "mudcrab chitin": {
+    "publicPath": "/ingredient-icons/mudcrab-chitin.png",
+    "wikiFile": "SR-icon-ingredient-Mudcrab_Chitin.png"
+  },
+  "netch jelly": {
+    "publicPath": "/ingredient-icons/netch-jelly.png",
+    "wikiFile": "SR-icon-ingredient-Netch_Jelly.png"
+  },
+  "nightshade": {
+    "publicPath": "/ingredient-icons/nightshade.png",
+    "wikiFile": "SR-icon-ingredient-Bloodchill_Nightshade.png"
+  },
+  "nirnroot": {
+    "publicPath": "/ingredient-icons/nirnroot.png",
+    "wikiFile": "SR-icon-ingredient-Nirnroot.png"
+  },
+  "nordic barnacle": {
+    "publicPath": "/ingredient-icons/nordic-barnacle.png",
+    "wikiFile": "SR-icon-ingredient-Nordic_Barnacle.png"
+  },
+  "orange dartwing": {
+    "publicPath": "/ingredient-icons/orange-dartwing.png",
+    "wikiFile": "SR-icon-ingredient-Orange_Dartwing.png"
+  },
+  "pearl": {
+    "publicPath": "/ingredient-icons/pearl.png",
+    "wikiFile": "SR-icon-ingredient-Pearl.png"
+  },
+  "pine thrush egg": {
+    "publicPath": "/ingredient-icons/pine-thrush-egg.png",
+    "wikiFile": "SR-icon-ingredient-Pine_Thrush_Egg.png"
+  },
+  "poison bloom": {
+    "publicPath": "/ingredient-icons/poison-bloom.png",
+    "wikiFile": "SR-icon-ingredient-Poison_Bloom.png"
+  },
+  "powdered mammoth tusk": {
+    "publicPath": "/ingredient-icons/powdered-mammoth-tusk.png",
+    "wikiFile": "SR-icon-ingredient-Powdered_Mammoth_Tusk.png"
+  },
+  "purple mountain flower": {
+    "publicPath": "/ingredient-icons/purple-mountain-flower.png",
+    "wikiFile": "SR-icon-ingredient-Purple_Mountain_Flower.png"
+  },
+  "red mountain flower": {
+    "publicPath": "/ingredient-icons/red-mountain-flower.png",
+    "wikiFile": "SR-icon-ingredient-Red_Mountain_Flower.png"
+  },
+  "river betty": {
+    "publicPath": "/ingredient-icons/river-betty.png",
+    "wikiFile": "SR-icon-ingredient-River_Betty.png"
+  },
+  "rock warbler egg": {
+    "publicPath": "/ingredient-icons/rock-warbler-egg.png",
+    "wikiFile": "SR-icon-ingredient-Rock_Warbler_Egg.png"
+  },
+  "sabre cat tooth": {
+    "publicPath": "/ingredient-icons/sabre-cat-tooth.png",
+    "wikiFile": "SR-icon-ingredient-Sabre_Cat_Tooth.png"
+  },
+  "salmon roe": {
+    "publicPath": "/ingredient-icons/salmon-roe.png",
+    "wikiFile": "SR-icon-ingredient-Salmon_Roe.png"
+  },
+  "salt pile": {
+    "publicPath": "/ingredient-icons/salt-pile.png",
+    "wikiFile": "SR-icon-ingredient-Salt_Pile.png"
+  },
+  "scaly pholiota": {
+    "publicPath": "/ingredient-icons/scaly-pholiota.png",
+    "wikiFile": "SR-icon-ingredient-Scaly_Pholiota.png"
+  },
+  "scathecraw": {
+    "publicPath": "/ingredient-icons/scathecraw.png",
+    "wikiFile": "SR-icon-ingredient-Scathecraw.png"
+  },
+  "silverside perch": {
+    "publicPath": "/ingredient-icons/silverside-perch.png",
+    "wikiFile": "SR-icon-ingredient-Silverside_Perch.png"
+  },
+  "skeever tail": {
+    "publicPath": "/ingredient-icons/skeever-tail.png",
+    "wikiFile": "SR-icon-ingredient-Skeever_Tail.png"
+  },
+  "slaughterfish egg": {
+    "publicPath": "/ingredient-icons/slaughterfish-egg.png",
+    "wikiFile": "SR-icon-ingredient-Slaughterfish_Egg.png"
+  },
+  "slaughterfish scales": {
+    "publicPath": "/ingredient-icons/slaughterfish-scales.png",
+    "wikiFile": "SR-icon-ingredient-Slaughterfish_Scales.png"
+  },
+  "small antlers": {
+    "publicPath": "/ingredient-icons/small-antlers.png",
+    "wikiFile": "SR-icon-ingredient-Small_Antlers.png"
+  },
+  "small pearl": {
+    "publicPath": "/ingredient-icons/small-pearl.png",
+    "wikiFile": "SR-icon-ingredient-Small_Pearl.png"
+  },
+  "snowberries": {
+    "publicPath": "/ingredient-icons/snowberries.png",
+    "wikiFile": "SR-icon-ingredient-Snowberries.png"
+  },
+  "spawn ash": {
+    "publicPath": "/ingredient-icons/spawn-ash.png",
+    "wikiFile": "SR-icon-ingredient-Spawn_Ash.png"
+  },
+  "spider egg": {
+    "publicPath": "/ingredient-icons/spider-egg.png",
+    "wikiFile": "SR-icon-ingredient-Spider_Egg.png"
+  },
+  "spriggan sap": {
+    "publicPath": "/ingredient-icons/spriggan-sap.png",
+    "wikiFile": "SR-icon-ingredient-Spriggan_Sap.png"
+  },
+  "swamp fungal pod": {
+    "publicPath": "/ingredient-icons/swamp-fungal-pod.png",
+    "wikiFile": "SR-icon-ingredient-Swamp_Fungal_Pod.png"
+  },
+  "taproot": {
+    "publicPath": "/ingredient-icons/taproot.png",
+    "wikiFile": "SR-icon-ingredient-Taproot.png"
+  },
+  "thistle branch": {
+    "publicPath": "/ingredient-icons/thistle-branch.png",
+    "wikiFile": "SR-icon-ingredient-Thistle_Branch.png"
+  },
+  "torchbug thorax": {
+    "publicPath": "/ingredient-icons/torchbug-thorax.png",
+    "wikiFile": "SR-icon-ingredient-Torchbug_Thorax.png"
+  },
+  "trama root": {
+    "publicPath": "/ingredient-icons/trama-root.png",
+    "wikiFile": "SR-icon-ingredient-Trama_Root.png"
+  },
+  "troll fat": {
+    "publicPath": "/ingredient-icons/troll-fat.png",
+    "wikiFile": "SR-icon-ingredient-Troll_Fat.png"
+  },
+  "tundra cotton": {
+    "publicPath": "/ingredient-icons/tundra-cotton.png",
+    "wikiFile": "SR-icon-ingredient-Tundra_Cotton.png"
+  },
+  "vampire dust": {
+    "publicPath": "/ingredient-icons/vampire-dust.png",
+    "wikiFile": "SR-icon-ingredient-Vampire_Dust.png"
+  },
+  "void salts": {
+    "publicPath": "/ingredient-icons/void-salts.png",
+    "wikiFile": "SR-icon-ingredient-Void_Salts.png"
+  },
+  "white cap": {
+    "publicPath": "/ingredient-icons/white-cap.png",
+    "wikiFile": "SR-icon-ingredient-White_Cap.png"
+  },
+  "wheat": {
+    "publicPath": "/ingredient-icons/wheat.png",
+    "wikiFile": "SR-icon-ingredient-Wheat.png"
+  },
+  "wisp wrappings": {
+    "publicPath": "/ingredient-icons/wisp-wrappings.png",
+    "wikiFile": "SR-icon-ingredient-Wisp_Wrappings.png"
+  },
+  "yellow mountain flower": {
+    "publicPath": "/ingredient-icons/yellow-mountain-flower.png",
+    "wikiFile": "SR-icon-ingredient-Yellow_Mountain_Flower.png"
+  },
+  "alocasia fruit": {
+    "publicPath": "/ingredient-icons/alocasia-fruit.png",
+    "wikiFile": "SR-icon-ingredient-Alocasia_Fruit.png"
+  },
+  "ambrosia": {
+    "publicPath": "/ingredient-icons/ambrosia.png",
+    "wikiFile": "SR-icon-ingredient-Ambrosia.png"
+  },
+  "angler larvae": {
+    "publicPath": "/ingredient-icons/angler-larvae.png",
+    "wikiFile": "SR-icon-ingredient-Angler_Larvae.png"
+  },
+  "angelfish": {
+    "publicPath": "/ingredient-icons/angelfish.png",
+    "wikiFile": "SR-icon-ingredient-Angelfish.png"
+  },
+  "aster bloom core": {
+    "publicPath": "/ingredient-icons/aster-bloom-core.png",
+    "wikiFile": "SR-icon-ingredient-Aster_Bloom_Core.png"
+  },
+  "bittergreen petals": {
+    "publicPath": "/ingredient-icons/bittergreen-petals.png",
+    "wikiFile": "SR-icon-ingredient-Bittergreen_Petals.png"
+  },
+  "blister pod cap": {
+    "publicPath": "/ingredient-icons/blister-pod-cap.png",
+    "wikiFile": "SR-icon-ingredient-Blister_Pod_Cap.png"
+  },
+  "bliss bug thorax": {
+    "publicPath": "/ingredient-icons/bliss-bug-thorax.png",
+    "wikiFile": "SR-icon-ingredient-Bliss_Bug_Thorax.png"
+  },
+  "bloodgrass": {
+    "publicPath": "/ingredient-icons/bloodgrass.png",
+    "wikiFile": "SR-icon-ingredient-Bloodgrass.png"
+  },
+  "bog beacon": {
+    "publicPath": "/ingredient-icons/bog-beacon.png",
+    "wikiFile": "SR-icon-ingredient-Bog_Beacon.png"
+  },
+  "chokeberry": {
+    "publicPath": "/ingredient-icons/chokeberry.png",
+    "wikiFile": "SR-icon-ingredient-Chokeberry.png"
+  },
+  "chokeweed": {
+    "publicPath": "/ingredient-icons/chokeweed.png",
+    "wikiFile": "SR-icon-ingredient-Chokeweed.png"
+  },
+  "coda flower": {
+    "publicPath": "/ingredient-icons/coda-flower.png",
+    "wikiFile": "SR-icon-ingredient-Coda_Flower.png"
+  },
+  "comberry": {
+    "publicPath": "/ingredient-icons/comberry.png",
+    "wikiFile": "SR-icon-ingredient-Comberry.png"
+  },
+  "corkbulb root": {
+    "publicPath": "/ingredient-icons/corkbulb-root.png",
+    "wikiFile": "SR-icon-ingredient-Corkbulb_Root.png"
+  },
+  "congealed putrescence": {
+    "publicPath": "/ingredient-icons/congealed-putrescence.png",
+    "wikiFile": "SR-icon-ingredient-Congealed_Putrescence.png"
+  },
+  "daedra silk": {
+    "publicPath": "/ingredient-icons/daedra-silk.png",
+    "wikiFile": "SR-icon-ingredient-Daedra_Silk.png"
+  },
+  "daedroth teeth": {
+    "publicPath": "/ingredient-icons/daedroth-teeth.png",
+    "wikiFile": "SR-icon-ingredient-Daedroth_Teeth.png"
+  },
+  "daedra venin": {
+    "publicPath": "/ingredient-icons/daedra-venin.png",
+    "wikiFile": "SR-icon-ingredient-Daedra_Venin.png"
+  },
+  "fire petal": {
+    "publicPath": "/ingredient-icons/fire-petal.png",
+    "wikiFile": "SR-icon-ingredient-Fire_Petal.png"
+  },
+  "elytra ichor": {
+    "publicPath": "/ingredient-icons/elytra-ichor.png",
+    "wikiFile": "SR-icon-ingredient-Elytra_Ichor.png"
+  },
+  "fungus stalk": {
+    "publicPath": "/ingredient-icons/fungus-stalk.png",
+    "wikiFile": "SR-icon-ingredient-Fungus_Stalk.png"
+  },
+  "dreugh wax": {
+    "publicPath": "/ingredient-icons/dreugh-wax.png",
+    "wikiFile": "SR-icon-ingredient-Dreugh_Wax.png"
+  },
+  "glassfish": {
+    "publicPath": "/ingredient-icons/glassfish.png",
+    "wikiFile": "SR-icon-ingredient-Glassfish.png"
+  },
+  "flame stalk": {
+    "publicPath": "/ingredient-icons/flame-stalk.png",
+    "wikiFile": "SR-icon-ingredient-Flame_Stalk.png"
+  },
+  "gold kanet": {
+    "publicPath": "/ingredient-icons/gold-kanet.png",
+    "wikiFile": "SR-icon-ingredient-Gold_Kanet.png"
+  },
+  "gnarl bark": {
+    "publicPath": "/ingredient-icons/gnarl-bark.png",
+    "wikiFile": "SR-icon-ingredient-Gnarl_Bark.png"
+  },
+  "goldfish": {
+    "publicPath": "/ingredient-icons/goldfish.png",
+    "wikiFile": "SR-icon-ingredient-Goldfish.png"
+  },
+  "green butterfly wing": {
+    "publicPath": "/ingredient-icons/green-butterfly-wing.png",
+    "wikiFile": "SR-icon-ingredient-Green_Butterfly_Wing.png"
+  },
+  "hackle lo leaf": {
+    "publicPath": "/ingredient-icons/hackle-lo-leaf.png",
+    "wikiFile": "SR-icon-ingredient-Hackle-Lo_Leaf.png"
+  },
+  "harrada": {
+    "publicPath": "/ingredient-icons/harrada.png",
+    "wikiFile": "SR-icon-ingredient-Harrada.png"
+  }
+}

@@ -66,9 +66,29 @@ export function RecipeResultsPanel({
                 {rec.mixtureKind}
               </Badge>
             </Flex>
-            <Text size="2" color="gray" mb="2">
-              {rec.ingredients.map((ing) => ing.name).join(" + ")}
-            </Text>
+            <Flex align="center" gap="2" wrap="wrap" mb="2">
+              {rec.ingredients.map((ing, idx) => (
+                <Flex key={ing.id} align="center" gap="2">
+                  {idx > 0 ? (
+                    <Text size="2" color="gray" style={{ userSelect: "none" }}>
+                      +
+                    </Text>
+                  ) : null}
+                  {ing.iconUrl ? (
+                    <img
+                      src={ing.iconUrl}
+                      alt=""
+                      width={22}
+                      height={22}
+                      style={{ objectFit: "contain", flexShrink: 0 }}
+                    />
+                  ) : null}
+                  <Text size="2" color="gray">
+                    {ing.name}
+                  </Text>
+                </Flex>
+              ))}
+            </Flex>
             <Separator size="4" my="2" />
             <Flex direction="column" gap="1" asChild>
               <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>

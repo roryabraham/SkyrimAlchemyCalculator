@@ -7,6 +7,8 @@
   ],
   "scripts": {
     "scrape": "bun run scripts/scrape-ingredients.ts",
+    "fetch:ingredient-icons": "bun run scripts/fetch-ingredient-icons.ts",
+    "data:refresh": "bun run scrape && bun run fetch:ingredient-icons && bun run db:seed",
     "scrape:effects": "bun run scripts/scrape-effects.ts",
     "db:seed": "bun run scripts/seed-db.ts",
     "postinstall": "bun run scripts/seed-db.ts",

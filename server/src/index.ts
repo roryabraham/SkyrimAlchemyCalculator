@@ -1,6 +1,7 @@
-import { getDb, loadNameIndex, searchIngredients } from "./db.ts";
+import { getDb, loadAllIngredientRows, loadNameIndex, searchIngredients } from "./db.ts";
 import { defaultAlchemyParams, type AlchemyParams } from "./alchemy-math.ts";
-import { rankPotions, type InventoryLine } from "./potion-engine.ts";
+import { iconUrlForNameNormalized, loadIconManifest } from "./ingredient-icons.ts";
+import { rankPotions, type InventoryLine, type RecipeResult } from "./potion-engine.ts";
 
 const PORT = Number(process.env.PORT) || 3001;
 
@@ -35,6 +36,23 @@ function parseAlchemyParams(body: Record<string, unknown>): AlchemyParams {
 /** Warm DB so first request does not pay open cost. */
 getDb();
 const nameIndex = loadNameIndex();
+loadIconManifest();
+const idToNameNormalized = new Map(
+  loadAllIngredientRows().map((r) => [r.id, r.name_normalized] as const),
+);
+
+function withIngredientIcons(recipes: RecipeResult[]) {
+  return recipes.map((rec) => ({
+    ...rec,
+    ingredients: rec.ingredients.map((ing) => {
+      const nn = idToNameNormalized.get(ing.id);
+      return {
+        ...ing,
+        iconUrl: nn ? iconUrlForNameNormalized(nn) : null,
+      };
+    }),
+  }));
+}
 
 Bun.serve({
   port: PORT,
@@ -51,7 +69,13 @@ Bun.serve({
         return json([]);
       }
       const rows = searchIngredients(q, 40);
-      return json(rows.map((r) => ({ id: r.id, name: r.name })));
+      return json(
+        rows.map((r) => ({
+          id: r.id,
+          name: r.name,
+          iconUrl: iconUrlForNameNormalized(r.name_normalized),
+        })),
+      );
     }
 
     if (req.method === "POST" && url.pathname === "/api/potions") {
@@ -70,7 +94,7 @@ Bun.serve({
       if (error) {
         return json({ error, recipes: [], truncated: false }, 400);
       }
-      return json({ recipes, truncated });
+      return json({ recipes: withIngredientIcons(recipes), truncated });
     }
 
     if (req.method === "GET" && url.pathname === "/health") {
