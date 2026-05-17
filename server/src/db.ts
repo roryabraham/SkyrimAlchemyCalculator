@@ -1,5 +1,6 @@
 import path from "node:path";
 import { Database } from "bun:sqlite";
+import { normalizeIngredientKey } from "../../libs/ingredient-key.ts";
 
 let _db: Database | null = null;
 
@@ -56,15 +57,7 @@ export function loadAllIngredientRows(): IngredientRow[] {
   return getIngredientSearchRows();
 }
 
-/** Same key space as `ingredients.name_normalized` and inventory resolution. */
-export function normalizeIngredientKey(raw: string): string {
-  return raw
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/\p{M}/gu, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
+export { normalizeIngredientKey };
 
 function maxTyposForKey(keyLen: number): number {
   if (keyLen <= 1) return 0;

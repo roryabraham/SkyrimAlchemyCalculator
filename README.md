@@ -2,9 +2,7 @@
 
 Figure out what to brew from the ingredients you have—or what to buy—without tabbing out of a spreadsheet.
 
-This project is a **Skyrim alchemy helper** aimed at **Anniversary Edition–style** ingredient lists (base game + DLC + Creation Club entries that appear on UESP). You enter **which ingredients you have and how many**, and it lists every **valid 2- and 3-ingredient** combination from that pool that shares at least one effect. Results are **sorted by total estimated gold**, which tracks [UESP’s alchemy write-up](https://en.uesp.net/wiki/Skyrim:Alchemy) as a practical stand-in for “how good is this for leveling / selling,” not a live read of your save or the exact in-game septim every time.
-
-**It does not** connect to the game, predict discovery order, or model every Creation Kit edge case. Treat numbers as **guides**, especially if you use unusual mods or perks.
+This project is a **Skyrim alchemy helper** aimed at **Anniversary Edition–style** ingredient lists (base game + DLC + Creation Club entries that appear on UESP). You enter **which ingredients you have and how many**, and it lists every **valid 2- and 3-ingredient** combination from that pool that shares at least one effect. Results are **sorted by total estimated gold**, which tracks [UESP’s alchemy write-up](https://en.uesp.net/wiki/Skyrim:Alchemy) as a practical stand-in for “how good is this for leveling / selling,” rather than mirroring every in-session septim total. Treat numbers as **guides**, especially if you use unusual mods or perks.
 
 ---
 
@@ -76,7 +74,7 @@ Wiki content is under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/
 
 ### Accuracy note
 
-Gold uses UESP-style formulas (including skill and perk knobs you send in `params`). **Damage Health** is modeled a bit more tightly to [UESP: Damage Health](https://en.uesp.net/wiki/Skyrim:Damage_Health) (which ingredient “wins” and how duration is counted for gold); other effects rely on the shared effect table plus ingredient multipliers. Purity, every CC quirk, and full CK parity are out of scope.
+Gold uses UESP-style formulas (including skill and perk knobs you send in `params`). **Damage Health** is modeled a bit more tightly to [UESP: Damage Health](https://en.uesp.net/wiki/Skyrim:Damage_Health) (which ingredient “wins” and how duration is counted for gold); other effects rely on the shared effect table plus ingredient multipliers. The implementation targets UESP-aligned behavior; **Purity**, some Creation Club edge cases, and full Creation Kit parity are outside what this repo tries to match.
 
 ### Repository layout
 
@@ -86,4 +84,5 @@ Gold uses UESP-style formulas (including skill and perk knobs you send in `param
 | [`server/`](server/) | Bun HTTP API + potion / gold logic |
 | [`data/`](data/) | JSON sources; `ingredient-icons.json` manifest; generated `alchemy.sqlite` (gitignored) |
 | [`scripts/`](scripts/) | Scrapers and DB seed |
+| [`libs/`](libs/) | Shared TypeScript (e.g. ingredient name keys, alchemy `params` shape) used by `web/`, `server/`, and `scripts/` |
 | [`tests/`](tests/) | Automated tests |

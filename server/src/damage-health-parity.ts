@@ -4,6 +4,8 @@
  * @see https://en.uesp.net/wiki/Skyrim:Damage_Health
  */
 
+import { normalizeIngredientKey } from "../../libs/ingredient-key.ts";
+
 export type DamageHealthRow = {
   /** Higher wins when this ingredient controls Damage Health. */
   priority: number;
@@ -16,15 +18,6 @@ export type DamageHealthRow = {
   /** UESP Gold Mult for this ingredient on Damage Health. */
   goldMult: number;
 };
-
-function n(s: string): string {
-  return s
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/\p{M}/gu, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
 
 /** Normalized ingredient name → UESP Damage Health row. */
 export const DAMAGE_HEALTH_BY_INGREDIENT = new Map<string, DamageHealthRow>([
@@ -248,10 +241,6 @@ export const DAMAGE_HEALTH_BY_INGREDIENT = new Map<string, DamageHealthRow>([
   ],
 ]);
 
-export function normalizeIngredientKey(name: string): string {
-  return n(name);
-}
-
 export function getDamageHealthRow(ingredientCanonicalName: string): DamageHealthRow | undefined {
-  return DAMAGE_HEALTH_BY_INGREDIENT.get(n(ingredientCanonicalName));
+  return DAMAGE_HEALTH_BY_INGREDIENT.get(normalizeIngredientKey(ingredientCanonicalName));
 }

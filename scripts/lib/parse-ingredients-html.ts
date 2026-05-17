@@ -1,6 +1,7 @@
 import * as cheerio from "cheerio";
 import type { Cheerio } from "cheerio";
 import type { Element } from "domhandler";
+import { normalizeIngredientKey } from "../../libs/ingredient-key.ts";
 import type { ParsedEffect, ParsedIngredient } from "./ingredient-types.ts";
 
 const UNUSED_ROW_IDS = new Set([
@@ -17,15 +18,6 @@ const EFFECT_KEY_ALIASES: Record<string, string> = {
   Fortify_Archery: "Fortify_Marksman",
   Fortify_Persuasion: "Fortify_Barter",
 };
-
-function normalizeName(s: string): string {
-  return s
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/\p{M}/gu, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
 
 /** Extract Skyrim wiki title from /wiki/Skyrim:Foo_bar */
 function effectKeyFromHref(href: string | undefined): string | null {
@@ -133,7 +125,7 @@ export function parseIngredientTables(html: string): ParsedIngredient[] {
       out.push({
         rowId,
         name,
-        nameNormalized: normalizeName(name),
+        nameNormalized: normalizeIngredientKey(name),
         formIdRaw: formIdFromNameCell($nameTd),
         descriptionText,
         effects,

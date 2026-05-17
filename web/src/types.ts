@@ -1,23 +1,9 @@
-/** Mirrors `POST /api/potions` `params` (see server `parseAlchemyParams`). */
-export type AlchemyFormParams = {
-  alchemySkill: number;
-  fortifyAlchemy: number;
-  alchemistPercent: number;
-  hasPhysician: boolean;
-  hasBenefactor: boolean;
-  hasPoisoner: boolean;
-  seekerOfShadowsPercent: number;
-};
+import { defaultAlchemyParams, type AlchemyParams } from "../../libs/alchemy-params.ts";
 
-export const defaultAlchemyFormParams: AlchemyFormParams = {
-  alchemySkill: 15,
-  fortifyAlchemy: 0,
-  alchemistPercent: 0,
-  hasPhysician: false,
-  hasBenefactor: false,
-  hasPoisoner: false,
-  seekerOfShadowsPercent: 0,
-};
+/** Same fields as `POST /api/potions` `params` (see server `parseAlchemyParams`). */
+export type AlchemyFormParams = AlchemyParams;
+
+export const defaultAlchemyFormParams = defaultAlchemyParams;
 
 export type IngredientHit = { id: number; name: string; iconUrl: string | null };
 

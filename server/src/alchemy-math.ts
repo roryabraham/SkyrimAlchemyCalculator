@@ -1,27 +1,11 @@
+import type { AlchemyParams } from "../../libs/alchemy-params.ts";
 import type { EffectRow } from "./db.ts";
+
+export type { AlchemyParams } from "../../libs/alchemy-params.ts";
+export { defaultAlchemyParams } from "../../libs/alchemy-params.ts";
 
 const F_ALCH_INIT = 4;
 const F_ALCH_SKILL = 1.5;
-
-export type AlchemyParams = {
-  alchemySkill: number;
-  fortifyAlchemy: number;
-  alchemistPercent: number;
-  hasPhysician: boolean;
-  hasBenefactor: boolean;
-  hasPoisoner: boolean;
-  seekerOfShadowsPercent: number;
-};
-
-export const defaultAlchemyParams: AlchemyParams = {
-  alchemySkill: 15,
-  fortifyAlchemy: 0,
-  alchemistPercent: 0,
-  hasPhysician: false,
-  hasBenefactor: false,
-  hasPoisoner: false,
-  seekerOfShadowsPercent: 0,
-};
 
 /** UESP Damage Health controlling-ingredient path (see damage-health-parity.ts). */
 export type DamageHealthGoldHints = {
@@ -133,7 +117,7 @@ export function effectGold(
   return gold;
 }
 
-/** Gold for dominance / potion-vs-poison label (no Benefactor/Poisoner in PowerFactor). */
+/** Gold for dominance / potion-vs-poison label (Benefactor and Poisoner omitted from PowerFactor). */
 export function effectGoldForDominance(
   effect: EffectRow,
   params: AlchemyParams,

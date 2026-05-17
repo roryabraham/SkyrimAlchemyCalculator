@@ -11,6 +11,7 @@ import {
   type AlchemyParams,
   type EffectGoldHints,
 } from "./alchemy-math.ts";
+import { normalizeIngredientKey } from "../../libs/ingredient-key.ts";
 import { getDamageHealthRow } from "./damage-health-parity.ts";
 
 export const MAX_RECIPES = 8000;
@@ -200,15 +201,6 @@ function evaluateRecipe(
   };
 }
 
-function normalizeInvKey(name: string): string {
-  return name
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/\p{M}/gu, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
 /** Expand inventory lines into multiset of ingredient ids (order sorted by id). */
 export function expandInventory(
   lines: InventoryLine[],
@@ -217,7 +209,7 @@ export function expandInventory(
   const bag: number[] = [];
   const idToName = new Map<number, string>();
   for (const line of lines) {
-    const key = normalizeInvKey(line.name);
+    const key = normalizeIngredientKey(line.name);
     const row = nameToId.get(key);
     if (!row) {
       return { error: `Unknown ingredient: ${line.name}` };
