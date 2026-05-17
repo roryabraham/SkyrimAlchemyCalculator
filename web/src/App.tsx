@@ -1,6 +1,7 @@
 import { Container, Flex } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
-import { useDeferredValue, useState, useTransition } from "react";
+import { useDeferredValue, useEffect, useRef, useState, useTransition } from "react";
+import { readPersistedState, writePersistedState } from "./app-persistence.ts";
 import { AlchemySettingsPanel } from "./components/AlchemySettingsPanel.tsx";
 import { AppHeader } from "./components/AppHeader.tsx";
 import { DataAttribution } from "./components/DataAttribution.tsx";
@@ -15,17 +16,46 @@ import { uid } from "./uid.ts";
 export type { AlchemyFormParams } from "./types.ts";
 
 export function App() {
-  const [rows, setRows] = useState<InventoryRow[]>([
-    {
-      id: uid(),
-      name: "",
-      quantity: 1,
-    },
-  ]);
-  const [params, setParams] = useState<AlchemyFormParams>({
-    ...defaultAlchemyFormParams,
+  const [rows, setRows] = useState<InventoryRow[]>(() => {
+    const persisted = readPersistedState();
+    return persisted?.rows ?? [{ id: uid(), name: "", quantity: 1 }];
+  });
+  const [params, setParams] = useState<AlchemyFormParams>(() => {
+    const persisted = readPersistedState();
+    return persisted?.params ?? { ...defaultAlchemyFormParams };
   });
   const [, startSettingsTransition] = useTransition();
+
+  const persistSnapshotRef = useRef({ rows, params });
+  persistSnapshotRef.current = { rows, params };
+
+  useEffect(() => {
+    const debounceMs = 350;
+    let timerId = window.setTimeout(() => {
+      writePersistedState(persistSnapshotRef.current);
+    }, debounceMs);
+
+    const flush = () => {
+      window.clearTimeout(timerId);
+      writePersistedState(persistSnapshotRef.current);
+    };
+
+    window.addEventListener("pagehide", flush);
+    window.addEventListener("beforeunload", flush);
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        flush();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      window.clearTimeout(timerId);
+      window.removeEventListener("pagehide", flush);
+      window.removeEventListener("beforeunload", flush);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [rows, params]);
 
   const potionsMutation = useMutation({
     mutationFn: () => {
