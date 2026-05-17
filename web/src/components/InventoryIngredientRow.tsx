@@ -11,9 +11,11 @@ import {
 } from "@radix-ui/themes";
 import * as Popover from "@radix-ui/react-popover";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { fetchIngredients } from "../ingredient-api.ts";
-import type { InventoryRow } from "../types.ts";
+import type { IngredientHit, InventoryRow } from "../types.ts";
+
+const NO_INGREDIENT_SUGGESTIONS: IngredientHit[] = [];
 
 type Props = {
   row: InventoryRow;
@@ -23,6 +25,11 @@ type Props = {
 
 export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
   const [dismissed, setDismissed] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const listboxId = useId();
+  const suggestionRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const highlightedIndexRef = useRef(highlightedIndex);
+  highlightedIndexRef.current = highlightedIndex;
 
   const trimmedName = row.name.trim();
   const { data, isError, error, isFetching, isSuccess, isPending, isEnabled } = useQuery({
@@ -37,7 +44,27 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
     trimmedName.length > 0 &&
     isEnabled &&
     (isPending || isFetching || isSuccess || isError);
-  const suggestions = isSuccess && Array.isArray(data) ? data : [];
+  const suggestions = isSuccess && Array.isArray(data) ? data : NO_INGREDIENT_SUGGESTIONS;
+
+  const canKeyboardNavigate = popoverOpen && suggestions.length > 0;
+
+  useEffect(() => {
+    setHighlightedIndex(-1);
+    suggestionRefs.current = [];
+  }, [suggestions]);
+
+  useEffect(() => {
+    if (highlightedIndex < 0) {
+      return;
+    }
+    suggestionRefs.current[highlightedIndex]?.scrollIntoView({ block: "nearest" });
+  }, [highlightedIndex]);
+
+  const pickSuggestion = (hit: (typeof suggestions)[number]) => {
+    setDismissed(true);
+    setHighlightedIndex(-1);
+    onUpdate(row.id, { name: hit.name });
+  };
 
   return (
     <Table.Row align="start">
@@ -63,11 +90,56 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
               placeholder="Whisper an ingredient…"
               value={row.name}
               autoComplete="off"
+              role="combobox"
+              aria-expanded={canKeyboardNavigate}
+              aria-controls={canKeyboardNavigate ? listboxId : undefined}
+              aria-autocomplete="list"
+              aria-activedescendant={
+                canKeyboardNavigate && highlightedIndex >= 0
+                  ? `${listboxId}-opt-${suggestions[highlightedIndex]!.id}`
+                  : undefined
+              }
               onChange={(event) => {
                 setDismissed(false);
+                setHighlightedIndex(-1);
                 onUpdate(row.id, { name: event.target.value });
               }}
               onFocus={() => setDismissed(false)}
+              onKeyDown={(event) => {
+                if (!canKeyboardNavigate) {
+                  return;
+                }
+                if (event.key === "ArrowDown") {
+                  event.preventDefault();
+                  setHighlightedIndex((i) => {
+                    if (i < 0) {
+                      return 0;
+                    }
+                    return i < suggestions.length - 1 ? i + 1 : i;
+                  });
+                  return;
+                }
+                if (event.key === "ArrowUp") {
+                  const i = highlightedIndexRef.current;
+                  if (i <= 0) {
+                    setHighlightedIndex(-1);
+                    return;
+                  }
+                  event.preventDefault();
+                  setHighlightedIndex(i - 1);
+                  return;
+                }
+                if (event.key === "Enter") {
+                  const i = highlightedIndexRef.current;
+                  if (i >= 0) {
+                    const hit = suggestions[i];
+                    if (hit) {
+                      event.preventDefault();
+                      pickSuggestion(hit);
+                    }
+                  }
+                }
+              }}
             >
               {isFetching ? (
                 <TextField.Slot side="right">
@@ -99,7 +171,14 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                 }}
               >
                 <ScrollArea type="hover" scrollbars="vertical" style={{ maxHeight: 240 }}>
-                  <Flex direction="column" gap="1" p="1">
+                  <Flex
+                    direction="column"
+                    gap="1"
+                    p="1"
+                    id={listboxId}
+                    role="listbox"
+                    aria-label="Ingredients"
+                  >
                     {isFetching && suggestions.length === 0 && !isError ? (
                       <Text size="2" color="gray" style={{ padding: "0.25rem 0.5rem" }}>
                         Searching…
@@ -120,18 +199,32 @@ export function InventoryIngredientRow({ row, onUpdate, onRemove }: Props) {
                         No ingredients match.
                       </Text>
                     ) : null}
-                    {suggestions.map((hit) => (
+                    {suggestions.map((hit, index) => (
                       <Popover.Close key={hit.id} asChild>
                         <Button
                           type="button"
                           variant="ghost"
                           size="1"
-                          style={{ justifyContent: "flex-start" }}
-                          onMouseDown={(event) => event.preventDefault()}
-                          onClick={() => {
-                            setDismissed(true);
-                            onUpdate(row.id, { name: hit.name });
+                          role="option"
+                          tabIndex={-1}
+                          id={`${listboxId}-opt-${hit.id}`}
+                          aria-selected={highlightedIndex === index}
+                          ref={(el) => {
+                            suggestionRefs.current[index] = el;
                           }}
+                          style={{
+                            justifyContent: "flex-start",
+                            outlineOffset: 2,
+                            ...(highlightedIndex === index
+                              ? {
+                                  background: "var(--amber-a3)",
+                                  boxShadow: "inset 0 0 0 1px var(--amber-a6)",
+                                }
+                              : {}),
+                          }}
+                          onMouseDown={(event) => event.preventDefault()}
+                          onMouseEnter={() => setHighlightedIndex(index)}
+                          onClick={() => pickSuggestion(hit)}
                         >
                           <Flex align="center" gap="2">
                             {hit.iconUrl ? (
