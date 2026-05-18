@@ -162,7 +162,15 @@ export function RecipeResultsPanel({
       {rankedRecipeCountBeforeBlend > 0 ? (
         <Flex mb="3" direction="column" gap="2">
           <Text id="recipe-blend-filter-label" size="2" weight="medium" color="gray" as="p">
-            Show
+            <Text as="span">Show</Text>
+            <Text as="span" color="gray" aria-hidden style={{ userSelect: "none" }}>
+              {" "}
+              &bull;{" "}
+            </Text>
+            <Text as="span" style={{ fontVariantNumeric: "tabular-nums" }}>
+              {recipes.length}
+            </Text>
+            <Text as="span"> recipes</Text>
           </Text>
           <Flex gap="2" wrap="wrap" role="group" aria-labelledby="recipe-blend-filter-label">
             <Button
