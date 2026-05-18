@@ -26,6 +26,9 @@ export type Recipe = {
   dominantEffectKey: string;
 };
 
+/** One chosen recipe effect filter (matches `Recipe.effects[].effectKey`). */
+export type RecipeEffectFilterToken = { effectKey: string; displayName: string };
+
 export type InventoryRow = {
   id: string;
   name: string;

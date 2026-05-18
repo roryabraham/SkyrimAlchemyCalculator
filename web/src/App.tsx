@@ -22,6 +22,7 @@ import type {
   InventoryRow,
   InventoryRowPatch,
   Recipe,
+  RecipeEffectFilterToken,
   RecipeSharedBlend,
 } from "./libs/types.ts";
 import { defaultAlchemyFormParams, RECIPE_SHARED_BLEND_ORDER } from "./libs/types.ts";
@@ -51,6 +52,8 @@ export function App() {
   const brewFlashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   /** Empty = show all blends; otherwise OR of selected `Recipe.sharedBlend` values. */
   const [recipeBlendSelection, setRecipeBlendSelection] = useState<RecipeSharedBlend[]>([]);
+  /** Recipes must include every listed effect (`effectKey`). */
+  const [recipeEffectFilters, setRecipeEffectFilters] = useState<RecipeEffectFilterToken[]>([]);
 
   const persistSnapshotRef = useRef({ rows, params });
   const rowsRef = useRef(rows);
@@ -155,6 +158,14 @@ export function App() {
   const matchesRecipeBlend = (recipe: Recipe) =>
     recipeBlendSelection.length === 0 || recipeBlendSelection.includes(recipe.sharedBlend);
 
+  const matchesEffectFilters = (recipe: Recipe) =>
+    recipeEffectFilters.every((token) =>
+      recipe.effects.some((effect) => effect.effectKey === token.effectKey),
+    );
+
+  const recipesAfterEffects = rankedRecipes.filter(matchesEffectFilters);
+  const deferredRecipesAfterEffects = useDeferredValue(recipesAfterEffects);
+
   const toggleRecipeBlend = (blend: RecipeSharedBlend) => {
     setRecipeBlendSelection((prev) => {
       const nextSet = new Set(prev);
@@ -173,10 +184,27 @@ export function App() {
   const clearRecipeBlendSelection = () => {
     setRecipeBlendSelection([]);
   };
-  const recipesForList = rankedRecipes.filter(matchesRecipeBlend);
-  const displayedRecipesForList = deferredRankedRecipes.filter(matchesRecipeBlend);
+
+  const addRecipeEffectFilter = (token: RecipeEffectFilterToken) => {
+    setRecipeEffectFilters((prev) => {
+      if (prev.some((t) => t.effectKey === token.effectKey)) {
+        return prev;
+      }
+      return [...prev, token];
+    });
+  };
+
+  const removeRecipeEffectFilter = (effectKey: string) => {
+    setRecipeEffectFilters((prev) => prev.filter((t) => t.effectKey !== effectKey));
+  };
+
+  const recipesForList = recipesAfterEffects.filter(matchesRecipeBlend);
+  const displayedRecipesForList = deferredRecipesAfterEffects.filter(matchesRecipeBlend);
   const isListUpdating =
-    !isLoading && rankedRecipes.length > 0 && rankedRecipes !== deferredRankedRecipes;
+    !isLoading &&
+    rankedRecipes.length > 0 &&
+    (rankedRecipes !== deferredRankedRecipes ||
+      recipesAfterEffects !== deferredRecipesAfterEffects);
   const isTruncated =
     !isLoading && outcome?.type === "success" ? Boolean(outcome.isTruncated) : false;
   const error = outcome?.type === "error" ? outcome.error : null;
@@ -214,6 +242,10 @@ export function App() {
           recipes={recipesForList}
           displayedRecipes={displayedRecipesForList}
           rankedRecipeCountBeforeBlend={rankedRecipes.length}
+          recipeCountAfterEffects={recipesAfterEffects.length}
+          effectFilters={recipeEffectFilters}
+          onAddEffectFilter={addRecipeEffectFilter}
+          onRemoveEffectFilter={removeRecipeEffectFilter}
           blendSelection={recipeBlendSelection}
           onToggleBlendFilter={toggleRecipeBlend}
           onSelectAllBlendFilters={clearRecipeBlendSelection}
