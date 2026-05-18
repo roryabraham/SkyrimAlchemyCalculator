@@ -1,5 +1,12 @@
 # Skyrim Alchemy Calculator
 
+[![Oxfmt](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/oxfmt.yml/badge.svg?branch=main)](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/oxfmt.yml)
+[![Oxlint](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/oxlint.yml/badge.svg?branch=main)](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/oxlint.yml)
+[![tsgo](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/tsgo.yml/badge.svg?branch=main)](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/tsgo.yml)
+[![react-compiler-check](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/react-compiler-check.yml/badge.svg?branch=main)](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/react-compiler-check.yml)
+[![no-manual-memo](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/no-manual-memo.yml/badge.svg?branch=main)](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/no-manual-memo.yml)
+[![actionlint](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/actionlint.yml/badge.svg?branch=main)](https://github.com/roryabraham/SkyrimAlchemyCalculator/actions/workflows/actionlint.yml)
+
 Figure out what to brew from the ingredients you have—or what to buy—without tabbing out of a spreadsheet.
 
 This project is a **Skyrim alchemy helper** aimed at **Anniversary Edition–style** ingredient lists (base game + DLC + Creation Club entries that appear on UESP). You enter **which ingredients you have and how many**, and it lists every **valid 2- and 3-ingredient** combination from that pool that shares at least one effect. Results are **sorted by total estimated gold**, which tracks [UESP’s alchemy write-up](https://en.uesp.net/wiki/Skyrim:Alchemy) as a practical stand-in for “how good is this for leveling / selling,” rather than mirroring every in-session septim total. Treat numbers as **guides**, especially if you use unusual mods or perks.

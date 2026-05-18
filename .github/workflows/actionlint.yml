@@ -1,0 +1,34 @@
+name: actionlint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Lint GitHub Actions workflows
+        env:
+          ACTIONLINT_VERSION: 1.7.12
+        run: |
+          set -euo pipefail
+          # SHA256 from official actionlint_1.7.12_checksums.txt (linux_amd64 archive; matches ubuntu-latest)
+          tarball="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          expected="8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+          curl -fsSL -o "$tarball" "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/$tarball"
+          echo "${expected}  ${tarball}" | sha256sum -c -
+          tar xzf "$tarball" actionlint
+          chmod +x actionlint
+          ./actionlint -color
