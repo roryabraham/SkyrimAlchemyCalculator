@@ -19,16 +19,10 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
       - name: Lint GitHub Actions workflows
-        env:
-          ACTIONLINT_VERSION: 1.7.12
-        run: |
-          set -euo pipefail
-          # SHA256 from official actionlint_1.7.12_checksums.txt (linux_amd64 archive; matches ubuntu-latest)
-          tarball="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
-          expected="8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
-          curl -fsSL -o "$tarball" "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/$tarball"
-          echo "${expected}  ${tarball}" | sha256sum -c -
-          tar xzf "$tarball" actionlint
-          chmod +x actionlint
-          ./actionlint -color
+        run: bun run check:actionlint

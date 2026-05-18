@@ -52,7 +52,7 @@ Wiki content is under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/
 
 **Requirements:** [Bun](https://bun.sh/) for scripts, API, and tests. **Node.js** per [`.nvmrc`](.nvmrc) if your editor or tooling expects it.
 
-**Quality checks** (from repo root): `bun run typecheck`, `bun run lint`, `bun run fmt` (see root [`package.json`](package.json) for `fmt:check` and `lint:fix`).
+**Quality checks** (from repo root): `bun run typecheck`, `bun run lint`, `bun run fmt`, `bun run check:actionlint` (see root [`package.json`](package.json) for `fmt:check` and `lint:fix`).
 
 **Tests:** `bun test` (expects `data/alchemy.sqlite` after `bun install` or `bun run db:seed`).
 
@@ -68,6 +68,7 @@ Wiki content is under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/
 | `bun run typecheck` | Typecheck all TS projects (`tsgo`) |
 | `bun run lint` / `lint:fix` | Oxlint (+ type-aware rules) |
 | `bun run fmt` / `fmt:check` | Oxfmt |
+| `bun run check:actionlint` | Lint `.github/workflows/` with [actionlint](https://github.com/rhysd/actionlint) (pinned release + SHA256) |
 | `bun run scrape` / `scrape:effects` | Refresh UESP JSON artifacts |
 | `bun run fetch:ingredient-icons` | Download ingredient PNGs into `web/public/ingredient-icons/` + manifest |
 | `bun run data:refresh` | `scrape` → `fetch:ingredient-icons` → `db:seed` |

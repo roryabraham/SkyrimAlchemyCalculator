@@ -22,7 +22,8 @@
     "lint:fix": "oxlint --type-aware --fix web/src web/scripts server/src scripts tests libs",
     "fmt": "oxfmt web/src web/scripts web/vite.config.ts server/src scripts tests libs package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.scripts.json web/tsconfig.node.json server/tsconfig.json scripts/tsconfig.json tests/tsconfig.json libs/tsconfig.json",
     "fmt:check": "oxfmt --check web/src web/scripts web/vite.config.ts server/src scripts tests libs package.json web/package.json server/package.json tsconfig.base.json web/tsconfig.json web/tsconfig.scripts.json web/tsconfig.node.json server/tsconfig.json scripts/tsconfig.json tests/tsconfig.json libs/tsconfig.json",
-    "validate:pre-commit": "bun run lint && bun run fmt:check && bun run typecheck && bun run --cwd web check:react-compiler && bun run --cwd web check:no-manual-memo",
+    "check:actionlint": "bun run scripts/check-actionlint.ts",
+    "validate:pre-commit": "bun run lint && bun run fmt:check && bun run typecheck && bun run --cwd web check:react-compiler && bun run --cwd web check:no-manual-memo && bun run check:actionlint",
     "prepare": "husky"
   },
   "devDependencies": {
