@@ -1,0 +1,38 @@
+services:
+  app:
+    image: ${APP_IMAGE:?set APP_IMAGE to ghcr.io owner/repo:tag}
+    restart: unless-stopped
+    environment:
+      STATIC_ROOT: /app/web/dist
+      PORT: "3000"
+      ALCHEMY_SQLITE_PATH: /data/alchemy.sqlite
+    volumes:
+      - ${DATA_DIR:?set DATA_DIR to host path for SQLite}:/data
+    expose:
+      - "3000"
+    networks:
+      - internal
+
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:?set SITE_ADDRESS to your hostname}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - internal
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  internal:

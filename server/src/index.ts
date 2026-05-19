@@ -1,15 +1,92 @@
+import { existsSync, statSync } from "node:fs";
+import path from "node:path";
 import { getDb, loadAllIngredientRows, loadNameIndex, searchIngredients } from "./db.ts";
 import { defaultAlchemyParams, type AlchemyParams } from "./alchemy-math.ts";
 import { iconUrlForNameNormalized, loadIconManifest } from "./ingredient-icons.ts";
 import { rankPotions, type InventoryLine, type RecipeResult } from "./potion-engine.ts";
 
 const PORT = Number(process.env.PORT) || 3001;
+const STATIC_ROOT = process.env.STATIC_ROOT?.trim() ?? "";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
 };
+
+function mimeForPath(filePath: string): string {
+  const ext = path.extname(filePath).toLowerCase();
+  switch (ext) {
+    case ".html":
+      return "text/html; charset=utf-8";
+    case ".js":
+      return "text/javascript; charset=utf-8";
+    case ".css":
+      return "text/css; charset=utf-8";
+    case ".json":
+      return "application/json; charset=utf-8";
+    case ".webp":
+      return "image/webp";
+    case ".png":
+      return "image/png";
+    case ".svg":
+      return "image/svg+xml";
+    case ".woff2":
+      return "font/woff2";
+    case ".ico":
+      return "image/x-icon";
+    default:
+      return "application/octet-stream";
+  }
+}
+
+/** Serve Vite `dist` when `STATIC_ROOT` is set; SPA fallback to `index.html`. */
+function staticOrSpaResponse(req: Request): Response | null {
+  if (!STATIC_ROOT || req.method !== "GET") {
+    return null;
+  }
+  const url = new URL(req.url);
+  if (url.pathname.startsWith("/api")) {
+    return null;
+  }
+  let rel = decodeURIComponent(url.pathname);
+  if (rel === "/" || rel === "") {
+    rel = "index.html";
+  } else {
+    rel = rel.replace(/^\/+/, "");
+  }
+
+  const candidate = path.resolve(path.join(STATIC_ROOT, rel));
+  const rootResolved = path.resolve(STATIC_ROOT);
+  if (candidate !== rootResolved && !candidate.startsWith(`${rootResolved}${path.sep}`)) {
+    return new Response("Forbidden", { status: 403, headers: cors });
+  }
+
+  if (existsSync(candidate)) {
+    const st = statSync(candidate);
+    if (st.isFile()) {
+      return new Response(Bun.file(candidate), {
+        headers: { "Content-Type": mimeForPath(candidate) },
+      });
+    }
+    if (st.isDirectory()) {
+      const indexInDir = path.join(candidate, "index.html");
+      if (existsSync(indexInDir)) {
+        return new Response(Bun.file(indexInDir), {
+          headers: { "Content-Type": "text/html; charset=utf-8" },
+        });
+      }
+    }
+  }
+
+  const indexPath = path.join(STATIC_ROOT, "index.html");
+  if (existsSync(indexPath)) {
+    return new Response(Bun.file(indexPath), {
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
+  }
+  return null;
+}
 
 function json(data: unknown, status = 200): Response {
   return new Response(JSON.stringify(data), {
@@ -99,6 +176,11 @@ Bun.serve({
 
     if (req.method === "GET" && url.pathname === "/health") {
       return json({ ok: true });
+    }
+
+    const staticRes = staticOrSpaResponse(req);
+    if (staticRes) {
+      return staticRes;
     }
 
     return new Response("Not found", { status: 404, headers: cors });

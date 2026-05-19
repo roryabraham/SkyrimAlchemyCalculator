@@ -1,0 +1,12 @@
+node_modules
+web/node_modules
+.cache
+.git
+**/.DS_Store
+*.local
+.env
+.env.*
+web/dist
+server/dist
+dist
+.playwright-mcp

@@ -1,16 +1,51 @@
 import path from "node:path";
+import { copyFileSync, existsSync, mkdirSync } from "node:fs";
 import { Database } from "bun:sqlite";
 import { levenshtein } from "../../libs/levenshtein.ts";
 import { normalizeIngredientKey } from "../../libs/ingredient-key.ts";
 
 let _db: Database | null = null;
 
+const REPO_ROOT = path.join(import.meta.dir, "..", "..");
+
+function defaultDbPath(): string {
+  return path.join(REPO_ROOT, "data", "alchemy.sqlite");
+}
+
+function bundledTemplateDbPath(): string {
+  return path.join(REPO_ROOT, "data", "alchemy.sqlite");
+}
+
+function resolveDbPath(): string {
+  const raw = process.env.ALCHEMY_SQLITE_PATH?.trim();
+  if (!raw) {
+    return defaultDbPath();
+  }
+  return path.isAbsolute(raw) ? raw : path.join(REPO_ROOT, raw);
+}
+
+/** If ALCHEMY_SQLITE_PATH points elsewhere and the file is missing, seed from the bundled DB. */
+function ensureDbFileFromTemplate(dbPath: string): void {
+  const template = bundledTemplateDbPath();
+  if (dbPath === template) {
+    return;
+  }
+  if (existsSync(dbPath)) {
+    return;
+  }
+  if (!existsSync(template)) {
+    throw new Error(`SQLite not found at ${dbPath} and no template at ${template}`);
+  }
+  mkdirSync(path.dirname(dbPath), { recursive: true });
+  copyFileSync(template, dbPath);
+}
+
 export function getDb(): Database {
   if (_db) {
     return _db;
   }
-  const root = path.join(import.meta.dir, "..", "..");
-  const file = path.join(root, "data", "alchemy.sqlite");
+  const file = resolveDbPath();
+  ensureDbFileFromTemplate(file);
   _db = new Database(file, { readonly: true });
   _db.run("PRAGMA foreign_keys = ON;");
   return _db;

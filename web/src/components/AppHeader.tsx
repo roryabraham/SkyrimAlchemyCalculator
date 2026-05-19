@@ -48,7 +48,7 @@ export function AppHeader() {
           }}
         >
           <img
-            src="/favicon.webp"
+            src={`${import.meta.env.BASE_URL}favicon.webp`}
             alt=""
             decoding="async"
             aria-hidden

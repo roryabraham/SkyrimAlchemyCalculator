@@ -3,9 +3,9 @@ node_modules
 dist
 *.local
 .DS_Store
-data/alchemy.sqlite
 web/dist
 server/dist
 .env
 .env.*
+!deploy/.env.example
 .playwright-mcp/
